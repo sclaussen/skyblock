@@ -1,0 +1,21 @@
+{
+  "name": "skyblock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "skyblock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cli-color": "^2.0.0",
+    "colors": "^1.4.0",
+    "debug": "^4.3.2",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "request": "^2.88.2",
+    "yaml": "^1.10.2"
+  }
+}

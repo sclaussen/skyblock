@@ -1,0 +1,4 @@
+#!/bin/sh
+# node auction pet | grep "$*" | awk '{ total += $1 } END { printf("Average: $%5.0f\n", total/NR) }'
+# node auction pet | grep "$*" | perl -lane '$total += $F[0]; END { print $total/$. }'
+awk '{ total += $1 } END { printf("Average: $%5.0f\n", total/NR) }'

@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+    clear
+    node bazaar.js
+    sleep 20
+done
