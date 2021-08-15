@@ -383,8 +383,3 @@ function parse(args) {
 
     return options;
 }
-
-
-function usage() {
-    console.log('usage');
-}

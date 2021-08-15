@@ -1,4 +1,5 @@
 'use strict';
+// process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
 const fs = require('fs');
@@ -8,17 +9,18 @@ const _ = require('lodash');
 const YAML = require('yaml');
 const moment = require('moment');
 const clicolor = require('cli-color');
+var program = require('commander');
 
 const curl = require('./curl');
 const p = require('./pr').p(d);
 const p4 = require('./pr').p4(d);
 
 
-var options = {
-    marginMinimum: 8,
-    buyMinimum: 250,
+var options;
+
+var config = {
+
     buyMaximum: 10000000,
-    volumeMinimum: 1000000,
     ordersMaximum: 1500
 };
 
@@ -27,19 +29,22 @@ bazaar(process.argv);
 
 
 async function bazaar(args) {
+    // Parse the options
+    options = parse(args);
+
     let bazaar = (await curl.get('https://api.hypixel.net/skyblock/bazaar')).body;
-    // skyblock             "quick_status": {
-    // skyblock                 "productId": "ENCHANTED_BAKED_POTATO",
-    // skyblock                 "sellPrice": 24748.946948999233,
-    // skyblock                 "sellVolume": 2336256,
-    // skyblock                 "sellMovingWeek": 447388,
-    // skyblock                 "sellOrders": 688,
-    // skyblock                 "buyPrice": 26146.401687160418,
-    // skyblock                 "buyVolume": 150287,
-    // skyblock                 "buyMovingWeek": 303975,
-    // skyblock                 "buyOrders": 332
-    // skyblock             }
-    // skyblock         },
+    // "quick_status": {
+    //     "productId": "ENCHANTED_BAKED_POTATO",
+    //     "sellPrice": 24748.946948999233,
+    //     "sellVolume": 2336256,
+    //     "sellMovingWeek": 447388,
+    //     "sellOrders": 688,
+    //     "buyPrice": 26146.401687160418,
+    //     "buyVolume": 150287,
+    //     "buyMovingWeek": 303975,
+    //     "buyOrders": 332
+    // }
+
 
     let products = {};
     for (let itemName of _.keys(bazaar.products)) {
@@ -74,7 +79,8 @@ async function bazaar(args) {
     }
 
     var filteredProducts = _.orderBy(_.filter(products, function(o) {
-        return o.margin > options.marginMinimum && o.buyPrice > options.buyMinimum && o.buyPrice < options.buyMaximum && o.sellVolumeWeek > options.volumeMinimum && o.totalOrders < options.ordersMaximum
+        // return o.margin > marginMinimum && o.buyPrice > config.buyPriceMinimum && o.buyPrice < config.buyMaximum && o.sellVolumeWeek > config.volumeMinimum && o.totalOrders < config.ordersMaximum
+        return o.margin > parseInt(options.marginMinimum) && o.sellVolumeWeek > parseInt(options.volumeMinimum) && o.buyPrice > parseInt(options.buyPriceMinimum)
     }), 'margin', 'desc');
 
     table(filteredProducts);
@@ -100,6 +106,14 @@ function table(products) {
             alias: '%',
             highlight_green_above: 12,
             highlight_red_below: 8
+        },
+        buyPrice: {
+            padding: 7,
+            alias: 'buy',
+        },
+        sellPrice: {
+            padding: 7,
+            alias: 'sell',
         },
         // buyToSellOrdersRatioFormatted: {
         //     padding: 5,
@@ -141,14 +155,6 @@ function table(products) {
             padding: -25,
             alias: 'product',
         },
-        // buyPrice: {
-        //     padding: 7,
-        //     alias: 'buy',
-        // },
-        // sellPrice: {
-        //     padding: 7,
-        //     alias: 'sell',
-        // },
         // buyVolume: {
         //     padding: 5,
         //     alias: 'bvol',
@@ -180,6 +186,7 @@ function table(products) {
         if (product.name === 'jacobs_ticket') {
             continue;
         }
+
         let row = '';
         for (let fieldName of _.keys(fields)) {
             let value = product[fieldName];
@@ -192,6 +199,11 @@ function table(products) {
         }
 
         console.log(row);
+
+        counter++;
+        if (counter > parseInt(options.limit)) {
+            process.exit(0);
+        }
     }
 }
 
@@ -214,4 +226,22 @@ function highlight(field, value, s) {
     }
 
     return s;
+}
+
+
+function parse(args) {
+
+    program
+        .option('-b, --buy-price-minimum <buy-proce-minimum>', 'Minimum buy price', '250')
+        .option('-m, --margin-minimum <margin-minimum>', 'Minimum margin', '3')
+        .option('-v, --volume-minimum <volume-minimum>', 'Minimum volume', '1000000')
+        .option('-x, --extra', 'Adds extra order/volume fields to the output')
+        .option('-l, --limit <limit>', 'Limit items returned', '25')
+        .parse(args);
+
+    let options = program.opts();
+
+    p4(options);
+
+    return options;
 }
