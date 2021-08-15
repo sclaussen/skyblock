@@ -8,6 +8,7 @@ const _ = require('lodash');
 
 const YAML = require('yaml');
 const moment = require('moment');
+var program = require('commander');
 
 const curl = require('./curl');
 const p = require('./pr').p(d);
@@ -15,61 +16,156 @@ const p4 = require('./pr').p4(d);
 
 const { sortBy, deburr, groupBy, orderBy, toLower, map, uniq, filter } = _
 
+
 auction(process.argv);
 
 
-var items = [];
+var auctions = [];
+var options;
 
 
 // Usage: node auction keyword [r]
 async function auction(args) {
 
-    // What search phrase are we looking for???
-    let searchPhrase = args[2].toLowerCase();
+    // Parse the options
+    options = parse(args);
 
-    // Either redo all the calls and cache them, or just read the cache
-    if (args[3] && args[3] === 'r') {
+    // Call the skyblock API to retrieve and cache the auctions if the
+    // -r flag was specified
+    if (options.retrieve) {
         await writeCache();
     }
 
-    items = await readCache();
+    // Read in the auction items from the cache
+    auctions = await readCache();
 
-    let filteredItems = sortBy(filter(items, function(o) {
-        return toLower(deburr(o.item_name)).includes(searchPhrase);
-    }), 'category', 'item_name', 'tier', 'end');
-
-    for (let item of filteredItems) {
-        console.log((item.starting_bid + '').padStart(10, ' '),
-                    item.category.padEnd(5, ' '),
-                    item.tier.padEnd(5, ' '),
-                    item.bin.padStart(5, ' '),
-                    priceFmt(item.starting_bid),
-                    priceFmt(item.highest_bid_amount),
-                    item.reforge.padStart(20, ' '),
-                    item.item_name.padEnd(40, ' '),
-                    dateFmt(item.end).padEnd(15, ' '));
-    }
-}
-
-function priceFmt(n) {
-    let s = '';
-    if (n && n !== 0) {
-        if (n < 1000) {
-            s = 'K';
-            n = (n / 1000).toFixed(1);
-        } else if (n < 1000000) {
-            s = 'K';
-            n = (n / 1000).toFixed(0);
-        } else {
-            s = 'M';
-            n = (n / 1000000).toFixed(1);
+    // Find the auctions containing the user specified phrase
+    let auctionsMatchingPhrase = filter(auctions, function(o) {
+        if (options.noreforge) {
+            return o.item_name.includes(options.phrase) && o.reforge === 'NA' && !o.claimed;
         }
+        return o.item_name.includes(options.phrase) && !o.claimed;
+    });
+
+
+    // If BIN matches are requested (with or without the auction
+    // items), sort by cost (within each unique item).  If auction
+    // only, sort by time until the auction ends.
+    // auction.
+    let sortedAuctions;
+    if (options.auctions && !options.cost) {
+        sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'end' ]);
+    } else {
+        sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'starting_bid' ]);
     }
 
-    return (n.toLocaleString("en-US") + s).padStart(7, ' ') + ' ';
+
+    // Print everything out that matched the criteria
+    printAuctions(sortedAuctions);
 }
 
-function dateFmt(n) {
+function printAuctions(auctions) {
+    for (let auction of auctions) {
+
+        // If there's no auction flag indicating we should be
+        // including auctions, and the current item isn't a BIN item,
+        // skip it
+        if (!options.auctions && auction.bin !== 'BIN') {
+            continue;
+        }
+
+        // Build this string to print out a row
+        let s = '';
+
+//73ec7a7da3d2452593f4ab37d6fb80e0
+
+        // UUID
+        if (options.uuid) {
+            s += lj(auction.uuid, 34);
+        }
+
+        // RAW STARTING BID
+        if (auction.average) {
+            s += rj(auction.starting_bid, 10);
+        }
+
+        // CATEGORY
+        s += lj(auction.category, 7);
+
+        // TIER
+        s += lj(auction.tier, 5);
+
+        // STARTING_BID (FORMATTED)
+        s += rj(coins(auction.starting_bid), 7);
+
+        // REFORGE
+        s += rj(auction.reforge, 20);
+        s += ' ';
+
+        // ITEM NAME
+        s += lj(auction.item_name.replace(/ /g, 'X').replace(/\W/g, '').replace(/X/g, ' '), 40);
+
+        if (options.auctions) {
+
+            // HIGHEST BID AMOUNT
+            if (options.auctions) {
+                s += rj(coins(auction.highest_bid_amount), 7) + ' ';
+            }
+
+            // BIDS
+            if (auction.bids > 0) {
+                s += rj(auction.bids, 3) + ' ';
+            } else {
+                s += rj('', 3) + ' ';
+            }
+
+            // BIN or NOT
+            s += lj(auction.bin, 5);
+
+            // AUCTION END TIME
+            s += lj(time(auction.end), 15)
+        }
+
+        // EXTRA METADATA
+        if (options.extra) {
+            s += auction.extra;
+        }
+
+        console.log(s);
+    }
+}
+
+// Right justify
+function rj(s, n) {
+    return s.toString().padStart(n, ' ');
+}
+
+// Left justify
+function lj(s, n) {
+    return s.toString().padEnd(n, ' ');
+}
+
+function coins(n) {
+    let s = '';
+    if (n === 0) {
+        return s;
+    }
+
+    if (n < 1000) {
+        s = 'K';
+        n = (n / 1000).toFixed(1);
+    } else if (n < 1000000) {
+        s = 'K';
+        n = (n / 1000).toFixed(0);
+    } else {
+        s = 'M';
+        n = (n / 1000000).toFixed(1);
+    }
+
+    return (n.toLocaleString("en-US") + s);
+}
+
+function time(n) {
     let datetime = moment(n);
     return datetime.fromNow();
 }
@@ -88,15 +184,14 @@ async function writeCache() {
         skyblockAuctions = (await curl.get('https://api.hypixel.net/skyblock/auctions?page=' + page)).body;
         parseResponse(skyblockAuctions);
     }
-    console.log();
 
-    // Cache the items array to a file
-    fs.writeFileSync('./auction.json', JSON.stringify(items, null, 4));
+    // Cache the auctions array to a file
+    fs.writeFileSync('./auction.json', JSON.stringify(auctions, null, 4));
 }
 
 function parseResponse(skyblockAuctions) {
     for (let auction of skyblockAuctions.auctions) {
-        items.push({
+        auctions.push({
             uuid: auction.uuid,
             profile_id: auction.profile_id,
             start: auction.start,
@@ -116,39 +211,19 @@ function parseResponse(skyblockAuctions) {
 
 
 async function readCache() {
-    let tier = {
-        common: '1-comm',
-        uncommon: '2-unco',
-        rare: '3-rare',
-        epic: '4-epic',
-        legendary: '5-lege',
-        mythic: '6-myth',
-        supreme: '7-supr',
-        special: '8-spec',
-        very_special: '9-vspe'
-    };
 
-    let category = {
-        weapon: 'weap',
-        armor: 'armo',
-        accessories: 'acce',
-        misc: 'misc',
-        blocks: 'bloc',
-        consumables: 'cons',
-    };
-
-    let items = [];
+    let auctions = [];
 
     let auctionsString = fs.readFileSync('./auction.json');
-    let auctions = JSON.parse(auctionsString);
-    for (let auction of auctions) {
+    let skyblockAuctions = JSON.parse(auctionsString);
+    for (let auction of skyblockAuctions) {
 
-        // Convert pet names from
-        // FROM: [Lvl 1] Monkey
-        //   TO: [001] monkey
         let itemName = auction.item_name;
         let reforge = '';
         if (itemName.startsWith('[lvl')) {
+            // Convert pet names from
+            // FROM: [Lvl 1] Monkey
+            //   TO: [001] monkey
             let rightSquareBracketIndex = itemName.indexOf(']');
             reforge = 'L' + itemName.substring(itemName.indexOf(' ') + 1, rightSquareBracketIndex).padStart(3, '0'); // converts the 1 to 001
             itemName = itemName.substring(rightSquareBracketIndex + 2) + ' pet';
@@ -158,17 +233,44 @@ async function readCache() {
             itemName = reforgeAndItemName[1];
         }
 
-        if (!tier[auction.tier]) {
-            console.log('Unknown tier: ' + auction.tier);
-            process.exit(1);
-        }
-
         let bin = '';
-        if (auction.bin) {
+        if (!auction.bin) {
             bin = 'BIN';
+        } else {
+            bin = 'AUC';
         }
 
-        items.push({
+        let categoryAlias = {
+            weapon: '1-weap',
+            armor: '2-armo',
+            accessories: '3-acce',
+            misc: '4-misc',
+            blocks: '5-bloc',
+            consumables: '6-cons',
+        };
+        let category = categoryAlias[auction.category];
+        if (!category) {
+            console.log('Unknown category: ' + auction.category);
+        }
+
+
+        let tierAlias = {
+            common: '1-comm',
+            uncommon: '2-unco',
+            rare: '3-rare',
+            epic: '4-epic',
+            legendary: '5-lege',
+            mythic: '6-myth',
+            supreme: '7-supr',
+            special: '8-spec',
+            very_special: '9-vspe'
+        };
+        let tier = tierAlias[auction.tier];
+        if (!category) {
+            console.log('Unknown tier: ' + auction.tier);
+        }
+
+        auctions.push({
             uuid: auction.uuid,
             profile_id: auction.profile_id,
             start: auction.start,
@@ -176,8 +278,8 @@ async function readCache() {
             item_name: itemName,
             reforge: reforge,
             extra: auction.extra,
-            category: category[auction.category],
-            tier: tier[auction.tier],
+            category: category,
+            tier: tier,
             starting_bid: auction.starting_bid,
             claimed: auction.claimed,
             highest_bid_amount: auction.highest_bid_amount,
@@ -186,12 +288,56 @@ async function readCache() {
         });
     }
 
-    return items;
+    return auctions;
 }
 
 
 function parseReforge(itemName) {
     let reforges = [
+        // 'dirty',
+        // 'epic',
+        // 'fabled',
+        // 'fair',
+        // 'fast',
+        // 'gentle',
+        // 'heroic',
+        // 'legendary',
+        // 'odd',
+        // 'sharp',
+        // 'spicy',
+        // 'jaded',
+        // 'mythic',
+        // 'ancient',
+        // 'fierce',
+        // 'loving',
+        // 'light',
+        // 'necrotic',
+        // 'smart',
+        // 'renowned',
+        // 'spiked',
+        // 'suspicious',
+        // 'warped',
+        // 'wise',
+
+        // 'pure',
+        // 'reinforced',
+        // 'heavy',
+        // 'godly',
+        // 'clean',
+        // 'superior',
+        // 'titanic',
+        // 'cubic',
+
+        // Strong Dragon Armor
+        'ancient',
+        'cubic',
+        'fierce',
+        'mythic',
+        'pure',
+        'spiked',
+        'wise',
+
+        // Aspect of the End
         'dirty',
         'epic',
         'fabled',
@@ -203,35 +349,42 @@ function parseReforge(itemName) {
         'odd',
         'sharp',
         'spicy',
-        'jaded',
-        'mythic',
-        'ancient',
-        'fierce',
-        'loving',
-        'light',
-        'necrotic',
-        'smart',
-        'renowned',
-        'spiked',
         'suspicious',
         'warped',
-        'wise',
-
-        'pure',
-        'reinforced',
-        'heavy',
-        'godly',
-        'clean',
-        'superior',
-        'titanic',
-        'cubic'
     ];
 
     for (let reforge of reforges) {
         if (itemName.startsWith(reforge)) {
-            return [ reforge, itemName.substring(reforge.length) + 4 ]
+            return [ reforge, itemName.substring(reforge.length + 1) ];
         }
     }
 
-    return [ 'NOR', itemName ];
+    return [ 'NA', itemName ];
+}
+
+
+function parse(args) {
+
+    program
+        .argument('<phrase>', 'The phrase to search for')
+        .option('-a, --auctions', 'Include auctions (BIN is the default)')
+        .option('-c, --cost', 'If including auctions, sort by cost (default is auction ending time)')
+        .option('-n, --noreforge', 'Exclude reforges')
+        .option('-x, --extra', 'Add the additional metadata to the match')
+        .option('-r, --retrieve', 'Refresh the local auction cache using the skyblock API')
+        .option('-v, --average', 'Include the raw selling price to support averaging')
+        .option('-u, --uuid', 'Add uuid to the output')
+        .parse(args);
+
+    let options = program.opts();
+    options.phrase = program.args[0];
+
+    // p4(options);
+
+    return options;
+}
+
+
+function usage() {
+    console.log('usage');
 }

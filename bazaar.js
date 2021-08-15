@@ -15,7 +15,7 @@ const p4 = require('./pr').p4(d);
 
 
 var options = {
-    marginMinimum: 0,
+    marginMinimum: 8,
     buyMinimum: 250,
     buyMaximum: 10000000,
     volumeMinimum: 1000000,
@@ -41,44 +41,37 @@ async function bazaar(args) {
     // skyblock             }
     // skyblock         },
 
-//     let url = 'https://bazaartracker.com/product/';
-//     let bazaarTracker = {
-// whale_bait
-//     }
-
-
     let products = {};
-    for (let product of _.keys(bazaar.products)) {
-        if (product === 'BAZAAR_COOKIE') {
+    for (let itemName of _.keys(bazaar.products)) {
+        if (itemName === 'BAZAAR_COOKIE') {
             continue;
         }
 
-        products[product] = {
-            name: product.toLowerCase().replace('enchanted', 'e') + ' (' + (1000000 / bazaar.products[product].quick_status.sellPrice).toFixed(0) + ')',
-            margin: ~~(((bazaar.products[product].quick_status.buyPrice - bazaar.products[product].quick_status.sellPrice) / bazaar.products[product].quick_status.sellPrice) * 100),
-            // ratio0: ((bazaar.products[product].quick_status.sellOrders - bazaar.products[product].quick_status.buyOrders) / bazaar.products[product].quick_status.buyOrders),
-            buyToSellOrdersRatio: bazaar.products[product].quick_status.sellOrders / bazaar.products[product].quick_status.buyOrders,
-            buyToSellOrdersRatioFormatted: (bazaar.products[product].quick_status.sellOrders / bazaar.products[product].quick_status.buyOrders).toFixed(1),
-            buyToSellVolumeRatio: bazaar.products[product].quick_status.sellVolume / bazaar.products[product].quick_status.buyVolume,
-            buyToSellVolumeRatioFormatted: (bazaar.products[product].quick_status.sellVolume / bazaar.products[product].quick_status.buyVolume).toFixed(1),
-            buyPrice: Number.parseFloat(bazaar.products[product].quick_status.sellPrice).toFixed(1),
-            sellPrice: Number.parseFloat(bazaar.products[product].quick_status.buyPrice).toFixed(1),
-            buyOrders: bazaar.products[product].quick_status.sellOrders,
-            sellOrders: bazaar.products[product].quick_status.buyOrders,
-            totalOrders: bazaar.products[product].quick_status.buyOrders + bazaar.products[product].quick_status.sellOrders,
-            sellVolume: (bazaar.products[product].quick_status.buyVolume / 1000000).toFixed(1) + 'M',
-            buyVolume: (bazaar.products[product].quick_status.sellVolume / 1000000).toFixed(1) + 'M',
-            buyVolumeWeek: bazaar.products[product].quick_status.sellMovingWeek,
-            sellVolumeWeek: bazaar.products[product].quick_status.buyMovingWeek,
-            volumeWeek: (bazaar.products[product].quick_status.buyMovingWeek / 1000000).toFixed(1) + 'M',
-            quantity100: (100000 / bazaar.products[product].quick_status.sellPrice).toFixed(0),
-            quantity500: (500000 / bazaar.products[product].quick_status.sellPrice).toFixed(0),
-            quantity1M: (1000000 / bazaar.products[product].quick_status.sellPrice).toFixed(0),
-            url: 'https://bazaartracker.com/product/' + product.toLowerCase()
-        };
-    }
 
-    // p4(products);
+        products[itemName] = {
+            name: itemName.toLowerCase().replace('enchanted', 'e') + ' (' + (1000000 / bazaar.products[itemName].quick_status.sellPrice).toFixed(0) + ')',
+            margin: ~~(((bazaar.products[itemName].quick_status.buyPrice - bazaar.products[itemName].quick_status.sellPrice) / bazaar.products[itemName].quick_status.sellPrice) * 100),
+            buyToSellOrdersRatio: ((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders),
+            buyToSellOrdersRatioFormatted: (((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders) * 100).toFixed(0),
+            buyToSellVolumeRatio: ((bazaar.products[itemName].quick_status.sellVolme - bazaar.products[itemName].quick_status.buyVolume) / bazaar.products[itemName].quick_status.buyVolume),
+            buyToSellVolumeRatioFormatted: (((bazaar.products[itemName].quick_status.sellVolume - bazaar.products[itemName].quick_status.buyVolume) / bazaar.products[itemName].quick_status.buyVolume) * 100).toFixed(0),
+            buyPrice: Number.parseFloat(bazaar.products[itemName].quick_status.sellPrice).toFixed(1),
+            sellPrice: Number.parseFloat(bazaar.products[itemName].quick_status.buyPrice).toFixed(1),
+            buyOrders: bazaar.products[itemName].quick_status.sellOrders,
+            sellOrders: bazaar.products[itemName].quick_status.buyOrders,
+            totalOrders: bazaar.products[itemName].quick_status.buyOrders + bazaar.products[itemName].quick_status.sellOrders,
+            sellVolume: (bazaar.products[itemName].quick_status.buyVolume / 1000).toFixed(0),
+            buyVolume: (bazaar.products[itemName].quick_status.sellVolume / 1000).toFixed(0),
+            buyVolumeWeek: bazaar.products[itemName].quick_status.sellMovingWeek,
+            sellVolumeWeek: bazaar.products[itemName].quick_status.buyMovingWeek,
+            volumeWeek: (bazaar.products[itemName].quick_status.buyMovingWeek / 1000000).toFixed(1) + 'M',
+            quantity1M: (1000000 / bazaar.products[itemName].quick_status.sellPrice).toFixed(0),
+            url: getUrl(itemName)
+        };
+
+        products[itemName].orders = '(' + products[itemName].sellOrders.toString().padStart(3, ' ') + '/' + products[itemName].buyOrders.toString().padStart(3, ' ') + ')';
+        products[itemName].volume = '(' + products[itemName].sellVolume.toString().padStart(4, ' ') + '/' + products[itemName].buyVolume.toString().padStart(4, ' ') + ')';
+    }
 
     var filteredProducts = _.orderBy(_.filter(products, function(o) {
         return o.margin > options.marginMinimum && o.buyPrice > options.buyMinimum && o.buyPrice < options.buyMaximum && o.sellVolumeWeek > options.volumeMinimum && o.totalOrders < options.ordersMaximum
@@ -87,6 +80,18 @@ async function bazaar(args) {
     table(filteredProducts);
 }
 
+function getUrl(itemName) {
+    let url = {
+        enchanted_endstone: 'enchanted_end_stone'
+    };
+
+    let baseUrl = itemName.toLowerCase();
+    if (url[baseUrl]) {
+        baseUrl = url[baseUrl];
+    }
+
+    return 'https://bazaartracker.com/product/' + baseUrl;
+}
 
 function table(products) {
     let fields = {
@@ -96,54 +101,62 @@ function table(products) {
             highlight_green_above: 12,
             highlight_red_below: 8
         },
-        buyToSellOrdersRatioFormatted: {
-            padding: 5,
-            alias: 'b/s o',
-            highlight: 'normal',
-            highlight_green_above: 1.0,
-            highlight_red_below: 0.8
-        },
-        buyToSellVolumeRatioFormatted: {
-            padding: 5,
-            alias: 'b/s v',
-            highlight: 'normal',
-            highlight_green_above: 1.0,
-            highlight_red_below: 0.8
-        },
-        totalOrders: {
-            padding: 5,
-            alias: 'ord',
-            highlight_green_below: 500,
-            highlight_red_above: 1200,
-        },
-        buyOrders: {
-            padding: 5,
-            alias: 'bor',
-        },
-        sellOrders: {
-            padding: 5,
-            alias: 'sor',
-        },
+        // buyToSellOrdersRatioFormatted: {
+        //     padding: 5,
+        //     alias: 'ord',
+        //     highlight: 'normal',
+        //     highlight_green_above: 1.0,
+        //     highlight_red_below: 0.8
+        // },
+        // orders: {
+        //     padding: 10,
+        //     alias: ''
+        // },
+        // buyToSellVolumeRatioFormatted: {
+        //     padding: 5,
+        //     alias: 'vol',
+        //     highlight: 'normal',
+        //     highlight_green_above: 1.0,
+        //     highlight_red_below: 0.8
+        // },
+        // volume: {
+        //     padding: 10,
+        //     alias: 'K'
+        // },
+        // totalOrders: {
+        //     padding: 5,
+        //     alias: 'ord',
+        //     highlight_green_below: 500,
+        //     highlight_red_above: 1200,
+        // },
+        // buyOrders: {
+        //     padding: 5,
+        //     alias: 'bor',
+        // },
+        // sellOrders: {
+        //     padding: 5,
+        //     alias: 'sor',
+        // },
         name: {
             padding: -25,
             alias: 'product',
         },
-        buyPrice: {
-            padding: 7,
-            alias: 'buy',
-        },
-        sellPrice: {
-            padding: 7,
-            alias: 'sell',
-        },
-        buyVolume: {
-            padding: 5,
-            alias: 'bvol',
-        },
-        sellVolume: {
-            padding: 5,
-            alias: 'svol',
-        },
+        // buyPrice: {
+        //     padding: 7,
+        //     alias: 'buy',
+        // },
+        // sellPrice: {
+        //     padding: 7,
+        //     alias: 'sell',
+        // },
+        // buyVolume: {
+        //     padding: 5,
+        //     alias: 'bvol',
+        // },
+        // sellVolume: {
+        //     padding: 5,
+        //     alias: 'svol',
+        // },
         url: {
             padding: -80,
             alias: 'url',
@@ -151,9 +164,9 @@ function table(products) {
     };
 
     let header = '';
-    for (let field of _.keys(fields)) {
-        let padding = fields[field].padding;
-        let alias = fields[field].alias;
+    for (let fieldName of _.keys(fields)) {
+        let padding = fields[fieldName].padding;
+        let alias = fields[fieldName].alias;
         if (padding < 0) {
             header += alias.padEnd(0 - padding, ' ') + ' ';
         } else {
@@ -162,6 +175,7 @@ function table(products) {
     }
     console.log(header);
 
+    let counter = 0;
     for (let product of products) {
         if (product.name === 'jacobs_ticket') {
             continue;
