@@ -54,7 +54,7 @@ async function bazaar(args) {
 
 
         products[itemName] = {
-            name: itemName.toLowerCase().replace('enchanted', 'e') + ' (' + (1000000 / bazaar.products[itemName].quick_status.sellPrice).toFixed(0) + ')',
+            name: itemName.toLowerCase().replace('enchanted', 'e'),
             margin: ~~(((bazaar.products[itemName].quick_status.buyPrice - bazaar.products[itemName].quick_status.sellPrice) / bazaar.products[itemName].quick_status.sellPrice) * 100),
             buyToSellOrdersRatio: ((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders),
             buyToSellOrdersRatioFormatted: (((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders) * 100).toFixed(0),
@@ -70,12 +70,15 @@ async function bazaar(args) {
             buyVolumeWeek: bazaar.products[itemName].quick_status.sellMovingWeek,
             sellVolumeWeek: bazaar.products[itemName].quick_status.buyMovingWeek,
             volumeWeek: (bazaar.products[itemName].quick_status.buyMovingWeek / 1000000).toFixed(1) + 'M',
-            quantity1M: (1000000 / bazaar.products[itemName].quick_status.sellPrice).toFixed(0),
             url: getUrl(itemName)
         };
 
         products[itemName].orders = '(' + products[itemName].sellOrders.toString().padStart(3, ' ') + '/' + products[itemName].buyOrders.toString().padStart(3, ' ') + ')';
         products[itemName].volume = '(' + products[itemName].sellVolume.toString().padStart(4, ' ') + '/' + products[itemName].buyVolume.toString().padStart(4, ' ') + ')';
+
+        let millionQuantity = 1000000 / bazaar.products[itemName].quick_status.sellPrice;
+        let millionQuantityRounded = Math.round(millionQuantity / 100) * 100;
+        products[itemName].name += ' (' + millionQuantityRounded + ')';
     }
 
     var filteredProducts = _.orderBy(_.filter(products, function(o) {
@@ -236,7 +239,7 @@ function parse(args) {
         .option('-m, --margin-minimum <margin-minimum>', 'Minimum margin', '3')
         .option('-v, --volume-minimum <volume-minimum>', 'Minimum volume', '1000000')
         .option('-x, --extra', 'Adds extra order/volume fields to the output')
-        .option('-l, --limit <limit>', 'Limit items returned', '25')
+        .option('-l, --limit <limit>', 'Limit items returned', '35')
         .parse(args);
 
     let options = program.opts();
