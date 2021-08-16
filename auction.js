@@ -8,7 +8,7 @@ const _ = require('lodash');
 
 const YAML = require('yaml');
 const moment = require('moment');
-var program = require('commander');
+const program = require('commander');
 
 const curl = require('./curl');
 const p = require('./pr').p(d);
@@ -59,7 +59,6 @@ async function auction(args) {
         sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'starting_bid' ]);
     }
 
-
     // Print everything out that matched the criteria
     printAuctions(sortedAuctions);
 }
@@ -70,14 +69,12 @@ function printAuctions(auctions) {
         // If there's no auction flag indicating we should be
         // including auctions, and the current item isn't a BIN item,
         // skip it
-        if (!options.auctions && auction.bin !== 'BIN') {
+        if (auction.type === 'AUC' && !options.auctions) {
             continue;
         }
 
         // Build this string to print out a row
         let s = '';
-
-//73ec7a7da3d2452593f4ab37d6fb80e0
 
         // UUID
         if (options.uuid) {
@@ -97,6 +94,11 @@ function printAuctions(auctions) {
 
         // STARTING_BID (FORMATTED)
         s += rj(coins(auction.starting_bid), 7);
+
+        // BIN or NOT
+        if (options.auctions) {
+            s += ' ' + lj(auction.type, 5);
+        }
 
         // REFORGE
         s += rj(auction.reforge, 20);
@@ -118,9 +120,6 @@ function printAuctions(auctions) {
             } else {
                 s += rj('', 3) + ' ';
             }
-
-            // BIN or NOT
-            s += lj(auction.bin, 5);
 
             // AUCTION END TIME
             s += lj(time(auction.end), 15)
@@ -191,6 +190,11 @@ async function writeCache() {
 
 function parseResponse(skyblockAuctions) {
     for (let auction of skyblockAuctions.auctions) {
+        let bin = 'BIN';
+        if (!auction.bin) {
+            bin = 'AUC';
+        }
+
         auctions.push({
             uuid: auction.uuid,
             profile_id: auction.profile_id,
@@ -204,7 +208,7 @@ function parseResponse(skyblockAuctions) {
             claimed: auction.claimed,
             highest_bid_amount: auction.highest_bid_amount,
             bids: auction.bids.length,
-            bin: auction.bin
+            type: bin
         });
     }
 }
@@ -231,13 +235,6 @@ async function readCache() {
             let reforgeAndItemName = parseReforge(itemName);
             reforge = reforgeAndItemName[0];
             itemName = reforgeAndItemName[1];
-        }
-
-        let bin = '';
-        if (!auction.bin) {
-            bin = 'BIN';
-        } else {
-            bin = 'AUC';
         }
 
         let categoryAlias = {
@@ -284,7 +281,7 @@ async function readCache() {
             claimed: auction.claimed,
             highest_bid_amount: auction.highest_bid_amount,
             bids: auction.bids,
-            bin: bin
+            type: auction.type
         });
     }
 
@@ -327,6 +324,19 @@ function parseReforge(itemName) {
         // 'superior',
         // 'titanic',
         // 'cubic',
+
+        // Magna Bow
+        'grand',
+        'hasty',
+        'neat',
+        'precise',
+        'rapid',
+        'spiritual',
+        'unreal',
+        'rich',
+        'deadly',
+        'awkward',
+        'fine',
 
         // Strong Dragon Armor
         'ancient',

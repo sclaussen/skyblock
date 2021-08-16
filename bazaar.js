@@ -150,10 +150,10 @@ function table(products) {
         //     padding: 5,
         //     alias: 'bor',
         // },
-        // sellOrders: {
-        //     padding: 5,
-        //     alias: 'sor',
-        // },
+        sellOrders: {
+            padding: 5,
+            alias: 'sor',
+        },
         name: {
             padding: -25,
             alias: 'product',

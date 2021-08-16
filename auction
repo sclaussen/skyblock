@@ -1,6 +1,0 @@
-#!/bin/bash
-while true; do
-    clear
-    node auction griffin -r
-    sleep 30
-done
