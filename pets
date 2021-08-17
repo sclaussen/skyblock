@@ -1,0 +1,15 @@
+#!/bin/sh
+node auction "ender dragon pet" -l1 | sort -k3 | grep epic | head -1
+node auction "ender dragon pet" -l1 | sort -k3 | grep lege | head -1
+node auction "black cat pet" -l1 | sort -k3 | grep epic | head -1
+node auction "black cat pet" -l1 | sort -k3 | grep lege | head -1
+node auction "griffin pet" -l1 | sort -k3 | grep epic | head -1
+node auction "griffin pet" -l1 | sort -k3 | grep lege | head -1
+node auction "blue whale pet" -l1 | sort -k3 | grep epic | head -1
+node auction "blue whale pet" -l1 | sort -k3 | grep lege | head -1
+node auction "mithril golem pet" -l1 | sort -k3 | grep epic | head -1
+node auction "mithril golem pet" -l1 | sort -k3 | grep lege | head -1
+node auction "monkey pet" -l1 | sort -k3 | grep lege | head -1
+node auction "monkey pet" -l1 | sort -k3 | grep epic | head -1
+node auction "dolphin pet" -l1 | sort -k3 | grep lege | head -1
+node auction "dolphin pet" -l1 | sort -k3 | grep epic | head -1

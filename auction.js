@@ -44,6 +44,12 @@ async function auction(args) {
         if (options.noreforge) {
             return o.item_name.includes(options.phrase) && o.reforge === 'NA' && !o.claimed;
         }
+
+        if (options.level) {
+            let level = 'L' + options.level.padStart(3, '0');
+            return o.item_name.includes(options.phrase) && o.reforge === level && !o.claimed;
+        }
+
         return o.item_name.includes(options.phrase) && !o.claimed;
     });
 
@@ -105,7 +111,7 @@ function printAuctions(auctions) {
         s += ' ';
 
         // ITEM NAME
-        s += lj(auction.item_name.replace(/ /g, 'X').replace(/\W/g, '').replace(/X/g, ' '), 40);
+        s += lj(auction.item_name.replace(/ /g, 'X').replace(/\W/g, '+').replace(/X/g, ' '), 40);
 
         if (options.auctions) {
 
@@ -127,7 +133,7 @@ function printAuctions(auctions) {
 
         // EXTRA METADATA
         if (options.extra) {
-            s += auction.extra;
+            s += auction.extra.toLowerCase();
         }
 
         console.log(s);
@@ -379,6 +385,7 @@ function parse(args) {
         .argument('<phrase>', 'The phrase to search for')
         .option('-a, --auctions', 'Include auctions (BIN is the default)')
         .option('-c, --cost', 'If including auctions, sort by cost (default is auction ending time)')
+        .option('-l, --level <level>', 'Pet level (eg 1, 99, 100)')
         .option('-n, --noreforge', 'Exclude reforges')
         .option('-x, --extra', 'Add the additional metadata to the match')
         .option('-r, --retrieve', 'Refresh the local auction cache using the skyblock API')
