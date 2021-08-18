@@ -340,6 +340,9 @@ function parseReforge(itemName) {
         // Bat person
         'candied',
 
+        // Flower of truth
+        'withered',
+
         // Unstable
         'light',
         'titanic',
@@ -359,6 +362,9 @@ function parseReforge(itemName) {
         'deadly',
         'awkward',
         'fine',
+
+        // Juju
+        'headstrong',
 
         // Superior Dragon Armor
         'jaded',
@@ -392,6 +398,7 @@ function parseReforge(itemName) {
         'legendary',
         'odd',
         'sharp',
+        'superior',
         'spicy',
         'suspicious',
         'warped',

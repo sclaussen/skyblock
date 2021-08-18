@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+    clear
+    node auction -x "giant's sword" | head -15
+    sleep 30
+done

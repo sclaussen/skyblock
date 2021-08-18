@@ -1,5 +1,5 @@
 #!/bin/sh
-PETS="bat griffin blue-whale mithril-golem monkey dolphin"
+PETS="bat mithril-golem blue-whale dolphin monkey griffin "
 
 while true; do
     clear

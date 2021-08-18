@@ -2,17 +2,17 @@
 
 export ARMOR=$1
 
-# echo HELM
-# node auction "$ARMOR helm" -x | grep growth | grep protection | grep thorns | grep respiration | head -5
-# echo
+echo HELM
+node auction "$ARMOR helm" -x       | grep growth | grep protection | grep thorns | grep respiration | head -5
+echo
 echo CHEST PLATE
 node auction "$ARMOR chestplate" -x | grep growth | grep protection | grep thorns | head -5
 echo
-# echo LEGGINGS
-# node auction "$ARMOR leggings" -x | grep growth | grep protection | grep thorns | head -5
-# echo
+echo LEGGINGS
+node auction "$ARMOR leggings" -x   | grep growth | grep protection | grep thorns | head -5
+echo
 echo BOOTS
-node auction "$ARMOR boots" -x | grep feather | grep protection | grep growth | grep thorns | head -5
+node auction "$ARMOR boots" -x      | grep protection | grep growth | grep thorns | grep feather | head -5
 
 
 node auction -k "$ARMOR helm" -x | grep growth | grep protection | grep thorns | grep respiration | head -1 > .armor
