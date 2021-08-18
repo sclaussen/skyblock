@@ -1,6 +1,6 @@
 #!/bin/sh
 while true; do
     clear
-    node auction griffin -r
+    node auction griffin -l1 -r
     sleep 30
 done

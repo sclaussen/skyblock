@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+    clear
+    armor "superior dragon"
+    sleep 30
+done

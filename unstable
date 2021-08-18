@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+    clear
+    armor "unstable dragon"
+    sleep 30
+done

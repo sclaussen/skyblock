@@ -1,0 +1,4 @@
+#!/bin/sh
+export PET="$*"
+# node auction "${PET} pet" -l1 | grep epic | head -5
+node auction "${PET} pet" | grep lege | head -5

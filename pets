@@ -1,15 +1,12 @@
 #!/bin/sh
-node auction "ender dragon pet" -l1 | sort -k3 | grep epic | head -1
-node auction "ender dragon pet" -l1 | sort -k3 | grep lege | head -1
-node auction "black cat pet" -l1 | sort -k3 | grep epic | head -1
-node auction "black cat pet" -l1 | sort -k3 | grep lege | head -1
-node auction "griffin pet" -l1 | sort -k3 | grep epic | head -1
-node auction "griffin pet" -l1 | sort -k3 | grep lege | head -1
-node auction "blue whale pet" -l1 | sort -k3 | grep epic | head -1
-node auction "blue whale pet" -l1 | sort -k3 | grep lege | head -1
-node auction "mithril golem pet" -l1 | sort -k3 | grep epic | head -1
-node auction "mithril golem pet" -l1 | sort -k3 | grep lege | head -1
-node auction "monkey pet" -l1 | sort -k3 | grep lege | head -1
-node auction "monkey pet" -l1 | sort -k3 | grep epic | head -1
-node auction "dolphin pet" -l1 | sort -k3 | grep lege | head -1
-node auction "dolphin pet" -l1 | sort -k3 | grep epic | head -1
+PETS="bat griffin blue-whale mithril-golem monkey dolphin"
+
+while true; do
+    clear
+    for PET in $PETS; do
+        PET=`echo $PET | sed s/-/\ /g`
+        pet "$PET"
+        echo
+    done
+    sleep 30
+done

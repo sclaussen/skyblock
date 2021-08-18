@@ -99,7 +99,7 @@ function printAuctions(auctions) {
         s += lj(auction.tier, 5);
 
         // STARTING_BID (FORMATTED)
-        s += rj(coins(auction.starting_bid), 7);
+        s += rj(coins(auction.starting_bid), 9);
 
         // BIN or NOT
         if (options.auctions) {
@@ -156,15 +156,21 @@ function coins(n) {
         return s;
     }
 
-    if (n < 1000) {
-        s = 'K';
-        n = (n / 1000).toFixed(1);
-    } else if (n < 1000000) {
+    if (options.thousands) {
         s = 'K';
         n = (n / 1000).toFixed(0);
     } else {
-        s = 'M';
-        n = (n / 1000000).toFixed(1);
+
+        if (n < 1000) {
+            s = 'K';
+            n = (n / 1000).toFixed(1);
+        } else if (n < 1000000) {
+            s = 'K';
+            n = (n / 1000).toFixed(0);
+        } else {
+            s = 'M';
+            n = (n / 1000000).toFixed(1);
+        }
     }
 
     return (n.toLocaleString("en-US") + s);
@@ -331,6 +337,16 @@ function parseReforge(itemName) {
         // 'titanic',
         // 'cubic',
 
+        // Bat person
+        'candied',
+
+        // Unstable
+        'light',
+        'titanic',
+        'reinforced',
+        'forceful',
+        'unpleasant',
+
         // Magna Bow
         'grand',
         'hasty',
@@ -344,7 +360,19 @@ function parseReforge(itemName) {
         'awkward',
         'fine',
 
+        // Superior Dragon Armor
+        'jaded',
+        'ridiculous',
+        'loving',
+        'strong',
+
         // Strong Dragon Armor
+        'smart',
+        'renowned',
+        'clean',
+        'giant',
+        'necrotic',
+        'godly',
         'ancient',
         'cubic',
         'fierce',
@@ -391,6 +419,7 @@ function parse(args) {
         .option('-r, --retrieve', 'Refresh the local auction cache using the skyblock API')
         .option('-v, --average', 'Include the raw selling price to support averaging')
         .option('-u, --uuid', 'Add uuid to the output')
+        .option('-k, --thousands', 'Express coins in terms of K')
         .parse(args);
 
     let options = program.opts();
