@@ -2,5 +2,5 @@
 while true; do
     clear
     node auction -x "aspect of the dragon" | head -10
-    sleep 30
+    sleep 10
 done

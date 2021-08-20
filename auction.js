@@ -41,6 +41,10 @@ async function auction(args) {
 
     // Find the auctions containing the user specified phrase
     let auctionsMatchingPhrase = filter(auctions, function(o) {
+        if (options.book) {
+            return o.item_name.includes('enchanted book') && o.extra.toLowerCase().includes('enchanted book enchanted book ' + options.phrase);
+        }
+
         if (options.noreforge) {
             return o.item_name.includes(options.phrase) && o.reforge === 'NA' && !o.claimed;
         }
@@ -65,7 +69,6 @@ async function auction(args) {
         sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'starting_bid' ]);
     }
 
-    // Print everything out that matched the criteria
     printAuctions(sortedAuctions);
 }
 
@@ -279,6 +282,19 @@ async function readCache() {
             console.log('Unknown tier: ' + auction.tier);
         }
 
+        // wip
+        let bookAlias = {
+            sharpness: {
+                '1-comm': '1-4',
+                '2-unco': 5
+            },
+            efficiency: {
+                '1-comm': '1-4',
+                '2-unco': 5
+            }
+        };
+
+
         auctions.push({
             uuid: auction.uuid,
             profile_id: auction.profile_id,
@@ -373,6 +389,7 @@ function parseReforge(itemName) {
         'strong',
 
         // Strong Dragon Armor
+        'heavy',
         'smart',
         'renowned',
         'clean',
@@ -386,6 +403,11 @@ function parseReforge(itemName) {
         'pure',
         'spiked',
         'wise',
+
+        // Stonk
+        'fruitful',
+        'refined',
+        'magnetic',
 
         // Aspect of the End
         'dirty',
@@ -419,6 +441,7 @@ function parse(args) {
     program
         .argument('<phrase>', 'The phrase to search for')
         .option('-a, --auctions', 'Include auctions (BIN is the default)')
+        .option('-b, --book', 'Only include enchanted books')
         .option('-c, --cost', 'If including auctions, sort by cost (default is auction ending time)')
         .option('-l, --level <level>', 'Pet level (eg 1, 99, 100)')
         .option('-n, --noreforge', 'Exclude reforges')
@@ -430,7 +453,11 @@ function parse(args) {
         .parse(args);
 
     let options = program.opts();
-    options.phrase = program.args[0];
+    options.phrase = program.args[0].toLowerCase();
+
+    if (options.book) {
+        options.extra = true;
+    }
 
     // p4(options);
 
