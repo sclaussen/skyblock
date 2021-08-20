@@ -1,6 +1,2 @@
 #!/bin/sh
-while true; do
-    clear
-    node auction -x "aspect of the end" | head -10
-    sleep 30
-done
+loop "aspect of the end" 15 "-o 10 -x"

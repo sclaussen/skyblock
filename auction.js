@@ -30,9 +30,9 @@ async function auction(args) {
     // Parse the options
     options = parse(args);
 
-    // Call the skyblock API to retrieve and cache the auctions if the
+    // Call the skyblock API to fetch and cache the auctions if the
     // -r flag was specified
-    if (options.retrieve) {
+    if (options.fetch) {
         await writeCache();
     }
 
@@ -41,27 +41,58 @@ async function auction(args) {
 
     // Find the auctions containing the user specified phrase
     let auctionsMatchingPhrase = filter(auctions, function(o) {
+
+        // Do not include the item if it was already claimed
+        if (o.claimed) {
+            return false;
+        }
+
+
+        // Match correct phrase
+        let phrase = options.phrase;
         if (options.book) {
-            return o.item_name.includes('enchanted book') && o.extra.toLowerCase().includes('enchanted book enchanted book ' + options.phrase);
+            phrase = 'enchanted book';
+        }
+        if (options.level) {
+            if (!phrase.includes(' pet')) {
+                phrase = options.phrase + ' pet';
+            }
+        }
+        if (!o.item_name.includes(phrase)) {
+            return false;
         }
 
-        if (options.noreforge) {
-            return o.item_name.includes(options.phrase) && o.reforge === 'NA' && !o.claimed;
+
+        // If it is a book, match the specific book enchantment name in the extra field
+        if (options.book) {
+            if (o.extra.toLowerCase().includes('enchanted book enchanted book ' + options.phrase)) {
+                return false;
+            }
         }
 
+
+        // If a level is specified, match the level in the item's name
         if (options.level) {
             let level = 'L' + options.level.padStart(3, '0');
-            return o.item_name.includes(options.phrase) && o.reforge === level && !o.claimed;
+            if (!o.reforge.includes(level)) {
+                return false;
+            }
         }
 
-        return o.item_name.includes(options.phrase) && !o.claimed;
+
+        // If a tier is specified match that tier
+        if (options.tier) {
+            if (!o.tier.includes(options.tier)) {
+                return false;
+            }
+        }
+
+        return true;
     });
 
 
-    // If BIN matches are requested (with or without the auction
-    // items), sort by cost (within each unique item).  If auction
-    // only, sort by time until the auction ends.
-    // auction.
+    // If BIN, sort by cost (within each unique item).
+    // If auction, sort by auction ending time
     let sortedAuctions;
     if (options.auctions && !options.cost) {
         sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'end' ]);
@@ -73,6 +104,7 @@ async function auction(args) {
 }
 
 function printAuctions(auctions) {
+    let count = 0;
     for (let auction of auctions) {
 
         // If there's no auction flag indicating we should be
@@ -84,16 +116,6 @@ function printAuctions(auctions) {
 
         // Build this string to print out a row
         let s = '';
-
-        // UUID
-        if (options.uuid) {
-            s += lj(auction.uuid, 34);
-        }
-
-        // RAW STARTING BID
-        if (auction.average) {
-            s += rj(auction.starting_bid, 10);
-        }
 
         // CATEGORY
         s += lj(auction.category, 7);
@@ -140,6 +162,13 @@ function printAuctions(auctions) {
         }
 
         console.log(s);
+
+        count++;
+        if (options.output) {
+            if (count === parseInt(options.output)) {
+                return;
+            }
+        }
     }
 }
 
@@ -211,7 +240,6 @@ function parseResponse(skyblockAuctions) {
         }
 
         auctions.push({
-            uuid: auction.uuid,
             profile_id: auction.profile_id,
             start: auction.start,
             end: auction.end,
@@ -296,7 +324,6 @@ async function readCache() {
 
 
         auctions.push({
-            uuid: auction.uuid,
             profile_id: auction.profile_id,
             start: auction.start,
             end: auction.end,
@@ -443,13 +470,12 @@ function parse(args) {
         .option('-a, --auctions', 'Include auctions (BIN is the default)')
         .option('-b, --book', 'Only include enchanted books')
         .option('-c, --cost', 'If including auctions, sort by cost (default is auction ending time)')
+        .option('-f, --fetch', 'Refresh the local auction cache using the skyblock API')
+        .option('-k, --thousands', 'Express coins in terms of K (useful for calculating avg/total cost)')
         .option('-l, --level <level>', 'Pet level (eg 1, 99, 100)')
-        .option('-n, --noreforge', 'Exclude reforges')
+        .option('-t, --tier <tier>', 'Tier level (eg epic, lege, comm, unco, rare)')
+        .option('-o, --output <output>', 'Limit output to the first N items')
         .option('-x, --extra', 'Add the additional metadata to the match')
-        .option('-r, --retrieve', 'Refresh the local auction cache using the skyblock API')
-        .option('-v, --average', 'Include the raw selling price to support averaging')
-        .option('-u, --uuid', 'Add uuid to the output')
-        .option('-k, --thousands', 'Express coins in terms of K')
         .parse(args);
 
     let options = program.opts();

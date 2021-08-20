@@ -1,6 +1,2 @@
 #!/bin/sh
-while true; do
-    clear
-    node auction -x "livid dagger" | head -15
-    sleep 30
-done
+loop "livid dagger" 15 "-o 10 -x"

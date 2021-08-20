@@ -1,0 +1,2 @@
+#!/bin/sh
+loop guardian 30 "-l100 -tepic"
