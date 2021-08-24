@@ -1,2 +1,2 @@
 #!/bin/sh
-loop "livid dagger" 15 "-o 10 -x"
+node auction -o40 -L -M sharpness -- "livid dagger"

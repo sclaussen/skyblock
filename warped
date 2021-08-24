@@ -1,0 +1,2 @@
+#!/bin/sh
+node auction -L -o40 -m -r warped "aspect of the end"

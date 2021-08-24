@@ -1,0 +1,24 @@
+#!/bin/sh
+
+export ARMOR=mastiff
+
+echo HELM
+node auction -o5 "$ARMOR crown" -x
+echo
+echo CHEST PLATE
+node auction -o5 "$ARMOR chestplate" -x
+echo
+echo LEGGINGS
+node auction -o5 "$ARMOR leggings" -x
+echo
+echo BOOTS
+node auction -o5 "$ARMOR boots" -x
+
+
+node auction -o1 -k "$ARMOR crown" -x > .armor
+node auction -o1 -k "$ARMOR chestplate" -x >> .armor
+node auction -o1 -k "$ARMOR leggings" -x >> .armor
+node auction -o1 -k "$ARMOR boots" -x >> .armor
+echo
+cat .armor | cut -c16-21 | sed 's/K//'g | awk '{ total += $1 } END { printf("Total: $%5.0fK\n", total) }'
+rm .armor

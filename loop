@@ -1,9 +1,0 @@
-#!/bin/sh
-export PHRASE=$1
-export SLEEP=${2:-15}
-export OPTIONS=${3}
-while true; do
-    clear
-    node auction $OPTIONS $PHRASE
-    sleep $SLEEP
-done

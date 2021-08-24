@@ -16,7 +16,9 @@
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "pluralize": "^8.0.0",
     "request": "^2.88.2",
+    "underscore.string": "^3.3.5",
     "yaml": "^1.10.2"
   }
 }

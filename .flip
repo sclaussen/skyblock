@@ -1,0 +1,1517 @@
+{
+    "brown_mushroom": {
+        "name": "brown_mushroom",
+        "buy": "8.8",
+        "sell": "13.0"
+    },
+    "ink_sack:3": {
+        "name": "ink_sack:3",
+        "buy": "2.2",
+        "sell": "4.4"
+    },
+    "ink_sack:4": {
+        "name": "ink_sack:4",
+        "buy": "3.6",
+        "sell": "4.5"
+    },
+    "spooky_shard": {
+        "name": "spooky_shard",
+        "buy": "561.9",
+        "sell": "2204.3"
+    },
+    "tarantula_web": {
+        "name": "tarantula_web",
+        "buy": "3.5",
+        "sell": "3.9"
+    },
+    "carrot_item": {
+        "name": "carrot_item",
+        "buy": "1.5",
+        "sell": "2.3"
+    },
+    "e_potato": {
+        "name": "e_potato",
+        "buy": "171.4",
+        "sell": "195.4"
+    },
+    "exp_bottle": {
+        "name": "exp_bottle",
+        "buy": "31.6",
+        "sell": "36.0"
+    },
+    "jerry_box_green": {
+        "name": "jerry_box_green",
+        "buy": "76124.4",
+        "sell": "88164.4"
+    },
+    "e_slime_ball": {
+        "name": "e_slime_ball",
+        "buy": "1143.3",
+        "sell": "1307.9"
+    },
+    "e_golden_carrot": {
+        "name": "e_golden_carrot",
+        "buy": "30267.8",
+        "sell": "32881.7"
+    },
+    "e_red_mushroom": {
+        "name": "e_red_mushroom",
+        "buy": "3395.8",
+        "sell": "3793.2"
+    },
+    "e_rabbit_hide": {
+        "name": "e_rabbit_hide",
+        "buy": "19325.3",
+        "sell": "22412.6"
+    },
+    "flawed_amethyst_gem": {
+        "name": "flawed_amethyst_gem",
+        "buy": "466.3",
+        "sell": "1112.2"
+    },
+    "perfect_jade_gem": {
+        "name": "perfect_jade_gem",
+        "buy": "10690.9",
+        "sell": "27999999.7"
+    },
+    "e_birch_log": {
+        "name": "e_birch_log",
+        "buy": "392.0",
+        "sell": "439.0"
+    },
+    "e_gunpowder": {
+        "name": "e_gunpowder",
+        "buy": "1381.0",
+        "sell": "1641.9"
+    },
+    "e_melon": {
+        "name": "e_melon",
+        "buy": "175.3",
+        "sell": "216.4"
+    },
+    "e_sugar": {
+        "name": "e_sugar",
+        "buy": "311.8",
+        "sell": "326.7"
+    },
+    "cactus": {
+        "name": "cactus",
+        "buy": "0.3",
+        "sell": "1.1"
+    },
+    "flawed_jasper_gem": {
+        "name": "flawed_jasper_gem",
+        "buy": "373.9",
+        "sell": "1289.0"
+    },
+    "e_blaze_rod": {
+        "name": "e_blaze_rod",
+        "buy": "371591.6",
+        "sell": "387413.5"
+    },
+    "e_cake": {
+        "name": "e_cake",
+        "buy": "3723.7",
+        "sell": "4999.3"
+    },
+    "pumpkin": {
+        "name": "pumpkin",
+        "buy": "3.9",
+        "sell": "5.5"
+    },
+    "e_brown_mushroom": {
+        "name": "e_brown_mushroom",
+        "buy": "609.6",
+        "sell": "901.8"
+    },
+    "nurse_shark_tooth": {
+        "name": "nurse_shark_tooth",
+        "buy": "165.7",
+        "sell": "399.0"
+    },
+    "wheat": {
+        "name": "wheat",
+        "buy": "2.2",
+        "sell": "3.6"
+    },
+    "flawed_amber_gem": {
+        "name": "flawed_amber_gem",
+        "buy": "884.6",
+        "sell": "1114.9"
+    },
+    "e_raw_salmon": {
+        "name": "e_raw_salmon",
+        "buy": "1600.0",
+        "sell": "1601.3"
+    },
+    "e_glistering_melon": {
+        "name": "e_glistering_melon",
+        "buy": "5681.4",
+        "sell": "7998.3"
+    },
+    "prismarine_shard": {
+        "name": "prismarine_shard",
+        "buy": "3.1",
+        "sell": "4.7"
+    },
+    "e_emerald": {
+        "name": "e_emerald",
+        "buy": "960.2",
+        "sell": "1062.6"
+    },
+    "protector_fragment": {
+        "name": "protector_fragment",
+        "buy": "2410.6",
+        "sell": "2596.1"
+    },
+    "e_spider_eye": {
+        "name": "e_spider_eye",
+        "buy": "750.3",
+        "sell": "846.9"
+    },
+    "red_mushroom": {
+        "name": "red_mushroom",
+        "buy": "17.1",
+        "sell": "20.4"
+    },
+    "grand_exp_bottle": {
+        "name": "grand_exp_bottle",
+        "buy": "3886.0",
+        "sell": "4099.9"
+    },
+    "e_melon_block": {
+        "name": "e_melon_block",
+        "buy": "24958.7",
+        "sell": "26029.1"
+    },
+    "mutton": {
+        "name": "mutton",
+        "buy": "15.3",
+        "sell": "20.9"
+    },
+    "power_crystal": {
+        "name": "power_crystal",
+        "buy": "237856.1",
+        "sell": "252030.0"
+    },
+    "raw_soulflow": {
+        "name": "raw_soulflow",
+        "buy": "235.2",
+        "sell": "317.7"
+    },
+    "diamond": {
+        "name": "diamond",
+        "buy": "7.8",
+        "sell": "8.3"
+    },
+    "shark_fin": {
+        "name": "shark_fin",
+        "buy": "51.5",
+        "sell": "63.7"
+    },
+    "wise_fragment": {
+        "name": "wise_fragment",
+        "buy": "13385.9",
+        "sell": "16967.8"
+    },
+    "cobblestone": {
+        "name": "cobblestone",
+        "buy": "5.7",
+        "sell": "7.3"
+    },
+    "refined_mithril": {
+        "name": "refined_mithril",
+        "buy": "308874.1",
+        "sell": "323997.0"
+    },
+    "spider_eye": {
+        "name": "spider_eye",
+        "buy": "3.8",
+        "sell": "5.7"
+    },
+    "raw_fish": {
+        "name": "raw_fish",
+        "buy": "16.3",
+        "sell": "18.6"
+    },
+    "perfect_ruby_gem": {
+        "name": "perfect_ruby_gem",
+        "buy": "5780.6",
+        "sell": "27999996.7"
+    },
+    "e_pufferfish": {
+        "name": "e_pufferfish",
+        "buy": "2452.1",
+        "sell": "2646.6"
+    },
+    "yoggie": {
+        "name": "yoggie",
+        "buy": "111.1",
+        "sell": "169.0"
+    },
+    "perfect_jasper_gem": {
+        "name": "perfect_jasper_gem",
+        "buy": "95070.2",
+        "sell": "42940259.4"
+    },
+    "potato_item": {
+        "name": "potato_item",
+        "buy": "0.9",
+        "sell": "2.3"
+    },
+    "e_netherrack": {
+        "name": "e_netherrack",
+        "buy": "205.0",
+        "sell": "736.2"
+    },
+    "e_huge_mushroom_1": {
+        "name": "e_huge_mushroom_1",
+        "buy": "2942.7",
+        "sell": "43973.4"
+    },
+    "e_hard_stone": {
+        "name": "e_hard_stone",
+        "buy": "3259.2",
+        "sell": "3399.4"
+    },
+    "refined_diamond": {
+        "name": "refined_diamond",
+        "buy": "183368.4",
+        "sell": "484076.3"
+    },
+    "e_cobblestone": {
+        "name": "e_cobblestone",
+        "buy": "1068.4",
+        "sell": "1112.2"
+    },
+    "tightly_tied_hay_bale": {
+        "name": "tightly_tied_hay_bale",
+        "buy": "330100.6",
+        "sell": "452295.3"
+    },
+    "e_huge_mushroom_2": {
+        "name": "e_huge_mushroom_2",
+        "buy": "31234.6",
+        "sell": "45418.9"
+    },
+    "pork": {
+        "name": "pork",
+        "buy": "12.0",
+        "sell": "19.0"
+    },
+    "prismarine_crystals": {
+        "name": "prismarine_crystals",
+        "buy": "12.1",
+        "sell": "20.0"
+    },
+    "ice": {
+        "name": "ice",
+        "buy": "3.1",
+        "sell": "5.8"
+    },
+    "tiger_shark_tooth": {
+        "name": "tiger_shark_tooth",
+        "buy": "9379.7",
+        "sell": "11387.8"
+    },
+    "huge_mushroom_1": {
+        "name": "huge_mushroom_1",
+        "buy": "16.6",
+        "sell": "25.2"
+    },
+    "ice_bait": {
+        "name": "ice_bait",
+        "buy": "22.8",
+        "sell": "48.3"
+    },
+    "huge_mushroom_2": {
+        "name": "huge_mushroom_2",
+        "buy": "44.6",
+        "sell": "72.0"
+    },
+    "log_2:1": {
+        "name": "log_2:1",
+        "buy": "1.4",
+        "sell": "2.4"
+    },
+    "e_snow_block": {
+        "name": "e_snow_block",
+        "buy": "590.5",
+        "sell": "599.8"
+    },
+    "string": {
+        "name": "string",
+        "buy": "3.1",
+        "sell": "6.0"
+    },
+    "golden_tooth": {
+        "name": "golden_tooth",
+        "buy": "66960.2",
+        "sell": "74182.0"
+    },
+    "hyper_catalyst": {
+        "name": "hyper_catalyst",
+        "buy": "94018.9",
+        "sell": "97810.8"
+    },
+    "rabbit_foot": {
+        "name": "rabbit_foot",
+        "buy": "10.1",
+        "sell": "11.7"
+    },
+    "redstone": {
+        "name": "redstone",
+        "buy": "1.3",
+        "sell": "2.1"
+    },
+    "jerry_box_golden": {
+        "name": "jerry_box_golden",
+        "buy": "1150001.1",
+        "sell": "1219436.4"
+    },
+    "pumpkin_guts": {
+        "name": "pumpkin_guts",
+        "buy": "25640.1",
+        "sell": "38662.1"
+    },
+    "e_cactus_green": {
+        "name": "e_cactus_green",
+        "buy": "511.9",
+        "sell": "593.8"
+    },
+    "booster_cookie": {
+        "name": "booster_cookie",
+        "buy": "2383527.5",
+        "sell": "2480872.3"
+    },
+    "e_carrot_on_a_stick": {
+        "name": "e_carrot_on_a_stick",
+        "buy": "0.0",
+        "sell": "0.0"
+    },
+    "e_lapis_lazuli_block": {
+        "name": "e_lapis_lazuli_block",
+        "buy": "40593.4",
+        "sell": "43736.8"
+    },
+    "e_cookie": {
+        "name": "e_cookie",
+        "buy": "62449.4",
+        "sell": "66467.8"
+    },
+    "e_endstone": {
+        "name": "e_endstone",
+        "buy": "690.4",
+        "sell": "809.0"
+    },
+    "e_sand": {
+        "name": "e_sand",
+        "buy": "671.7",
+        "sell": "748.0"
+    },
+    "colossal_exp_bottle": {
+        "name": "colossal_exp_bottle",
+        "buy": "212956.0",
+        "sell": "708776.6"
+    },
+    "e_string": {
+        "name": "e_string",
+        "buy": "1483.7",
+        "sell": "1538.7"
+    },
+    "strong_fragment": {
+        "name": "strong_fragment",
+        "buy": "13205.1",
+        "sell": "15063.3"
+    },
+    "slime_ball": {
+        "name": "slime_ball",
+        "buy": "1.7",
+        "sell": "8.9"
+    },
+    "snow_ball": {
+        "name": "snow_ball",
+        "buy": "0.5",
+        "sell": "0.7"
+    },
+    "holy_fragment": {
+        "name": "holy_fragment",
+        "buy": "2400.0",
+        "sell": "2577.2"
+    },
+    "e_acacia_log": {
+        "name": "e_acacia_log",
+        "buy": "437.5",
+        "sell": "525.9"
+    },
+    "e_egg": {
+        "name": "e_egg",
+        "buy": "1372.6",
+        "sell": "1596.6"
+    },
+    "sand": {
+        "name": "sand",
+        "buy": "3.0",
+        "sell": "5.0"
+    },
+    "soul_fragment": {
+        "name": "soul_fragment",
+        "buy": "703012.4",
+        "sell": "799997.6"
+    },
+    "fine_jade_gem": {
+        "name": "fine_jade_gem",
+        "buy": "46031.5",
+        "sell": "57208.9"
+    },
+    "flawed_ruby_gem": {
+        "name": "flawed_ruby_gem",
+        "buy": "614.1",
+        "sell": "702.4"
+    },
+    "raw_chicken": {
+        "name": "raw_chicken",
+        "buy": "4.2",
+        "sell": "6.6"
+    },
+    "ancient_claw": {
+        "name": "ancient_claw",
+        "buy": "189.9",
+        "sell": "228.3"
+    },
+    "plasma_bucket": {
+        "name": "plasma_bucket",
+        "buy": "4259968.5",
+        "sell": "4580900.6"
+    },
+    "flawless_jasper_gem": {
+        "name": "flawless_jasper_gem",
+        "buy": "265844.8",
+        "sell": "5924354.9"
+    },
+    "e_lapis_lazuli": {
+        "name": "e_lapis_lazuli",
+        "buy": "625.5",
+        "sell": "660.2"
+    },
+    "e_ghast_tear": {
+        "name": "e_ghast_tear",
+        "buy": "192.7",
+        "sell": "227.6"
+    },
+    "e_cocoa": {
+        "name": "e_cocoa",
+        "buy": "464.4",
+        "sell": "483.7"
+    },
+    "carrot_bait": {
+        "name": "carrot_bait",
+        "buy": "23.3",
+        "sell": "37.7"
+    },
+    "fine_topaz_gem": {
+        "name": "fine_topaz_gem",
+        "buy": "68839.6",
+        "sell": "72875.1"
+    },
+    "fine_ruby_gem": {
+        "name": "fine_ruby_gem",
+        "buy": "40007.0",
+        "sell": "50999.4"
+    },
+    "seeds": {
+        "name": "seeds",
+        "buy": "0.1",
+        "sell": "0.7"
+    },
+    "e_leather": {
+        "name": "e_leather",
+        "buy": "7401.4",
+        "sell": "7890.0"
+    },
+    "e_shark_fin": {
+        "name": "e_shark_fin",
+        "buy": "6340.7",
+        "sell": "11995.3"
+    },
+    "e_sponge": {
+        "name": "e_sponge",
+        "buy": "2362.7",
+        "sell": "2799.9"
+    },
+    "perfect_amber_gem": {
+        "name": "perfect_amber_gem",
+        "buy": "12152.1",
+        "sell": "46314990.7"
+    },
+    "hay_block": {
+        "name": "hay_block",
+        "buy": "20.4",
+        "sell": "30.8"
+    },
+    "flint": {
+        "name": "flint",
+        "buy": "14.4",
+        "sell": "18.6"
+    },
+    "ink_sack": {
+        "name": "ink_sack",
+        "buy": "558.5",
+        "sell": "663.7"
+    },
+    "e_spruce_log": {
+        "name": "e_spruce_log",
+        "buy": "993.0",
+        "sell": "1107.3"
+    },
+    "e_rotten_flesh": {
+        "name": "e_rotten_flesh",
+        "buy": "990.1",
+        "sell": "1081.5"
+    },
+    "wolf_tooth": {
+        "name": "wolf_tooth",
+        "buy": "95.4",
+        "sell": "110.9"
+    },
+    "e_grilled_pork": {
+        "name": "e_grilled_pork",
+        "buy": "129651.5",
+        "sell": "137250.7"
+    },
+    "e_nether_stalk": {
+        "name": "e_nether_stalk",
+        "buy": "472.8",
+        "sell": "486.7"
+    },
+    "e_redstone_block": {
+        "name": "e_redstone_block",
+        "buy": "48098.1",
+        "sell": "50981.4"
+    },
+    "e_ancient_claw": {
+        "name": "e_ancient_claw",
+        "buy": "2965.8",
+        "sell": "3891.5"
+    },
+    "e_quartz_block": {
+        "name": "e_quartz_block",
+        "buy": "332731.0",
+        "sell": "545298.0"
+    },
+    "green_candy": {
+        "name": "green_candy",
+        "buy": "615.5",
+        "sell": "694.6"
+    },
+    "e_redstone": {
+        "name": "e_redstone",
+        "buy": "301.1",
+        "sell": "324.0"
+    },
+    "e_redstone_lamp": {
+        "name": "e_redstone_lamp",
+        "buy": "62311.4",
+        "sell": "74998.9"
+    },
+    "treasurite": {
+        "name": "treasurite",
+        "buy": "22952.6",
+        "sell": "24718.0"
+    },
+    "dwarven_compactor": {
+        "name": "dwarven_compactor",
+        "buy": "645689.8",
+        "sell": "704885.3"
+    },
+    "great_white_shark_tooth": {
+        "name": "great_white_shark_tooth",
+        "buy": "700001.4",
+        "sell": "727266.0"
+    },
+    "gravel": {
+        "name": "gravel",
+        "buy": "14.8",
+        "sell": "23.5"
+    },
+    "melon": {
+        "name": "melon",
+        "buy": "2.0",
+        "sell": "3.9"
+    },
+    "e_lava_bucket": {
+        "name": "e_lava_bucket",
+        "buy": "243093.1",
+        "sell": "328945.0"
+    },
+    "e_packed_ice": {
+        "name": "e_packed_ice",
+        "buy": "88862.3",
+        "sell": "95598.1"
+    },
+    "raw_fish:3": {
+        "name": "raw_fish:3",
+        "buy": "12.9",
+        "sell": "15.6"
+    },
+    "e_prismarine_shard": {
+        "name": "e_prismarine_shard",
+        "buy": "385.3",
+        "sell": "400.9"
+    },
+    "recombobulator_3000": {
+        "name": "recombobulator_3000",
+        "buy": "4428127.0",
+        "sell": "5589999.0"
+    },
+    "e_iron_block": {
+        "name": "e_iron_block",
+        "buy": "251862.4",
+        "sell": "278991.3"
+    },
+    "e_carrot_stick": {
+        "name": "e_carrot_stick",
+        "buy": "7753.5",
+        "sell": "14071.2"
+    },
+    "bone": {
+        "name": "bone",
+        "buy": "1.5",
+        "sell": "2.1"
+    },
+    "raw_fish:2": {
+        "name": "raw_fish:2",
+        "buy": "17.8",
+        "sell": "20.4"
+    },
+    "raw_fish:1": {
+        "name": "raw_fish:1",
+        "buy": "7.8",
+        "sell": "12.3"
+    },
+    "revenant_flesh": {
+        "name": "revenant_flesh",
+        "buy": "3.2",
+        "sell": "4.6"
+    },
+    "e_glowstone": {
+        "name": "e_glowstone",
+        "buy": "61340.3",
+        "sell": "63193.9"
+    },
+    "e_pork": {
+        "name": "e_pork",
+        "buy": "1466.9",
+        "sell": "1563.7"
+    },
+    "rough_jasper_gem": {
+        "name": "rough_jasper_gem",
+        "buy": "9.1",
+        "sell": "12.5"
+    },
+    "feather": {
+        "name": "feather",
+        "buy": "2.4",
+        "sell": "3.5"
+    },
+    "netherrack": {
+        "name": "netherrack",
+        "buy": "1.0",
+        "sell": "1.6"
+    },
+    "whale_bait": {
+        "name": "whale_bait",
+        "buy": "1721.3",
+        "sell": "2020.0"
+    },
+    "sponge": {
+        "name": "sponge",
+        "buy": "55.9",
+        "sell": "68.9"
+    },
+    "blaze_rod": {
+        "name": "blaze_rod",
+        "buy": "40.7",
+        "sell": "55.6"
+    },
+    "e_dark_oak_log": {
+        "name": "e_dark_oak_log",
+        "buy": "320.5",
+        "sell": "358.2"
+    },
+    "young_fragment": {
+        "name": "young_fragment",
+        "buy": "2465.1",
+        "sell": "2645.9"
+    },
+    "flawless_topaz_gem": {
+        "name": "flawless_topaz_gem",
+        "buy": "96435.7",
+        "sell": "5973282.3"
+    },
+    "e_clownfish": {
+        "name": "e_clownfish",
+        "buy": "3155.3",
+        "sell": "3200.2"
+    },
+    "refined_mineral": {
+        "name": "refined_mineral",
+        "buy": "63227.4",
+        "sell": "68002.2"
+    },
+    "e_gold": {
+        "name": "e_gold",
+        "buy": "1602.9",
+        "sell": "1649.5"
+    },
+    "e_raw_chicken": {
+        "name": "e_raw_chicken",
+        "buy": "616.5",
+        "sell": "674.0"
+    },
+    "e_water_lily": {
+        "name": "e_water_lily",
+        "buy": "18056.7",
+        "sell": "20947.3"
+    },
+    "rough_amethyst_gem": {
+        "name": "rough_amethyst_gem",
+        "buy": "8.6",
+        "sell": "11.1"
+    },
+    "rough_ruby_gem": {
+        "name": "rough_ruby_gem",
+        "buy": "6.1",
+        "sell": "8.0"
+    },
+    "null_atom": {
+        "name": "null_atom",
+        "buy": "1139.4",
+        "sell": "37603.3"
+    },
+    "flawless_ruby_gem": {
+        "name": "flawless_ruby_gem",
+        "buy": "577477.6",
+        "sell": "4417548.6"
+    },
+    "log:1": {
+        "name": "log:1",
+        "buy": "4.6",
+        "sell": "7.3"
+    },
+    "titanium_ore": {
+        "name": "titanium_ore",
+        "buy": "86.0",
+        "sell": "98.4"
+    },
+    "catalyst": {
+        "name": "catalyst",
+        "buy": "80001.4",
+        "sell": "83270.0"
+    },
+    "blue_shark_tooth": {
+        "name": "blue_shark_tooth",
+        "buy": "745.2",
+        "sell": "1460.8"
+    },
+    "log:3": {
+        "name": "log:3",
+        "buy": "6.3",
+        "sell": "7.7"
+    },
+    "log:2": {
+        "name": "log:2",
+        "buy": "1.5",
+        "sell": "3.3"
+    },
+    "blessed_bait": {
+        "name": "blessed_bait",
+        "buy": "220.5",
+        "sell": "459.1"
+    },
+    "e_glowstone_dust": {
+        "name": "e_glowstone_dust",
+        "buy": "672.9",
+        "sell": "714.6"
+    },
+    "e_ink_sack": {
+        "name": "e_ink_sack",
+        "buy": "46379.5",
+        "sell": "53353.0"
+    },
+    "e_cactus": {
+        "name": "e_cactus",
+        "buy": "34177.5",
+        "sell": "40460.8"
+    },
+    "e_sugar_cane": {
+        "name": "e_sugar_cane",
+        "buy": "51008.4",
+        "sell": "51998.1"
+    },
+    "flawless_sapphire_gem": {
+        "name": "flawless_sapphire_gem",
+        "buy": "237355.9",
+        "sell": "4611999.3"
+    },
+    "e_cooked_salmon": {
+        "name": "e_cooked_salmon",
+        "buy": "252560.5",
+        "sell": "257455.4"
+    },
+    "e_seeds": {
+        "name": "e_seeds",
+        "buy": "70.3",
+        "sell": "80.0"
+    },
+    "concentrated_stone": {
+        "name": "concentrated_stone",
+        "buy": "12637.2",
+        "sell": "2099998.9"
+    },
+    "log": {
+        "name": "log",
+        "buy": "7.0",
+        "sell": "8.8"
+    },
+    "jacobs_ticket": {
+        "name": "jacobs_ticket",
+        "buy": "12700.0",
+        "sell": "13157.9"
+    },
+    "e_bone_block": {
+        "name": "e_bone_block",
+        "buy": "47802.1",
+        "sell": "67440.2"
+    },
+    "ghast_tear": {
+        "name": "ghast_tear",
+        "buy": "34.3",
+        "sell": "45.3"
+    },
+    "absolute_ender_pearl": {
+        "name": "absolute_ender_pearl",
+        "buy": "10301.7",
+        "sell": "11484.9"
+    },
+    "e_ender_pearl": {
+        "name": "e_ender_pearl",
+        "buy": "135.7",
+        "sell": "155.3"
+    },
+    "unstable_fragment": {
+        "name": "unstable_fragment",
+        "buy": "2402.1",
+        "sell": "2849.0"
+    },
+    "purple_candy": {
+        "name": "purple_candy",
+        "buy": "6669.0",
+        "sell": "7028.0"
+    },
+    "e_fermented_spider_eye": {
+        "name": "e_fermented_spider_eye",
+        "buy": "56687.0",
+        "sell": "69998.6"
+    },
+    "polished_pumpkin": {
+        "name": "polished_pumpkin",
+        "buy": "110001.8",
+        "sell": "123890.6"
+    },
+    "spiked_bait": {
+        "name": "spiked_bait",
+        "buy": "47.0",
+        "sell": "85.0"
+    },
+    "e_gold_block": {
+        "name": "e_gold_block",
+        "buy": "204954.1",
+        "sell": "219990.7"
+    },
+    "rough_jade_gem": {
+        "name": "rough_jade_gem",
+        "buy": "6.3",
+        "sell": "8.3"
+    },
+    "e_jungle_log": {
+        "name": "e_jungle_log",
+        "buy": "1173.8",
+        "sell": "1344.4"
+    },
+    "e_flint": {
+        "name": "e_flint",
+        "buy": "2901.2",
+        "sell": "3094.5"
+    },
+    "iron_ingot": {
+        "name": "iron_ingot",
+        "buy": "8.0",
+        "sell": "9.0"
+    },
+    "e_emerald_block": {
+        "name": "e_emerald_block",
+        "buy": "153382.5",
+        "sell": "166321.5"
+    },
+    "null_ovoid": {
+        "name": "null_ovoid",
+        "buy": "297854.3",
+        "sell": "325974.9"
+    },
+    "e_clay_ball": {
+        "name": "e_clay_ball",
+        "buy": "468.0",
+        "sell": "479.8"
+    },
+    "rough_sapphire_gem": {
+        "name": "rough_sapphire_gem",
+        "buy": "7.6",
+        "sell": "8.6"
+    },
+    "glowstone_dust": {
+        "name": "glowstone_dust",
+        "buy": "15.0",
+        "sell": "16.0"
+    },
+    "gold_ingot": {
+        "name": "gold_ingot",
+        "buy": "8.5",
+        "sell": "13.0"
+    },
+    "revenant_viscera": {
+        "name": "revenant_viscera",
+        "buy": "50612.3",
+        "sell": "53235.6"
+    },
+    "perfect_amethyst_gem": {
+        "name": "perfect_amethyst_gem",
+        "buy": "1097806.4",
+        "sell": "18963518.0"
+    },
+    "tarantula_silk": {
+        "name": "tarantula_silk",
+        "buy": "101281.2",
+        "sell": "112273.7"
+    },
+    "titanic_exp_bottle": {
+        "name": "titanic_exp_bottle",
+        "buy": "88452.5",
+        "sell": "272456.7"
+    },
+    "e_mutton": {
+        "name": "e_mutton",
+        "buy": "2402.3",
+        "sell": "2691.0"
+    },
+    "null_sphere": {
+        "name": "null_sphere",
+        "buy": "1403.5",
+        "sell": "1559.2"
+    },
+    "super_compactor_3000": {
+        "name": "super_compactor_3000",
+        "buy": "552366.8",
+        "sell": "568940.7"
+    },
+    "super_egg": {
+        "name": "super_egg",
+        "buy": "153689.6",
+        "sell": "242678.2"
+    },
+    "e_iron": {
+        "name": "e_iron",
+        "buy": "1443.8",
+        "sell": "1604.9"
+    },
+    "stock_of_stonks": {
+        "name": "stock_of_stonks",
+        "buy": "222955.0",
+        "sell": "241552.1"
+    },
+    "mithril_ore": {
+        "name": "mithril_ore",
+        "buy": "9.0",
+        "sell": "10.6"
+    },
+    "e_hay_block": {
+        "name": "e_hay_block",
+        "buy": "3763.2",
+        "sell": "4246.1"
+    },
+    "e_paper": {
+        "name": "e_paper",
+        "buy": "363.4",
+        "sell": "471.4"
+    },
+    "e_bone": {
+        "name": "e_bone",
+        "buy": "332.2",
+        "sell": "369.0"
+    },
+    "e_titanium": {
+        "name": "e_titanium",
+        "buy": "13381.4",
+        "sell": "14937.3"
+    },
+    "e_diamond_block": {
+        "name": "e_diamond_block",
+        "buy": "125160.9",
+        "sell": "204860.4"
+    },
+    "spooky_bait": {
+        "name": "spooky_bait",
+        "buy": "33.6",
+        "sell": "97.3"
+    },
+    "superior_fragment": {
+        "name": "superior_fragment",
+        "buy": "121215.9",
+        "sell": "129127.7"
+    },
+    "magma_bucket": {
+        "name": "magma_bucket",
+        "buy": "1606483.6",
+        "sell": "1715717.3"
+    },
+    "emerald": {
+        "name": "emerald",
+        "buy": "4.5",
+        "sell": "6.8"
+    },
+    "e_rabbit_foot": {
+        "name": "e_rabbit_foot",
+        "buy": "2091.8",
+        "sell": "2478.3"
+    },
+    "light_bait": {
+        "name": "light_bait",
+        "buy": "61.2",
+        "sell": "128.8"
+    },
+    "e_ice": {
+        "name": "e_ice",
+        "buy": "486.2",
+        "sell": "611.0"
+    },
+    "hot_potato_book": {
+        "name": "hot_potato_book",
+        "buy": "31366.3",
+        "sell": "34292.8"
+    },
+    "clay_ball": {
+        "name": "clay_ball",
+        "buy": "2.5",
+        "sell": "3.5"
+    },
+    "old_fragment": {
+        "name": "old_fragment",
+        "buy": "374.4",
+        "sell": "2474.4"
+    },
+    "green_gift": {
+        "name": "green_gift",
+        "buy": "9035.9",
+        "sell": "10117.1"
+    },
+    "flawless_amethyst_gem": {
+        "name": "flawless_amethyst_gem",
+        "buy": "387874.8",
+        "sell": "3999992.4"
+    },
+    "rough_topaz_gem": {
+        "name": "rough_topaz_gem",
+        "buy": "9.5",
+        "sell": "11.0"
+    },
+    "packed_ice": {
+        "name": "packed_ice",
+        "buy": "24.4",
+        "sell": "28.0"
+    },
+    "rough_amber_gem": {
+        "name": "rough_amber_gem",
+        "buy": "10.4",
+        "sell": "12.5"
+    },
+    "water_lily": {
+        "name": "water_lily",
+        "buy": "92.5",
+        "sell": "110.5"
+    },
+    "hamster_wheel": {
+        "name": "hamster_wheel",
+        "buy": "20544.7",
+        "sell": "22087.4"
+    },
+    "log_2": {
+        "name": "log_2",
+        "buy": "1.6",
+        "sell": "2.7"
+    },
+    "e_obsidian": {
+        "name": "e_obsidian",
+        "buy": "3311.2",
+        "sell": "3370.8"
+    },
+    "fine_amber_gem": {
+        "name": "fine_amber_gem",
+        "buy": "75397.5",
+        "sell": "86681.5"
+    },
+    "e_coal": {
+        "name": "e_coal",
+        "buy": "908.1",
+        "sell": "945.7"
+    },
+    "e_quartz": {
+        "name": "e_quartz",
+        "buy": "3248.3",
+        "sell": "3361.7"
+    },
+    "coal": {
+        "name": "coal",
+        "buy": "4.6",
+        "sell": "5.9"
+    },
+    "ender_pearl": {
+        "name": "ender_pearl",
+        "buy": "6.0",
+        "sell": "7.3"
+    },
+    "e_coal_block": {
+        "name": "e_coal_block",
+        "buy": "131711.6",
+        "sell": "146959.5"
+    },
+    "werewolf_skin": {
+        "name": "werewolf_skin",
+        "buy": "16002.1",
+        "sell": "19143.7"
+    },
+    "perfect_topaz_gem": {
+        "name": "perfect_topaz_gem",
+        "buy": "9031.4",
+        "sell": "38189781.3"
+    },
+    "e_prismarine_crystals": {
+        "name": "e_prismarine_crystals",
+        "buy": "389.2",
+        "sell": "420.7"
+    },
+    "daedalus_stick": {
+        "name": "daedalus_stick",
+        "buy": "8036825.9",
+        "sell": "9000000.0"
+    },
+    "e_wet_sponge": {
+        "name": "e_wet_sponge",
+        "buy": "82214.8",
+        "sell": "118999.2"
+    },
+    "flawed_jade_gem": {
+        "name": "flawed_jade_gem",
+        "buy": "615.0",
+        "sell": "645.0"
+    },
+    "e_raw_fish": {
+        "name": "e_raw_fish",
+        "buy": "2844.8",
+        "sell": "3146.5"
+    },
+    "ender_stone": {
+        "name": "ender_stone",
+        "buy": "3.3",
+        "sell": "4.5"
+    },
+    "foul_flesh": {
+        "name": "foul_flesh",
+        "buy": "24606.7",
+        "sell": "25507.8"
+    },
+    "quartz": {
+        "name": "quartz",
+        "buy": "19.5",
+        "sell": "23.0"
+    },
+    "jerry_box_purple": {
+        "name": "jerry_box_purple",
+        "buy": "75194.0",
+        "sell": "227725.1"
+    },
+    "raw_beef": {
+        "name": "raw_beef",
+        "buy": "3.1",
+        "sell": "6.5"
+    },
+    "e_eye_of_ender": {
+        "name": "e_eye_of_ender",
+        "buy": "4875.2",
+        "sell": "5110.1"
+    },
+    "sludge_juice": {
+        "name": "sludge_juice",
+        "buy": "4863.8",
+        "sell": "5095.5"
+    },
+    "ectoplasm": {
+        "name": "ectoplasm",
+        "buy": "61521.9",
+        "sell": "70000.0"
+    },
+    "sugar_cane": {
+        "name": "sugar_cane",
+        "buy": "1.6",
+        "sell": "2.5"
+    },
+    "magma_cream": {
+        "name": "magma_cream",
+        "buy": "6.2",
+        "sell": "9.2"
+    },
+    "shark_bait": {
+        "name": "shark_bait",
+        "buy": "8.8",
+        "sell": "20.7"
+    },
+    "red_gift": {
+        "name": "red_gift",
+        "buy": "51799.8",
+        "sell": "55735.5"
+    },
+    "e_mithril": {
+        "name": "e_mithril",
+        "buy": "1550.4",
+        "sell": "1608.9"
+    },
+    "jerry_box_blue": {
+        "name": "jerry_box_blue",
+        "buy": "98733.1",
+        "sell": "116028.6"
+    },
+    "e_raw_beef": {
+        "name": "e_raw_beef",
+        "buy": "610.1",
+        "sell": "639.1"
+    },
+    "e_slime_block": {
+        "name": "e_slime_block",
+        "buy": "76138.7",
+        "sell": "136902.4"
+    },
+    "e_feather": {
+        "name": "e_feather",
+        "buy": "460.5",
+        "sell": "506.0"
+    },
+    "e_oak_log": {
+        "name": "e_oak_log",
+        "buy": "1196.2",
+        "sell": "1266.0"
+    },
+    "rabbit_hide": {
+        "name": "rabbit_hide",
+        "buy": "25.9",
+        "sell": "36.0"
+    },
+    "white_gift": {
+        "name": "white_gift",
+        "buy": "6089.0",
+        "sell": "6345.0"
+    },
+    "rabbit": {
+        "name": "rabbit",
+        "buy": "3.8",
+        "sell": "5.9"
+    },
+    "nether_stalk": {
+        "name": "nether_stalk",
+        "buy": "3.4",
+        "sell": "3.6"
+    },
+    "sulphur": {
+        "name": "sulphur",
+        "buy": "4.9",
+        "sell": "13.0"
+    },
+    "fine_sapphire_gem": {
+        "name": "fine_sapphire_gem",
+        "buy": "57826.5",
+        "sell": "62106.7"
+    },
+    "dark_bait": {
+        "name": "dark_bait",
+        "buy": "146.9",
+        "sell": "869.6"
+    },
+    "e_carrot": {
+        "name": "e_carrot",
+        "buy": "205.7",
+        "sell": "226.9"
+    },
+    "e_pumpkin": {
+        "name": "e_pumpkin",
+        "buy": "715.3",
+        "sell": "722.9"
+    },
+    "griffin_feather": {
+        "name": "griffin_feather",
+        "buy": "42776.3",
+        "sell": "44360.1"
+    },
+    "rotten_flesh": {
+        "name": "rotten_flesh",
+        "buy": "2.7",
+        "sell": "6.4"
+    },
+    "e_cooked_fish": {
+        "name": "e_cooked_fish",
+        "buy": "464164.1",
+        "sell": "480813.8"
+    },
+    "obsidian": {
+        "name": "obsidian",
+        "buy": "16.4",
+        "sell": "23.5"
+    },
+    "soulflow": {
+        "name": "soulflow",
+        "buy": "40137.1",
+        "sell": "42163.8"
+    },
+    "minnow_bait": {
+        "name": "minnow_bait",
+        "buy": "12.4",
+        "sell": "22.6"
+    },
+    "e_magma_cream": {
+        "name": "e_magma_cream",
+        "buy": "1239.8",
+        "sell": "1290.2"
+    },
+    "e_firework_rocket": {
+        "name": "e_firework_rocket",
+        "buy": "95635.7",
+        "sell": "119945.0"
+    },
+    "starfall": {
+        "name": "starfall",
+        "buy": "664.4",
+        "sell": "747.7"
+    },
+    "flawed_topaz_gem": {
+        "name": "flawed_topaz_gem",
+        "buy": "738.5",
+        "sell": "930.6"
+    },
+    "hard_stone": {
+        "name": "hard_stone",
+        "buy": "4.5",
+        "sell": "5.3"
+    },
+    "flawless_jade_gem": {
+        "name": "flawless_jade_gem",
+        "buy": "676995.5",
+        "sell": "4804325.9"
+    },
+    "leather": {
+        "name": "leather",
+        "buy": "31.7",
+        "sell": "37.0"
+    },
+    "e_cooked_mutton": {
+        "name": "e_cooked_mutton",
+        "buy": "125412.2",
+        "sell": "130096.9"
+    },
+    "fine_amethyst_gem": {
+        "name": "fine_amethyst_gem",
+        "buy": "75073.6",
+        "sell": "85510.1"
+    },
+    "refined_titanium": {
+        "name": "refined_titanium",
+        "buy": "317011.0",
+        "sell": "333454.2"
+    },
+    "e_rabbit": {
+        "name": "e_rabbit",
+        "buy": "609.4",
+        "sell": "639.5"
+    },
+    "mutant_nether_stalk": {
+        "name": "mutant_nether_stalk",
+        "buy": "76053.5",
+        "sell": "76790.5"
+    },
+    "e_bread": {
+        "name": "e_bread",
+        "buy": "47.7",
+        "sell": "56.8"
+    },
+    "fuming_potato_book": {
+        "name": "fuming_potato_book",
+        "buy": "804248.5",
+        "sell": "1078559.1"
+    },
+    "fine_jasper_gem": {
+        "name": "fine_jasper_gem",
+        "buy": "68670.4",
+        "sell": "96556.3"
+    },
+    "flawed_sapphire_gem": {
+        "name": "flawed_sapphire_gem",
+        "buy": "655.8",
+        "sell": "831.4"
+    },
+    "flawless_amber_gem": {
+        "name": "flawless_amber_gem",
+        "buy": "1561506.7",
+        "sell": "7599998.1"
+    },
+    "e_charcoal": {
+        "name": "e_charcoal",
+        "buy": "1204.8",
+        "sell": "1485.2"
+    },
+    "e_blaze_powder": {
+        "name": "e_blaze_powder",
+        "buy": "2199.4",
+        "sell": "2347.8"
+    },
+    "summoning_eye": {
+        "name": "summoning_eye",
+        "buy": "735703.8",
+        "sell": "774332.0"
+    },
+    "perfect_sapphire_gem": {
+        "name": "perfect_sapphire_gem",
+        "buy": "11381443.8",
+        "sell": "30999999.1"
+    },
+    "fish_bait": {
+        "name": "fish_bait",
+        "buy": "101.4",
+        "sell": "278.7"
+    },
+    "snow_block": {
+        "name": "snow_block",
+        "buy": "3.1",
+        "sell": "4.3"
+    },
+    "e_baked_potato": {
+        "name": "e_baked_potato",
+        "buy": "26329.6",
+        "sell": "30663.0"
+    },
+    "compactor": {
+        "name": "compactor",
+        "buy": "7001.0",
+        "sell": "7298.5"
+    },
+    "e_diamond": {
+        "name": "e_diamond",
+        "buy": "1274.3",
+        "sell": "1285.6"
+    }
+}

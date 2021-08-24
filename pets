@@ -1,12 +1,12 @@
 #!/bin/sh
-PETS="bat mithril-golem blue-whale dolphin monkey griffin black-cat guardian"
+PETS="sheep guardian griffin"
 
 while true; do
     clear
-    for PET in $PETS; do
-        PET=`echo $PET | sed s/-/\ /g`
-        pet "$PET"
-        echo
-    done
+    node auction -a -p -t lege "wither skeleton"
+    echo
+    node auction -a -p -t lege "griffin"
+    echo
+    node auction -p -t lege -o5 "griffin"
     sleep 30
 done

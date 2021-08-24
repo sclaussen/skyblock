@@ -1,0 +1,67 @@
+#!/bin/sh
+
+node auction -1 "frozen chicken"
+
+node auction -1 "raggedy shark tooth necklace"
+node auction -1 "dull shark tooth necklace"
+node auction -1 "honed shark tooth necklace"
+node auction -1 "sharp shark tooth necklace"
+node auction -1 "piggy bank"
+node auction -1 "lucky hoof"
+node auction -1 "lava talisman"
+node auction -1 "fish affinity talisman"
+node auction -1 "haste ring"
+
+node auction -1 "feather talisman"                          #
+node auction -1 "potion affinity talisman"                  #
+node auction -1 "sea creature talisman"                     #
+node auction -1 "candy talisman"                            # 65K
+node auction -1 "experience talisman"                       #
+node auction -1 "intimidation talisman"                     #
+node auction -1 "zombie talisman"                           #
+node auction -1 "speed talisman"                            #
+node auction -1 "spider talisman"                           #
+node auction -1 "red ring talisman"                         #
+node auction -1 "titanium talisman"                         #
+node auction -1 "bat talisman"                              # 175K
+node auction -1 "crooked talisman"                          #
+node auction -1 "wither talisman"                           #
+node auction -1 "ender talisman"                            #
+node auction -1 "golden jerry talisman"                     #
+node auction -1 "hegemony talisman"                         #
+
+node auction -1 "feather ring"                          #
+node auction -1 "potion affinity ring"                  #
+node auction -1 "sea creature ring"                     #
+node auction -1 "candy ring"                            # 110K
+node auction -1 "experience ring"                       #
+node auction -1 "intimidation ring"                     # 285K
+node auction -1 "zombie ring"                           #  10K
+node auction -1 "speed ring"                            #  60K
+node auction -1 "spider ring"                           # 410K
+node auction -1 "red ring artifact"                     #
+node auction -1 "titanium ring"                         # 3.2M
+node auction -1 "bat ring"                              # 420K
+node auction -1 "crooked ring"                          #
+node auction -1 "wither ring"                           #
+node auction -1 "ender ring"                            #
+node auction -1 "golden jerry ring"                     #
+node auction -1 "hegemony ring"                         #
+
+node auction -1 "feather artifact"                      # 129K
+node auction -1 "potion affinity artifact"              # 210K
+node auction -1 "sea creature artifact"                 # 290K
+node auction -1 "candy artifact"                        # 450K
+node auction -1 "experience artifact"                   # 450K
+node auction -1 "intimidation artifact"                 # 2.5M
+node auction -1 "zombie artifact"                       # 3M
+node auction -1 "speed artifact"                        # 3.2M
+node auction -1 "spider artifact"                       # 4.3M
+node auction -1 "red claw artifact"                     # 6.9M
+node auction -1 "titanium artifact"                     # 9M
+node auction -1 "bat artifact"                          # 950K
+node auction -1 "crooked artifact"                      # 34M
+node auction -1 "wither artifact"                       # 43M
+node auction -1 "ender artifact"                        # 48M
+node auction -1 "golden jerry artifact"                 # 115M
+node auction -1 "hegemony artifact"                     # 238M

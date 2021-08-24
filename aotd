@@ -1,2 +1,2 @@
 #!/bin/sh
-loop "aspect of the dragon" 15 "-o 10 -x"
+node auction -L 15 -o 90 -M "sharpness" -- "aspect of the dragons"

@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+    clear
+    armor "shadow assassin"
+    sleep 30
+done

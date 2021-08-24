@@ -1,5 +1,5 @@
 'use strict';
-// process.env.DEBUG = 'skyblock';
+process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
 const fs = require('fs');
@@ -18,12 +18,6 @@ const p4 = require('./pr').p4(d);
 
 var options;
 
-var config = {
-
-    buyMaximum: 10000000,
-    ordersMaximum: 1500
-};
-
 
 bazaar(process.argv);
 
@@ -32,61 +26,86 @@ async function bazaar(args) {
     // Parse the options
     options = parse(args);
 
-    let bazaar = (await curl.get('https://api.hypixel.net/skyblock/bazaar')).body;
-    // "quick_status": {
-    //     "productId": "ENCHANTED_BAKED_POTATO",
-    //     "sellPrice": 24748.946948999233,
-    //     "sellVolume": 2336256,
-    //     "sellMovingWeek": 447388,
-    //     "sellOrders": 688,
-    //     "buyPrice": 26146.401687160418,
-    //     "buyVolume": 150287,
-    //     "buyMovingWeek": 303975,
-    //     "buyOrders": 332
-    // }
+    while (true) {
+
+        // Get the items from the bazaar
+        let bazaar = (await curl.get('https://api.hypixel.net/skyblock/bazaar')).body;
+
+        // Returns an array of these:
+        //
+        // "quick_status": {
+        //     "productId": "ENCHANTED_BAKED_POTATO",
+        //     "sellPrice": 24748.946948999233,
+        //     "sellVolume": 2336256,
+        //     "sellMovingWeek": 447388,
+        //     "sellOrders": 688,
+        //     "buyPrice": 26146.401687160418,
+        //     "buyVolume": 150287,
+        //     "buyMovingWeek": 303975,
+        //     "buyOrders": 332
+        // }
 
 
-    let products = {};
-    for (let itemName of _.keys(bazaar.products)) {
-        if (itemName === 'BAZAAR_COOKIE') {
-            continue;
+        let products = {};
+        for (let itemName of _.keys(bazaar.products)) {
+
+            // Random thing returned in the array of products, just skip it
+            if (itemName === 'BAZAAR_COOKIE') {
+                continue;
+            }
+
+            // Transform their products into my own variant
+            products[itemName] = {
+                name: itemName.toLowerCase().replace('enchanted', 'e'),
+                margin: ~~(((bazaar.products[itemName].quick_status.buyPrice - bazaar.products[itemName].quick_status.sellPrice) / bazaar.products[itemName].quick_status.sellPrice) * 100),
+                buyToSellOrdersRatio: ((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders),
+                buyToSellOrdersRatioFormatted: (((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders) * 100).toFixed(0),
+                buyToSellVolumeRatio: ((bazaar.products[itemName].quick_status.sellVolme - bazaar.products[itemName].quick_status.buyVolume) / bazaar.products[itemName].quick_status.buyVolume),
+                buyToSellVolumeRatioFormatted: (((bazaar.products[itemName].quick_status.sellVolume - bazaar.products[itemName].quick_status.buyVolume) / bazaar.products[itemName].quick_status.buyVolume) * 100).toFixed(0),
+                buyPrice: Number.parseFloat(bazaar.products[itemName].quick_status.sellPrice).toFixed(1),
+                sellPrice: Number.parseFloat(bazaar.products[itemName].quick_status.buyPrice).toFixed(1),
+                buyOrders: bazaar.products[itemName].quick_status.sellOrders,
+                sellOrders: bazaar.products[itemName].quick_status.buyOrders,
+                totalOrders: bazaar.products[itemName].quick_status.buyOrders + bazaar.products[itemName].quick_status.sellOrders,
+                sellVolume: (bazaar.products[itemName].quick_status.buyVolume / 1000).toFixed(0),
+                buyVolume: (bazaar.products[itemName].quick_status.sellVolume / 1000).toFixed(0),
+                buyVolumeWeek: bazaar.products[itemName].quick_status.sellMovingWeek,
+                sellVolumeWeek: bazaar.products[itemName].quick_status.buyMovingWeek,
+                volumeWeek: (bazaar.products[itemName].quick_status.buyMovingWeek / 1000000).toFixed(1) + 'M',
+                url: getUrl(itemName)
+            };
+
+            products[itemName].orders = '(' + products[itemName].sellOrders.toString().padStart(3, ' ') + '/' + products[itemName].buyOrders.toString().padStart(3, ' ') + ')';
+            products[itemName].volume = '(' + products[itemName].sellVolume.toString().padStart(4, ' ') + '/' + products[itemName].buyVolume.toString().padStart(4, ' ') + ')';
+
+            let millionQuantity = 1000000 / bazaar.products[itemName].quick_status.sellPrice;
+            let millionQuantityRounded = Math.round(millionQuantity / 100) * 100;
+            products[itemName].name += ' (' + millionQuantityRounded + ')';
         }
 
+        var filteredProducts = _.orderBy(_.filter(products, function(o) {
+            return o.margin > parseInt(options.marginMinimum) && o.sellVolumeWeek > parseInt(options.volumeMinimum) && o.buyPrice > parseInt(options.buyPriceMinimum)
+        }), 'margin', 'desc');
 
-        products[itemName] = {
-            name: itemName.toLowerCase().replace('enchanted', 'e'),
-            margin: ~~(((bazaar.products[itemName].quick_status.buyPrice - bazaar.products[itemName].quick_status.sellPrice) / bazaar.products[itemName].quick_status.sellPrice) * 100),
-            buyToSellOrdersRatio: ((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders),
-            buyToSellOrdersRatioFormatted: (((bazaar.products[itemName].quick_status.sellOrders - bazaar.products[itemName].quick_status.buyOrders) / bazaar.products[itemName].quick_status.buyOrders) * 100).toFixed(0),
-            buyToSellVolumeRatio: ((bazaar.products[itemName].quick_status.sellVolme - bazaar.products[itemName].quick_status.buyVolume) / bazaar.products[itemName].quick_status.buyVolume),
-            buyToSellVolumeRatioFormatted: (((bazaar.products[itemName].quick_status.sellVolume - bazaar.products[itemName].quick_status.buyVolume) / bazaar.products[itemName].quick_status.buyVolume) * 100).toFixed(0),
-            buyPrice: Number.parseFloat(bazaar.products[itemName].quick_status.sellPrice).toFixed(1),
-            sellPrice: Number.parseFloat(bazaar.products[itemName].quick_status.buyPrice).toFixed(1),
-            buyOrders: bazaar.products[itemName].quick_status.sellOrders,
-            sellOrders: bazaar.products[itemName].quick_status.buyOrders,
-            totalOrders: bazaar.products[itemName].quick_status.buyOrders + bazaar.products[itemName].quick_status.sellOrders,
-            sellVolume: (bazaar.products[itemName].quick_status.buyVolume / 1000).toFixed(0),
-            buyVolume: (bazaar.products[itemName].quick_status.sellVolume / 1000).toFixed(0),
-            buyVolumeWeek: bazaar.products[itemName].quick_status.sellMovingWeek,
-            sellVolumeWeek: bazaar.products[itemName].quick_status.buyMovingWeek,
-            volumeWeek: (bazaar.products[itemName].quick_status.buyMovingWeek / 1000000).toFixed(1) + 'M',
-            url: getUrl(itemName)
-        };
+        // if (options.loop) {
+        //     console.clear();
+        // }
 
-        products[itemName].orders = '(' + products[itemName].sellOrders.toString().padStart(3, ' ') + '/' + products[itemName].buyOrders.toString().padStart(3, ' ') + ')';
-        products[itemName].volume = '(' + products[itemName].sellVolume.toString().padStart(4, ' ') + '/' + products[itemName].buyVolume.toString().padStart(4, ' ') + ')';
+        table(filteredProducts);
 
-        let millionQuantity = 1000000 / bazaar.products[itemName].quick_status.sellPrice;
-        let millionQuantityRounded = Math.round(millionQuantity / 100) * 100;
-        products[itemName].name += ' (' + millionQuantityRounded + ')';
+        if (!options.loop) {
+            console.log('done');
+            process.exit(0);
+        }
+
+        console.log();
+        console.log('Sleeping for ' + options.loop + ' seconds...');
+        sleep(options.loop);
     }
+}
 
-    var filteredProducts = _.orderBy(_.filter(products, function(o) {
-        // return o.margin > marginMinimum && o.buyPrice > config.buyPriceMinimum && o.buyPrice < config.buyMaximum && o.sellVolumeWeek > config.volumeMinimum && o.totalOrders < config.ordersMaximum
-        return o.margin > parseInt(options.marginMinimum) && o.sellVolumeWeek > parseInt(options.volumeMinimum) && o.buyPrice > parseInt(options.buyPriceMinimum)
-    }), 'margin', 'desc');
-
-    table(filteredProducts);
+function sleep(n) {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n * 1000);
 }
 
 function getUrl(itemName) {
@@ -240,6 +259,7 @@ function parse(args) {
         .option('-v, --volume-minimum <volume-minimum>', 'Minimum volume', '1000000')
         .option('-x, --extra', 'Adds extra order/volume fields to the output')
         .option('-l, --limit <limit>', 'Limit items returned', '35')
+        .option('-L, --loop <seconds>', 'Loop continually, pausing in between by x seconds')
         .parse(args);
 
     let options = program.opts();

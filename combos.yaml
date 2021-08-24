@@ -1,0 +1,125 @@
+e_cactus:
+  e_cactus_green: 160
+
+e_pumpkin:
+  pumpkin: 160
+
+e_prismarine_shard:
+  prismarine_shard: 80
+
+e_brown_mushroom:
+  brown_mushroom: 160
+
+e_red_mushroom:
+  red_mushroom: 160
+
+e_mutton:
+  mutton: 160
+
+e_diamond:
+  diamond: 160
+
+e_shark_fin:
+  shark_fin: 160
+
+e_cobblestone:
+  cobblestone: 160
+
+e_spider_eye:
+  spider_eye: 160
+
+e_raw_fish:
+  raw_fish: 160
+
+e_pork:
+  pork: 160
+
+e_prismarine_crystals:
+  prismarine_crystals: 80
+
+e_ice:
+  ice: 160
+
+e_string:
+  string: 192
+
+e_rabbit_foot:
+  rabbit_foot: 160
+
+e_redstone:
+  redstone: 160
+
+e_sand:
+  sand: 160
+
+xe_slime_ball:
+   slime_ball: 160
+
+e_raw_chicken:
+  raw_chicken: 160
+
+e_ancient_claw:
+  ancient_claw: 160
+
+e_seeds:
+  seeds: 160
+
+e_hay_block:
+  hay_block: 144
+
+e_e_flint:
+  e_flint: 160
+
+e_ink_sack:
+  ink_sack: 80
+
+e_melon:
+  melon: 160
+
+e_bone:
+  bone: 160
+
+e_feature:
+  feature: 160
+
+e_netherrack:
+  netherrack: 160
+
+e_sponge:
+  sponge: 40
+
+e_blaze_rod:
+  blaze_rod: 160
+
+e_ghast_tear:
+  ghast_tear: 4
+
+e_glowstone_dust:
+  glowstone_dust: 160
+
+e_emerald:
+  emerald: 160
+
+e_packed_ice:
+  packed_ice: 160
+
+e_coal:
+  coal: 160
+
+e_ender_pearl:
+  ender_pearl: 20
+
+e_nether_quartz:
+  nether_quartz: 160
+
+e_raw_beef:
+  raw_beef: 160
+
+e_magma_cream:
+  magma_cream: 160
+
+e_rabbit_hide:
+  rabbit_hide: 576
+
+e_obsidian:
+  obsidian: 160

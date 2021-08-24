@@ -1,6 +1,2 @@
 #!/bin/sh
-while true; do
-    clear
-    node auction -x "juju shortbow" | head -10
-    sleep 30
-done
+node auction -o40 -m "juju shortbow"

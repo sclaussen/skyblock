@@ -1,2 +1,2 @@
 #!/bin/sh
-loop "aspect of the end" 15 "-o 10 -x"
+node auction -L -o40 -m "aspect of the end"

@@ -31,3 +31,5 @@ lib/schema.js
 package-lock.json
 mail*
 test_space*
+auction.json
+.armor

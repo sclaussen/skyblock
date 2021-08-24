@@ -5,6 +5,7 @@ const d = require('debug')('skyblock');
 const fs = require('fs');
 const util = require('util');
 const _ = require('lodash');
+const { execSync } = require('child_process');
 
 const YAML = require('yaml');
 const moment = require('moment');
@@ -31,76 +32,90 @@ async function auction(args) {
     options = parse(args);
 
     // Call the skyblock API to fetch and cache the auctions if the
-    // -r flag was specified
-    if (options.fetch) {
-        await writeCache();
+    // -R flag was specified
+    if (options.retrieve) {
+        await retrieveAuctionsFromSkyblock();
     }
 
-    // Read in the auction items from the cache
-    auctions = await readCache();
+    while (true) {
 
-    // Find the auctions containing the user specified phrase
-    let auctionsMatchingPhrase = filter(auctions, function(o) {
+        // Read in the auction items from the cache
+        auctions = await readSkyblockAuctionCache();
 
-        // Do not include the item if it was already claimed
-        if (o.claimed) {
-            return false;
-        }
+        // Find the auctions containing the user specified phrase
+        let auctionsMatchingPhrase = filter(auctions, function(o) {
 
-
-        // Match correct phrase
-        let phrase = options.phrase;
-        if (options.book) {
-            phrase = 'enchanted book';
-        }
-        if (options.level) {
-            if (!phrase.includes(' pet')) {
-                phrase = options.phrase + ' pet';
-            }
-        }
-        if (!o.item_name.includes(phrase)) {
-            return false;
-        }
-
-
-        // If it is a book, match the specific book enchantment name in the extra field
-        if (options.book) {
-            if (o.extra.toLowerCase().includes('enchanted book enchanted book ' + options.phrase)) {
+            // Do not include the item if it was already claimed
+            if (o.claimed) {
                 return false;
             }
-        }
 
-
-        // If a level is specified, match the level in the item's name
-        if (options.level) {
-            let level = 'L' + options.level.padStart(3, '0');
-            if (!o.reforge.includes(level)) {
+            // Match correct phrase
+            if (!o.item_name.includes(options.phrase)) {
                 return false;
             }
-        }
 
-
-        // If a tier is specified match that tier
-        if (options.tier) {
-            if (!o.tier.includes(options.tier)) {
-                return false;
+            if (options.metadataMatch) {
+                for (let match of options.metadataMatch) {
+                    if (!o.metadata.includes(match)) {
+                        return false;
+                    }
+                }
             }
+
+            if (options.reforge) {
+                if (!o.reforge.includes(options.reforge)) {
+                    return false;
+                }
+            }
+
+
+            // If a pet level is specified, match the level in the item's name
+            if (options.petLevel) {
+                if (!o.pet_level.includes(options.petLevel)) {
+                    return false;
+                }
+            }
+
+
+            // If a tier is specified match that tier
+            if (options.tier) {
+                if (!o.tier.includes(options.tier)) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+
+
+        // If BIN, sort by cost (within each unique item).
+        // If auction, sort by auction ending time
+        let sortedAuctions;
+        if (options.auctions) {
+            sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'end' ]);
+        } else {
+            sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'starting_bid' ]);
         }
 
-        return true;
-    });
+        if (options.loop) {
+            console.clear();
+        }
 
+        printAuctions(sortedAuctions);
 
-    // If BIN, sort by cost (within each unique item).
-    // If auction, sort by auction ending time
-    let sortedAuctions;
-    if (options.auctions && !options.cost) {
-        sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'end' ]);
-    } else {
-        sortedAuctions = sortBy(auctionsMatchingPhrase, [ 'category', 'item_name', 'tier', 'starting_bid' ]);
+        if (!options.loop) {
+            process.exit(0);
+        }
+
+        console.log();
+        console.log('Sleeping for ' + options.loop + ' seconds...');
+        sleep(options.loop);
     }
+}
 
-    printAuctions(sortedAuctions);
+function sleep(n) {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n * 1000);
 }
 
 function printAuctions(auctions) {
@@ -111,6 +126,9 @@ function printAuctions(auctions) {
         // including auctions, and the current item isn't a BIN item,
         // skip it
         if (auction.type === 'AUC' && !options.auctions) {
+            continue;
+        }
+        if (options.auctions && auction.type !== 'AUC') {
             continue;
         }
 
@@ -126,17 +144,27 @@ function printAuctions(auctions) {
         // STARTING_BID (FORMATTED)
         s += rj(coins(auction.starting_bid), 9);
 
-        // BIN or NOT
-        if (options.auctions) {
-            s += ' ' + lj(auction.type, 5);
+        // PET LEVEL
+        if (options.pet) {
+            s += rj(auction.pet_level, 6);
+            s += '  ';
+        } else {
+            // REFORGE
+            if (options.pet) {
+                s += rj(auction.reforge, 20);
+                s += '  ';
+            }
+
+            // UPGRADED
+            s += lj(auction.upgraded, 1);
+
+            // STARS
+            s += lj(auction.stars, 7);
+            s += ' ';
         }
 
-        // REFORGE
-        s += rj(auction.reforge, 20);
-        s += ' ';
-
         // ITEM NAME
-        s += lj(auction.item_name.replace(/ /g, 'X').replace(/\W/g, '+').replace(/X/g, ' '), 40);
+        s += lj(auction.item_name, 40);
 
         if (options.auctions) {
 
@@ -156,9 +184,9 @@ function printAuctions(auctions) {
             s += lj(time(auction.end), 15)
         }
 
-        // EXTRA METADATA
-        if (options.extra) {
-            s += auction.extra.toLowerCase();
+        // METADATA
+        if (options.metadata) {
+            s += auction.metadata;
         }
 
         console.log(s);
@@ -213,38 +241,39 @@ function time(n) {
     return datetime.fromNow();
 }
 
-async function writeCache() {
+async function retrieveAuctionsFromSkyblock() {
     process.stdout.write('Retrieving auctions.');
 
     // Get the first (0th) page of auctions, and transform all its auction entries
     let skyblockAuctions = (await curl.get('https://api.hypixel.net/skyblock/auctions')).body;
     let pages = skyblockAuctions.totalPages;
-    parseResponse(skyblockAuctions);
+    cacheSkyblockAuctions(skyblockAuctions);
 
     // Now get the remaining pages, transforming each auction entry as we go
     for (let page = 1; page < pages; page++) {
         process.stdout.write('.');
         skyblockAuctions = (await curl.get('https://api.hypixel.net/skyblock/auctions?page=' + page)).body;
-        parseResponse(skyblockAuctions);
+        cacheSkyblockAuctions(skyblockAuctions);
     }
+    console.log();
+
 
     // Cache the auctions array to a file
-    fs.writeFileSync('./auction.json', JSON.stringify(auctions, null, 4));
+    fs.writeFileSync('./.auction', JSON.stringify(auctions, null, 4));
 }
 
-function parseResponse(skyblockAuctions) {
+function cacheSkyblockAuctions(skyblockAuctions) {
     for (let auction of skyblockAuctions.auctions) {
+
         let bin = 'BIN';
         if (!auction.bin) {
             bin = 'AUC';
         }
 
         auctions.push({
-            profile_id: auction.profile_id,
-            start: auction.start,
             end: auction.end,
             item_name: auction.item_name.toLowerCase(),
-            extra: auction.extra,
+            metadata: auction.extra.toLowerCase(),
             category: auction.category.toLowerCase(),
             tier: auction.tier.toLowerCase(),
             starting_bid: auction.starting_bid,
@@ -256,82 +285,25 @@ function parseResponse(skyblockAuctions) {
     }
 }
 
-
-async function readCache() {
+async function readSkyblockAuctionCache() {
+    let skyblockAuctions = JSON.parse(fs.readFileSync('./.auction'));
 
     let auctions = [];
-
-    let auctionsString = fs.readFileSync('./auction.json');
-    let skyblockAuctions = JSON.parse(auctionsString);
     for (let auction of skyblockAuctions) {
-
-        let itemName = auction.item_name;
-        let reforge = '';
-        if (itemName.startsWith('[lvl')) {
-            // Convert pet names from
-            // FROM: [Lvl 1] Monkey
-            //   TO: [001] monkey
-            let rightSquareBracketIndex = itemName.indexOf(']');
-            reforge = 'L' + itemName.substring(itemName.indexOf(' ') + 1, rightSquareBracketIndex).padStart(3, '0'); // converts the 1 to 001
-            itemName = itemName.substring(rightSquareBracketIndex + 2) + ' pet';
-        } else {
-            let reforgeAndItemName = parseReforge(itemName);
-            reforge = reforgeAndItemName[0];
-            itemName = reforgeAndItemName[1];
-        }
-
-        let categoryAlias = {
-            weapon: '1-weap',
-            armor: '2-armo',
-            accessories: '3-acce',
-            misc: '4-misc',
-            blocks: '5-bloc',
-            consumables: '6-cons',
-        };
-        let category = categoryAlias[auction.category];
-        if (!category) {
-            console.log('Unknown category: ' + auction.category);
-        }
-
-
-        let tierAlias = {
-            common: '1-comm',
-            uncommon: '2-unco',
-            rare: '3-rare',
-            epic: '4-epic',
-            legendary: '5-lege',
-            mythic: '6-myth',
-            supreme: '7-supr',
-            special: '8-spec',
-            very_special: '9-vspe'
-        };
-        let tier = tierAlias[auction.tier];
-        if (!category) {
-            console.log('Unknown tier: ' + auction.tier);
-        }
-
-        // wip
-        let bookAlias = {
-            sharpness: {
-                '1-comm': '1-4',
-                '2-unco': 5
-            },
-            efficiency: {
-                '1-comm': '1-4',
-                '2-unco': 5
-            }
-        };
-
+        let metadata = getMetadata(auction.metadata);
+        let itemName = getItemName(auction.item_name, metadata);
+        metadata = removeItemName(metadata, itemName);
 
         auctions.push({
-            profile_id: auction.profile_id,
-            start: auction.start,
             end: auction.end,
             item_name: itemName,
-            reforge: reforge,
-            extra: auction.extra,
-            category: category,
-            tier: tier,
+            pet_level: getPetLevel(auction.item_name),
+            reforge: getReforge(auction.item_name),
+            upgraded: getUpgraded(auction.item_name),
+            stars: getStars(auction.item_name),
+            metadata: metadata,
+            category: getCategory(auction.category),
+            tier: getTier(auction.tier),
             starting_bid: auction.starting_bid,
             claimed: auction.claimed,
             highest_bid_amount: auction.highest_bid_amount,
@@ -343,43 +315,43 @@ async function readCache() {
     return auctions;
 }
 
+function getCategory(category) {
+    let categoryAlias = {
+        weapon: '1-weap',
+        armor: '2-armo',
+        accessories: '3-acce',
+        misc: '4-misc',
+        blocks: '5-bloc',
+        consumables: '6-cons',
+    };
+    category = categoryAlias[category];
+    if (!category) {
+        console.log('Unknown category: ' + auction.category);
+    }
+    return category;
+}
 
-function parseReforge(itemName) {
+function getTier(tier) {
+    let tierAlias = {
+        common: '1-comm',
+        uncommon: '2-unco',
+        rare: '3-rare',
+        epic: '4-epic',
+        legendary: '5-lege',
+        mythic: '6-myth',
+        supreme: '7-supr',
+        special: '8-spec',
+        very_special: '9-vspe'
+    };
+    tier = tierAlias[tier];
+    if (!tier) {
+        console.log('Unknown tier: ' + tier);
+    }
+    return tier;
+}
+
+function getReforge(name) {
     let reforges = [
-        // 'dirty',
-        // 'epic',
-        // 'fabled',
-        // 'fair',
-        // 'fast',
-        // 'gentle',
-        // 'heroic',
-        // 'legendary',
-        // 'odd',
-        // 'sharp',
-        // 'spicy',
-        // 'jaded',
-        // 'mythic',
-        // 'ancient',
-        // 'fierce',
-        // 'loving',
-        // 'light',
-        // 'necrotic',
-        // 'smart',
-        // 'renowned',
-        // 'spiked',
-        // 'suspicious',
-        // 'warped',
-        // 'wise',
-
-        // 'pure',
-        // 'reinforced',
-        // 'heavy',
-        // 'godly',
-        // 'clean',
-        // 'superior',
-        // 'titanic',
-        // 'cubic',
-
         // Bat person
         'candied',
 
@@ -410,6 +382,7 @@ function parseReforge(itemName) {
         'headstrong',
 
         // Superior Dragon Armor
+        'perfect',
         'jaded',
         'ridiculous',
         'loving',
@@ -430,6 +403,7 @@ function parseReforge(itemName) {
         'pure',
         'spiked',
         'wise',
+        'very',
 
         // Stonk
         'fruitful',
@@ -451,41 +425,336 @@ function parseReforge(itemName) {
         'spicy',
         'suspicious',
         'warped',
+
+        // zombie ring
+        'demonic',
+        'hurtful',
+        'itchy',
+        'pretty',
+        'shaded',
+        'simple',
+        'zealous',
+
+        // shark toothed necklace
+        'bloody',
+        'bizarre',
+
+        // red claw
+        'shiny',
+        'strange',
+
+        // bat artifact
+        'keen',
+        'ominous',
+        'pleasant',
+
+        // spider artifact
+        'silky',
+
+        // feature artifact
+        'vivid',
     ];
 
     for (let reforge of reforges) {
-        if (itemName.startsWith(reforge)) {
-            return [ reforge, itemName.substring(reforge.length + 1) ];
+        if (name.startsWith(reforge)) {
+            return reforge;
         }
     }
 
-    return [ 'NA', itemName ];
+    return '';
 }
 
+function getPetLevel(itemName) {
+    if (itemName.startsWith('[lvl')) {
+        let rightSquareBracketIndex = itemName.indexOf(']');
+        return 'L' + itemName.substring(itemName.indexOf(' ') + 1, rightSquareBracketIndex).padStart(3, '0');
+    }
+
+    return '';
+}
+
+function getStars(itemName) {
+    if (itemName.includes('✪✪✪✪✪ ✦')) {
+        return '✪✪✪✪✪ ✦';
+    }
+
+    if (itemName.includes('✦')) {
+        return '✦';
+    }
+
+    if (itemName.includes('✪✪✪✪✪')) {
+        return '✪✪✪✪✪';
+    }
+
+    if (itemName.includes('✪✪✪✪')) {
+        return '✪✪✪✪';
+    }
+
+    if (itemName.includes('✪✪✪')) {
+        return '✪✪✪';
+    }
+
+    if (itemName.includes('✪✪')) {
+        return '✪✪';
+    }
+
+    if (itemName.includes('✪')) {
+        return '✪';
+    }
+
+    return '';
+}
+
+function getUpgraded(itemName) {
+    if (itemName.includes('⚚')) {
+        return '⚚'
+    }
+
+    return '';
+}
+
+function getItemName(itemName) {
+
+    // Remove all special characters
+    itemName = removeSpecialCharacters(itemName);
+
+    // Remove [lvl x] from the item name for pets, add " pet" to name
+    if (itemName.startsWith('[lvl')) {
+        let rightSquareBracketIndex = itemName.indexOf(']');
+        itemName = itemName.substring(rightSquareBracketIndex + 2) + ' pet';
+    }
+
+    // Remove all the reforge names
+    let reforge = getReforge(itemName);
+    if (reforge !== '') {
+        itemName = itemName.substring(reforge.length + 1);
+    }
+
+    return itemName.trim();
+}
+
+function removeItemName(metadata, itemName) {
+    if (metadata.startsWith(itemName)) {
+        return metadata.substring(itemName.length + 1);
+    }
+
+    return metadata;
+}
+
+
+function getMetadata(metadata) {
+
+    if (!metadata) {
+        return '';
+    }
+
+    // Remove all the reforge names
+    let reforge = getReforge(metadata);
+    if (reforge !== '') {
+        metadata = metadata.substring(reforge.length + 1);
+    }
+
+    // Remove all special characters
+    metadata = removeSpecialCharacters(metadata);
+
+    // Remove "enchanted book"
+    if (metadata.startsWith('enchanted book ')) {
+        metadata = metadata.substring('enchanted book '.length);
+    }
+
+    // // Remove other common useless adjectives
+    // let adjectives = [
+    //     'enchanted books',
+    //     // 'leather boots',
+    //     // 'leather chestplate',
+    //     // 'leather leggings',
+    //     // 'diamond sword',
+    //     // 'skull item',
+    // ];
+    // for (let adjective of adjectives) {
+    //     if (metadata.startsWith(adjective)) {
+    //         metadata = metadata.substring(adjective.length + 1);
+    //     }
+    // }
+
+    // Transform/sort all the enchantments
+    let allEnchantments = {
+        'angler': 'angler',
+        'aqua affinity': 'aqua-affinity',
+        'bane of arthropods': 'bane-of-arthropods',
+        'bank': 'bank',
+        'big brain': 'big-brain',
+        'blast protection': 'blast-protection',
+        'blessing': 'blessing',
+        'caster': 'caster',
+        'chance': 'chance',
+        'chimera': 'chimera',
+        'cleave': 'cleave',
+        'combo': 'combo',
+        'compact': 'compact',
+        'counter-strike': 'counter-strike',
+        'critical': 'critical',
+        'cubism': 'cubism',
+        'cultivating': 'cultivating',
+        'delicate': 'delicate',
+        'depth strider': 'depth-strider',
+        'dragon hunter': 'dragon-hunter',
+        'dragon tracer': 'dragon-tracer',
+        'efficiency': 'efficiency',
+        'ender slayer': 'ender-slayer',
+        'execute': 'execute',
+        'experience': 'experience',
+        'expertise': 'expertise',
+        'feather falling': 'feather-falling',
+        'fire aspect': 'fire-aspect',
+        'fire protection': 'fire-protection',
+        'first strike': 'first-strike',
+        'flame': 'flame',
+        'fortune': 'fortune',
+        'frail': 'frail',
+        'frost walker': 'frost-walker',
+        'giant killer': 'giant-killer',
+        'growth': 'growth',
+        'harvesting': 'harvesting',
+        'pristine': 'pristine',
+        'impaling': 'impaling',
+        'infinite quiver': 'infinite-quiver',
+        'knockback': 'knockback',
+        'last stand': 'last-stand',
+        'legion': 'legion',
+        'lethality': 'lethality',
+        'life steal': 'life-steal',
+        'looting': 'looting',
+        'luck of the sea': 'luck-of-the-sea',
+        'luck': 'luck',
+        'lure': 'lure',
+        'mana steal': 'mana-steal',
+        'magnet': 'magnet',
+        'no pain no gain': 'no-pain-no-gain',
+        'one for all': 'one-for-all',
+        'overload': 'overload',
+        'piercing': 'piercing',
+        'power': 'power',
+        'projectile protection': 'projectile-protection',
+        'prosecute': 'prosecute',
+        'true protection': 'true-protection',
+        'protection': 'protection',
+        'punch': 'punch',
+        'rainbow': 'rainbow',
+        'rejuvenate': 'rejuvenate',
+        'rend': 'rend',
+        'replenish': 'replenish',
+        'respiration': 'respiration',
+        'respite': 'respite',
+        'scavenger': 'scavenger',
+        'sharpness': 'sharpness',
+        'silk touch': 'silk-touch',
+        'smelting touch': 'smelting-touch',
+        'smarty pants': 'smarty-pants',
+        'smite': 'smite',
+        'snipe': 'snipe',
+        'spiked hook': 'spiked-hook',
+        'sugar rush': 'sugar-rush',
+        'soul eater': 'soul-eater',
+        'syphon': 'syphon',
+        'swarm': 'swarm',
+        'telekinesis': 'telekinesis',
+        'thorns': 'thorns',
+        'thunderbolt': 'thunderbolt',
+        'thunderlord': 'thunderlord',
+        'titan killer': 'titan killer',
+        'triple strike': 'triple-strike',
+        'triple-strike': 'triple-strike',
+        'true': 'true',
+        'turbo-crop': 'turbo-crop',
+        'turbo-potato': 'turbo-potato',
+        'turbo-wheat': 'turbo-wheat',
+        'turbo-warts': 'turbo-warts',
+        'turbo-coco': 'turbo-coco',
+        'turbo-pumpkin': 'turbo-pumpkin',
+        'turbo-cacti': 'turbo-cacti',
+        'turbo-melon': 'turbo-melon',
+        'turbo-carrot': 'turbo-carrot',
+        'turbo-mushrooms': 'turbo-mushrooms',
+        'turbo-cane': 'turbo-cane',
+        'ultimate jerry': 'ultimate-jerry',
+        'ultimate wise': 'ultimate wise',
+        'vampirism': 'vampirism',
+        'vicious': 'vicious',
+        'venomous': 'venomous',
+        'wisdom': 'wisdom',
+        'wool': 'wool',
+    };
+
+    let enchantments = [];
+    for (let enchantment of _.keys(allEnchantments)) {
+        if (metadata.includes(enchantment)) {
+            metadata = metadata.replace(enchantment, '');
+            enchantments.push(allEnchantments[enchantment]);
+        }
+    }
+
+    if (enchantments.length > 0) {
+        return metadata.trim() + ' [' + enchantments.sort().join(' ') + ']';
+    }
+
+    return metadata.trim();
+}
+
+function removeSpecialCharacters(s) {
+    for (let rm of [ ' ✪✪✪✪✪ ✦', ' ✦', ' ✪✪✪✪✪', ' ✪✪✪✪', ' ✪✪✪', ' ✪✪', ' ✪', '§d§l', '⚚ ' ]) {
+        s = s.replaceAll(rm, '');
+    }
+    return s.trim();
+}
 
 function parse(args) {
 
     program
         .argument('<phrase>', 'The phrase to search for')
-        .option('-a, --auctions', 'Include auctions (BIN is the default)')
-        .option('-b, --book', 'Only include enchanted books')
-        .option('-c, --cost', 'If including auctions, sort by cost (default is auction ending time)')
-        .option('-f, --fetch', 'Refresh the local auction cache using the skyblock API')
+        .option('-a, --auctions', 'List the auctions (BIN is the default)')
         .option('-k, --thousands', 'Express coins in terms of K (useful for calculating avg/total cost)')
-        .option('-l, --level <level>', 'Pet level (eg 1, 99, 100)')
+        .option('-L, --loop <seconds>', 'Loop continually, pausing in between by x seconds')
+        .option('-p, --pet [level]', 'Search for a pet, optionally at some level')
+        .option('-r, --reforge <reforge>', 'Reforge name')
+        .option('-R, --retrieve', 'Refresh the local auction cache using the skyblock API')
         .option('-t, --tier <tier>', 'Tier level (eg epic, lege, comm, unco, rare)')
         .option('-o, --output <output>', 'Limit output to the first N items')
-        .option('-x, --extra', 'Add the additional metadata to the match')
+        .option('-1, --cheapest', 'Limit output to the first item (cheapest or nearest auction)')
+        .option('-5, --cheapest-five', 'Limit output to the first five items (cheapest or nearest auction)')
+        .option('-m, --metadata', 'Include the metadata about the item')
+        .option('-M, --metadata-match [string...]', 'Match strings in the "metadata" field')
         .parse(args);
 
     let options = program.opts();
+    p4(options);
+
     options.phrase = program.args[0].toLowerCase();
 
-    if (options.book) {
-        options.extra = true;
+    if (options.metadataMatch) {
+        options.metadata = true;
     }
 
-    // p4(options);
+    if (options.cheapest) {
+        options.output = 1;
+    }
+
+    if (options.cheapestFive) {
+        options.output = 5;
+    }
+
+    let phrase = options.phrase;
+
+    if (options.pet && !phrase.includes(' pet')) {
+        phrase = options.phrase + ' pet';
+    }
+
+    if (options.pet && options.pet !== true) {
+        options.petLevel = 'L' + options.pet.padStart(3, '0');
+        options.pet = true;
+    }
+
+    p4(options);
 
     return options;
 }
