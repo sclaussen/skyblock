@@ -1,4 +1,4 @@
-'use strict';
+!'use strict';
 process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
@@ -25,8 +25,6 @@ async function flip(args) {
 
     options = parse(args);
 
-    while (true) {
-
         if (options.retrieve) {
             await cacheSkyblockBazaarItems();
         }
@@ -50,7 +48,6 @@ async function flip(args) {
         console.log();
         console.log('Sleeping for 15 seconds...');
         sleep(15);
-    }
 }
 
 function analyzeCombos(items, combos) {

@@ -1,6 +1,0 @@
-#!/bin/sh
-while true; do
-    clear
-    node auction -x "raider axe" | head -15
-    sleep 30
-done

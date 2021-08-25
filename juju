@@ -1,2 +1,0 @@
-#!/bin/sh
-node auction -o40 -m "juju shortbow"

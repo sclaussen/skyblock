@@ -11,9 +11,9 @@ const moment = require('moment');
 const clicolor = require('cli-color');
 var program = require('commander');
 
-const curl = require('./curl');
-const p = require('./pr').p(d);
-const p4 = require('./pr').p4(d);
+const curl = require('./lib/curl');
+const p = require('./lib/pr').p(d);
+const p4 = require('./lib/pr').p4(d);
 
 
 var options;
@@ -31,20 +31,23 @@ async function bazaar(args) {
         // Get the items from the bazaar
         let bazaar = (await curl.get('https://api.hypixel.net/skyblock/bazaar')).body;
 
-        // Returns an array of these:
-        //
-        // "quick_status": {
-        //     "productId": "ENCHANTED_BAKED_POTATO",
-        //     "sellPrice": 24748.946948999233,
-        //     "sellVolume": 2336256,
-        //     "sellMovingWeek": 447388,
-        //     "sellOrders": 688,
-        //     "buyPrice": 26146.401687160418,
-        //     "buyVolume": 150287,
-        //     "buyMovingWeek": 303975,
-        //     "buyOrders": 332
-        // }
-
+        // products:
+        //     ENCHANTED_BAKED_POTATO:
+        //         product_id: ENCHANTED_BAKED_POTATO
+        //         sell_summary:
+        //           ...
+        //         buy_summary:
+        //           ...
+        //         quick_status:
+        //             productId: ENCHANTED_BAKED_POTATO
+        //             sellPrice: 24748.946948999233
+        //             sellVolume: 2336256
+        //             sellMovingWeek: 447388
+        //             sellOrders: 688
+        //             buyPrice: 26146.401687160418
+        //             buyVolume: 150287
+        //             buyMovingWeek: 303975
+        //             buyOrders: 33
 
         let products = {};
         for (let itemName of _.keys(bazaar.products)) {
@@ -72,7 +75,7 @@ async function bazaar(args) {
                 buyVolumeWeek: bazaar.products[itemName].quick_status.sellMovingWeek,
                 sellVolumeWeek: bazaar.products[itemName].quick_status.buyMovingWeek,
                 volumeWeek: (bazaar.products[itemName].quick_status.buyMovingWeek / 1000000).toFixed(1) + 'M',
-                url: getUrl(itemName)
+                url: getTrackerUrl(itemName)
             };
 
             products[itemName].orders = '(' + products[itemName].sellOrders.toString().padStart(3, ' ') + '/' + products[itemName].buyOrders.toString().padStart(3, ' ') + ')';
@@ -87,20 +90,24 @@ async function bazaar(args) {
             return o.margin > parseInt(options.marginMinimum) && o.sellVolumeWeek > parseInt(options.volumeMinimum) && o.buyPrice > parseInt(options.buyPriceMinimum)
         }), 'margin', 'desc');
 
-        // if (options.loop) {
-        //     console.clear();
-        // }
+        if (options.loop) {
+            console.clear();
+        }
 
         table(filteredProducts);
 
         if (!options.loop) {
-            console.log('done');
             process.exit(0);
         }
 
         console.log();
-        console.log('Sleeping for ' + options.loop + ' seconds...');
-        sleep(options.loop);
+        process.stdout.write('Sleeping for 15 seconds');
+        let count = 0;
+        while (count < 15) {
+            sleep(1);
+            process.stdout.write('.');
+            count++;
+        }
     }
 }
 
@@ -108,7 +115,7 @@ function sleep(n) {
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n * 1000);
 }
 
-function getUrl(itemName) {
+function getTrackerUrl(itemName) {
     let url = {
         enchanted_endstone: 'enchanted_end_stone'
     };
@@ -137,38 +144,6 @@ function table(products) {
             padding: 7,
             alias: 'sell',
         },
-        // buyToSellOrdersRatioFormatted: {
-        //     padding: 5,
-        //     alias: 'ord',
-        //     highlight: 'normal',
-        //     highlight_green_above: 1.0,
-        //     highlight_red_below: 0.8
-        // },
-        // orders: {
-        //     padding: 10,
-        //     alias: ''
-        // },
-        // buyToSellVolumeRatioFormatted: {
-        //     padding: 5,
-        //     alias: 'vol',
-        //     highlight: 'normal',
-        //     highlight_green_above: 1.0,
-        //     highlight_red_below: 0.8
-        // },
-        // volume: {
-        //     padding: 10,
-        //     alias: 'K'
-        // },
-        // totalOrders: {
-        //     padding: 5,
-        //     alias: 'ord',
-        //     highlight_green_below: 500,
-        //     highlight_red_above: 1200,
-        // },
-        // buyOrders: {
-        //     padding: 5,
-        //     alias: 'bor',
-        // },
         sellOrders: {
             padding: 5,
             alias: 'sor',
@@ -177,14 +152,6 @@ function table(products) {
             padding: -25,
             alias: 'product',
         },
-        // buyVolume: {
-        //     padding: 5,
-        //     alias: 'bvol',
-        // },
-        // sellVolume: {
-        //     padding: 5,
-        //     alias: 'svol',
-        // },
         url: {
             padding: -80,
             alias: 'url',
@@ -223,7 +190,7 @@ function table(products) {
         console.log(row);
 
         counter++;
-        if (counter > parseInt(options.limit)) {
+        if (counter > parseInt(options.output)) {
             process.exit(0);
         }
     }
@@ -257,14 +224,14 @@ function parse(args) {
         .option('-b, --buy-price-minimum <buy-proce-minimum>', 'Minimum buy price', '250')
         .option('-m, --margin-minimum <margin-minimum>', 'Minimum margin', '3')
         .option('-v, --volume-minimum <volume-minimum>', 'Minimum volume', '1000000')
+        .option('-o, --output <output>', 'Limit items returned', '35')
         .option('-x, --extra', 'Adds extra order/volume fields to the output')
-        .option('-l, --limit <limit>', 'Limit items returned', '35')
-        .option('-L, --loop <seconds>', 'Loop continually, pausing in between by x seconds')
+        .option('-L, --loop', 'Loop continually')
         .parse(args);
 
     let options = program.opts();
 
-    p4(options);
+    // p4(options);
 
     return options;
 }

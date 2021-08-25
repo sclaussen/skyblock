@@ -11,9 +11,9 @@ const YAML = require('yaml');
 const moment = require('moment');
 const program = require('commander');
 
-const curl = require('./curl');
-const p = require('./pr').p(d);
-const p4 = require('./pr').p4(d);
+const curl = require('./lib/curl');
+const p = require('./lib/pr').p(d);
+const p4 = require('./lib/pr').p4(d);
 
 const { sortBy, deburr, groupBy, orderBy, toLower, map, uniq, filter } = _
 
@@ -55,33 +55,58 @@ async function auction(args) {
                 return false;
             }
 
-            if (options.metadataMatch) {
-                for (let match of options.metadataMatch) {
-                    if (!o.metadata.includes(match)) {
+            // Match the pet level if it was provided
+            if (options.petLevel && !o.pet_level.includes(options.petLevel)) {
+                return false;
+            }
+
+            // Match the reforge if it was provided
+            if (options.reforge && !o.reforge.includes(options.reforge)) {
+                return false;
+            }
+
+            // Match the star rating if it was provided
+            if (options.stars) {
+                switch (options.stars) {
+                case '5':
+                    if (o.stars !== '✪✪✪✪✪') {
                         return false;
                     }
+                    break;
+                case '4':
+                    if (o.stars !== '✪✪✪✪') {
+                        return false;
+                    }
+                    break;
+                case '3':
+                    if (o.stars !== '✪✪✪') {
+                        return false;
+                    }
+                    break;
+                case '2':
+                    if (o.stars !== '✪✪') {
+                        return false;
+                    }
+                    break;
+                case '1':
+                    if (o.stars !== '✪') {
+                        return false;
+                    }
+                    break;
                 }
             }
 
-            if (options.reforge) {
-                if (!o.reforge.includes(options.reforge)) {
-                    return false;
-                }
+            // Match the tier it it was provided
+            if (options.tier && !o.tier.includes(options.tier)) {
+                return false;
             }
 
-
-            // If a pet level is specified, match the level in the item's name
-            if (options.petLevel) {
-                if (!o.pet_level.includes(options.petLevel)) {
-                    return false;
-                }
-            }
-
-
-            // If a tier is specified match that tier
-            if (options.tier) {
-                if (!o.tier.includes(options.tier)) {
-                    return false;
+            // Match the extra metadata if values were provided
+            if (options.extraMatch) {
+                for (let match of options.extraMatch) {
+                    if (!o.extra.includes(match)) {
+                        return false;
+                    }
                 }
             }
 
@@ -109,8 +134,13 @@ async function auction(args) {
         }
 
         console.log();
-        console.log('Sleeping for ' + options.loop + ' seconds...');
-        sleep(options.loop);
+        process.stdout.write('Sleeping for 15 seconds');
+        let count = 0;
+        while (count < 15) {
+            sleep(1);
+            process.stdout.write('.');
+            count++;
+        }
     }
 }
 
@@ -150,16 +180,14 @@ function printAuctions(auctions) {
             s += '  ';
         } else {
             // REFORGE
-            if (options.pet) {
-                s += rj(auction.reforge, 20);
-                s += '  ';
-            }
+            s += rj(auction.reforge, 12);
+            s += ' ';
 
             // UPGRADED
             s += lj(auction.upgraded, 1);
 
             // STARS
-            s += lj(auction.stars, 7);
+            s += lj(auction.stars, 5);
             s += ' ';
         }
 
@@ -184,9 +212,9 @@ function printAuctions(auctions) {
             s += lj(time(auction.end), 15)
         }
 
-        // METADATA
-        if (options.metadata) {
-            s += auction.metadata;
+        // EXTRA
+        if (options.extra) {
+            s += auction.extra;
         }
 
         console.log(s);
@@ -273,7 +301,7 @@ function cacheSkyblockAuctions(skyblockAuctions) {
         auctions.push({
             end: auction.end,
             item_name: auction.item_name.toLowerCase(),
-            metadata: auction.extra.toLowerCase(),
+            extra: auction.extra.toLowerCase(),
             category: auction.category.toLowerCase(),
             tier: auction.tier.toLowerCase(),
             starting_bid: auction.starting_bid,
@@ -290,9 +318,9 @@ async function readSkyblockAuctionCache() {
 
     let auctions = [];
     for (let auction of skyblockAuctions) {
-        let metadata = getMetadata(auction.metadata);
-        let itemName = getItemName(auction.item_name, metadata);
-        metadata = removeItemName(metadata, itemName);
+        let extra = getExtra(auction.extra);
+        let itemName = getItemName(auction.item_name, extra);
+        extra = removeItemName(extra, itemName);
 
         auctions.push({
             end: auction.end,
@@ -301,7 +329,7 @@ async function readSkyblockAuctionCache() {
             reforge: getReforge(auction.item_name),
             upgraded: getUpgraded(auction.item_name),
             stars: getStars(auction.item_name),
-            metadata: metadata,
+            extra: extra,
             category: getCategory(auction.category),
             tier: getTier(auction.tier),
             starting_bid: auction.starting_bid,
@@ -453,10 +481,16 @@ function getReforge(name) {
 
         // feature artifact
         'vivid',
+
+        // refined titanium pickaxe
+        'fleet',
+        'even more',
+        'heated',
+        'stellar',
     ];
 
     for (let reforge of reforges) {
-        if (name.startsWith(reforge)) {
+        if (name.startsWith(reforge + ' ')) {
             return reforge;
         }
     }
@@ -533,49 +567,34 @@ function getItemName(itemName) {
     return itemName.trim();
 }
 
-function removeItemName(metadata, itemName) {
-    if (metadata.startsWith(itemName)) {
-        return metadata.substring(itemName.length + 1);
+function removeItemName(extra, itemName) {
+    if (extra.startsWith(itemName)) {
+        return extra.substring(itemName.length + 1);
     }
 
-    return metadata;
+    return extra;
 }
 
 
-function getMetadata(metadata) {
+function getExtra(extra) {
 
-    if (!metadata) {
+    if (!extra) {
         return '';
     }
 
     // Remove all the reforge names
-    let reforge = getReforge(metadata);
+    let reforge = getReforge(extra);
     if (reforge !== '') {
-        metadata = metadata.substring(reforge.length + 1);
+        extra = extra.substring(reforge.length + 1);
     }
 
     // Remove all special characters
-    metadata = removeSpecialCharacters(metadata);
+    extra = removeSpecialCharacters(extra);
 
     // Remove "enchanted book"
-    if (metadata.startsWith('enchanted book ')) {
-        metadata = metadata.substring('enchanted book '.length);
+    if (extra.startsWith('enchanted book ')) {
+        extra = extra.substring('enchanted book '.length);
     }
-
-    // // Remove other common useless adjectives
-    // let adjectives = [
-    //     'enchanted books',
-    //     // 'leather boots',
-    //     // 'leather chestplate',
-    //     // 'leather leggings',
-    //     // 'diamond sword',
-    //     // 'skull item',
-    // ];
-    // for (let adjective of adjectives) {
-    //     if (metadata.startsWith(adjective)) {
-    //         metadata = metadata.substring(adjective.length + 1);
-    //     }
-    // }
 
     // Transform/sort all the enchantments
     let allEnchantments = {
@@ -688,17 +707,17 @@ function getMetadata(metadata) {
 
     let enchantments = [];
     for (let enchantment of _.keys(allEnchantments)) {
-        if (metadata.includes(enchantment)) {
-            metadata = metadata.replace(enchantment, '');
+        if (extra.includes(enchantment)) {
+            extra = extra.replace(enchantment, '');
             enchantments.push(allEnchantments[enchantment]);
         }
     }
 
     if (enchantments.length > 0) {
-        return metadata.trim() + ' [' + enchantments.sort().join(' ') + ']';
+        return extra.trim() + ' [' + enchantments.sort().join(' ') + ']';
     }
 
-    return metadata.trim();
+    return extra.trim();
 }
 
 function removeSpecialCharacters(s) {
@@ -712,49 +731,46 @@ function parse(args) {
 
     program
         .argument('<phrase>', 'The phrase to search for')
-        .option('-a, --auctions', 'List the auctions (BIN is the default)')
-        .option('-k, --thousands', 'Express coins in terms of K (useful for calculating avg/total cost)')
-        .option('-L, --loop <seconds>', 'Loop continually, pausing in between by x seconds')
-        .option('-p, --pet [level]', 'Search for a pet, optionally at some level')
-        .option('-r, --reforge <reforge>', 'Reforge name')
-        .option('-R, --retrieve', 'Refresh the local auction cache using the skyblock API')
-        .option('-t, --tier <tier>', 'Tier level (eg epic, lege, comm, unco, rare)')
+        .option('-a, --auctions', 'List auctions instead of BIN items (BIN is the default)')
+        .option('-p, --pet', 'Search for a pet')
+        .option('-P, --pet-level <pet-level>', 'Search for a pet at a specific level')
+        .option('-r, --reforge <reforge>', 'Only include items with the reforge')
+        .option('-t, --tier <tier>', 'Only include items in the tier level (eg comm, unco, rare, epic, lege)')
         .option('-o, --output <output>', 'Limit output to the first N items')
-        .option('-1, --cheapest', 'Limit output to the first item (cheapest or nearest auction)')
-        .option('-5, --cheapest-five', 'Limit output to the first five items (cheapest or nearest auction)')
-        .option('-m, --metadata', 'Include the metadata about the item')
-        .option('-M, --metadata-match [string...]', 'Match strings in the "metadata" field')
+        .option('-1, --output-1', 'Limit output to the first line')
+        .option('-s, --stars <stars>', 'Only include items with the star count')
+        .option('-x, --extra', 'Include extra metadata')
+        .option('-X, --extra-match <string...>', 'Include extra metadata containing all the strings')
+        .option('-L, --loop', 'Loop continually')
+        .option('-K, --thousands', 'Express coins in terms of K (useful for calculating avg/total cost)')
+        .option('-R, --retrieve', 'Refresh the local auction cache using the skyblock API')
         .parse(args);
 
     let options = program.opts();
-    p4(options);
 
+    // Single CLI argument is the phrase to search for
     options.phrase = program.args[0].toLowerCase();
 
-    if (options.metadataMatch) {
-        options.metadata = true;
+    // If the pet level is specified, normalize the string (eg 7 -> L007)
+    if (options.petLevel) {
+        options.pet = true;
+        options.petLevel = 'L' + options.petLevel.padStart(3, '0');
     }
 
-    if (options.cheapest) {
+    if (options.extraMatch) {
+        options.extra = true;
+    }
+
+    if (options.output1) {
         options.output = 1;
     }
 
-    if (options.cheapestFive) {
-        options.output = 5;
+    // If pet is specified, append pet to the search criteria
+    if (options.pet && !options.phrase.includes(' pet')) {
+        options.phrase = options.phrase + ' pet';
     }
 
-    let phrase = options.phrase;
-
-    if (options.pet && !phrase.includes(' pet')) {
-        phrase = options.phrase + ' pet';
-    }
-
-    if (options.pet && options.pet !== true) {
-        options.petLevel = 'L' + options.pet.padStart(3, '0');
-        options.pet = true;
-    }
-
-    p4(options);
+    // p4(options);
 
     return options;
 }

@@ -1,2 +1,0 @@
-#!/bin/sh
-node auction -m -o30 "summoning eye"

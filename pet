@@ -1,4 +1,0 @@
-#!/bin/sh
-export PET="$1"
-export OPTIONS="$2"
-node auction ${OPTIONS} "${PET} pet"

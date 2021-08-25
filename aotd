@@ -1,2 +1,0 @@
-#!/bin/sh
-node auction -L 15 -o 90 -M "sharpness" -- "aspect of the dragons"

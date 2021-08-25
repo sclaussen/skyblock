@@ -3,21 +3,21 @@
 export ARMOR="$1"
 
 echo HELM
-node auction -o10 -M "growth protection thorns" -- "$ARMOR helm"
+node auction -o10 -X "growth protection thorns" -- "$ARMOR helm"
 echo
 echo CHEST PLATE
-node auction -o10 -M "growth protection thorns" -- "$ARMOR chestplate"
+node auction -o10 -X "growth protection thorns" -- "$ARMOR chestplate"
 echo
 echo LEGGINGS
-node auction -o10 -M "growth protection thorns" -- "$ARMOR leggings"
+node auction -o10 -X "growth protection thorns" -- "$ARMOR leggings"
 echo
 echo BOOTS
-node auction -o10 -M "growth protection thorns" -- "$ARMOR boots"
+node auction -o10 -X "growth protection thorns" -- "$ARMOR boots"
 
-node auction -1 -k -M "growth protection thorns" -- "$ARMOR helm" > .armor
-node auction -1 -k -M "growth protection thorns" -- "$ARMOR chestplate" >> .armor
-node auction -1 -k -M "growth protection thorns" -- "$ARMOR leggings" >> .armor
-node auction -1 -k -M "growth protection thorns" -- "$ARMOR boots" >> .armor
+node auction -o1 -K -X "growth protection thorns" -- "$ARMOR helm" > .armor
+node auction -o1 -K -X "growth protection thorns" -- "$ARMOR chestplate" >> .armor
+node auction -o1 -K -X "growth protection thorns" -- "$ARMOR leggings" >> .armor
+node auction -o1 -K -X "growth protection thorns" -- "$ARMOR boots" >> .armor
 echo
 cat .armor | cut -c16-21 | sed 's/K//'g | awk '{ total += $1 } END { printf("Total: $%5.0fK\n", total) }'
-# rm .armor
+rm .armor

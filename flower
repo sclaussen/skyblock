@@ -1,2 +1,0 @@
-#!/bin/sh
-node auction -o40 -M sharpness -- "flower of truth"
