@@ -489,6 +489,14 @@ function getReforge(name) {
         'stellar',
     ];
 
+    let exceptions = [
+        'refined amber'
+    ];
+
+    if (exceptions.includes(name)) {
+        return '';
+    }
+
     for (let reforge of reforges) {
         if (name.startsWith(reforge + ' ')) {
             return reforge;
