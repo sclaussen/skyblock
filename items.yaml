@@ -353,12 +353,13 @@ flower_of_truth:
   type: watch
   max: 3000000
   low: 299999
-  limit: 5
+  limit: 3
 livid_dagger:
   type: watch
   requires: cat5
   max: 6900000
   low: 1600000
+  limit: 1
 fel_sword:
   active: false
   requires: cat20
@@ -445,12 +446,7 @@ juju_shortbow:
   type: watch
   max: 25500000
   low: 2490000
-juju_shortbow_5s:
-  type: watch
-  max: 28000000
-  low: 7000000
-  stars: 5
-  limit: 3
+  limit: 1
 boomerang:
   limit: 5
 personal_compactor_4000:
