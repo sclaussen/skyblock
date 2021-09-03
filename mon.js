@@ -82,6 +82,11 @@ async function mon(args) {
             // - Check to see if there's a new low cost
             _.map(results, function(match, key, coll) {
 
+                match.type = 'deal';
+                if ('type' in query) {
+                    match.type = query.type;
+                }
+
                 match.sell = 0;
                 if ('sell' in query) {
                     match.sell = query.sell;
@@ -134,7 +139,26 @@ async function mon(args) {
         matches = sort(matches);
 
 
-        print(matches);
+        console.log('-- Wish --');
+        let wishList = _.filter(matches, function(o) {
+            return o.type === 'wish';
+        });
+        print(wishList);
+        console.log();
+
+        console.log('-- Watch --');
+        let watchList = _.filter(matches, function(o) {
+            return o.type === 'watch';
+        });
+        print(watchList);
+        console.log();
+
+        console.log('-- Flip --');
+        let dealList = _.filter(matches, function(o) {
+            return o.type !== 'watch' && o.type !== 'wish';
+        });
+        print(dealList);
+        console.log();
 
 
         if (options.loop) {

@@ -1,3 +1,35 @@
+strong_dragon_leggings_5s:
+  type: wish
+  active: true
+  name: strong dragon leggings
+  stars: 5
+  max: 1050000
+  extra:
+    - growth
+    - protection
+    - thorns
+sorrow_helm:
+  type: wish
+  max: 5500000
+  low: 5000000
+  clean: true
+sorrow_chestplate:
+  type: wish
+  max: 9200000
+  low: 7000000
+  clean: true
+sorrow_leggings:
+  type: wish
+  active: false
+  max: 8000000
+  low: 6000000
+  sell: 8000000
+  clean: true
+sorrow_boots:
+  type: wish
+  max: 4500000
+  clean: true
+  low: 4000000
 strong_dragon_leggings:
   active: true
   max: 1000000
@@ -10,15 +42,7 @@ strong_dragon_leggings_clean:
   name: strong dragon leggings
   active: true
   max: 820000
-strong_dragon_leggings_5s:
-  active: true
-  name: strong dragon leggings
-  stars: 5
-  max: 1050000
-  extra:
-    - growth
-    - protection
-    - thorns
+  low: 800000
 strong_dragon_boots:
   max: 1500000
   stars: 5
@@ -28,25 +52,26 @@ strong_dragon_boots:
     - thorns
     - depth-strider
     - feather-falling
-  low: 999000
-sorrow_helm:
-  max: 5500000
-  low: 5000000
-  clean: true
-sorrow_chestplate:
-  max: 9200000
-  low: 7000000
-  clean: true
-sorrow_leggings:
-  active: false
-  max: 8000000
-  low: 6000000
-  sell: 8000000
-  clean: true
-sorrow_boots:
-  max: 4500000
-  clean: true
-  low: 4000000
+  low: 500000
+shark_scale_helm:
+  note: use submerged reforge
+  max: 520000
+  low: 450000
+  limit: 1
+shark_scale_chest:
+  note: use submerged reforge
+  max: 890000
+  low: 750000
+  limit: 1
+shark_scale_leggings:
+  note: use submerged reforge
+  max: 90000
+  low: 899999
+  limit: 1
+shark_scale_boots:
+  note: use submerged reforge
+  max: 510000
+  low: 400000
 adaptive_helm:
   active: false
   max: 1100000
@@ -91,9 +116,10 @@ strong_dragon_chestplate:
     - protection
     - thorns
     - rejuvenate
-  low: 650000
+  low: 630000
 shadow_assassin_helm_5s_lege:
   active: false
+  type: wish
   requires: cat5
   name: shadow assassin helm
   max: 3350000
@@ -102,6 +128,7 @@ shadow_assassin_helm_5s_lege:
   clean: true
   low: 1800000
 shadow_assassin_chestplate_5s_lege:
+  type: wish
   active: false
   requires: cat5
   name: shadow assassin chestplate
@@ -111,6 +138,7 @@ shadow_assassin_chestplate_5s_lege:
   stars: 5
   clean: true
 shadow_assassin_leggings_5s_lege:
+  type: wish
   active: false
   requires: cat5
   name: shadow assassin leggings
@@ -120,6 +148,7 @@ shadow_assassin_leggings_5s_lege:
   clean: true
   low: 3950000
 shadow_assassin_boots_5s_lege:
+  type: wish
   active: false
   requires: cat5
   name: shadow assassin boots
@@ -137,7 +166,7 @@ shadow_assassin_helm:
 shadow_assassin_chestplate:
   active: false
   max: 21500000
-  low: 19000000
+  low: 2650000
 shadow_assassin_leggings:
   active: false
   max: 3800000
@@ -193,12 +222,14 @@ dolphin_epic:
   low: 2500000
   limit: 1
 dolphin_lege:
+  type: watch
   tier: lege
   name: dolphin pet
   max: 12500000
   low: 12000000
   sell: 14000000
 griffin_lege:
+  type: watch
   tier: lege
   name: griffin pet
   max: 34000000
@@ -208,28 +239,33 @@ ender_dragon_lege:
   name: ender_dragon pet
   limit: 5
 silverfish_lege:
+  type: watch
   tier: lege
   name: silverfish pet
-  max: 840000
+  max: 8800000
   limit: 3
   low: 500000
 elephant_lege:
+  type: watch
   tier: lege
   name: elephant pet
   max: 16900000
   low: 1670000
   sell: 18000000
 black_cat_lege:
+  type: watch
   tier: lege
   name: black cat pet
   max: 15500000
   low: 15000000
 monkey_lege:
+  type: watch
   tier: lege
   name: monkey pet
   max: 19500000
   low: 18000000
 baby_yeti_lege:
+  type: watch
   tier: lege
   name: baby yeti pet
   max: 16500000
@@ -304,22 +340,25 @@ aspect_of_the_end:
   sell: 200000
 aspect_of_the_dragon:
   max: 700000
-  low: 150000
+  low: 140000
   sell: 748000
 warped_aspect_of_the_end:
+  type: wish
   name: aspect of the end
   reforge: warped
   max: 10000000
   low: 2800000
   notify: 9750000
 flower_of_truth:
+  type: watch
   max: 3000000
   low: 299999
   limit: 5
 livid_dagger:
+  type: watch
   requires: cat5
   max: 6900000
-  low: 6000000
+  low: 1600000
 fel_sword:
   active: false
   requires: cat20
@@ -329,7 +368,6 @@ fel_sword:
   limit: 1
 giants_sword:
   active: false
-celeste: {}
 shadow_fury:
   active: false
   max: 19700000
@@ -348,7 +386,7 @@ voidedge_katana:
   limit: 5
 vorpal_katana:
   max: 6300000
-  low: 6000000
+  low: 5500000
   sell: 7400000
 thick_scorpion_foil:
   max: 910000
@@ -404,9 +442,11 @@ magma_bow:
   max: 190000
   low: 80000
 juju_shortbow:
+  type: watch
   max: 25500000
-  low: 25000000
+  low: 2490000
 juju_shortbow_5s:
+  type: watch
   max: 28000000
   low: 7000000
   stars: 5
@@ -480,7 +520,7 @@ salmon_boots:
   active: false
   own: 2
   max: 20000
-  low: 10000
+  low: 100
   limit: 1
 squid_boots:
   active: true
@@ -499,22 +539,3 @@ divers_shirt:
 divers_boots:
   active: false
   low: 388000
-shark_scale_helm:
-  note: use submerged reforge
-  max: 520000
-  low: 450000
-  limit: 1
-shark_scale_chest:
-  note: use submerged reforge
-  max: 890000
-  low: 750000
-  limit: 1
-shark_scale_leggings:
-  note: use submerged reforge
-  max: 90000
-  low: 899999
-  limit: 1
-shark_scale_boots:
-  note: use submerged reforge
-  max: 510000
-  low: 400000
