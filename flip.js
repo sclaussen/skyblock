@@ -1,5 +1,5 @@
-!'use strict';
-process.env.DEBUG = 'skyblock';
+'use strict';
+// process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
 const fs = require('fs');
@@ -11,217 +11,132 @@ const moment = require('moment');
 const clicolor = require('cli-color');
 const program = require('commander');
 
-const curl = require('./curl');
-const casey = require('./casey');
-const p = require('./pr').p(d);
-const e = require('./pr').e(d);
-const p4 = require('./pr').p4(d);
+const curl = require('./lib/curl');
+const p = require('./lib/pr').p(d);
+const e = require('./lib/pr').e(d);
+const p4 = require('./lib/pr').p4(d);
+
+const rj = require('./lib/util').rj;
+const lj = require('./lib/util').lj;
+const coins = require('./lib/util').coins;
+
+const writeBazaarItemsCache = require('./lib/bazaarlib').writeBazaarItemsCache;
+const readBazaarItemsCache = require('./lib/bazaarlib').readBazaarItemsCache;
+
+const retrieveAuctionItemsFromSkyblock = require('./lib/auctionlib').retrieveAuctionItemsFromSkyblock;
+const readSkyblockAuctionItemsCache = require('./lib/auctionlib').readSkyblockAuctionItemsCache;
+
+const getBazaarItem = require('./lib/bazaarlib').getBazaarItem;
+// const getAuctionItem = require('./lib/auctionlib').getAuctionItem;
+
+const getTrackerUrl = require('./lib/util').getTrackerUrl;
+const getFandomUrl = require('./lib/util').getFandomUrl;
+
+const { sortBy } = _
+
+
 
 var options;
+var bazaarItems;
+var auctionItems;
+var flips;
+
+
 
 flip(process.argv);
+
 
 async function flip(args) {
 
     options = parse(args);
 
-        if (options.retrieve) {
-            await cacheSkyblockBazaarItems();
-        }
-
-        let items = await readSkyblockBazaarCache();
-        let combos = YAML.parse(fs.readFileSync('./combos.yaml', 'utf8'));
-
-        analyzeCombos(items, combos);
-
-        // analyze1(items);
-        // analyze2(items);
-
-        // if (options.loop) {
-        //     console.clear();
-        // }
-
-        if (!options.loop) {
-            process.exit(0);
-        }
-
-        console.log();
-        console.log('Sleeping for 15 seconds...');
-        sleep(15);
-}
-
-function analyzeCombos(items, combos) {
-    let analysis = [];
-
-    for (let comboName of _.keys(combos)) {
-        let comboItem = getItem(items, comboName);
-        let recipe = combos[comboName];
-
-        // Determine the cumulative ingredient cost
-        let cost = 0;
-        for (let ingredientName of _.keys(recipe)) {
-            let quantity = recipe[ingredientName];
-            cost += (ingredient.buy * quantity);
-        }
-
-        analysis.push({
-            name: comboName,
-            ingredients: recipe,
-            cost: cost,
-            sell: comboItem.sell,
-            profit: sell - cost,
-            margin: Number.parseFloat(((sell - cost) / cost) * 100).toFixed(0),
-        });
-    }
-}
-
-function getItem(items, name) {
-    let item = items[name];
-    if (!item) {
-        console.log('Item not found: ' + name);
+    if (options.retrieve) {
+        console.log('Retrieving auction items from skyblock');
+        await retrieveAuctionItemsFromSkyblock()
+        console.log('Retrieving bazaar items from skyblock');
+        await writeBazaarItemsCache();
         process.exit(1);
     }
-    return item;
+
+    bazaarItems = await readBazaarItemsCache();
+    auctionItems = await readSkyblockAuctionItemsCache();
+    flips = YAML.parse(fs.readFileSync('./flips.yaml', 'utf8'));
+
+    let sortedFlips = process();
+    print(sortedFlips);
 }
 
-async function cacheSkyblockBazaarItems() {
-    // Get the items from the bazaar
-    let bazaarItems = (await curl.get('https://api.hypixel.net/skyblock/bazaar')).body;
+function process() {
+    let newFlips = [];
+    for (let flip of _.values(flips)) {
 
-    // products:
-    //     GOLD:
-    //         product_id: GOLD
-    //         sell_summary:
-    //           ...
-    //         buy_summary:
-    //           ...
-    //         quick_status:
-    //             productId: "ENCHANTED_BAKED_POTATO"
-    //             sellPrice: 24748.946948999233
-    //             sellVolume: 2336256
-    //             sellMovingWeek: 447388
-    //             sellOrders: 688
-    //             buyPrice: 26146.401687160418
-    //             buyVolume: 150287
-    //             buyMovingWeek: 303975
-    //             buyOrders: 33
-
-    let items = {};
-    for (let itemName of _.keys(bazaarItems.products)) {
-        if (itemName === 'BAZAAR_COOKIE') {
-            continue;
+        if (flip['bazaar_flip']) {
+            let bazaarItem = getBazaarItem(bazaarItems, flip.name);
+            p4(bazaarItem);
+            newFlips.push({
+                name: flip.name,
+                type: 'bazaar',
+                cost: bazaarItem.buy,
+                sell: bazaarItem.sell,
+                margin: Number.parseFloat(((bazaarItem.sell - bazaarItem.buy) / bazaarItem.buy) * 100).toFixed(0)
+            });
         }
 
-        let itemNameLowerCase = itemName.toLowerCase().replace('enchanted', 'e');
-        items[itemNameLowerCase] = {
-            name: itemNameLowerCase,
-            buy: Number.parseFloat(bazaarItems.products[itemName].quick_status.sellPrice).toFixed(1),
-            sell: Number.parseFloat(bazaarItems.products[itemName].quick_status.buyPrice).toFixed(1),
-        };
-    }
-
-    fs.writeFileSync('./.flip', JSON.stringify(items, null, 4));
-}
-
-
-async function readSkyblockBazaarCache() {
-    let items = JSON.parse(fs.readFileSync('./.flip'));
-    for (let item of _.values(items)) {
-        item.trackerUrl = getTrackerUrl(item.name);
-        item.fandomUrl = getFandomUrl(item.name);
-    }
-    return items;
-}
-
-
-function analyze1(items) {
-    p4('analyze');
-    for (let item of _.values(items)) {
-
-        if (item.name.startsWith('e_')) {
-            continue;
+        if (flip['crafted_bazaar_flip']) {
+            let bazaarItem = getBazaarItem(bazaarItems, flip.name);
+            let craftCost = getCraftCost(flip.crafted_bazaar_flip.ingredients);
+            newFlips.push({
+                name: flip.name,
+                type: 'crafted_bazaar',
+                cost: Number.parseFloat(craftCost).toFixed(0),
+                sell: Number.parseFloat(bazaarItem.sell).toFixed(0),
+                ingredients: flip.crafted_bazaar_flip.ingredients,
+                margin: Number.parseFloat(((bazaarItem.sell - craftCost) / craftCost) * 100).toFixed(0)
+            });
         }
 
-        let enchanted = _.find(items, { name: 'e_' + item.name });
-        if (!enchanted) {
-            continue;
+        if (flip['crafted_auction_flip']) {
+            // let craftCost = getCraftCost(flip.crafted_auction_flip.ingredients);
+            // flip.crafted_auction_flip.cost = craftCost;
+            // flip.crafted_auction_flip.margin = Number.parseFloat(((flip.crafted_auction_flip.sell - craftCost) / craftCost) * 100).toFixed(0);
+            // p4('crafted_auction_flip result', flip);
         }
 
-        let cost = item.buy * 160;
-        let profit = enchanted.sell - cost;
-        let margin = ((profit / cost) * 100).toFixed(0);
-
-        // console.log(lj(item.name, 30), rj(coins(item.buy), 8), rj(coins(cost), 8), rj(coins(enchanted.sell), 8), rj(coins(profit), 8), rj(margin, 5), lj(item.fandomUrl, 70), enchanted.fandomUrl);
-        console.log(lj(item.name, 30), rj(coins(item.buy), 8), rj(coins(cost), 8), rj(coins(enchanted.sell), 8), rj(coins(profit), 8), rj(margin, 5), lj(item.fandomUrl, 70));
-    }
-}
-
-function analyze2(items) {
-    p4('analyze2');
-    for (let item of _.values(items)) {
-
-        if (!item.name.startsWith('e_')) {
-            continue;
+        if (flip['auction_flip']) {
         }
+    }
 
-        let block = _.find(items, { name: item.name + '_block' });
-        if (!block) {
-            continue;
-        }
+    // p4(newFlips);
+    let sortedFlips = sortBy(newFlips, function(o) {
+        return parseInt(o.margin, 10);
+    }).reverse();
+    p4('after sort', sortedFlips);
 
-        let cost = item.buy * 160;
-        let profit = block.sell - cost;
-        let margin = ((profit / cost) * 100).toFixed(0);
+    return sortedFlips;
+}
 
-        console.log(lj(item.name, 30), rj(coins(item.buy), 8), rj(coins(cost), 8), rj(coins(block.sell), 8), rj(coins(profit), 8), rj(margin, 5), lj(item.fandomUrl, 70), block.fandomUrl);
+function print(flips) {
+    for (let flip of flips) {
+        let s = '';
+        s += lj(flip.name, 30);
+        s += lj(flip.type, 20);
+        s += rj(coins(flip.cost, {}), 10);
+        s += rj(coins(flip.sell, {}), 10);
+        s += rj(flip.margin, 10);
+        console.log(s);
     }
 }
 
-function coins(n) {
-    return Number.parseFloat(n).toFixed(0);
-}
-
-function sleep(n) {
-    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n * 1000);
-}
-
-// Right justify
-function rj(s, n) {
-    return s.toString().padStart(n, ' ');
-}
-
-// Left justify
-function lj(s, n) {
-    return s.toString().padEnd(n, ' ');
-}
-
-function getTrackerUrl(itemName) {
-    let url = {
-        enchanted_endstone: 'enchanted_end_stone'
-    };
-
-    let baseUrl = itemName.toLowerCase();
-    if (url[baseUrl]) {
-        baseUrl = url[baseUrl];
+function getCraftCost(ingredients) {
+    let cost = 0;
+    for (let ingredientName of _.keys(ingredients)) {
+        let ingredient = ingredients[ingredientName];
+        let ingredientBazaarItem = getBazaarItem(bazaarItems, ingredientName);
+        ingredient.unit_cost = ingredientBazaarItem.buy;
+        ingredient.cost = ingredientBazaarItem.buy * ingredient.quantity;
+        cost += ingredient.cost;
     }
-
-    return 'https://bazaartracker.com/product/' + baseUrl;
-}
-
-function getFandomUrl(itemName) {
-    let url = {
-        Enchanted_Slime_Ball: 'Enchanted_Slimeball',
-        Pork: 'Raw_Porkchop',
-        Hay_Block: 'Hay_Bale',
-    };
-
-    let snakeCased = casey(itemName).snakeCased;
-    let baseUrl = casey(snakeCased).capitalizedWithUnderscores;
-    if (url[baseUrl]) {
-        baseUrl = url[baseUrl];
-    }
-
-    return 'https://hypixel-skyblock.fandom.com/wiki/' + baseUrl + '#Usage';
+    return cost;
 }
 
 function parse(args) {

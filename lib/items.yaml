@@ -1,0 +1,66 @@
+strong_dragon_leggings:
+  name: strong_dragon_leggings
+  notify: true
+  criteria:
+    name: strong dragon Leggings
+    minimum: 1000000
+    extra:
+      - growth
+      - protection
+      - thorns
+
+strong_dragon_leggings_5s:
+  name: strong_dragon_leggings_5s
+  notify: true
+  criteria:
+    name: strong dragon Leggings
+    minimum: 1000000
+    stars: 5
+    extra:
+      - growth
+      - protection
+      - thorns
+
+personal_compactor_5000:
+  name: personal_compactor_5000
+  notify: true
+  criteria:
+    name: personal compactor 5000
+    minimum: 2000000
+
+personal_compactor_6000:
+  name: personal_compactor_6000
+  notify: true
+  criteria:
+    name: personal compactor 6000
+    minimum: 3400000
+
+personal_compactor_7000:
+  name: personal_compactor_7000
+  notify: true
+  criteria:
+    name: personal compactor 7000
+    minimum: 6200000
+
+compact_enchantment:
+  name: compact_enchantment
+  notify: true
+  criteria:
+    name: enchanted book compact
+    minimum: 1900000
+
+dolphin_epic:
+  name: dolphin_epic
+  notify: true
+  criteria:
+    name: dolphin pet
+    minimum: 4500000
+    tier: epic
+
+dolphin_lege:
+  name: dolphin_lege
+  notify: true
+  criteria:
+    name: dolphin pet
+    minimum: 15000000
+    tier: lege

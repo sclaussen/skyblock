@@ -11,42 +11,39 @@ const moment = require('moment');
 const clicolor = require('cli-color');
 const program = require('commander');
 
+const rj = require('./lib/util').rj;
+const lj = require('./lib/util').lj;
+
 const curl = require('./lib/curl');
 const casey = require('./lib/casey');
 const p = require('./lib/pr').p(d);
 const e = require('./lib/pr').e(d);
 const p4 = require('./lib/pr').p4(d);
 
-const { sortBy, deburr, groupBy, orderBy, toLower, map, uniq, filter } = _
 
 var options;
 
+
 skills(process.argv);
+
 
 async function skills(args) {
 
-    options = parse(args);
-
     let skills = await readSkyblockSkills();
-
+    let last = 0;
     for (let skill of skills) {
-        console.log(skill.name + ' (' + skill.maxLevel + ' levels)');
-        for (let level of _.values(skill.levels)) {
 
-            // Level
-            process.stdout.write('  ' + rj(level.name, 2) + '  ');
+        process.stdout.write(rj(skill.xpDelta, 10) + ' ' + rj(skill.xp, 10) + ' ' + lj(skill.name.toLowerCase() + ' ' + skill.level, 15) + '  ');
 
-            // Print out each unlock
-            let first = true;
-            for (let unlock of level.unlocks) {
-                if (first) {
-                    process.stdout.write(lj(unlock, 90));
-                    first = false;
-                } else {
-                    process.stdout.write(lj(unlock, 20));
-                }
+        let first = true;
+        for (let unlock of skill.unlocks) {
+            let width = 20
+            if (first) {
+                width = 90;
+                first = false;
             }
-            console.log();
+
+            process.stdout.write(lj(transformUnlockName(unlock), width));
         }
         console.log();
     }
@@ -54,39 +51,21 @@ async function skills(args) {
 
 async function readSkyblockSkills() {
     let skills = [];
+
     let responseBody = (await curl.get('https://api.hypixel.net/resources/skyblock/skills')).body;
-    for (let skyblockSkill of _.values(responseBody.skills, { name: 'Fishing' })) {
-
-        p4(skyblockSkill);
-
-        let skill = {
-            name: skyblockSkill.name,
-            maxLevel: skyblockSkill.maxLevel,
-            levels: []
-        };
-
-        for (let skyblockLevel of _.values(skyblockSkill.levels)) {
-
-            // p4(skyblockLevel);
-            let level = {
-                name: skyblockLevel.level,
-                xp: skyblockLevel.totalExpRequired,
-                unlocks: []
-            };
-
-            for (let unlock of skyblockLevel.unlocks) {
-                if (unlock === '??? Sea Creature') {
-                    continue;
-                }
-
-                level.unlocks.push(transformUnlockName(unlock));
-            }
-
-            skill.levels.push(level);
-        }
-
-        skills.push(skill);
-    }
+    _.map(responseBody.skills, function(skill) {
+        let lastXp = 0;
+        _.map(skill.levels, function(level) {
+            skills.push({
+                name: skill.name,
+                level: level.level,
+                xp: level.totalExpRequired,
+                xpDelta: level.totalExpRequired - lastXp,
+                unlocks: level.unlocks
+            });
+            lastXp = level.totalExpRequired;
+        });
+    });
 
     p4(skills);
     return skills;
@@ -120,32 +99,4 @@ function transformUnlockName(s) {
     }
 
     return s;
-}
-
-// Right justify
-function rj(s, n) {
-    if (!s) {
-        return '';
-    }
-    return s.toString().padStart(n, ' ');
-}
-
-// Left justify
-function lj(s, n) {
-    if (!s) {
-        return '';
-    }
-    return s.toString().padEnd(n, ' ');
-}
-
-function parse(args) {
-
-    program
-        .parse(args);
-
-    let options = program.opts();
-
-    // p4(options);
-
-    return options;
 }

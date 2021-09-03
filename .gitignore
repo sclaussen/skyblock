@@ -1,3 +1,4 @@
+.*-items
 data/*solutions.txt
 data/*1/*
 TAGS
@@ -31,7 +32,3 @@ lib/schema.js
 package-lock.json
 mail*
 test_space*
-.armor
-.auction
-.bazaar
-.flip

@@ -1,0 +1,520 @@
+strong_dragon_leggings:
+  active: true
+  max: 1000000
+  extra:
+    - growth
+    - protection
+    - thorns
+  low: 200000
+strong_dragon_leggings_clean:
+  name: strong dragon leggings
+  active: true
+  max: 820000
+strong_dragon_leggings_5s:
+  active: true
+  name: strong dragon leggings
+  stars: 5
+  max: 1050000
+  extra:
+    - growth
+    - protection
+    - thorns
+strong_dragon_boots:
+  max: 1500000
+  stars: 5
+  extra:
+    - growth
+    - protection
+    - thorns
+    - depth-strider
+    - feather-falling
+  low: 999000
+sorrow_helm:
+  max: 5500000
+  low: 5000000
+  clean: true
+sorrow_chestplate:
+  max: 9200000
+  low: 7000000
+  clean: true
+sorrow_leggings:
+  active: false
+  max: 8000000
+  low: 6000000
+  sell: 8000000
+  clean: true
+sorrow_boots:
+  max: 4500000
+  clean: true
+  low: 4000000
+adaptive_helm:
+  active: false
+  max: 1100000
+  low: 185000
+  clean: true
+adaptive_chestplate:
+  active: false
+  max: 4200000
+  low: 350000
+  clean: true
+adaptive_leggings:
+  active: false
+  max: 210000
+  low: 100000
+  clean: true
+adaptive_boots:
+  active: false
+  max: 110000
+  low: 20000
+  clean: true
+farmer_boots:
+  active: true
+  max: 300000
+  low: 163892
+  sell: 400000
+strong_dragon_helmet:
+  active: false
+  stars: 5
+  max: 2000000
+  extra:
+    - growth
+    - protection
+    - thorns
+    - respiration
+    - aqua-affinity
+  low: 1000000
+strong_dragon_chestplate:
+  active: false
+  stars: 5
+  extra:
+    - growth
+    - protection
+    - thorns
+    - rejuvenate
+  low: 650000
+shadow_assassin_helm_5s_lege:
+  active: false
+  requires: cat5
+  name: shadow assassin helm
+  max: 3350000
+  tier: lege
+  stars: 5
+  clean: true
+  low: 1800000
+shadow_assassin_chestplate_5s_lege:
+  active: false
+  requires: cat5
+  name: shadow assassin chestplate
+  max: 26000000
+  low: 20000000
+  tier: lege
+  stars: 5
+  clean: true
+shadow_assassin_leggings_5s_lege:
+  active: false
+  requires: cat5
+  name: shadow assassin leggings
+  max: 5500000
+  tier: lege
+  stars: 5
+  clean: true
+  low: 3950000
+shadow_assassin_boots_5s_lege:
+  active: false
+  requires: cat5
+  name: shadow assassin boots
+  max: 1900000
+  sell: 1900000
+  tier: lege
+  stars: 5
+  limit: 15
+  clean: true
+  low: 1200000
+shadow_assassin_helm:
+  active: false
+  max: 1750000
+  low: 175000
+shadow_assassin_chestplate:
+  active: false
+  max: 21500000
+  low: 19000000
+shadow_assassin_leggings:
+  active: false
+  max: 3800000
+  low: 2000000
+shadow_assassin_boots:
+  active: false
+  name: shadow assassin leggings
+  max: 1200000
+  low: 1100000
+superior_dragon_helm:
+  active: false
+  max: 5700000
+  low: 5600000
+superior_dragon_chestplate:
+  active: false
+  max: 8600000
+  low: 8500000
+superior_dragon_leggings:
+  active: false
+  max: 8750000
+  low: 6900000
+superior_dragon_boots:
+  active: true
+  stars: 5
+  max: 6000000
+  low: 5000000
+  limit: 3
+necron_helm:
+  active: false
+  low: 12289000
+necron_chestplate:
+  active: false
+  low: 12289000
+necron_leggings:
+  active: false
+  name: necrons leggings
+  low: 8200000
+tarantula_helmet:
+  active: false
+  max: 475000
+  low: 125000
+wardens_helmet:
+  active: false
+  max: 216000000
+  low: 215000000
+shadow_goggles:
+  max: 450000
+  low: 100000
+dolphin_epic:
+  tier: epic
+  name: dolphin pet
+  max: 2500000
+  low: 2500000
+  limit: 1
+dolphin_lege:
+  tier: lege
+  name: dolphin pet
+  max: 12500000
+  low: 12000000
+  sell: 14000000
+griffin_lege:
+  tier: lege
+  name: griffin pet
+  max: 34000000
+  low: 30000000
+ender_dragon_lege:
+  tier: lege
+  name: ender_dragon pet
+  limit: 5
+silverfish_lege:
+  tier: lege
+  name: silverfish pet
+  max: 840000
+  limit: 3
+  low: 500000
+elephant_lege:
+  tier: lege
+  name: elephant pet
+  max: 16900000
+  low: 1670000
+  sell: 18000000
+black_cat_lege:
+  tier: lege
+  name: black cat pet
+  max: 15500000
+  low: 15000000
+monkey_lege:
+  tier: lege
+  name: monkey pet
+  max: 19500000
+  low: 18000000
+baby_yeti_lege:
+  tier: lege
+  name: baby yeti pet
+  max: 16500000
+  low: 16000000
+one_for_all:
+  active: false
+  book: true
+  max: 10750000
+  low: 8900000
+  limit: 1
+compact:
+  book: true
+  note: bought mine for 1.1M
+  max: 1200000
+  low: 900000
+  cost: 1400000
+  limit: 1
+dragon_tracer_4:
+  tier: comm
+  book: true
+  name: dragon-tracer
+  max: 5000
+  low: 19000
+dragon_tracer_5:
+  tier: unco
+  book: true
+  name: enchanted book dragon-tracer
+  max: 10000
+  low: 4000
+infinite_quiver_7:
+  tier: epic
+  book: true
+  name: enchanted book infinite-quiver
+  max: 10000
+  low: 2000
+  limit: 1
+infinite_quiver_8:
+  tier: lege
+  book: true
+  name: enchanted book infinite-quiver
+  max: 45000
+  low: 20000
+  limit: 1
+infinite_quiver_9:
+  tier: myth
+  book: true
+  name: enchanted book infinite-quiver
+  max: 65000
+  low: 60000
+piercing:
+  tier: comm
+  book: true
+  max: 25000
+  low: 20000
+  limit: 1
+refined_amber:
+  requires: mining 25 to apply
+  max: 1000000
+  low: 1000000
+  limit: 1
+valkyrie:
+  active: false
+  max: 575000000
+  low: 599000000
+raiders:
+  active: false
+  name: raiders axe
+  max: 135000
+aspect_of_the_end:
+  max: 155000
+  low: 56000
+  sell: 200000
+aspect_of_the_dragon:
+  max: 700000
+  low: 150000
+  sell: 748000
+warped_aspect_of_the_end:
+  name: aspect of the end
+  reforge: warped
+  max: 10000000
+  low: 2800000
+  notify: 9750000
+flower_of_truth:
+  max: 3000000
+  low: 299999
+  limit: 5
+livid_dagger:
+  requires: cat5
+  max: 6900000
+  low: 6000000
+fel_sword:
+  active: false
+  requires: cat20
+  max: 175000
+  low: 80000
+  sell: 197000
+  limit: 1
+giants_sword:
+  active: false
+celeste: {}
+shadow_fury:
+  active: false
+  max: 19700000
+  low: 2500000
+hyperion:
+  active: false
+  max: 575000000
+  low: 560000000
+terminator:
+  active: false
+  max: 794000000
+  low: 785000000
+voidedge_katana:
+  max: 700000
+  low: 300000
+  limit: 5
+vorpal_katana:
+  max: 6300000
+  low: 6000000
+  sell: 7400000
+thick_scorpion_foil:
+  max: 910000
+  low: 500000
+reaper_falchion:
+  max: 3500000
+  low: 3000000
+  sell: 4000000
+  limit: 5
+axe_of_the_shredded:
+  active: false
+  max: 68000000
+  limit: 1
+  low: 65000000
+wither_cloak_sword:
+  note: floor 7 lava hopping
+  max: 3500000
+  low: 3300000
+bonzos_staff:
+  active: false
+  note: great for dungeon mobility
+  name: bonzo
+  low: 10
+florid_zombie_sword:
+  note: good for burst healing, slayers or dungeon bosses
+  max: 2850000
+  low: 2000000
+  sell: 3200000
+ornate_zombie_sword:
+  note: good for burst healing, slayers or dungeon bosses
+  max: 1050000
+  low: 200000
+ice_spray_wand:
+  note: good for mob stunning, good to pair w/other weapons
+  max: 24000000
+  low: 10600000
+ghoul_buster:
+  active: false
+  note: use the Fast reforge on this one, no need to enchant
+  max: 2100000
+  low: 2000000
+runaans_bow:
+  active: false
+  max: 400000
+  low: 399000
+  limit: 1
+hurricane_bow:
+  active: false
+  max: 58000
+  low: 20580
+magma_bow:
+  active: false
+  max: 190000
+  low: 80000
+juju_shortbow:
+  max: 25500000
+  low: 25000000
+juju_shortbow_5s:
+  max: 28000000
+  low: 7000000
+  stars: 5
+  limit: 3
+boomerang:
+  limit: 5
+personal_compactor_4000:
+  max: 890000
+  low: 500000
+  sell: 990000
+personal_compactor_5000:
+  tier: rare
+  max: 1650000
+  low: 900000
+  sell: 1825000
+personal_compactor_6000:
+  tier: epic
+  max: 2850000
+  low: 2500000
+  sell: 3200000
+personal_compactor_7000:
+  tier: lege
+  max: 5800000
+  low: 5500000
+  sell: 6300000
+beacon_i:
+  tier: rare
+  max: 410000
+  low: 400000
+  sell: 450000
+  limit: 1
+beacon_ii:
+  tier: rare
+  max: 2000000
+  low: 1100000
+  sell: 2400000
+beacon_iii:
+  tier: epic
+  max: 6300000
+  low: 5800000
+  sell: 7000000
+beacon_iv:
+  tier: epic
+  max: 14000000
+  low: 14000000
+  limit: 1
+water_hydra_head:
+  active: false
+  max: 40000
+  low: 10000
+  limit: 1
+salmon_helm:
+  active: false
+  own: 1
+  max: 20000
+  low: 3000
+  limit: 1
+salmon_chestplate:
+  active: false
+  own: 2
+  max: 19000
+  low: 10000
+  limit: 1
+salmon_leggings:
+  active: false
+  own: 1
+  max: 25000
+  low: 500
+  limit: 1
+salmon_boots:
+  active: false
+  own: 2
+  max: 20000
+  low: 10000
+  limit: 1
+squid_boots:
+  active: true
+  low: 15
+divers_mask:
+  active: false
+  low: 388000
+divers_trunks:
+  active: false
+  name2: s trunks
+  low: 388000
+  name: divers trunks's trunks's trunks
+divers_shirt:
+  active: false
+  low: 388000
+divers_boots:
+  active: false
+  low: 388000
+shark_scale_helm:
+  note: use submerged reforge
+  max: 520000
+  low: 450000
+  limit: 1
+shark_scale_chest:
+  note: use submerged reforge
+  max: 890000
+  low: 750000
+  limit: 1
+shark_scale_leggings:
+  note: use submerged reforge
+  max: 90000
+  low: 899999
+  limit: 1
+shark_scale_boots:
+  note: use submerged reforge
+  max: 510000
+  low: 400000
