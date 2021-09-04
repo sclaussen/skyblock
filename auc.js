@@ -3,6 +3,7 @@ process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
 const _ = require('lodash');
+const fs = require('fs');
 
 const YAML = require('yaml');
 const program = require('commander');
@@ -10,7 +11,9 @@ const program = require('commander');
 const writeAuctionItemsCache = require('./lib/auclib').writeAuctionItemsCache;
 const readAuctionItemsCache = require('./lib/auclib').readAuctionItemsCache;
 const print = require('./lib/auclib').print;
+const removeSpecialCharacters = require('./lib/auclib').removeSpecialCharacters;
 
+const sleep = require('./lib/util').sleep;
 const table = require('./lib/util').table;
 const rj = require('./lib/util').rj;
 const lj = require('./lib/util').lj;
@@ -20,101 +23,234 @@ const p = require('./lib/pr').p(d);
 const p4 = require('./lib/pr').p4(d);
 
 
-const { sortBy, values,  } = _
-
-
 auc(process.argv);
 
 
 var options;
 
 
-// Usage: node auction keyword [r]
 async function auc(args) {
 
     // Parse the options
     options = parse(args);
 
-    // Call the skyblock API to fetch and cache the auctions if the
-    // -R flag was specified
     if (options.retrieve) {
-        await writeAuctionItemsCache();
+        while (true) {
+            await writeAuctionItemsCache();
+            sleep(10);
+        }
     }
 
-    // Read in the auction items from the cache
-    let items = await readAuctionItemsCache();
+    if (options.watch) {
+        while (true) {
+            console.log('Reading watch definitions...');
+            let watchDefinitions = YAML.parse(fs.readFileSync('./watch.yaml', 'utf8'), { prettyErrors: true });
 
-    // filter, sort, and print
-    print(values(sort(filter(items))), options.output);
+            console.log('Reading auction cache...');
+            let auctionItems = await readAuctionItemsCache();
+
+            let matches = sort(findMatches(auctionItems, watchDefinitions));
+
+            console.clear();
+            console.log('-- Wish --');
+            print(_.filter(matches, function(o) { return o.type === 'wish' && o.active !== false; }));
+
+            console.log('\n-- Watch --');
+            print(_.filter(matches, function(o) { return o.type === 'watch' && o.active !== false; }));
+
+            console.log('\n-- Flip --');
+            print(_.filter(matches, function(o) { return o.type !== 'wish' && o.type !== 'watch' && o.active !== false; }));
+
+            console.log();
+            sleep(15);
+        }
+    }
+
+    let auctionItems = await readAuctionItemsCache();
+    let filtered = filter(auctionItems, options);
+    print(sort(filtered));
+
+
+    let item = filtered[0];
+    let lore = removeSpecialCharacters(item.lore);
+    p(lore);
+    getField(lore, 'strength');
+    getField(lore, 'crit chance');
+    getField(lore, 'crit damage');
+    getField(lore, 'health');
+    getField(lore, 'defense');
+    getField(lore, 'speed');
+    getField(lore, 'attack speed');
 }
 
-function augment(items) {
-    for (let item of items) {
-        item.margin = 0;
-        item.sell = 0;
+function getField(lore, field) {
+    for (let line of lore.split('\n')) {
+        if (line.startsWith(field)) {
+            p('line: ' + line.substring(field.length + 1));
+        }
     }
 }
 
-function filter(items) {
+function findMatches(auctionItems, watchDefinitions) {
+    let matches = [];
+    let recordLowCostFound = false;
+    for (let watchDefinitionKey of _.keys(watchDefinitions)) {
 
-    // Find the auctions containing the user specified phrase
-    return _.filter(items, function(o) {
+        let watchDefinition = watchDefinitions[watchDefinitionKey];
+        if (!watchDefinition) {
+            continue;
+        }
 
-        // If there's no auction flag indicating we should be
-        // including auctions, and the current item isn't a BIN item,
-        // skip it
-        if (o.type === 'AUC' && !options.auctions) {
+
+        // Add the watchDefinition key as the query property converting
+        // underscores to spaces or dashes
+        if (!watchDefinition.query) {
+            if (watchDefinition.enchantment) {
+                watchDefinition.query = watchDefinitionKey.replaceAll('_', '-');
+            } else {
+                watchDefinition.query = watchDefinitionKey.replaceAll('_', ' ');
+            }
+            watchDefinition.query_added = true;
+        }
+        if (watchDefinition.query2) {
+            watchDefinition.query_saved = watchDefinition.query;
+            watchDefinition.query += '\'' + watchDefinition.query2;
+        }
+        p4(watchDefinition);
+
+
+        // Find the auction items that match the watchDefinition criteria
+        let results = filter(auctionItems, watchDefinition);
+
+
+        // Three things:
+        // - Add sell field from watchDefinition into match results
+        // - Add active field from watchDefinition into match results
+        // - Create a margin field in the match results
+        // - Check to see if there's a new low cost
+        _.map(results, function(match, key, coll) {
+
+            match.type = 'deal';
+            if ('type' in watchDefinition) {
+                match.type = watchDefinition.type;
+            }
+
+            match.sell = 0;
+            if ('sell' in watchDefinition) {
+                match.sell = watchDefinition.sell;
+            }
+
+            match.margin = 0;
+            if (watchDefinition.sell) {
+                match.margin = (match.sell - match.cost) / match.cost;
+            }
+
+            match.active = true;
+            if ('active' in watchDefinition) {
+                match.active = watchDefinition.active;
+            }
+
+            if (!watchDefinition.low || match.cost < watchDefinition.low) {
+                recordLowCostFound = true;
+                watchDefinition.low = match.cost;
+                logLowCost(match, watchDefinition, watchDefinitionKey);
+            }
+        });
+
+
+        matches.push(results);
+    }
+
+
+    // If any new record low auction item costs were found
+    // re-serialize the watch.yaml file
+    if (recordLowCostFound) {
+        serializeWatchDefinitions(watchDefinitions);
+    }
+
+
+    // Remove any active=false matches so they aren't displayed
+    matches = _.filter(_.flatten(matches), function(match) {
+        if ('active' in match) {
+            return match.active;
+        }
+        return true;
+    });
+
+    return matches;
+}
+
+function filter(auctionItems, criteria) {
+
+    let count = 1;
+
+    // Find the auctions containing the user specified query
+    return _.filter(auctionItems, function(o) {
+
+        if (o.type !== 'BIN') {
             return false;
         }
 
-        if (o.type !== 'AUC' && options.auctions) {
+        // Match the name
+        if (!o.name.includes(criteria.query)) {
             return false;
         }
 
-        // Match correct phrase
-        if (!o.name.includes(options.phrase)) {
+        // Match the tier
+        if (criteria.tier && !o.tier.includes(criteria.tier)) {
             return false;
         }
 
-        // Match the pet level if it was provided
-        if (options.petLevel && !o.pet_level.includes(options.petLevel)) {
+        // Match the reforge
+        if (criteria.reforge &&!o.reforge.includes(criteria.reforge)) {
             return false;
         }
 
-        // If searching for an enchantment make sure and only include enchanted books
-        if (options.book && !o.name.includes('enchanted book')) {
+        // Match only enchanted book phrases if -e was provided
+        if (options.enchantment && !o.name.includes('enchanted book')) {
             return false;
         }
 
-        // Match the reforge if it was provided
-        if (options.reforge && !o.reforge.includes(options.reforge)) {
-            return false;
+        // Match the extra metadata if values were provided
+        if (criteria.extra) {
+            for (let extraPhrase of criteria.extra) {
+                if (!o.extra.includes(extraPhrase)) {
+                    return false;
+                }
+            }
+        }
+
+        // Verify the selling prices is less than the max
+        if (criteria.max) {
+            if (!(o.cost < criteria.max)) {
+                return false;
+            }
         }
 
         // Match the star rating if it was provided
-        if (options.stars) {
-            switch (options.stars) {
-            case '5':
+        if (criteria.stars) {
+            switch (criteria.stars) {
+            case 5:
                 if (o.stars !== '✪✪✪✪✪') {
                     return false;
                 }
                 break;
-            case '4':
+            case 4:
                 if (o.stars !== '✪✪✪✪') {
                     return false;
                 }
                 break;
-            case '3':
+            case 3:
                 if (o.stars !== '✪✪✪') {
                     return false;
                 }
                 break;
-            case '2':
+            case 2:
                 if (o.stars !== '✪✪') {
                     return false;
                 }
                 break;
-            case '1':
+            case 1:
                 if (o.stars !== '✪') {
                     return false;
                 }
@@ -122,89 +258,133 @@ function filter(items) {
             }
         }
 
-        // Match the tier it it was provided
-        if (options.tier && !o.tier.includes(options.tier)) {
+        // Potentially limit the number of returned items
+        if (criteria.limit && count > criteria.limit) {
             return false;
         }
-
-        // Match the extra metadata if values were provided
-        if (options.extraMatch) {
-            for (let match of options.extraMatch) {
-                if (!o.extra.includes(match)) {
-                    return false;
-                }
-            }
-        }
+        count++;
 
         return true;
     });
 }
 
-function sort(items) {
-    // If auction, sort by auction ending time
-    if (options.auctions) {
-        return sortBy(items, [ 'category', 'name', 'end' ]);
-    }
+function sort(auctionItems) {
+    return _.sortBy(auctionItems, [ 'name', 'cost' ]);
+}
 
-    // If BIN, sort by cost (within each unique item).
-    return sortBy(items, [ 'category', 'name', 'cost' ]);
+function logLowCost(match, watchDefinition, watchDefinitionKey) {
+    let s = '';
+    s += rj(Number(Number.parseFloat(watchDefinition.low).toFixed(0)).toLocaleString(), 13);
+    s += rj(Number(Number.parseFloat(match.cost).toFixed(0)).toLocaleString(), 13) + '  ';
+    s += lj(watchDefinitionKey, 50);
+    s += lj(watchDefinition.query, 50);
+    s += '\n';
+    fs.appendFileSync('./lows.yaml', s, 'utf-8');
+}
+
+function serializeWatchDefinitions(watchDefinitions) {
+    // Reset the watchDefinition back to its initial values so the augmented
+    // values don't get serialized into the definitions file.
+    _.map(watchDefinitions, function(watchDefinition) {
+
+        if (watchDefinition.query2) {
+            watchDefinition.query = watchDefinition.query_saved;
+            delete watchDefinition.query_saved;
+        }
+
+        if (watchDefinition.query_added) {
+            delete watchDefinition.query_added;
+            delete watchDefinition.query;
+        }
+    });
+
+    fs.writeFileSync('./watch.yaml', YAML.stringify(watchDefinitions), 'utf8');
 }
 
 function parse(args) {
 
     program
-        .argument('<phrase>', 'The phrase to search for')
-
-        .option('-a, --auctions', 'List auctions instead of BIN items (BIN is the default)')
-
-        .option('-b, --book', 'Search for an enchantment book that contains the phrase')
+        .option('-e, --enchantment', 'Search for an enchantment book that contains the phrase')
         .option('-p, --pet', 'Search for a pet')
-        .option('-P, --pet-level <pet-level>', 'Search for a pet at a specific level')
         .option('-r, --reforge <reforge>', 'Only include items with the reforge')
-        .option('-t, --tier <tier>', 'Only include items in the tier level (eg comm, unco, rare, epic, lege)')
         .option('-s, --stars <stars>', 'Only include items with the star count')
-        .option('-x, --extra', 'Include extra metadata')
-        .option('-X, --extra-match <string...>', 'Include extra metadata containing all the strings')
+        .option('-t, --tier <tier>', 'Only include items in the tier level (eg comm, unco, rare, epic, lege)')
+        .option('-x, --extra <string...>', 'Include extra metadata containing all the match values')
 
-        .option('-o, --output <output>', 'Limit output to the first N items', 20)
-        .option('-O, --output-all', 'Override output to all items')
-        .option('-1, --output-1', 'Limit output to the first line')
+        .option('-l, --limit <limit>', 'Limit output to the first N items', 30)
+        .option('-L, --limit-none', 'Remove default limit so all matches are returned')
 
-
-        .option('-L, --loop', 'Loop continually')
-        .option('-K, --thousands', 'Express coins in terms of K (useful for calculating avg/total cost)')
         .option('-R, --retrieve', 'Refresh the local auction cache using the skyblock API')
+        .option('-W, --watch', 'Watch for auctions meeting the criteria in watch.yaml')
+        .addHelpText('after', `
+
+Retrieve the latest auctions from skyblock (loops):
+  $ auc -R
+
+Watch for auctions meeting the criteria defined in watch.yaml (loops):
+  $ auc -W
+
+Find strong dragon boot auctions:
+  $ auc "strong dragon boots"
+  $ auc "strong dragon boots" -l 50                    # limit output to the 50 cheapest items
+  $ auc "strong dragon boots" -L                       # do not limit the output
+  $ auc "strong dragon boots" -t lege                  # find legendary boots
+  $ auc "strong dragon boots" -t lege -s5              # find 5 star legendary boots
+  $ auc "strong dragon boots" -t lege -s5 -r fierce    # find 5 star legendary fierce boots
+
+Find boots that have protection and growth enchantments
+  $ auc boots -x protection growth
+
+Pet auctions:
+  $ auc -p "wither skeleton"
+
+Enchantment books:
+  $ auc -e smite
+  $ auc -e one-for-all
+  $ auc "enchantment book" -x protection growth        # A composite enchantment book
+`)
         .parse(args);
+
 
     let options = program.opts();
 
-    // Single CLI argument is the phrase to search for
-    options.phrase = program.args[0].toLowerCase();
-
-    // If the pet level is specified, normalize the string (eg 7 -> L007)
-    if (options.petLevel) {
-        options.pet = true;
-        options.petLevel = 'L' + options.petLevel.padStart(3, '0');
+    if (program.args[0]) {
+        options.query = program.args[0].toLowerCase();
     }
 
-    if (options.extraMatch) {
-        options.extra = true;
+    // If -p (pet), append "pet" to the search criteria
+    if (options.pet && !options.query.includes(' pet')) {
+        options.query = options.query + ' pet';
     }
 
-    if (options.output1) {
-        options.output = 1;
+    // Remove the limit default if the user wants all matches
+    if (options.limitNone) {
+        delete options.limit;
     }
 
-    if (options.outputAll) {
-        delete options.output;
+    if (options.stars) {
+        options.stars = parseInt(options.stars);
     }
 
-    // If pet is specified, append pet to the search criteria
-    if (options.pet && !options.phrase.includes(' pet')) {
-        options.phrase = options.phrase + ' pet';
+    // If -M (watch) or -R (retrieve) remove all other flags
+    if (options.watch || options.retrieve) {
+        delete options.book;
+        delete options.pet;
+        delete options.reforge;
+        delete options.tier;
+        delete options.stars;
+        delete options.extra;
+        delete options.limit;
+        delete options.limitNone;
+        delete options.query;
     }
 
-    // p4(options);
+    if (!options.watch && !options.retrieve && !options.query) {
+        console.log('Try mon --help');
+        process.exit(1);
+    }
+
+    p4(options);
 
     return options;
 }

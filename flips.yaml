@@ -21,10 +21,48 @@ power_5:
         quantity: 48
       bones:
         quantity: 80
-
+infinite_quiver_7:
+  tier: epic
+  book: true
+  name: enchanted book infinite-quiver
+  max: 10000
+  low: 2000
+  limit: 1
+infinite_quiver_8:
+  tier: lege
+  book: true
+  name: enchanted book infinite-quiver
+  max: 45000
+  low: 20000
+  limit: 1
+infinite_quiver_9:
+  tier: myth
+  book: true
+  name: enchanted book infinite-quiver
+  max: 65000
+  low: 60000
+piercing_1:
+  note: Arrows fired will go through enemies. The extra targets hit take 25% of the damage.
+  tier: comm
+  book: true
+  max: 25000
+  low: 20000
+  limit: 1
+  auction_craft:
+    sell: 90000
+    ingredients:
+      paper:
+        quantity: 3
+      cactus:
+        quantity: 10
+      arrow:
+        quantity: 1
 dragon_tracer_4:
-  name: dragon_tracer_4
   note: Arrows home towards dragons if they are within 2 blocks per level.
+  book: true
+  tier: comm
+  max: 5000
+  low: 19000
   auction_craft:
     ingredients:
       paper:
@@ -37,8 +75,12 @@ dragon_tracer_4:
         quantity: 1
 
 dragon_tracer_5:
-  name: dragon_tracer_5
   note: Arrows home towards dragons if they are within 2 blocks per level.
+  book: true
+  tier: unco
+  name: enchanted book dragon-tracer
+  max: 10000
+  low: 4000
   auction_craft:
     sell: 10000
     ingredients:
@@ -145,16 +187,6 @@ snipe_3:
 
 piercing_1:
   name: piercing_1
-  note: Arrows fired will go through enemies. The extra targets hit take 25% of the damage.
-  auction_craft:
-    sell: 90000
-    ingredients:
-      paper:
-        quantity: 3
-      cactus:
-        quantity: 10
-      arrow:
-        quantity: 1
 
 cubism_4:
   name: cubism_4

@@ -7,10 +7,9 @@
 1. `npm i`
 1. `node bz --help`
 1. `node auc --help`
-1. `node mon --help`
-1. `node prof --help`
-1. `node coll --help`
-1. `node skills --help`
+1. `node prof --help` (work in progress)
+1. `node coll --help` (work in progress)
+1. `node skills --help` (work in progress)
 
 
 
@@ -19,7 +18,6 @@
 Primary CLIs:
 - bz
 - auc
-- mon
 
 
 

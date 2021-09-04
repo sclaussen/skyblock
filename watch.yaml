@@ -1,0 +1,355 @@
+strong_dragon_leggings:
+  active: true
+  max: 1000000
+  extra:
+    - growth
+    - protection
+    - thorns
+  low: 886000
+sorrow_helm:
+  type: wish
+  max: 5500000
+  low: 4349999
+  clean: true
+sorrow_chestplate:
+  type: wish
+  max: 9500000
+  low: 6000000
+  clean: true
+sorrow_leggings:
+  active: false
+  type: wish
+  max: 8000000
+  low: 6000000
+  sell: 8000000
+  clean: true
+sorrow_boots:
+  type: wish
+  max: 3800000
+  clean: true
+  low: 3649999
+hardened_diamond_helmet:
+  type: wish
+  low: 24000
+  limit: 1
+hardened_diamond_chestplate:
+  active: false
+  type: wish
+  low: 16000
+  limit: 1
+hardened_diamond_leggings:
+  type: wish
+  low: 40000
+  limit: 1
+silverfish_lege:
+  type: wish
+  tier: lege
+  name: silverfish pet
+  max: 900000
+  limit: 3
+  low: 500000
+chance_2:
+  active: false
+  enchantment: true
+  note: Increases chance of a mob dropping an item by 30%
+  limit: 1
+  low: 2500
+  recipe: null
+chance_3:
+  enchantment: true
+  note: Increases chance of a mob dropping an item by 45%
+  max: 10000
+  low: 19000
+  limit: 2
+  recipe: null
+chance_4:
+  enchantment: true
+  note: Increases chance of a mob dropping an item by 60%
+  max: 180000
+  sell: 200000
+  limit: 1
+  recipe: null
+  low: 170000
+chance_5:
+  type: watch
+  enchantment: true
+  name: chance_5
+  note: Increases chance of a mob dropping an item by 75%
+  low: 49000000
+  limit: 1
+  recipe: null
+compact_1:
+  type: watch
+  enchantment: true
+  note: bought mine for 1.1M
+  low: 900000
+  cost: 1400000
+  limit: 1
+cubism_4:
+  active: false
+  enchantment: true
+  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
+  recipe:
+    paper:
+      quantity: 24
+    pumpkin:
+      quantity: 32
+  low: 15000
+cubism_5:
+  enchantment: true
+  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
+  max: 25000
+  sell: 30000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 48
+    pumpkin:
+      quantity: 64
+  low: 28999
+cubism_6:
+  type: watch
+  enchantment: true
+  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
+  low: 31900000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 72
+    pumpkin:
+      quantity: 96
+dragon_tracer_4:
+  enchantment: true
+  note: Arrows home towards dragons if they are within 2 blocks per level.
+  recipe:
+    paper:
+      quantity: 24
+    arrow:
+      quantity: 8
+    silver:
+      quantity: 4
+    redstone:
+      quantity: 1
+  limit: 1
+  low: 57000
+dragon_tracer_5:
+  enchantment: true
+  note: Arrows home towards dragons if they are within 2 blocks per level.
+  recipe:
+    silver:
+      quantity: 8
+    redstone:
+      quantity: 2
+    paper:
+      quantity: 48
+    arrow:
+      quantity: 16
+  low: 58000
+  limit: 1
+infinite_quiver_4:
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  recipe:
+    paper:
+      quantity: 24
+    bow:
+      quantity: 1
+  max: 20000
+  limit: 1
+infinite_quiver_5:
+  active: false
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  limit: 1
+  recipe:
+    paper:
+      quantity: 48
+    bow:
+      quantity: 2
+infinite_quiver_6:
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 3000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 96
+    bow:
+      quantity: 4
+  low: 900
+infinite_quiver_7:
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 15000
+  sell: 60000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 192
+    bow:
+      quantity: 8
+  low: 10000
+infinite_quiver_8:
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 20000
+  sell: 100000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 384
+    bow:
+      quantity: 16
+  low: 39000
+infinite_quiver_9:
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 145000
+  sell: 2000000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 768
+    bow:
+      quantity: 32
+  low: 130000
+infinite_quiver_10:
+  note: Increases the chance to not consume an arrow by 10% per level.
+  sell: 2000000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 1536
+    bow:
+      quantity: 64
+one_for_all_1:
+  type: watch
+  enchantment: true
+  low: 10000000
+  limit: 1
+piercing_1:
+  name: piercing_1
+  note: Arrows fired will go through enemies. The extra targets hit take 25% of
+    the damage.
+  sell: 90000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 3
+    cactus:
+      quantity: 10
+    arrow:
+      quantity: 1
+power_4:
+  active: false
+  enchantment: true
+  note: Increases bow damage by 8% per level.
+  recipe:
+    paper:
+      quantity: 24
+    bones:
+      quantity: 40
+  low: 8
+  limit: 1
+power_5:
+  enchantment: true
+  note: Increases bow damage by 8% per level.
+  max: 3000
+  low: 2000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 48
+    bones:
+      quantity: 80
+snipe_2:
+  enchantment: true
+  name: snipe_2
+  note: Arrows deal +1% damage per level for every 10 blocks traveled.
+  max: 2000
+  sell: 10000
+  low: 10000
+  limit: 10
+  recipe:
+    paper:
+      quantity: 6
+    arrow:
+      quantity: 2
+    feather:
+      quantity: 2
+snipe_3:
+  enchantment: true
+  name: snipe_3
+  note: Arrows deal +1% damage per level for every 10 blocks traveled.
+  limit: 10
+  recipe:
+    paper:
+      quantity: 12
+    arrow:
+      quantity: 4
+    feather:
+      quantity: 4
+  low: 4999
+impaling_2:
+  enchantment: true
+  note: Increases damage dealt to guardians and squids by 12.5% per level.
+  sell: 15000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 6
+    prismarine_shards:
+      quantity: 20
+impaling_3:
+  enchantment: true
+  note: Increases damage dealt to guardians and squids by 12.5% per level.
+  limit: 1
+  recipe:
+    paper:
+      quantity: 12
+    pumpkin:
+      quantity: 40
+  low: 80000
+punch_1:
+  active: false
+  enchantment: true
+  name: punch_1
+  note: Increases knockback dealt by 3 blocks per level.
+  sell: 25000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 48
+    arrow:
+      quantity: 1
+    slime:
+      quantity: 1
+  low: 95000
+punch_2:
+  active: false
+  enchantment: true
+  name: punch_2
+  sell: 70000
+  note: Increases knockback dealt by 3 blocks per level.
+  limit: 1
+  recipe:
+    paper:
+      quantity: 96
+    arrow:
+      quantity: 2
+    slime:
+      quantity: 2
+  low: 70000
+flame_1:
+  enchantment: true
+  note: Arrow ignites target for 3 seconds, dealing 5 damage every second.
+  sell: 80000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 3
+    bow:
+      quantity: 1
+    blaze_rod:
+      quantity: 2
+  low: 15000

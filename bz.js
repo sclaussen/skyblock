@@ -10,6 +10,7 @@ var program = require('commander');
 const writeBazaarItemsCache = require('./lib/bzlib').writeBazaarItemsCache;
 const readBazaarItemsCache = require('./lib/bzlib').readBazaarItemsCache;
 
+const sleep = require('./lib/util').sleep;
 const table = require('./lib/util').table;
 
 const p = require('./lib/pr').p(d);
@@ -29,14 +30,17 @@ async function bz(args) {
 
     options = parse(args);
 
-    if (!options.useCache) {
-        console.log('Retrieving bazaar items from skyblock');
-        await writeBazaarItemsCache();
+    while (true) {
+        console.clear();
+        if (!options.useCache) {
+            await writeBazaarItemsCache();
+        }
+
+        let items = await readBazaarItemsCache();
+        print(values(sort(filter(items))));
+
+        sleep(30);
     }
-
-    let items = await readBazaarItemsCache();
-
-    print(values(sort(filter(items))));
 }
 
 function filter(items) {
