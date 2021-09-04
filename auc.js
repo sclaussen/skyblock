@@ -12,6 +12,7 @@ const writeAuctionItemsCache = require('./lib/auclib').writeAuctionItemsCache;
 const readAuctionItemsCache = require('./lib/auclib').readAuctionItemsCache;
 const print = require('./lib/auclib').print;
 const removeSpecialCharacters = require('./lib/auclib').removeSpecialCharacters;
+const getItemBytes = require('./lib/auclib').getItemBytes;
 
 const sleep = require('./lib/util').sleep;
 const table = require('./lib/util').table;
@@ -71,24 +72,29 @@ async function auc(args) {
     print(sort(filtered));
 
 
-    let item = filtered[0];
-    let lore = removeSpecialCharacters(item.lore);
-    p(lore);
-    getField(lore, 'strength');
-    getField(lore, 'crit chance');
-    getField(lore, 'crit damage');
-    getField(lore, 'health');
-    getField(lore, 'defense');
-    getField(lore, 'speed');
-    getField(lore, 'attack speed');
+    for (let item of filtered) {
+        p4(item);
+        // let lore = removeSpecialCharacters(item.lore);
+        // console.log();
+        // p('strength', getField(lore, 'strength'));
+        // p('chance', getField(lore, 'crit chance'));
+        // p('damage', getField(lore, 'crit damage'));
+        // p('health', getField(lore, 'health'));
+        // p('defense', getField(lore, 'defense'));
+        // p('speed', getField(lore, 'speed'));
+        // p('speed', getField(lore, 'attack speed'));
+
+        p4(getItemBytes(item.item_bytes).parsed);
+    }
 }
 
 function getField(lore, field) {
     for (let line of lore.split('\n')) {
         if (line.startsWith(field)) {
-            p('line: ' + line.substring(field.length + 1));
+            return line.substring(field.length + 2);
         }
     }
+    return '';
 }
 
 function findMatches(auctionItems, watchDefinitions) {

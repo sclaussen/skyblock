@@ -5,17 +5,17 @@ strong_dragon_leggings:
     - growth
     - protection
     - thorns
-  low: 886000
+  low: 799999
 sorrow_helm:
   type: wish
-  max: 5500000
   low: 4349999
   clean: true
+  limit: 2
 sorrow_chestplate:
   type: wish
-  max: 9500000
   low: 6000000
   clean: true
+  limit: 2
 sorrow_leggings:
   active: false
   type: wish
@@ -28,6 +28,12 @@ sorrow_boots:
   max: 3800000
   clean: true
   low: 3649999
+superior_dragon_boots:
+  type: wish
+  active: true
+  stars: 5
+  low: 5000000
+  limit: 2
 hardened_diamond_helmet:
   type: wish
   low: 24000
@@ -35,11 +41,12 @@ hardened_diamond_helmet:
 hardened_diamond_chestplate:
   active: false
   type: wish
-  low: 16000
+  low: 5136
   limit: 1
 hardened_diamond_leggings:
+  active: false
   type: wish
-  low: 40000
+  low: 20000
   limit: 1
 silverfish_lege:
   type: wish
@@ -56,6 +63,7 @@ chance_2:
   low: 2500
   recipe: null
 chance_3:
+  active: false
   enchantment: true
   note: Increases chance of a mob dropping an item by 45%
   max: 10000
@@ -63,14 +71,16 @@ chance_3:
   limit: 2
   recipe: null
 chance_4:
+  active: false
   enchantment: true
   note: Increases chance of a mob dropping an item by 60%
   max: 180000
   sell: 200000
   limit: 1
   recipe: null
-  low: 170000
+  low: 99000
 chance_5:
+  active: false
   type: watch
   enchantment: true
   name: chance_5
@@ -79,6 +89,7 @@ chance_5:
   limit: 1
   recipe: null
 compact_1:
+  active: false
   type: watch
   enchantment: true
   note: bought mine for 1.1M
@@ -94,8 +105,9 @@ cubism_4:
       quantity: 24
     pumpkin:
       quantity: 32
-  low: 15000
+  low: 8
 cubism_5:
+  active: false
   enchantment: true
   note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
   max: 25000
@@ -106,8 +118,9 @@ cubism_5:
       quantity: 48
     pumpkin:
       quantity: 64
-  low: 28999
+  low: 20000
 cubism_6:
+  active: false
   type: watch
   enchantment: true
   note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
@@ -119,6 +132,7 @@ cubism_6:
     pumpkin:
       quantity: 96
 dragon_tracer_4:
+  active: false
   enchantment: true
   note: Arrows home towards dragons if they are within 2 blocks per level.
   recipe:
@@ -133,6 +147,7 @@ dragon_tracer_4:
   limit: 1
   low: 57000
 dragon_tracer_5:
+  active: false
   enchantment: true
   note: Arrows home towards dragons if they are within 2 blocks per level.
   recipe:
@@ -147,6 +162,7 @@ dragon_tracer_5:
   low: 58000
   limit: 1
 infinite_quiver_4:
+  active: false
   enchantment: true
   note: Increases the chance to not consume an arrow by 10% per level.
   recipe:
@@ -167,6 +183,7 @@ infinite_quiver_5:
     bow:
       quantity: 2
 infinite_quiver_6:
+  active: false
   enchantment: true
   note: Increases the chance to not consume an arrow by 10% per level.
   max: 3000
@@ -178,6 +195,7 @@ infinite_quiver_6:
       quantity: 4
   low: 900
 infinite_quiver_7:
+  active: false
   enchantment: true
   note: Increases the chance to not consume an arrow by 10% per level.
   max: 15000
@@ -190,6 +208,7 @@ infinite_quiver_7:
       quantity: 8
   low: 10000
 infinite_quiver_8:
+  active: false
   enchantment: true
   note: Increases the chance to not consume an arrow by 10% per level.
   max: 20000
@@ -202,6 +221,7 @@ infinite_quiver_8:
       quantity: 16
   low: 39000
 infinite_quiver_9:
+  active: false
   enchantment: true
   note: Increases the chance to not consume an arrow by 10% per level.
   max: 145000
@@ -214,6 +234,7 @@ infinite_quiver_9:
       quantity: 32
   low: 130000
 infinite_quiver_10:
+  active: false
   note: Increases the chance to not consume an arrow by 10% per level.
   sell: 2000000
   limit: 1
@@ -223,11 +244,13 @@ infinite_quiver_10:
     bow:
       quantity: 64
 one_for_all_1:
+  active: false
   type: watch
   enchantment: true
-  low: 10000000
+  low: 9950000
   limit: 1
 piercing_1:
+  active: false
   name: piercing_1
   note: Arrows fired will go through enemies. The extra targets hit take 25% of
     the damage.
@@ -252,6 +275,7 @@ power_4:
   low: 8
   limit: 1
 power_5:
+  active: false
   enchantment: true
   note: Increases bow damage by 8% per level.
   max: 3000
@@ -263,6 +287,7 @@ power_5:
     bones:
       quantity: 80
 snipe_2:
+  active: false
   enchantment: true
   name: snipe_2
   note: Arrows deal +1% damage per level for every 10 blocks traveled.
@@ -278,6 +303,7 @@ snipe_2:
     feather:
       quantity: 2
 snipe_3:
+  active: false
   enchantment: true
   name: snipe_3
   note: Arrows deal +1% damage per level for every 10 blocks traveled.
@@ -291,6 +317,7 @@ snipe_3:
       quantity: 4
   low: 4999
 impaling_2:
+  active: false
   enchantment: true
   note: Increases damage dealt to guardians and squids by 12.5% per level.
   sell: 15000
@@ -300,7 +327,9 @@ impaling_2:
       quantity: 6
     prismarine_shards:
       quantity: 20
+  low: 25000
 impaling_3:
+  active: false
   enchantment: true
   note: Increases damage dealt to guardians and squids by 12.5% per level.
   limit: 1
@@ -309,7 +338,7 @@ impaling_3:
       quantity: 12
     pumpkin:
       quantity: 40
-  low: 80000
+  low: 75000
 punch_1:
   active: false
   enchantment: true
@@ -341,6 +370,7 @@ punch_2:
       quantity: 2
   low: 70000
 flame_1:
+  active: false
   enchantment: true
   note: Arrow ignites target for 3 seconds, dealing 5 damage every second.
   sell: 80000
