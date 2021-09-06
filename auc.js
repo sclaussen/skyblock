@@ -8,12 +8,15 @@ const fs = require('fs');
 const YAML = require('yaml');
 const program = require('commander');
 
+const getEnchantmentNameAndLevel = require('./lib/auclib').getEnchantmentNameAndLevel;
 const writeAuctionItemsCache = require('./lib/auclib').writeAuctionItemsCache;
 const readAuctionItemsCache = require('./lib/auclib').readAuctionItemsCache;
 const print = require('./lib/auclib').print;
 const removeSpecialCharacters = require('./lib/auclib').removeSpecialCharacters;
 const getItemBytes = require('./lib/auclib').getItemBytes;
+const format = require('./lib/util').format;
 
+const slack = require('./lib/slack').slack;
 const sleep = require('./lib/util').sleep;
 const table = require('./lib/util').table;
 const rj = require('./lib/util').rj;
@@ -50,54 +53,30 @@ async function auc(args) {
             console.log('Reading auction cache...');
             let auctionItems = await readAuctionItemsCache();
 
-            let matches = sort(findMatches(auctionItems, watchDefinitions));
+            let matches = sort(await findMatches(auctionItems, watchDefinitions));
 
-            console.clear();
+            // console.clear();
             console.log('-- Wish --');
-            print(_.filter(matches, function(o) { return o.type === 'wish' && o.active !== false; }));
+            print(_.filter(matches, function(o) { return o.type === 'wish' }));
 
             console.log('\n-- Watch --');
-            print(_.filter(matches, function(o) { return o.type === 'watch' && o.active !== false; }));
+            print(_.filter(matches, function(o) { return o.type === 'watch' }));
 
             console.log('\n-- Flip --');
-            print(_.filter(matches, function(o) { return o.type !== 'wish' && o.type !== 'watch' && o.active !== false; }));
+            print(_.filter(matches, function(o) { return o.type !== 'wish' && o.type !== 'watch' }));
 
             console.log();
             sleep(15);
         }
     }
 
+
     let auctionItems = await readAuctionItemsCache();
     let filtered = filter(auctionItems, options);
     print(sort(filtered));
-
-
-    for (let item of filtered) {
-        p4(item);
-        // let lore = removeSpecialCharacters(item.lore);
-        // console.log();
-        // p('strength', getField(lore, 'strength'));
-        // p('chance', getField(lore, 'crit chance'));
-        // p('damage', getField(lore, 'crit damage'));
-        // p('health', getField(lore, 'health'));
-        // p('defense', getField(lore, 'defense'));
-        // p('speed', getField(lore, 'speed'));
-        // p('speed', getField(lore, 'attack speed'));
-
-        p4(getItemBytes(item.item_bytes).parsed);
-    }
 }
 
-function getField(lore, field) {
-    for (let line of lore.split('\n')) {
-        if (line.startsWith(field)) {
-            return line.substring(field.length + 2);
-        }
-    }
-    return '';
-}
-
-function findMatches(auctionItems, watchDefinitions) {
+async function findMatches(auctionItems, watchDefinitions) {
     let matches = [];
     let recordLowCostFound = false;
     for (let watchDefinitionKey of _.keys(watchDefinitions)) {
@@ -122,38 +101,42 @@ function findMatches(auctionItems, watchDefinitions) {
             watchDefinition.query_saved = watchDefinition.query;
             watchDefinition.query += '\'' + watchDefinition.query2;
         }
-        p4(watchDefinition);
+        // p4(watchDefinition);
 
 
         // Find the auction items that match the watchDefinition criteria
         let results = filter(auctionItems, watchDefinition);
 
 
-        // Three things:
-        // - Add sell field from watchDefinition into match results
-        // - Add active field from watchDefinition into match results
-        // - Create a margin field in the match results
-        // - Check to see if there's a new low cost
         _.map(results, function(match, key, coll) {
 
+            // Augment match with deal field
             match.type = 'deal';
             if ('type' in watchDefinition) {
                 match.type = watchDefinition.type;
             }
 
+            // Augment match with sell field
             match.sell = 0;
             if ('sell' in watchDefinition) {
                 match.sell = watchDefinition.sell;
             }
 
+            // Augment match with margin field
             match.margin = 0;
             if (watchDefinition.sell) {
                 match.margin = (match.sell - match.cost) / match.cost;
             }
 
-            match.active = true;
-            if ('active' in watchDefinition) {
-                match.active = watchDefinition.active;
+            // Augment match with action field
+            match.action = true;
+            if ('action' in watchDefinition) {
+                match.action = watchDefinition.action;
+            }
+
+            // Augment match with notify field
+            if ('notify' in watchDefinition) {
+                match.notify = watchDefinition.notify;
             }
 
             if (!watchDefinition.low || match.cost < watchDefinition.low) {
@@ -175,12 +158,19 @@ function findMatches(auctionItems, watchDefinitions) {
     }
 
 
-    // Remove any active=false matches so they aren't displayed
-    matches = _.filter(_.flatten(matches), function(match) {
-        if ('active' in match) {
-            return match.active;
+    // Remove action=quiet, action=notify
+    // Notify action=notify, action=view
+    matches = _.flatten(matches);
+    for (let match of matches) {
+        if (match.action !== 'quiet') {
+            if (match.cost < match.notify) {
+                await slack(lj(match.name, 50) + ' ' + rj(format(match.cost, { mix: true })) + '      ' + lj(match.extra, 20));
+            }
         }
-        return true;
+    }
+
+    matches = _.filter(matches, function(match) {
+        return match.action !== 'quiet';
     });
 
     return matches;
@@ -188,6 +178,7 @@ function findMatches(auctionItems, watchDefinitions) {
 
 function filter(auctionItems, criteria) {
 
+    p4(criteria);
     let count = 1;
 
     // Find the auctions containing the user specified query
@@ -372,7 +363,7 @@ Enchantment books:
         options.stars = parseInt(options.stars);
     }
 
-    // If -M (watch) or -R (retrieve) remove all other flags
+    // If -W (watch) or -R (retrieve) remove all other flags
     if (options.watch || options.retrieve) {
         delete options.book;
         delete options.pet;
@@ -390,7 +381,7 @@ Enchantment books:
         process.exit(1);
     }
 
-    p4(options);
+    // p4(options);
 
     return options;
 }

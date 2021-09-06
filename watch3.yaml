@@ -1,7 +1,7 @@
 dark_orb:
-  action: quiet
+  action: notify
   notify: 349000
-  sell: 450000
+  sell: 500000
   low: 290000
 hardened_diamond_helmet:
   action: quiet
@@ -28,7 +28,7 @@ shadow_assassin_chestplate:
   action: view
   type: watch
   limit: 2
-  low: 21500000
+  low: 22000000
 shadow_assassin_leggings:
   action: view
   type: watch

@@ -1,33 +1,3 @@
-strong_dragon_leggings_5s:
-  type: wish
-  active: true
-  name: strong dragon leggings
-  stars: 5
-  max: 1050000
-  extra:
-    - growth
-    - protection
-    - thorns
-young_dragon_helm:
-  type: wish
-  max: 180000
-  low: 140000
-  limit: 3
-young_dragon_chestplate:
-  type: wish
-  max: 295000
-  low: 200000
-  limit: 3
-young_dragon_leggings:
-  type: wish
-  max: 180000
-  low: 140000
-  limit: 3
-young_dragon_boots:
-  type: wish
-  max: 150000
-  low: 130000
-  limit: 3
 strong_dragon_leggings:
   active: true
   max: 1000000
@@ -165,41 +135,6 @@ shadow_assassin_boots_5s_lege:
   limit: 15
   clean: true
   low: 1200000
-shadow_assassin_helm:
-  active: false
-  max: 1750000
-  low: 175000
-shadow_assassin_chestplate:
-  active: false
-  max: 21500000
-  low: 2650000
-shadow_assassin_leggings:
-  active: false
-  max: 3800000
-  low: 2000000
-shadow_assassin_boots:
-  active: false
-  name: shadow assassin leggings
-  max: 1200000
-  low: 1100000
-superior_dragon_helm:
-  active: false
-  max: 5700000
-  low: 5600000
-superior_dragon_chestplate:
-  active: false
-  max: 8600000
-  low: 8500000
-superior_dragon_leggings:
-  active: false
-  max: 8750000
-  low: 6900000
-superior_dragon_boots:
-  type: wish
-  active: true
-  stars: 5
-  low: 5000000
-  limit: 1
 necron_helm:
   active: false
   low: 12289000
