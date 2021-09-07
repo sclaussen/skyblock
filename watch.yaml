@@ -1,6 +1,7 @@
+feature_artifact:
+  action: notify
+  notify: 100000
 dark_orb:
-  action: quiet
-  notify: 349000
   sell: 450000
   low: 290000
 hardened_diamond_helmet:
@@ -33,12 +34,12 @@ shadow_assassin_leggings:
   action: view
   type: watch
   limit: 2
-  low: 4299000
+  low: 3550000
 shadow_assassin_boots:
   action: view
   type: watch
   limit: 2
-  low: 1250000
+  low: 1080000
 sorrow_helm:
   action: quiet
   low: 4349999
@@ -185,11 +186,10 @@ shark_scale_boots:
   max: 510000
   low: 300000
 silverfish:
-  action: quiet
-  type: wish
+  action: notify
+  notify: 800000
   tier: lege
   pet: true
-  limit: 1
   low: 500000
 chance_2:
   action: quiet

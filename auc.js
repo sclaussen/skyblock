@@ -55,7 +55,7 @@ async function auc(args) {
 
             let matches = sort(await findMatches(auctionItems, watchDefinitions));
 
-            // console.clear();
+            console.clear();
             console.log('-- Wish --');
             print(_.filter(matches, function(o) { return o.type === 'wish' }));
 
@@ -178,7 +178,6 @@ async function findMatches(auctionItems, watchDefinitions) {
 
 function filter(auctionItems, criteria) {
 
-    p4(criteria);
     let count = 1;
 
     // Find the auctions containing the user specified query
