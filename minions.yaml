@@ -1,0 +1,456 @@
+- minion: lapis_lazuli
+  level: 1
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 29
+  craft:
+    - name: lapis_lazuli
+      count: 160
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 2
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 29
+  craft:
+    - name: lapis_lazuli
+      count: 768
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 3
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 27
+  craft:
+    - name: lapis_lazuli
+      count: 2048
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 4
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 27
+  craft:
+    - name: lapis_lazuli
+      count: 5888
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 5
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 25
+  craft:
+    - name: lapis_lazuli
+      count: 16128
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 6
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 25
+  craft:
+    - name: lapis_lazuli
+      count: 36608
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 7
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 23
+  craft:
+    - name: lapis_lazuli
+      count: 77568
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 8
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 23
+  craft:
+    - name: lapis_lazuli
+      count: 159488
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 9
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 21
+  craft:
+    - name: lapis_lazuli
+      count: 364288
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 10
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 21
+  craft:
+    - name: lapis_lazuli
+      count: 773888
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 11
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 18
+  craft:
+    - name: lapis_lazuli
+      count: 1593088
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: lapis_lazuli
+  level: 12
+  generated_product: lapis_lazuli
+  generated_product_compacted_form: e_lapis_lazuli
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 16
+  craft:
+    - name: lapis_lazuli
+      count: 3231488
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+- minion: gravel
+  level: 1
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 26
+  craft:
+    - name: gravel
+      count: 80
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 2
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 26
+  craft:
+    - name: gravel
+      count: 240
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 3
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 24
+  craft:
+    - name: gravel
+      count: 560
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 4
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 24
+  craft:
+    - name: gravel
+      count: 1072
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 5
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 22
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 1280
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 6
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 22
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 3840
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 7
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 19
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 8960
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 8
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 19
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 19200
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 9
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 16
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 39680
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 10
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 16
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 80649
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: gravel
+  level: 11
+  generated_product: flint
+  generated_product_compacted_form: e_flint
+  diamond_spreading: false
+  enchanted_lava_bucket: true
+  action_time: 13
+  craft:
+    - name: gravel
+      count: 1072
+    - name: flint
+      count: 162560
+  generates:
+    - name: flint
+      items_per_harvest: 1
+- minion: quartz
+  level: 1
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 22.5
+  craft:
+    - name: quartz
+      count: 80
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 2
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 22.5
+  craft:
+    - name: quartz
+      count: 240
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 3
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 21
+  craft:
+    - name: quartz
+      count: 560
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 4
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 21
+  craft:
+    - name: quartz
+      count: 1072
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 5
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 19
+  craft:
+    - name: quartz
+      count: 2352
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 6
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 19
+  craft:
+    - name: quartz
+      count: 6192
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 7
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 17
+  craft:
+    - name: quartz
+      count: 16432
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 8
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 17
+  craft:
+    - name: quartz
+      count: 36912
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 9
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 14.5
+  craft:
+    - name: quartz
+      count: 77872
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 10
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 14.5
+  craft:
+    - name: quartz
+      count: 159792
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+- minion: quartz
+  level: 11
+  generated_product: quartz
+  generated_product_compacted_form: e_quartz
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 11.5
+  craft:
+    - name: quartz
+      count: 364592
+  generates:
+    - name: quartz
+      items_per_harvest: 1

@@ -31,14 +31,20 @@ async function bz(args) {
     options = parse(args);
 
     while (true) {
-        console.clear();
+        if (!options.phrase) {
+            console.clear();
+        }
+
         if (!options.useCache) {
             await writeBazaarItemsCache();
         }
 
         let items = await readBazaarItemsCache();
-        print(values(sort(filter(items))));
+        console.log(print(values(sort(filter(items)))));
 
+        if (options.phrase) {
+            process.exit(0);
+        }
         sleep(30);
     }
 }
@@ -49,15 +55,19 @@ function filter(items) {
             return false;
         }
 
-        if (options.cost && o.cost < parseInt(options.cost)) {
+        if (options.costMinimum && o.cost < parseInt(options.costMinimum)) {
             return false;
         }
 
-        if (options.marginMaximum && o.margin > parseInt(options.marginMaximum)) {
+        if (options.costMaximum && o.cost > parseInt(options.costMaximum)) {
             return false;
         }
 
-        if (options.marginMinimum && o.margin < parseInt(options.marginMinimum)) {
+        if (options.marginMaximum && (o.margin * 100) > parseInt(options.marginMaximum)) {
+            return false;
+        }
+
+        if (options.marginMinimum && (o.margin * 100) < parseInt(options.marginMinimum)) {
             return false;
         }
 
@@ -75,7 +85,7 @@ function sort(items) {
 }
 
 function print(items) {
-    table(items, [
+    return table(items, [
         {
             name: 'margin',
             alias: '%',
@@ -103,7 +113,7 @@ function print(items) {
         {
             name: 'volume',
             width: 5,
-            format: { millions: true },
+            format: { mix: true },
             extra_spaces: 1,
         },
         {
@@ -116,7 +126,7 @@ function print(items) {
             width: -70,
             alias: 'Fandom URL'
         },
-    ], options.output);
+    ]);
 }
 
 
@@ -124,10 +134,11 @@ function parse(args) {
 
     program
         .option('-a, --all', 'Return all the items unfiltered')
-        .option('-b, --cost <cost>', 'Add a minimum cost filter', '250')
-        .option('-v, --volume <volume>', 'Add a minimum sales volume filter', '500000')
+        .option('-c, --cost-minimum <cost>', 'Add a minimum cost filter', '250')
+        .option('-C, --cost-maximum <cost>', 'Add a maximum cost filter', '1000000')
         .option('-m, --margin-minimum <margin-minimum>', 'Add a minimum margin filter', '0')
-        .option('-M, --margin-maximum <margin-maximum>', 'Add a maximum margin filter', '50')
+        .option('-M, --margin-maximum <margin-maximum>', 'Add a maximum margin filter', '35')
+        .option('-v, --volume <volume>', 'Add a minimum sales volume filter', '37500')
         .option('-o, --output <output>', 'Limit items returned', '35')
         .option('-U, --use-cache', 'Use cached items vs. the skyblock API')
         .argument('[item]', 'Filter the bazaar by an item')
@@ -142,13 +153,14 @@ function parse(args) {
 
     if (options.all) {
         delete options.output;
-        delete options.cost;
+        delete options.costMinimum;
+        delete options.costMaximum;
         delete options.volume;
         delete options.marginMinimum;
         delete options.marginMaximum;
     }
 
-    // p4(options);
+    p4(options);
 
     return options;
 }

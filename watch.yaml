@@ -1,12 +1,61 @@
-feature_artifact:
-  action: notify
-  notify: 100000
-dark_orb:
-  sell: 450000
-  low: 290000
+shadow_assassin_helm_buy:
+  action: research
+  note: bought 3M epic with growth and protection
+  tier: lege
+  stars: 5
+  low: 1000000
+  query: shadow assassin helm
+  limit: 1
+shadow_assassin_chestplate_buy:
+  action: buy
+  tier: lege
+  stars: 5
+  query: shadow assassin chestplate
+  limit: 1
+  low: 20000000
+shadow_assassin_leggings_buy:
+  action: research
+  note: bought 4,998,000 epic
+  tier: lege
+  stars: 5
+  low: 3000000
+  query: shadow assassin leggings
+  limit: 1
+superior_dragon_boots_buy:
+  action: research
+  tier: lege
+  stars: 5
+  low: 5000000
+  query: superior dragon boots
+  limit: 1
+adaptive_helm:
+  action: quiet
+  max: 145000
+  low: 100000
+  limit: 5
+adaptive_chestplate:
+  action: quiet
+  max: 3100000
+  low: 300000
+  limit: 5
+adaptive_leggings:
+  action: quiet
+  max: 525000
+  low: 100000
+  limit: 5
+adaptive_boots:
+  action: quiet
+  note: There is not enough profit in this and its volatile
+  max: 110000
+  low: 20000
+  limit: 5
+farmer_boots:
+  max: 200000
+  low: 163840
+  sell: 400000
 hardened_diamond_helmet:
   action: quiet
-  low: 5000
+  low: 3236
   limit: 1
 hardened_diamond_chestplate:
   action: quiet
@@ -19,105 +68,208 @@ hardened_diamond_leggings:
 hardened_diamond_boots:
   action: quiet
   limit: 1
-  low: 15000
+  low: 2560
+necron_helm:
+  action: quiet
+  low: 12289000
+necron_chestplate:
+  action: quiet
+  low: 12289000
+necron_leggings:
+  action: quiet
+  query: necrons leggings
+  low: 8200000
 shadow_assassin_helm:
-  action: view
-  type: watch
-  low: 175000
-  limit: 2
+  action: research
+  max: 1400000
+  limit: 5
+  low: 10367
+salmon_helmet:
+  action: quiet
+  max: 15000
+  sell: 29000
+  low: 125
+  limit: 5
+salmon_chestplate:
+  action: quiet
+  max: 15000
+  sell: 45000
+  low: 5200
+  limit: 5
+salmon_leggings:
+  action: quiet
+  max: 15000
+  sell: 35000
+  low: 5175
+  limit: 5
+salmon_boots:
+  action: quiet
+  max: 10000
+  sell: 29000
+  limit: 5
+  low: 100
 shadow_assassin_chestplate:
-  action: view
-  type: watch
-  limit: 2
-  low: 21500000
+  action: research
+  max: 20000000
+  low: 5000
+  limit: 5
 shadow_assassin_leggings:
-  action: view
-  type: watch
-  limit: 2
-  low: 3550000
+  action: research
+  max: 3200000
+  low: 499999
+  limit: 5
 shadow_assassin_boots:
-  action: view
-  type: watch
-  limit: 2
-  low: 1080000
-sorrow_helm:
+  action: research
+  note: bought 890
+  max: 880000
+  low: 100000
+  limit: 5
+shadow_goggles:
   action: quiet
-  low: 4349999
+  note: bought @ 400K
+  max: 450000
+  low: 50000
+shark_scale_helm:
+  action: quiet
+  note: use submerged reforge
+  max: 520000
+  low: 350000
   limit: 1
-sorrow_chestplate:
+shark_scale_chest:
   action: quiet
+  note: use submerged reforge
+  max: 890000
+  low: 64000
+  limit: 1
+shark_scale_leggings:
+  action: quiet
+  note: use submerged reforge
+  max: 90000
+  low: 899999
+  limit: 1
+shark_scale_boots:
+  action: quiet
+  note: use submerged reforge
+  max: 510000
+  low: 300000
+sorrow_helm:
+  action: research
+  max: 5000000
+  low: 550000
+  limit: 5
+sorrow_chestplate:
+  action: research
   type: wish
-  max: 10250000
-  low: 6000000
-  clean: true
-  limit: 3
+  max: 8500000
+  low: 850000
+  limit: 5
 sorrow_leggings:
   action: quiet
   type: wish
-  max: 8000000
-  low: 4700000
-  sell: 8000000
-  clean: true
+  max: 7750000
+  low: 750000
 sorrow_boots:
   action: quiet
   type: wish
-  max: 3800000
-  clean: true
-  low: 2100000
+  max: 4000000
+  low: 385000
 strong_dragon_leggings:
-  action: notify
-  max: 1000000
-  notify: 900000
   extra:
     - growth
     - protection
     - thorns
-  low: 300000
+  max: 875000
+  sell: 1100000
+  low: 200000
 strong_dragon_leggings_rejuvenate:
-  action: notify
-  name: strong dragon leggings
-  max: 1000000
-  notify: 900000
+  query: strong dragon leggings
   extra:
     - growth
     - protection
     - rejuvenate
+  max: 875000
+  sell: 1100000
+  low: 300000
 strong_dragon_leggings_rejuvenate_thorns:
-  action: notify
-  name: strong dragon leggings
-  max: 1100000
-  notify: 900000
+  query: strong dragon leggings
   extra:
     - growth
     - protection
     - rejuvenate
     - thorns
+  max: 900000
+  sell: 1100000
+  low: 500000
+strong_dragon_leggings_4s:
+  query: strong dragon leggings
+  stars: 4
+  max: 1000000
+  sell: 1400000
+  low: 300000
 strong_dragon_leggings_5s:
-  action: notify
+  query: strong dragon leggings
   stars: 5
-  name: strong dragon leggings
   max: 1200000
-  notify: 1000000
+  sell: 1900000
+  low: 500000
+strong_dragon_leggings_clean:
+  query: strong dragon leggings
+  max: 890000
+  sell: 985000
+  low: 160000
+superior_dragon_helmet:
+  action: research
+  bought: 7M
+  limit: 5
+  max: 6750000
+  low: 900000
+superior_dragon_chestplate:
+  action: research
+  limit: 5
+  max: 10750000
+  low: 6000000
+superior_dragon_leggings:
+  action: research
+  limit: 5
+  max: 10000000
+  low: 1000000
 superior_dragon_boots:
-  action: quiet
-  type: wish
-  stars: 5
-  low: 5000000
-  limit: 1
-unstable_diamond_helmet:
-  action: quiet
-  limit: 1
-unstable_diamond_chestplate:
-  action: quiet
-  limit: 1
-unstable_diamond_leggings:
-  action: quiet
-  limit: 1
-unstable_diamond_boots:
-  action: quiet
-  low: 15000
+  action: research
+  limit: 5
+  max: 5500000
+  low: 525000
+unstable_dragon_helmet:
+  action: research
+  max: 125000
+  low: 100000
+  limit: 5
+unstable_dragon_chestplate:
+  action: research
+  max: 175000
+  low: 100000
+  limit: 5
+unstable_dragon_leggings:
+  action: research
+  max: 175000
+  low: 100000
+  limit: 5
+unstable_dragon_boots:
+  action: research
+  max: 100000
+  low: 100000
+  limit: 5
+water_hydra_head:
+  action: research
+  max: 40000
+  low: 5500
+  limit: 5
+wardens_helmet:
+  action: research
+  max: 216000000
+  low: 215000000
+  limit: 5
 young_dragon_helm:
-  type: wish
+  action: quiet
   max: 1000000
   low: 100000
   limit: 1
@@ -128,7 +280,6 @@ young_dragon_helm:
     - rejuvenate
 young_dragon_chestplate:
   action: quiet
-  type: wish
   max: 1000000
   low: 100000
   limit: 1
@@ -138,17 +289,17 @@ young_dragon_chestplate:
     - thorns
     - rejuvenate
 young_dragon_leggings:
-  type: wish
+  action: quiet
   max: 1000000
   low: 101000
-  limit: 2
+  limit: 1
   extra:
     - growth
     - protection
     - thorns
     - rejuvenate
 young_dragon_boots:
-  type: wish
+  action: quiet
   max: 1000000
   low: 100000
   limit: 1
@@ -158,39 +309,192 @@ young_dragon_boots:
     - thorns
     - rejuvenate
     - feather-falling
-shark_scale_helm:
+aspect_of_the_end:
   action: quiet
-  type: wish
-  note: use submerged reforge
-  max: 520000
-  low: 400000
+  max: 150000
+  low: 56000
+  sell: 200000
+aspect_of_the_dragon:
+  action: quiet
+  max: 600000
+  sell: 748000
+  low: 100000
+axe_of_the_shredded:
+  action: research
+  max: 68000000
+  low: 65000000
   limit: 1
-shark_scale_chest:
+bonzos_staff:
+  action: research
+  note: great for dungeon mobility
+  limit: 5
+flower_of_truth:
+  action: research
+  max: 3000000
+  low: 199000
+  limit: 1
+ghoul_buster:
   action: quiet
-  type: wish
-  note: use submerged reforge
-  max: 890000
+  note: use the Fast reforge on this one, no need to enchant
+  max: 2100000
+  low: 1200000
+fel_sword:
+  action: research
+  requires: cat20
+  max: 150000
+  sell: 150000
+  low: 20000
+  limit: 1
+florid_zombie_sword:
+  action: quiet
+  note: good for burst healing, slayers or dungeon bosses
+  max: 2850000
+  sell: 3050000
+  low: 2000000
+giantXs_sword:
+  action: research
+  max: 140000000
+  low: 130000000
+  limit: 1
+shadow_fury:
+  action: quiet
+  max: 19700000
+  low: 1999995
+hyperion:
+  action: quiet
+  max: 575000000
+  low: 200
+ice_spray_wand:
+  action: quiet
+  note: good for mob stunning, good to pair w/other weapons
+  max: 24000000
+  low: 10600000
+livid_dagger:
+  action: research
+  requires: cat5
+  max: 6800000
+  low: 505227
+  limit: 1
+ornate_zombie_sword:
+  action: quiet
+  note: good for burst healing, slayers or dungeon bosses
+  max: 1050000
+  low: 200000
+raiders_axe:
+  action: quiet
+  max: 135000
+reaper_falchion:
+  action: quiet
+  max: 3500000
+  low: 1000000
+  sell: 4000000
+  limit: 5
+terminator:
+  action: research
+  max: 794000000
+  low: 760000000
+thick_scorpion_foil:
+  action: quiet
+  max: 910000
   low: 500000
-  limit: 1
-shark_scale_leggings:
+voidedge_katana:
   action: quiet
-  type: wish
-  note: use submerged reforge
-  max: 90000
-  low: 899999
-  limit: 1
-shark_scale_boots:
+  max: 700000
+  low: 200000
+  limit: 5
+vorpal_katana:
   action: quiet
-  type: wish
-  note: use submerged reforge
-  max: 510000
-  low: 300000
+  max: 5900000
+  low: 5000000
+  sell: 7400000
+warped_aspect_of_the_end:
+  query: aspect of the end
+  reforge: warped
+  max: 9000000
+  sell: 12000000
+  low: 999999
+wither_cloak_sword:
+  action: quiet
+  note: floor 7 lava hopping
+  max: 3500000
+  low: 2400000
+valkyrie:
+  action: quiet
+  max: 575000000
+  low: 599000000
+runaans_bow:
+  action: quiet
+  max: 400000
+  low: 399000
+  limit: 1
+hurricane_bow:
+  action: quiet
+  max: 58000
+  low: 15500
+magma_bow:
+  action: quiet
+  max: 190000
+  low: 80000
+juju_shortbow:
+  action: research
+  max: 25500000
+  low: 2490000
+  limit: 1
+baby_yeti_lege:
+  pet: true
+  tier: lege
+  max: 16500000
+  low: 16000000
+black_cat:
+  pet: true
+  tier: lege
+  max: 15500000
+  low: 5900000
+dolphin:
+  pet: true
+  tier: lege
+  max: 12500000
+  low: 12000000
+  sell: 14000000
+elephant:
+  action: research
+  pet: true
+  tier: lege
+  max: 16300000
+  sell: 18000000
+  limit: 5
+  low: 12800000
+ender_dragon:
+  action: quiet
+  pet: true
+  tier: lege
+  low: 6900000
+griffin:
+  pet: true
+  tier: lege
+  max: 34000000
+  low: 3899999
+mithril_golem:
+  action: research
+  note: bought my at 1.15M
+  pet: true
+  tier: lege
+  max: 950000
+  sell: 1200000
+  low: 249000
+monkey:
+  action: research
+  pet: true
+  tier: lege
+  max: 18500000
+  low: 13999999
+  limit: 5
 silverfish:
-  action: notify
-  notify: 800000
+  action: quiet
+  max: 800000
   tier: lege
   pet: true
-  low: 500000
+  low: 94997
 chance_2:
   action: quiet
   enchantment: true
@@ -214,19 +518,17 @@ chance_4:
   sell: 200000
   limit: 1
   recipe: null
-  low: 30000
+  low: 8
 chance_5:
   action: quiet
-  type: watch
   enchantment: true
-  name: chance_5
+  query: chance_5
   note: Increases chance of a mob dropping an item by 75%
-  low: 49000000
+  low: 43000000
   limit: 1
   recipe: null
 compact_1:
   action: quiet
-  type: watch
   enchantment: true
   note: bought mine for 1.1M
   low: 900000
@@ -254,13 +556,12 @@ cubism_5:
       quantity: 48
     pumpkin:
       quantity: 64
-  low: 1000
+  low: 16
 cubism_6:
   action: quiet
-  type: watch
   enchantment: true
   note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
-  low: 31900000
+  low: 30000000
   limit: 1
   recipe:
     paper:
@@ -383,13 +684,12 @@ infinite_quiver_10:
       quantity: 64
 one_for_all_1:
   action: quiet
-  type: watch
   enchantment: true
-  low: 9900000
+  low: 9500000
   limit: 1
 piercing_1:
   action: quiet
-  name: piercing_1
+  query: piercing_1
   note: Arrows fired will go through enemies. The extra targets hit take 25% of
     the damage.
   sell: 90000
@@ -427,7 +727,7 @@ power_5:
 snipe_2:
   action: quiet
   enchantment: true
-  name: snipe_2
+  query: snipe_2
   note: Arrows deal +1% damage per level for every 10 blocks traveled.
   max: 2000
   sell: 10000
@@ -443,7 +743,7 @@ snipe_2:
 snipe_3:
   action: quiet
   enchantment: true
-  name: snipe_3
+  query: snipe_3
   note: Arrows deal +1% damage per level for every 10 blocks traveled.
   limit: 10
   recipe:
@@ -465,7 +765,7 @@ impaling_2:
       quantity: 6
     prismarine_shards:
       quantity: 20
-  low: 25000
+  low: 10000
 impaling_3:
   action: quiet
   enchantment: true
@@ -476,11 +776,11 @@ impaling_3:
       quantity: 12
     pumpkin:
       quantity: 40
-  low: 47000
+  low: 15000
 punch_1:
   action: quiet
   enchantment: true
-  name: punch_1
+  query: punch_1
   note: Increases knockback dealt by 3 blocks per level.
   sell: 25000
   limit: 1
@@ -495,7 +795,7 @@ punch_1:
 punch_2:
   action: quiet
   enchantment: true
-  name: punch_2
+  query: punch_2
   sell: 70000
   note: Increases knockback dealt by 3 blocks per level.
   limit: 1
@@ -531,7 +831,7 @@ critical_6:
   max: 90000
   enchantment: true
   limit: 3
-  low: 25000
+  low: 32
 ender_slayer_5:
   action: quiet
   enchantment: true
@@ -544,18 +844,94 @@ ender_slayer_6:
   low: 1500000
 ender_slayer_7:
   action: quiet
-  type: watch
   enchantment: true
   limit: 1
-  low: 14999999
+  low: 9690000
 execute_5:
   action: quiet
   enchantment: true
   limit: 1
-  low: 5000
+  low: 1000
 execute_6:
   action: quiet
-  type: watch
   enchantment: true
   limit: 1
   low: 13000000
+dark_orb:
+  max: 350000
+  sell: 450000
+  low: 1
+precursor_gear:
+  action: research
+  max: 630000
+  sell: 640000
+  low: 1
+personal_compactor_4000:
+  max: 700000
+  low: 79998
+  sell: 990000
+  limit: 2
+personal_compactor_5000:
+  max: 1400000
+  tier: rare
+  low: 150000
+  sell: 1825000
+  limit: 2
+personal_compactor_6000:
+  max: 2500000
+  tier: epic
+  low: 900000
+  sell: 3200000
+  limit: 2
+personal_compactor_7000:
+  action: quiet
+  max: 5600000
+  tier: lege
+  low: 3000000
+  sell: 6300000
+beacon_i:
+  tier: rare
+  max: 410000
+  low: 390000
+  sell: 450000
+  limit: 1
+beacon_ii:
+  tier: rare
+  max: 2000000
+  low: 1100000
+  sell: 2400000
+beacon_iii:
+  action: research
+  tier: epic
+  max: 5900000
+  low: 4250000
+  sell: 7000000
+  limit: 5
+beacon_iv:
+  tier: epic
+  max: 14000000
+  low: 13000000
+  limit: 1
+refined_amber:
+  max: 975000
+  requires: mining 25 to apply
+  low: 700000
+  limit: 1
+feather_artifact:
+  action: quiet
+  note: bought mine @ 140K
+  max: 150000
+  sell: 199999
+  low: 50000
+bait_ring:
+  action: research
+  max: 20000000
+  sell: 20500000
+  low: 17500000
+  limit: 1
+sea_creature_artifact:
+  action: quiet
+  note: bought mine @ 250K
+  max: 250000
+  sell: 290000
+  low: 25000
