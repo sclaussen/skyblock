@@ -9,6 +9,7 @@ const YAML = require('yaml');
 const program = require('commander');
 const moment = require('moment');
 
+const { parse, writeUncompressed } = require('prismarine-nbt')
 const writeAuctionItemsCache = require('./lib/auclib').writeAuctionItemsCache;
 const readAuctionItemsCache = require('./lib/auclib').readAuctionItemsCache;
 const removeSpecialCharacters = require('./lib/auclib').removeSpecialCharacters;
@@ -19,7 +20,6 @@ const sleep = require('./lib/util').sleep;
 const table = require('./lib/util').table;
 const rj = require('./lib/util').rj;
 const lj = require('./lib/util').lj;
-const coins = require('./lib/util').coins;
 
 const p = require('./lib/pr').p(d);
 const p4 = require('./lib/pr').p4(d);
@@ -43,7 +43,7 @@ var options;
 async function auc(args) {
 
     // Parse the options
-    options = parse(args);
+    options = parseArguments(args);
 
     if (!options.query) {
         while (true) {
@@ -80,16 +80,24 @@ async function auc(args) {
 
     // await writeAuctionItemsCache();
     let auctionItems = await readAuctionItemsCache();
-    p('count: ' + auctionItems.length);
     let filtered = filter(auctionItems, options);
-    p('filtered count: ' + filtered.length);
     let sorted = sort(filtered);
     let truncated = sorted;
     if (options.limit) {
         truncated = truncated.splice(0, options.limit);
     }
-    p('truncated count: ' + truncated.length);
+
+    // await digBytes(truncated);
+
     console.log(print(truncated));
+}
+
+async function digBytes(items) {
+    for (let item of items) {
+        let buffer = new Buffer.from(item.item_bytes, 'base64');
+        const { parsed, type } = await parse(buffer)
+        p4(parsed);
+    }
 }
 
 function filter(items, criteria) {
@@ -211,7 +219,7 @@ async function findMatches(auctionItems, watchDefinitions) {
 
 
         if (watchDefinition.action === 'research' && !watchDefinition.limit) {
-            watchDefinition.limit = 5;
+            watchDefinition.limit = 3;
             watchDefinition.limit_added = true;
         }
 
@@ -367,7 +375,7 @@ function print(items, max, highlight) {
         },
         {
             name: 'name',
-            width: -55,
+            width: -75,
         },
         {
             name: 'health',
@@ -471,6 +479,12 @@ function augmentNames(items) {
         }
         if (item.stars) {
             item.name += ' ' + item.stars;
+        }
+        if (item.pet_held_item) {
+            item.name += ' [' + item.pet_held_item + ']';
+        }
+        if (item.pet_candy_used) {
+            item.name += ' [candy: ' + item.pet_candy_used + ']';
         }
     });
     return items;
@@ -614,7 +628,7 @@ function getField(lore, field) {
     return '';
 }
 
-function parse(args) {
+function parseArguments(args) {
 
     program
         .option('-e, --enchantment', 'Search for an enchantment book that contains the phrase')
@@ -625,7 +639,7 @@ function parse(args) {
         .option('-x, --extra <string...>', 'Include extra metadata containing all the match values')
 
         .option('-l, --limit <limit>', 'Limit output to the first N items', 30)
-        .option('-L, --limit-none', 'Remove default limit so all matches are returned')
+        .option('-a, --all', 'Remove default limit so all matches are returned')
 
         .option('-n, --no-notifications', 'Remove slack notifications')
 
@@ -637,7 +651,7 @@ Watch for auctions meeting the criteria defined in watch.yaml (loops):
 Find strong dragon boot auctions:
   $ auc "strong dragon boots"
   $ auc "strong dragon boots" -l 50                    # limit output to the 50 cheapest items
-  $ auc "strong dragon boots" -L                       # do not limit the output
+  $ auc "strong dragon boots" -a                       # do not limit the output
   $ auc "strong dragon boots" -t lege                  # find legendary boots
   $ auc "strong dragon boots" -t lege -s5              # find 5 star legendary boots
   $ auc "strong dragon boots" -t lege -s5 -r fierce    # find 5 star legendary fierce boots
@@ -663,7 +677,7 @@ Find enchantment books:
     }
 
     // Remove the limit default if the user wants all matches
-    if (options.limitNone) {
+    if (options.all) {
         delete options.limit;
     }
 
@@ -685,7 +699,7 @@ Find enchantment books:
         delete options.stars;
         delete options.extra;
         delete options.limit;
-        delete options.limitNone;
+        delete options.all;
     }
 
     // p4(options);

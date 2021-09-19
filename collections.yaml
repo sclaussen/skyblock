@@ -1,62 +1,124 @@
-cactus: 5
-carrot: 5
-cocoa_beans: 7
-feather: 7
-leather: 8
-melon: 6
-mushroom: 7
-mutton: 7
-nether_wart: 8
-potato: 8
-pumpkin: 8
-raw_chicken: 7
-raw_porkchop: 6
-raw_rabbit: 7
-seeds: 6
-sugar_cane: 8
-wheat: 10
-blaze_rod: 7
-bone: 9
-ender_pearl: 8
-ghast_tear: -1
-gunpowder: 1
-magma_cream: 9
-rotten_flesh: 7
-slimeball: 8
-spider_eye: 8
-string: 9
-clay: 5
-clownfish: 6
-ink_sack: 4
-lily_pad: 5
-prismarine_crystals: 6
-prismarine_shard: 6
-pufferfish: 6
-raw_fish: 7
-raw_salmon: 7
-sponge: 5
-acacia_wood: 7
-birch_wood: 9
-dark_oak_wood: 6
-jungle_wood: 9
-oak_wood: 9
-spruce_wood: 5
-coal: 10
-cobblestone: 10
-diamond: 9
-emerald: 6
-end_stone: 8
-gemstone: -1
-glowstone_dust: 9
-gold_ingot: 8
-gravel: 8
-hard_stone: -1
-ice: 5
-iron_ingot: 9
-lapis_lazuli: 10
-mithril: 6
-nether_quartz: 9
-netherrack: -1
-obsidian: 7
-redstone: 8
-sand: 7
+- name: cactus
+  level: 5
+- name: carrot
+  level: 5
+- name: cocoa_beans
+  level: 7
+- name: feather
+  level: 7
+- name: leather
+  level: 8
+- name: melon
+  level: 6
+- name: mushroom
+  level: 7
+- name: mutton
+  level: 7
+- name: nether_wart
+  level: 8
+- name: potato
+  level: 8
+- name: pumpkin
+  level: 8
+- name: raw_chicken
+  level: 7
+- name: raw_porkchop
+  level: 6
+- name: raw_rabbit
+  level: 7
+- name: seeds
+  level: 6
+- name: sugar_cane
+  level: 8
+- name: wheat
+  level: 10
+- name: blaze_rod
+  level: 7
+- name: bone
+  level: 9
+- name: ender_pearl
+  level: 8
+- name: ghast_tear
+  level: -1
+- name: gunpowder
+  level: 1
+- name: magma_cream
+  level: 9
+- name: rotten_flesh
+  level: 7
+- name: slimeball
+  level: 8
+- name: spider_eye
+  level: 8
+- name: string
+  level: 9
+- name: clay
+  level: 5
+- name: clownfish
+  level: 6
+- name: ink_sack
+  level: 4
+- name: lily_pad
+  level: 5
+- name: prismarine_crystals
+  level: 6
+- name: prismarine_shard
+  level: 6
+- name: pufferfish
+  level: 6
+- name: raw_fish
+  level: 7
+- name: raw_salmon
+  level: 7
+- name: sponge
+  level: 5
+- name: acacia_wood
+  level: 7
+- name: birch_wood
+  level: 9
+- name: dark_oak_wood
+  level: 6
+- name: jungle_wood
+  level: 9
+- name: oak_wood
+  level: 9
+- name: spruce_wood
+  level: 5
+- name: coal
+  level: 10
+- name: cobblestone
+  level: 10
+- name: diamond
+  level: 9
+- name: emerald
+  level: 6
+- name: end_stone
+  level: 8
+- name: gemstone
+  level: -1
+- name: glowstone_dust
+  level: 9
+- name: gold_ingot
+  level: 8
+- name: gravel
+  level: 8
+- name: hard_stone
+  level: -1
+- name: ice
+  level: 5
+- name: iron_ingot
+  level: 9
+- name: lapis_lazuli
+  level: 10
+- name: mithril
+  level: 6
+- name: nether_quartz
+  level: 9
+- name: netherrack
+  level: -1
+- name: obsidian
+  level: 7
+- name: redstone
+  level: 8
+- name: sand
+  level: 7

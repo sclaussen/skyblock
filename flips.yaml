@@ -1,767 +1,376 @@
-power_4:
-  name: power_4
-  note: Increases bow damage by 8% per level.
-  tier: common
-  auction_craft:
-    sell:
-    ingredients:
-      paper:
-        quantity: 24
-      bones:
-        quantity: 40
-
-power_5:
-  name: power_5
-  note: Increases bow damage by 8% per level.
-  tier: common
-  auction_craft:
-    sell:
-    ingredients:
-      paper:
-        quantity: 48
-      bones:
-        quantity: 80
-infinite_quiver_7:
-  tier: epic
-  book: true
-  name: enchanted book infinite-quiver
-  max: 10000
-  low: 2000
-  limit: 1
-infinite_quiver_8:
-  tier: lege
-  book: true
-  name: enchanted book infinite-quiver
-  max: 45000
-  low: 20000
-  limit: 1
-infinite_quiver_9:
-  tier: myth
-  book: true
-  name: enchanted book infinite-quiver
-  max: 65000
-  low: 60000
-piercing_1:
-  note: Arrows fired will go through enemies. The extra targets hit take 25% of the damage.
-  tier: comm
-  book: true
-  max: 25000
-  low: 20000
-  limit: 1
-  auction_craft:
-    sell: 90000
-    ingredients:
-      paper:
-        quantity: 3
-      cactus:
-        quantity: 10
-      arrow:
-        quantity: 1
-dragon_tracer_4:
-  note: Arrows home towards dragons if they are within 2 blocks per level.
-  book: true
-  tier: comm
-  max: 5000
-  low: 19000
-  auction_craft:
-    ingredients:
-      paper:
-        quantity: 24
-      arrow:
-        quantity: 8
-      silver:
-        quantity: 4
-      redstone:
-        quantity: 1
-
-dragon_tracer_5:
-  note: Arrows home towards dragons if they are within 2 blocks per level.
-  book: true
-  tier: unco
-  name: enchanted book dragon-tracer
-  max: 10000
-  low: 4000
-  auction_craft:
-    sell: 10000
-    ingredients:
-      silver:
-        quantity: 8
-      redstone:
-        quantity: 2
-      paper:
-        quantity: 48
-      arrow:
-        quantity: 16
-
-enchanted_book_infinite_quiver_4:
-  name: enchanted_book_infinite_quiver_4
-  note: Increases the chance to not consume an arrow by 10% per level.
-  auction_craft:
-    ingredients:
-      paper:
-        quantity: 24
-      bow:
-        quantity: 1
-
-enchanted_book_infinite_quiver_5:
-  name: enchanted_book_infinite_quiver_5
-  note: Increases the chance to not consume an arrow by 10% per level.
-  auction_craft:
-    ingredients:
-      paper:
-        quantity: 48
-      bow:
-        quantity: 2
-
-enchanted_book_infinite_quiver_6:
-  name: enchanted_book_infinite_quiver_6
-  note: Increases the chance to not consume an arrow by 10% per level.
-  auction_craft:
-    sell: 5000
-    ingredients:
-      paper:
-        quantity: 96
-      bow:
-        quantity: 4
-
-enchanted_book_infinite_quiver_7:
-  name: enchanted_book_infinite_quiver_7
-  note: Increases the chance to not consume an arrow by 10% per level.
-  auction_craft:
-    sell: 60000
-    ingredients:
-      paper:
-        quantity: 192
-      bow:
-        quantity: 8
-
-enchanted_book_infinite_quiver_8:
-  name: enchanted_book_infinite_quiver_8
-  note: Increases the chance to not consume an arrow by 10% per level.
-  auction_craft:
-    sell: 100000
-    ingredients:
-      paper:
-        quantity: 384
-      bow:
-        quantity: 16
-
-enchanted_book_infinite_quiver_9:
-  name: enchanted_book_infinite_quiver_9
-  note: Increases the chance to not consume an arrow by 10% per level.
-  auction_craft:
-    sell: 2000000
-    ingredients:
-      paper:
-        quantity: 768
-      bow:
-        quantity: 32
-
-snipe_2:
-  name: snipe_2
-  note: Arrows deal +1% damage per level for every 10 blocks traveled.
-  tier: common
-  auction_craft:
-    sell: 10000
-    ingredients:
-      paper:
-        quantity: 6
-      arrow:
-        quantity: 2
-      feather:
-        quantity: 2
-
-snipe_3:
-  name: snipe_3
-  note: Arrows deal +1% damage per level for every 10 blocks traveled.
-  tier: common
-  auction_craft:
-    sell: ?
-    ingredients:
-      paper:
-        quantity: 12
-      arrow:
-        quantity: 4
-      feather:
-        quantity: 4
-
-piercing_1:
-  name: piercing_1
-
-cubism_4:
-  name: cubism_4
-  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
-  auction_craft:
-    sell: 15000
-    ingredients:
-      paper:
-        quantity: 24
-      pumpkin:
-        quantity: 32
-
-cubism_5:
-  name: cubism_5
-  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
-  auction_craft:
-    ingredients:
-      paper:
-        quantity: 48
-      pumpkin:
-        quantity: 64
-
-impaling_2:
-  name: impaling_2
-  note: Increases damage dealt to guardians and squids by 12.5% per level.
-  auction_craft:
-    sell: 15000
-    ingredients:
-      paper:
-        quantity: 6
-      prismarine_shards:
-        quantity: 20
-
-impaling_3:
-  name: impaling_3
-  note: Increases damage dealt to guardians and squids by 12.5% per level.
-  auction_craft:
-    ingredients:
-      paper:
-        quantity: 12
-      pumpkin:
-        quantity: 40
-
-punch_1:
-  name: punch_1
-  note: Increases knockback dealt by 3 blocks per level.
-  tier: common
-  auction_craft:
-    sell: 25000
-    ingredients:
-      paper:
-        quantity: 48
-      arrow:
-        quantity: 1
-      slime:
-        quantity: 1
-
-punch_2:
-  name: punch_2
-  note: Increases knockback dealt by 3 blocks per level.
-  tier: common
-  auction_craft:
-    sell: 70000
-    ingredients:
-      paper:
-        quantity: 96
-      arrow:
-        quantity: 2
-      slime:
-        quantity: 2
-
-chance_2:
-  name: chance_2
-  note: Increases chance of a mob dropping an item by 15% per level.
-  tier: common
-  auction_craft:
-    sell: 5000
-    ingredients:
-
-chance_3:
-  name: chance_3
-  note: Increases chance of a mob dropping an item by 15% per level.
-  tier: common
-  auction_craft:
-    sell: 15000
-    ingredients:
-
-chance_4:
-  name: chance_4
-  note: Increases chance of a mob dropping an item by 15% per level.
-  tier: common
-  auction_craft:
-    sell: 60000
-    ingredients:
-
-chance_5:
-  name: chance_5
-  note: +15% per level mob drops
-  tier: uncommon
-  auction_craft:
-    sell: 31000000
-    ingredients:
-
-flame_1:
-  name: chance_5
-  note: Arrow ignites target for 3 seconds, dealing 5 damage every second.
-  tier: common
-  auction_craft:
-    ingredients:
-      paper:
-        quantity: 3
-      bow:
-        quantity: 1
-      blaze_rod:
-        quantity: 2
-
-e_pumpkin:
-  name: e_pumpkin
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      pumpkin:
-        quantity: 160
-
-e_prismarine_shard:
-  name: e_prismarine_shard
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      prismarine_shard:
-        quantity: 80
-
-e_brown_mushroom:
-  name: e_brown_mushroom
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      brown_mushroom:
-        quantity: 160
-
-e_red_mushroom:
-  name: e_red_mushroom
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      red_mushroom:
-        quantity: 160
-
-e_mutton:
-  name: e_mutton
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      mutton:
-        quantity: 160
-
-e_diamond:
-  name: e_diamond
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      diamond:
-        quantity: 160
-
-e_shark_fin:
-  name: e_shark_fin
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      shark_fin:
-        quantity: 160
-
-e_cobblestone:
-  name: e_cobblestone
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      cobblestone:
-        quantity: 160
-
-e_spider_eye:
-  name: e_spider_eye
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      spider_eye:
-        quantity: 160
-
-e_raw_fish:
-  name: e_raw_fish
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      raw_fish:
-        quantity: 160
-
-e_pork:
-  name: e_pork
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      pork:
-        quantity: 160
-
-e_prismarine_crystals:
-  name: e_prismarine_crystals
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      prismarine_crystals:
-        quantity: 80
-
-e_ice:
-  name: e_ice
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      ice:
-        quantity: 160
-
-e_string:
-  name: e_string
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      string:
-        quantity: 192
-
-e_rabbit_foot:
-  name: e_rabbit_foot
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      rabbit_foot:
-        quantity: 160
-
-e_redstone:
-  name: e_redstone
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      redstone:
-        quantity: 160
-
-e_sand:
-  name: e_sand
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      sand:
-        quantity: 160
-
-e_slime_ball:
-  name: e_slime_ball
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      slime_ball:
-        quantity: 160
-
-e_raw_chicken:
-  name: e_raw_chicken
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      raw_chicken:
-        quantity: 160
-
-e_ancient_claw:
-  name: e_ancient_claw
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      ancient_claw:
-        quantity: 160
-
-e_seeds:
-  name: e_seeds
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      seeds:
-        quantity: 160
-
-e_hay_block:
-  name: e_hay_block
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      hay_block:
-        quantity: 144
-
-e_flint:
-  name: e_flint
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      e_flint:
-        quantity: 160
-
-e_ink_sack:
-  name: e_ink_sack
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      ink_sack:
-        quantity: 80
-
-e_melon:
-  name: e_melon
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      melon:
-        quantity: 160
-
-e_bone:
-  name: e_bone
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      bone:
-        quantity: 160
-
-e_feather:
-  name: e_feather
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      feather:
-        quantity: 160
-
-e_netherrack:
-  name: e_netherrack
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      netherrack:
-        quantity: 160
-
-e_sponge:
-  name: e_sponge
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      sponge:
-        quantity: 40
-
-e_blaze_rod:
-  name: e_blaze_rod
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      blaze_rod:
-        quantity: 160
-
-e_ghast_tear:
-  name: e_ghast_tear
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      ghast_tear:
-        quantity: 4
-
-e_glowstone_dust:
-  name: e_glowstone_dust
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      glowstone_dust:
-        quantity: 160
-
-e_emerald:
-  name: e_emerald
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      emerald:
-        quantity: 160
-
-e_packed_ice:
-  name: e_packed_ice
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      packed_ice:
-        quantity: 160
-
-e_coal:
-  name: e_coal
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      coal:
-        quantity: 160
-
-e_ender_pearl:
-  name: e_ender_pearl
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      ender_pearl:
-        quantity: 20
-
-absolute_ender_pearl:
-  name: absolute_ender_pearl
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      e_ender_pearl:
-        quantity: 80
-
-e_quartz:
-  name: e_quartz
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      quartz:
-        quantity: 160
-
-e_raw_beef:
-  name: e_raw_beef
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      raw_beef:
-        quantity: 160
-
-e_magma_cream:
-  name: e_magma_cream
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      magma_cream:
-        quantity: 160
-
-e_rabbit_hide:
-  name: e_rabbit_hide
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      rabbit_hide:
-        quantity: 576
-
-e_obsidian:
-  name: e_obsidian
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      obsidian:
-        quantity: 160
-
-e_cactus:
-  name: e_cactus
-  bazaar_flip:
-    cost: 0
-  crafted_bazaar:
-    ingredients:
-      e_cactus_green:
-         quantity: 160
-
-runaans_bow:
-  name: runaans
-  crafted_auction:
-    sell: 410000
-    ingredients:
-      e_bone:
-        quantity: 192
-      e_string:
-        quantity: 192
-
-magma_bow:
-  name: magma_bow
-  crafted_auction:
-    sell: 250000
-    ingredients:
-      e_magma_cream:
-        quantity: 192
-      e_string:
-        quantity: 3
-
-superior_dragon_helm:
-  name: superior_dragon_helm
-  auction_flip:
-    cost: 6500000
-    sell: 6500000
-
-superior_dragon_chestplate:
-  name: superior_dragon_chestplate
-  auction_flip:
-    cost: 10000000
-    sell: 10000000
-
-superior_dragon_leggings:
-  name: superior_dragon_leggings
-  auction_flip:
-    cost: 999999
-    sell: 1100000
-
-superior_dragon_boots:
-  name: superior_dragon_boots
-  auction_flip:
-    cost: 8400000
-    sell: 6000000
-
-superior_dragon_helm_5s:
-  name: superior_dragon_helm
-  auction_flip:
-    cost: 8400000
-    sell: 8400000
-
-superior_dragon_chestplate_5s:
-  name: superior_dragon_chestplate_5s
-  auction_flip:
-    cost: 15000000
-    sell: 15000000
-
-superior_dragon_leggings_5s:
-  name: superior_dragon_leggings_5s
-  auction_flip:
-    cost: 14000000
-    sell: 14000000
-
-superior_dragon_boots_5s:
-  name: superior_dragon_boots_5s
-  auction_flip:
-    cost: 6200000
-    sell: 6200000
-
-crystal_fragment:
-  name: crystal_fragment
-  auction_flip:
-    cost: 65000
-    sell: 79999
-
-# enchanted_eye_of_ender:
+- name: coal
+  npc: mine
+  npc_cost: 8
+- name: e_coal
+  ingredients:
+    - name: coal
+      quantity: 160
+- name: iron_ingot
+  npc: mine
+  npc_cost: 22
+- name: e_iron
+  ingredients:
+    - name: iron_ingot
+      quantity: 160
+- name: gold
+  npc: mine
+  npc_cost: 12
+- name: e_gold
+  ingredients:
+    - name: gold
+      quantity: 160
+- name: wheat
+  npc: farm
+  npc_cost: 7
+# - name: hay_bale
+#   ingredients:
+#     - name: wheat
+#       quantity: 9
+# - name: e_hay_bale
+#   ingredients:
+#     - name: hay_bale
+#       quantity: 144
+- name: carrot
+  npc: farm
+  npc_cost: 7
+- name: e_carrot
+  ingredients:
+    - name: carrot
+      quantity: 160
+- name: potato
+  npc: farm
+  npc_cost: 7
+- name: e_potato
+  ingredients:
+    - name: potato
+      quantity: 160
+- name: melon
+  npc: farm
+  npc_cost: 20
+- name: e_melon
+  ingredients:
+    - name: melon
+      quantity: 160
+- name: sugar_cane
+  npc: farm
+  npc_cost: 15
+- name: e_sugar
+  ingredients:
+    - name: sugar_cane
+      quantity: 160
+- name: e_sugar_cane
+  ingredients:
+    - name: e_sugar
+      quantity: 160
+- name: pumpkin
+  npc: farm
+  npc_cost:  8
+- name: e_pumpkin
+  ingredients:
+    - name: pumpkin
+      quantity: 160
+- name: cocoa_beans
+  npc: farm
+  npc_cost: 5
+# - name: e_cocoa_beans
+#   ingredients:
+#     - name: cocoa_beans
+#       quantity: 160
+- name: red_mushroom
+  npc: farm
+  npc_cost: 12
+- name: e_red_mushroom
+  ingredients:
+    - name: red_mushroom
+      quantity: 160
+- name: brown_mushroom
+  npc: farm
+  npc_cost: 12
+- name: e_brown_mushroom
+  ingredients:
+    - name: brown_mushroom
+      quantity: 160
+- name: sand
+  npc: farm
+  npc_cost: 8
+- name: e_sand
+  ingredients:
+    - name: sand
+      quantity: 160
+- name: bone
+  npc: adventurer
+  npc_cost: 8
+- name: e_bone
+  ingredients:
+    - name: bone
+      quantity: 160
+- name: e_bone_meal
+  npc: farm
+  npc_cost: 6
+- name: raw_fish
+  npc: fish
+  npc_cost: 20
+- name: e_raw_fish
+  ingredients:
+    - name: raw_fish
+      quantity: 160
+- name: raw_salmon
+  npc: fish
+  npc_cost: 30
+- name: e_raw_salmon
+  ingredients:
+    - name: raw_salmon
+      quantity: 160
+- name: pufferfish
+  npc: fish
+  npc_cost: 40
+- name: e_pufferfish
+  ingredients:
+    - name: pufferfish
+      quantity: 160
+- name: clownfish
+  npc: fish
+  npc_cost: 100
+- name: e_clownfish
+  ingredients:
+    - name: clownfish
+      quantity: 160
+- name: nether_wart
+  npc: alchemist
+  npc_cost: 10
+# - name: e_nether_wart
+#   ingredients:
+#     - name: nether_wart
+#       quantity: 160
+- name: sugar
+  npc: alchemist
+  npc_cost: 4
+- name: e_sugar
+  ingredients:
+    - name: sugar
+      quantity: 160
+- name: rabbits_foot
+  npc: alchemist
+  npc_cost: 10
+- name: e_rabbit_foot
+  ingredients:
+    - name: rabbit_foot
+      quantity: 160
+- name: e_rabbit_hide
+  ingredients:
+    - name: rabbit_hide
+      quantity: 576
+- name: spider_eye
+  npc: alchemist
+  npc_cost: 12
+- name: e_spider_eye
+  ingredients:
+    - name: spider_eye
+      quantity: 160
+- name: blaze_powder
+  npc: alchemist
+  npc_cost: 12
+- name: e_blaze_rod
+  ingredients:
+    - name: blaze_rod
+      quantity: 160
+- name: ghast_tear
+  npc: alchemist
+  npc_cost: 200
+- name: e_ghast_tear
+  ingredients:
+    - name: ghast_tear
+      quantity: 5
+- name: magma_cream
+  npc: alchemist
+  npc_cost: 20
+- name: e_magma_cream
+  ingredients:
+    - name: magma_cream
+      quantity: 160
+- name: rotten_flesh
+  npc: adventurer
+  npc_cost: 8
+- name: e_rotten_flesh
+  ingredients:
+    - name: rotten_flesh
+      quantity: 160
+- name: string
+  npc: adventurer
+  npc_cost: 10
+- name: e_string
+  ingredients:
+    - name: string
+      quantity: 192
+- name: slimeball
+  npc: adventurer
+  npc_cost: 14
+- name: e_slime_ball
+  ingredients:
+    - name: slime_ball
+      quantity: 160
+- name: gunpowder
+  npc: adventurer
+  npc_cost: 10
+- name: oak_log
+  npc: lumber
+  npc_cost: 25
+- name: e_oak_log
+  ingredients:
+    - name: oak_log
+      quantity: 160
+- name: birch_log
+  npc: lumber
+  npc_cost: 25
+- name: e_birch_log
+  ingredients:
+    - name: birch_log
+      quantity: 160
+- name: spruce_log
+  npc: lumber
+  npc_cost: 25
+- name: e_spruce_log
+  ingredients:
+    - name: spruce_log
+      quantity: 160
+- name: dark_oak_log
+  npc: lumber
+  npc_cost: 25
+- name: e_dark_oak_log
+  ingredients:
+    - name: oak_log
+      quantity: 160
+- name: acacia_log
+  npc: lumber
+  npc_cost: 25
+- name: e_acacia_log
+  ingredients:
+    - name: acacia_log
+      quantity: 160
+- name: jungle_log
+  npc: lumber
+  npc_cost: 25
+- name: e_jungle_log
+  ingredients:
+    - name: jungle_log
+      quantity: 160
+- name: e_prismarine_shard
+  ingredients:
+    - name: prismarine_shard
+      quantity: 80
+- name: e_mutton
+  ingredients:
+    - name: mutton
+      quantity: 160
+- name: e_diamond
+  ingredients:
+    - name: diamond
+      quantity: 160
+- name: e_shark_fin
+  ingredients:
+    - name: shark_fin
+      quantity: 160
+- name: e_cobblestone
+  ingredients:
+    - name: cobblestone
+      quantity: 160
+- name: e_pork
+  ingredients:
+    - name: pork
+      quantity: 160
+- name: e_prismarine_crystals
+  ingredients:
+    - name: prismarine_crystals
+      quantity: 80
+- name: e_ice
+  ingredients:
+    - name: ice
+      quantity: 160
+- name: e_redstone
+  ingredients:
+    - name: redstone
+      quantity: 160
+- name: e_raw_chicken
+  ingredients:
+    - name: raw_chicken
+      quantity: 160
+- name: e_ancient_claw
+  ingredients:
+    - name: ancient_claw
+      quantity: 160
+- name: e_seeds
+  ingredients:
+    - name: seeds
+      quantity: 160
+- name: e_hay_block
+  ingredients:
+    - name: hay_block
+      quantity: 144
+- name: e_flint
+  ingredients:
+    - name: e_flint
+      quantity: 160
+- name: e_ink_sack
+  ingredients:
+    - name: ink_sack
+      quantity: 80
+- name: e_feather
+  ingredients:
+    - name: feather
+      quantity: 160
+- name: e_netherrack
+  ingredients:
+    - name: netherrack
+      quantity: 160
+- name: e_sponge
+  ingredients:
+    - name: sponge
+      quantity: 40
+- name: e_glowstone_dust
+  ingredients:
+    - name: glowstone_dust
+      quantity: 160
+- name: e_emerald
+  ingredients:
+    - name: emerald
+      quantity: 160
+- name: e_packed_ice
+  ingredients:
+    - name: packed_ice
+      quantity: 160
+- name: e_ender_pearl
+  ingredients:
+    - name: ender_pearl
+      quantity: 20
+- name: absolute_ender_pearl
+  ingredients:
+    - name: e_ender_pearl
+      quantity: 80
+- name: e_quartz
+  ingredients:
+    - name: quartz
+      quantity: 160
+- name: e_raw_beef
+  ingredients:
+    - name: raw_beef
+      quantity: 160
+- name: e_obsidian
+  ingredients:
+    - name: obsidian
+      quantity: 160
+- name: e_cactus
+  ingredients:
+    - name: e_cactus_green
+      quantity: 160
+- name: e_melon
+  ingredients:
+    - name: melon
+      quantity: 160
+- name: e_pumpkin
+  ingredients:
+    - name: pumpkin
+      quantity: 160
+- name: e_raw_fish
+  ingredients:
+    - name: raw_fish
+      quantity: 160

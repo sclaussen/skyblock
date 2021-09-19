@@ -1,0 +1,318 @@
+adaptive_helm:
+  action: quiet
+  max: 145000
+  low: 99999
+  limit: 5
+adaptive_chestplate:
+  action: quiet
+  max: 3100000
+  low: 230000
+  limit: 5
+adaptive_leggings:
+  action: quiet
+  max: 525000
+  low: 20000
+  limit: 5
+adaptive_boots:
+  action: quiet
+  note: There is not enough profit in this and its volatile
+  max: 110000
+  low: 20000
+  limit: 5
+hardened_diamond_helmet:
+  action: quiet
+  low: 3200
+  limit: 1
+hardened_diamond_chestplate:
+  action: quiet
+  low: 5120
+  limit: 1
+hardened_diamond_leggings:
+  action: quiet
+  low: 4480
+  limit: 1
+hardened_diamond_boots:
+  action: quiet
+  limit: 1
+  low: 2560
+salmon_helmet:
+  action: quiet
+  max: 15000
+  sell: 29000
+  low: 125
+  limit: 5
+salmon_chestplate:
+  action: quiet
+  max: 15000
+  sell: 45000
+  low: 236
+  limit: 5
+salmon_leggings:
+  action: quiet
+  max: 15000
+  sell: 35000
+  low: 1000
+  limit: 5
+salmon_boots:
+  action: quiet
+  max: 10000
+  sell: 29000
+  limit: 5
+  low: 100
+unstable_dragon_helmet:
+  action: research
+  max: 125000
+  low: 100000
+unstable_dragon_chestplate:
+  action: research
+  max: 175000
+  low: 100000
+unstable_dragon_leggings:
+  action: research
+  max: 175000
+  low: 100000
+unstable_dragon_boots:
+  action: research
+  max: 100000
+  low: 100000
+water_hydra_head:
+  action: research
+  max: 40000
+  low: 5500
+young_dragon_helm:
+  action: quiet
+  max: 1000000
+  low: 100000
+  limit: 1
+  extra:
+    - growth
+    - protection
+    - thorns
+    - rejuvenate
+young_dragon_chestplate:
+  action: quiet
+  max: 1000000
+  low: 100000
+  limit: 1
+  extra:
+    - growth
+    - protection
+    - thorns
+    - rejuvenate
+young_dragon_leggings:
+  action: quiet
+  max: 1000000
+  low: 101000
+  limit: 1
+  extra:
+    - growth
+    - protection
+    - thorns
+    - rejuvenate
+young_dragon_boots:
+  action: quiet
+  max: 1000000
+  low: 100000
+  limit: 1
+  extra:
+    - growth
+    - protection
+    - thorns
+    - rejuvenate
+    - feather-falling
+aspect_of_the_end:
+  action: quiet
+  max: 150000
+  low: 56000
+  sell: 200000
+raiders_axe:
+  action: quiet
+  max: 135000
+runaans_bow:
+  action: quiet
+  max: 400000
+  low: 399000
+  limit: 1
+hurricane_bow:
+  action: quiet
+  max: 58000
+  low: 15500
+magma_bow:
+  action: quiet
+  max: 190000
+  low: 69000
+chance_2:
+  action: quiet
+  enchantment: true
+  note: Increases chance of a mob dropping an item by 30%
+  limit: 1
+  low: 2
+  recipe: null
+chance_3:
+  action: quiet
+  enchantment: true
+  note: Increases chance of a mob dropping an item by 45%
+  max: 10000
+  low: 4
+  limit: 2
+  recipe: null
+chance_4:
+  action: quiet
+  enchantment: true
+  note: Increases chance of a mob dropping an item by 60%
+  max: 180000
+  sell: 200000
+  limit: 1
+  recipe: null
+  low: 8
+cubism_4:
+  action: quiet
+  enchantment: true
+  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
+  recipe:
+    paper:
+      quantity: 24
+    pumpkin:
+      quantity: 32
+  low: 8
+cubism_5:
+  action: quiet
+  enchantment: true
+  note: Increases damage dealt to Creepers, Magma Cubes, and Slimes by 10% per level.
+  max: 25000
+  sell: 30000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 48
+    pumpkin:
+      quantity: 64
+  low: 16
+dragon_tracer_4:
+  action: quiet
+  enchantment: true
+  note: Arrows home towards dragons if they are within 2 blocks per level.
+  recipe:
+    paper:
+      quantity: 24
+    arrow:
+      quantity: 8
+    silver:
+      quantity: 4
+    redstone:
+      quantity: 1
+  limit: 1
+  low: 8
+impaling_2:
+  action: quiet
+  enchantment: true
+  note: Increases damage dealt to guardians and squids by 12.5% per level.
+  sell: 15000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 6
+    prismarine_shards:
+      quantity: 20
+  low: 2000
+infinite_quiver_4:
+  action: quiet
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  recipe:
+    paper:
+      quantity: 24
+    bow:
+      quantity: 1
+  max: 20000
+  limit: 1
+  low: 5000
+infinite_quiver_5:
+  action: quiet
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  limit: 1
+  recipe:
+    paper:
+      quantity: 48
+    bow:
+      quantity: 2
+  low: 1000
+infinite_quiver_6:
+  action: quiet
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 3000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 96
+    bow:
+      quantity: 4
+  low: 32
+infinite_quiver_7:
+  action: quiet
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 15000
+  sell: 60000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 192
+    bow:
+      quantity: 8
+  low: 64
+infinite_quiver_8:
+  action: quiet
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 20000
+  sell: 100000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 384
+    bow:
+      quantity: 16
+  low: 128
+infinite_quiver_9:
+  action: quiet
+  enchantment: true
+  note: Increases the chance to not consume an arrow by 10% per level.
+  max: 145000
+  sell: 2000000
+  limit: 1
+  recipe:
+    paper:
+      quantity: 768
+    bow:
+      quantity: 32
+  low: 256
+power_4:
+  action: quiet
+  enchantment: true
+  note: Increases bow damage by 8% per level.
+  recipe:
+    paper:
+      quantity: 24
+    bones:
+      quantity: 40
+  low: 8
+  limit: 1
+snipe_2:
+  action: quiet
+  enchantment: true
+  query: snipe_2
+  note: Arrows deal +1% damage per level for every 10 blocks traveled.
+  max: 2000
+  sell: 10000
+  low: 10000
+  limit: 10
+  recipe:
+    paper:
+      quantity: 6
+    arrow:
+      quantity: 2
+    feather:
+      quantity: 2

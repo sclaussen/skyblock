@@ -1,3 +1,18 @@
 lapis_lazuli:
-  cost: 3.8
-  sell: 4.4
+  cost: 2.2
+  sell: 4.2
+silver_fang:
+  sell: 10000
+raw_rabbit:
+  cost: 4.9
+  sell: 9.2
+rabbits_foot:
+  cost: 9.5
+  sell: 14
+e_raw_rabbit:
+  cost: 612
+  sell: 639
+white_wool:
+  sell: 2
+e_white_wool:
+  sell: 320

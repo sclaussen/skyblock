@@ -1,0 +1,508 @@
+- name: acacia_log
+  npc: lumber
+  npc_cost: 25
+- name: e_acacia_log
+  ingredients:
+    - name: acacia_log
+      quantity: 160
+
+- name: e_ancient_claw
+  ingredients:
+    - name: ancient_claw
+      quantity: 160
+
+- name: birch_log
+  npc: lumber
+  npc_cost: 25
+- name: e_birch_log
+  ingredients:
+    - name: birch_log
+      quantity: 160
+
+- name: e_blaze_powder
+  ingredients:
+    - name: blaze_rod
+      quantity: 160
+- name: e_blaze_rod
+  ingredients:
+    - name: e_blaze_powder
+      quantity: 160
+
+- name: bone
+  npc: adventurer
+  npc_cost: 8
+- name: e_bone
+  ingredients:
+    - name: bone
+      quantity: 160
+- name: e_bone_block
+  ingredients:
+    - name: ebone
+      quantity: 160
+
+- name: brown_mushroom
+  npc: farm
+  npc_cost: 12
+- name: e_brown_mushroom
+  ingredients:
+    - name: brown_mushroom
+      quantity: 160
+
+- name: e_cactus
+  ingredients:
+    - name: e_cactus_green
+      quantity: 160
+
+- name: carrot
+  npc: farm
+  npc_cost: 7
+- name: e_carrot
+  ingredients:
+    - name: carrot
+      quantity: 160
+
+- name: clownfish
+  npc: fish
+  npc_cost: 100
+- name: e_clownfish
+  ingredients:
+    - name: clownfish
+      quantity: 160
+
+- name: coal
+  npc: mine
+  npc_cost: 8
+- name: e_coal
+  ingredients:
+    - name: coal
+      quantity: 160
+
+- name: cocoa
+  npc: farm
+  npc_cost: 5
+- name: e_cocoa
+  ingredients:
+    - name: cocoa
+      quantity: 160
+
+- name: cobblestone
+  npc: builder
+  npc_cost: 2
+- name: e_cobblestone
+  ingredients:
+    - name: cobblestone
+      quantity: 160
+
+- name: dark_oak_log
+  npc: lumber
+  npc_cost: 25
+- name: e_dark_oak_log
+  ingredients:
+    - name: oak_log
+      quantity: 160
+
+- name: e_diamond
+  ingredients:
+    - name: diamond
+      quantity: 160
+- name: e_diamond_block
+  ingredients:
+    - name: e_diamond
+      quantity: 160
+
+- name: e_emerald
+  ingredients:
+    - name: emerald
+      quantity: 160
+- name: e_emerald_block
+  ingredients:
+    - name: e_emerald
+      quantity: 160
+
+- name: e_ender_pearl
+  ingredients:
+    - name: ender_pearl
+      quantity: 20
+- name: absolute_ender_pearl
+  ingredients:
+    - name: e_ender_pearl
+      quantity: 80
+
+- name: e_feather
+  ingredients:
+    - name: feather
+      quantity: 160
+
+- name: ghast_tear
+  npc: alchemist
+  npc_cost: 200
+- name: e_ghast_tear
+  ingredients:
+    - name: ghast_tear
+      quantity: 5
+- name: silver_fang
+  ingredients:
+    - name: e_ghast_tear
+      quantity: 25
+
+- name: glowstone
+  npc: builder
+  npc_cost: 80
+- name: e_glowstone_dust
+  note: another option is 160 glowstone makes 4 of these
+  ingredients:
+    - name: glowstone_dust
+      quantity: 160
+
+- name: gold
+  npc: mine
+  npc_cost: 12
+- name: e_gold
+  ingredients:
+    - name: gold
+      quantity: 160
+- name: e_gold_block
+  ingredients:
+    - name: e_gold
+      quantity: 160
+
+- name: gravel
+  npc: builder
+  npc_cost: 32
+- name: e_flint
+  ingredients:
+    - name: flint
+      quantity: 160
+
+- name: gunpowder
+  npc: adventurer
+  npc_cost: 10
+
+- name: e_gunpowder
+  ingredients:
+    - name: gunpowder
+      quantity: 160
+
+- name: ice
+- name: e_ice
+  ingredients:
+    - name: ice
+      quantity: 160
+- name: e_packed_ice
+  ingredients:
+    - name: e_ice
+      quantity: 160
+
+- name: e_ink_sack
+  ingredients:
+    - name: ink_sack
+      quantity: 80
+
+- name: iron_ingot
+  npc: mine
+  npc_cost: 22
+- name: e_iron
+  ingredients:
+    - name: iron_ingot
+      quantity: 160
+- name: e_iron_block
+  ingredients:
+    - name: iron_ingot_block
+      quantity: 160
+
+- name: jungle_log
+  npc: lumber
+  npc_cost: 25
+- name: e_jungle_log
+  ingredients:
+    - name: jungle_log
+      quantity: 160
+
+- name: e_lapis_lazulli
+  ingredients:
+    - name: lapis_lazulli
+      quantity: 160
+
+- name: magma_cream
+  npc: alchemist
+  npc_cost: 20
+- name: e_magma_cream
+  ingredients:
+    - name: magma_cream
+      quantity: 160
+
+- name: melon
+  npc: farm
+  npc_cost: 20
+- name: e_melon
+  ingredients:
+    - name: melon
+      quantity: 160
+
+- name: nether_stalk
+  fandom_name: nether_wart
+  npc: alchemist
+  npc_cost: 10
+- name: e_nether_stalk
+  fandom_name: e_nether_wart
+  ingredients:
+    - name: nether_stalk
+      quantity: 160
+
+- name: netherrack
+  npc: builder
+  npc_cost: 2
+- name: e_netherrack
+  ingredients:
+    - name: netherrack
+      quantity: 160
+
+- name: oak_log
+  npc: lumber
+  npc_cost: 25
+- name: e_oak_log
+  ingredients:
+    - name: oak_log
+      quantity: 160
+
+- name: obsidian
+  npc: builder
+  npc_cost: 99
+- name: e_obsidian
+  ingredients:
+    - name: obsidian
+      quantity: 160
+
+- name: e_pork
+  ingredients:
+    - name: pork
+      quantity: 160
+- name: e_grilled_pork
+  ingredients:
+    - name: e_pork
+      quantity: 160
+
+- name: potato
+  npc: farm
+  npc_cost: 7
+- name: e_potato
+  ingredients:
+    - name: potato
+      quantity: 160
+- name: e_baked_potato
+  ingredients:
+    - name: e_potato
+      quantity: 160
+
+- name: e_prismarine_crystals
+  ingredients:
+    - name: prismarine_crystals
+      quantity: 80
+
+- name: e_prismarine_shard
+  ingredients:
+    - name: prismarine_shard
+      quantity: 80
+
+- name: pufferfish
+  npc: fish
+  npc_cost: 40
+- name: e_pufferfish
+  ingredients:
+    - name: pufferfish
+      quantity: 160
+
+- name: pumpkin
+  npc: farm
+  npc_cost:  8
+- name: e_pumpkin
+  ingredients:
+    - name: pumpkin
+      quantity: 160
+- name: polished_pumpkin
+  ingredients:
+    - name: e_pumpkin
+      quantity: 160
+
+- name: e_quartz
+  ingredients:
+    - name: quartz
+      quantity: 160
+
+- name: rabbits_foot
+  npc: alchemist
+  npc_cost: 10
+- name: e_rabbit_foot
+  ingredients:
+    - name: rabbit_foot
+      quantity: 160
+
+- name: e_rabbit_hide
+  ingredients:
+    - name: rabbit_hide
+      quantity: 576
+
+- name: e_raw_beef
+  ingredients:
+    - name: raw_beef
+      quantity: 160
+
+- name: e_raw_chicken
+  ingredients:
+    - name: raw_chicken
+      quantity: 160
+
+- name: raw_fish
+  npc: fish
+  npc_cost: 20
+- name: e_raw_fish
+  ingredients:
+    - name: raw_fish
+      quantity: 160
+- name: e_cooked_fish
+  ingredients:
+    - name: e_raw_fish
+      quantity: 160
+
+- name: raw_salmon
+  npc: fish
+  npc_cost: 30
+- name: e_raw_salmon
+  ingredients:
+    - name: raw_salmon
+      quantity: 160
+- name: e_cooked_salmon
+  ingredients:
+    - name: e_raw_salmon
+      quantity: 160
+
+- name: red_mushroom
+  npc: farm
+  npc_cost: 12
+- name: e_red_mushroom
+  ingredients:
+    - name: red_mushroom
+      quantity: 160
+
+- name: e_redstone
+  ingredients:
+    - name: redstone
+      quantity: 160
+
+- name: rotten_flesh
+  npc: adventurer
+  npc_cost: 8
+- name: e_rotten_flesh
+  ingredients:
+    - name: rotten_flesh
+      quantity: 160
+
+- name: sand
+  npc: builder
+  npc_cost: 2
+- name: e_sand
+  ingredients:
+    - name: sand
+      quantity: 160
+
+- name: e_seeds
+  ingredients:
+    - name: seeds
+      quantity: 160
+
+- name: shark_fin
+- name: e_shark_fin
+  ingredients:
+    - name: shark_fin
+      quantity: 160
+
+- name: slimeball
+  npc: adventurer
+  npc_cost: 14
+- name: e_slime_ball
+  ingredients:
+    - name: slime_ball
+      quantity: 160
+- name: e_slime_block
+  ingredients:
+    - name: e_slime_ball
+      quantity: 160
+
+- name: spider_eye
+  npc: alchemist
+  npc_cost: 12
+- name: e_spider_eye
+  ingredients:
+    - name: spider_eye
+      quantity: 160
+
+- name: spruce_log
+  npc: lumber
+  npc_cost: 25
+- name: e_spruce_log
+  ingredients:
+    - name: spruce_log
+      quantity: 160
+
+- name: string
+  npc: adventurer
+  npc_cost: 10
+- name: e_string
+  ingredients:
+    - name: string
+      quantity: 192
+
+- name: sugar
+  npc: alchemist
+  npc_cost: 4
+- name: e_sugar
+  note: can also make with 160 sugar cane
+  ingredients:
+    - name: sugar
+      quantity: 160
+- name: e_sugar_cane
+  ingredients:
+    - name: e_sugar
+      quantity: 160
+
+- name: wheat
+  npc: farm
+  npc_cost: 7
+- name: e_bread
+  ingredients:
+    - name: wheat
+      quantity: 60
+- name: hay_block
+  fandom_name: hay_bale
+  ingredients:
+    - name: wheat
+      quantity: 9
+- name: e_hay_block
+  fandom_name: e_hay_bale
+  ingredients:
+    - name: hay_block
+      quantity: 144
+
+
+
+
+
+
+
+
+
+
+- name: e_mutton
+  ingredients:
+    - name: mutton
+      quantity: 160
+
+
+- name: sponge
+  npc: builder
+  npc_cost: 800
+
+- name: e_sponge
+  ingredients:
+    - name: sponge
+      quantity: 40

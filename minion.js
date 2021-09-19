@@ -22,9 +22,6 @@ const p4 = require('./lib/pr').p4(d);
 const y4 = require('./lib/pr').y4(d);
 
 
-const { sortBy, values,  } = _
-
-
 var options;
 
 
@@ -37,10 +34,11 @@ async function minions(args) {
 
     await writeBazaarItemsCache();
     let bz = await readBazaarItemsCache();
-    let minions = YAML.parse(fs.readFileSync('./minions.yaml', 'utf8'), { prettyErrors: true });
+    let minions = YAML.parse(fs.readFileSync('./minion.yaml', 'utf8'), { prettyErrors: true });
     let prices = YAML.parse(fs.readFileSync('./prices.yaml', 'utf8'), { prettyErrors: true });
 
     for (let minion of minions) {
+
 
         // Determine the action time adjustment due to fuel
         let fuelEfficiency = 1;
@@ -57,66 +55,52 @@ async function minions(args) {
         // "craft_cost" and each product's "cost"
         minion.craft_cost = 0;
         for (let product of minion.craft) {
-            if (prices[product.name]) {
-                product.cost = decimal(prices[product.name].cost, 1);
-            } else {
-                product.cost = decimal(bz[product.name].cost, 1);
-            }
-            minion.craft_cost += integer(product.count * product.cost);
+            product.cost = decimal(getProduct(prices, bz, product.name).cost, 1);
+            minion.craft_cost += integer(product.quantity * product.cost);
         }
 
 
         let profitPerDay = 0;
         let profitPerWeek = 0;
+
+
+        // Calculate items/day and xp/day
         for (let product of minion.generates) {
             product.items_per_second = decimal(product.items_per_harvest / minion.harvest_time, 4);
             product.items_per_day_precompacted = integer(product.items_per_second * 86400);
             product.items_per_day = product.items_per_day_precompacted;
+            product.xp_per_day = product.items_per_day * product.xp_per_item;
         }
 
-        let primaryGeneratedProduct = _.find(minion.generates, { name: minion.generated_product });
-        let compactedProduct = {};
-        compactedProduct.name = minion.generated_product_compacted_form;
-        compactedProduct.items_per_day = parseInt(primaryGeneratedProduct.items_per_day / 160);
-        compactedProduct.sell = decimal(bz[compactedProduct.name].sell, 1);
-        compactedProduct.profit_per_day = integer(compactedProduct.items_per_day * compactedProduct.sell);
-        compactedProduct.profit_per_week = compactedProduct.profit_per_day * 7;
-        primaryGeneratedProduct.items_per_day = primaryGeneratedProduct.items_per_day % 160;
-        minion.generates.push(compactedProduct);
-
+        // Diamond spreading
         if (minion.diamond_spreading) {
             let diamonds = {};
             diamonds.name = 'diamond';
-            diamonds.items_per_action = decimal(primaryGeneratedProduct.items_per_harvest * .1, 1);
-            diamonds.items_per_second = decimal(diamonds.items_per_action / minion.harvest_time, 4);
+            diamonds.items_per_second = decimal(0.1 / minion.harvest_time, 4);
             diamonds.items_per_day = integer(diamonds.items_per_second * 86400);
-
-            diamonds.sell = decimal(bz['diamond'].sell, 1);
-            diamonds.profit_per_day = integer(diamonds.items_per_day * diamonds.sell);
-            diamonds.profit_per_week = diamonds.profit_per_day * 7;
+            diamonds.compacted_form = {
+                name: 'e_diamond',
+                quantity: 160
+            };
             minion.generates.push(diamonds);
-
-            if (diamonds.items_per_day >= 160) {
-                let enchantedDiamonds = {};
-                enchantedDiamonds.name = 'e_diamond';
-                enchantedDiamonds.items_per_day = parseInt(diamonds.items_per_day / 160);
-                enchantedDiamonds.sell = decimal(bz['e_diamond'].sell, 1);
-                enchantedDiamonds.profit_per_day = integer(enchantedDiamonds.items_per_day * enchantedDiamonds.sell);
-                enchantedDiamonds.profit_per_week = enchantedDiamonds.profit_per_day * 7;
-                diamonds.items_per_day = diamonds.items_per_day % 160;
-                minion.generates.push(enchantedDiamonds);
-            }
         }
 
+        // Compact items
+        for (let product of minion.generates) {
+            if (product.compacted_form) {
+                let compacted = {};
+                compacted.name = product.compacted_form.name;
+                compacted.items_per_day = parseInt(product.items_per_day / product.compacted_form.quantity);
+                product.items_per_day = product.items_per_day % product.compacted_form.quantity; // adjust due to compaction
+                minion.generates.push(compacted);
+            }
+        }
 
         minion.profit_per_day = 0;
         minion.profit_per_week = 0;
         for (let product of minion.generates) {
-            if (prices[product.name]) {
-                product.sell = decimal(prices[product.name].sell, 1);
-            } else {
-                product.sell = decimal(bz[product.name].sell, 1);
-            }
+
+            product.sell = decimal(getProduct(prices, bz, product.name).sell, 1);
 
             product.profit_per_day = integer(product.items_per_day * product.sell);
             product.profit_per_week = product.profit_per_day * 7;
@@ -125,22 +109,46 @@ async function minions(args) {
             minion.profit_per_week += product.profit_per_week;
         }
 
-        minion.profit_per_day_n = minion.profit_per_day * 20;
-        minion.profit_per_week_n = minion.profit_per_week * 20;
+        minion.profit_per_day_20 = minion.profit_per_day * 20;
+        minion.profit_per_week_20 = minion.profit_per_week * 20;
 
         minion.payoff_days = integer(minion.craft_cost / minion.profit_per_day);
 
+        // Create a summary of what/how much is required to craft the minion
+        minion.craft_summary = '';
+        for (let product of minion.craft) {
+            minion.craft_summary += '[' + product.name + ' x' + product.quantity + '] ';
+        }
+
+        // Create a summary of what/how much was generated per day
+        minion.daily_generation_summary = '';
+        for (let product of minion.generates) {
+            minion.daily_generation_summary += '[' + product.name + ' x' + product.items_per_day + ' @ ' + integer(product.sell) + '] ';
+        }
     }
 
-    console.log(print(minions));
+    console.log(print(_.filter(minions, { tier: 7 })));
+    // console.log(print(minions));
 
     // y4(minions);
+}
+
+function getProduct(prices, bz, name) {
+    if (prices[name]) {
+        return prices[name];
+    }
+    if (bz[name]) {
+        return bz[name];
+    }
+
+    console.log('ERROR: Unable to find the product in prices.yaml or the bazaar: ' + name);
+    process.exit(1);
 }
 
 function print(minions, max) {
     return table(minions, [
         {
-            name: 'level',
+            name: 'tier',
             alias: '#',
             width: 2,
         },
@@ -150,22 +158,22 @@ function print(minions, max) {
         },
         {
             name: 'action_time',
-            alias: 'AT',
+            alias: 'act',
             width: 4,
             extra_spaces: 1
         },
         {
             name: 'harvest_time',
-            alias: 'HT',
+            alias: 'hvst',
             width: 4,
             extra_spaces: 1
         },
-        {
-            name: 'craft_cost',
-            alias: '$ to craft',
-            width: 10,
-            format: { integer: true },
-        },
+        // {
+        //     name: 'craft_cost',
+        //     alias: '$/craft',
+        //     width: 10,
+        //     format: { integer: true },
+        // },
         {
             name: 'profit_per_day',
             alias: '$/day',
@@ -179,14 +187,14 @@ function print(minions, max) {
             format: { integer: true },
         },
         {
-            name: 'profit_per_day_n',
-            alias: '$/day xN',
+            name: 'profit_per_day_20',
+            alias: '$/day x20',
             width: 11,
             format: { integer: true },
         },
         {
-            name: 'profit_per_week_n',
-            alias: '$/week xN',
+            name: 'profit_per_week_20',
+            alias: '$/week x20',
             width: 11,
             format: { integer: true },
         },
@@ -196,6 +204,17 @@ function print(minions, max) {
             width: 9,
             format: { integer: true },
         },
+        // {
+        //     name: 'craft_summary',
+        //     alias: 'craft',
+        //     width: -30,
+        // },
+        {
+            name: 'daily_generation_summary',
+            alias: 'generates/day',
+            width: -30,
+        },
+
     ], max);
 }
 

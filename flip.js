@@ -18,137 +18,227 @@ const p4 = require('./lib/pr').p4(d);
 
 const rj = require('./lib/util').rj;
 const lj = require('./lib/util').lj;
-const coins = require('./lib/util').coins;
 
-const writeBazaarItemsCache = require('./lib/bazaarlib').writeBazaarItemsCache;
-const readBazaarItemsCache = require('./lib/bazaarlib').readBazaarItemsCache;
+const writeBazaarItemsCache = require('./lib/bzlib').writeBazaarItemsCache;
+const readBazaarItemsCache = require('./lib/bzlib').readBazaarItemsCache;
+const readAuctionItemsCache = require('./lib/auclib').readAuctionItemsCache;
 
-const retrieveAuctionItemsFromSkyblock = require('./lib/auctionlib').retrieveAuctionItemsFromSkyblock;
-const readSkyblockAuctionItemsCache = require('./lib/auctionlib').readSkyblockAuctionItemsCache;
+const table = require('./lib/util').table;
 
-const getBazaarItem = require('./lib/bazaarlib').getBazaarItem;
-// const getAuctionItem = require('./lib/auctionlib').getAuctionItem;
+const getBazaarItem = require('./lib/bzlib').getBazaarItem;
 
 const getTrackerUrl = require('./lib/util').getTrackerUrl;
 const getFandomUrl = require('./lib/util').getFandomUrl;
-
-const { sortBy } = _
-
+const format = require('./lib/util').format;
 
 
 var options;
-var bazaarItems;
-var auctionItems;
-var flips;
+var bzItems;
 
 
 
-flip(process.argv);
+item(process.argv);
 
 
-async function flip(args) {
-
+async function item(args) {
     options = parse(args);
+    await writeBazaarItemsCache();
+    bzItems = await readBazaarItemsCache();
+    let items = YAML.parse(fs.readFileSync('./items.yaml', 'utf8'));
 
-    if (options.retrieve) {
-        console.log('Retrieving auction items from skyblock');
-        await retrieveAuctionItemsFromSkyblock()
-        console.log('Retrieving bazaar items from skyblock');
-        await writeBazaarItemsCache();
-        process.exit(1);
-    }
-
-    bazaarItems = await readBazaarItemsCache();
-    auctionItems = await readSkyblockAuctionItemsCache();
-    flips = YAML.parse(fs.readFileSync('./flips.yaml', 'utf8'));
-
-    let sortedFlips = process();
-    print(sortedFlips);
+    console.log(print(sort(process(items))));
 }
 
-function process() {
-    let newFlips = [];
-    for (let flip of _.values(flips)) {
+function process(items) {
+    let results = [];
 
-        if (flip['bazaar_flip']) {
-            let bazaarItem = getBazaarItem(bazaarItems, flip.name);
-            p4(bazaarItem);
-            newFlips.push({
-                name: flip.name,
-                type: 'bazaar',
-                cost: bazaarItem.buy,
-                sell: bazaarItem.sell,
-                margin: Number.parseFloat(((bazaarItem.sell - bazaarItem.buy) / bazaarItem.buy) * 100).toFixed(0)
+    for (let item of items) {
+
+
+        let result = {
+            name: item.name,
+            trackerUrl: getTrackerUrl(item.name),
+            fandomUrl: getFandomUrl(item.name),
+        };
+
+
+        // Bazaar item?
+        let bzItem = bzItems[item.name];
+        if (bzItem) {
+            result.bz_cost = getBazaarItem(bzItems, item.name).cost;
+            result.bz_sell = getBazaarItem(bzItems, item.name).sell;
+            result.bz_margin = (result.bz_sell - result.bz_cost) / result.bz_cost;
+        }
+
+
+        // NPC item?
+        if (item.npc) {
+            result.npc_cost = item.npc_cost;
+            result.npc_margin = (result.bz_sell - result.npc_cost) / result.npc_cost;
+        }
+
+
+        // Can the item be crafted?
+        if (item.ingredients) {
+
+            result.ingredient_name = item.ingredients[0].name;
+            result.ingredient_quantity = item.ingredients[0].quantity;
+            result.ingredient_name_quantity = result.ingredient_name + ' x' + result.ingredient_quantity;
+
+
+            // Is the ingredient sold in the bazaar?
+            let bzIngredientItem = _.find(bzItems, { name: result.ingredient_name });
+            if (bzIngredientItem) {
+                result.ingredient_bz_cost = bzIngredientItem.cost;
+                result.ingredient_bz_crafted_cost = result.ingredient_bz_cost * result.ingredient_quantity;
+                result.ingredient_bz_crafted_margin = (result.bz_sell - result.ingredient_bz_crafted_cost) / result.ingredient_bz_crafted_cost;
+            }
+
+
+            // Is the ingredient sold by an npc?
+            let npcIngredientItem = _.find(items, function(o) {
+                if (o.name === result.ingredient_name && o.npc) {
+                    return o;
+                }
             });
+            if (npcIngredientItem) {
+                result.ingredient_npc_cost = npcIngredientItem.npc_cost;
+                result.ingredient_npc_crafted_cost = npcIngredientItem.npc_cost * result.ingredient_quantity;
+                result.ingredient_npc_crafted_margin = (result.bz_sell - result.ingredient_npc_crafted_cost) / result.ingredient_npc_crafted_cost;
+            }
         }
 
-        if (flip['crafted_bazaar_flip']) {
-            let bazaarItem = getBazaarItem(bazaarItems, flip.name);
-            let craftCost = getCraftCost(flip.crafted_bazaar_flip.ingredients);
-            newFlips.push({
-                name: flip.name,
-                type: 'crafted_bazaar',
-                cost: Number.parseFloat(craftCost).toFixed(0),
-                sell: Number.parseFloat(bazaarItem.sell).toFixed(0),
-                ingredients: flip.crafted_bazaar_flip.ingredients,
-                margin: Number.parseFloat(((bazaarItem.sell - craftCost) / craftCost) * 100).toFixed(0)
-            });
-        }
-
-        if (flip['crafted_auction_flip']) {
-            // let craftCost = getCraftCost(flip.crafted_auction_flip.ingredients);
-            // flip.crafted_auction_flip.cost = craftCost;
-            // flip.crafted_auction_flip.margin = Number.parseFloat(((flip.crafted_auction_flip.sell - craftCost) / craftCost) * 100).toFixed(0);
-            // p4('crafted_auction_flip result', flip);
-        }
-
-        if (flip['auction_flip']) {
-        }
+        results.push(result);
     }
 
-    // p4(newFlips);
-    let sortedFlips = sortBy(newFlips, function(o) {
-        return parseInt(o.margin, 10);
-    }).reverse();
-    p4('after sort', sortedFlips);
-
-    return sortedFlips;
+    p4(results);
+    return results;
 }
 
-function print(flips) {
-    for (let flip of flips) {
-        let s = '';
-        s += lj(flip.name, 30);
-        s += lj(flip.type, 20);
-        s += rj(coins(flip.cost, {}), 10);
-        s += rj(coins(flip.sell, {}), 10);
-        s += rj(flip.margin, 10);
-        console.log(s);
-    }
+function sort(items) {
+    return _.sortBy(items, [ 'ingredient_bz_crafted_margin' ]).reverse();
+    // return _.sortBy(items, [ 'name' ]);
 }
 
-function getCraftCost(ingredients) {
-    let cost = 0;
-    for (let ingredientName of _.keys(ingredients)) {
-        let ingredient = ingredients[ingredientName];
-        let ingredientBazaarItem = getBazaarItem(bazaarItems, ingredientName);
-        ingredient.unit_cost = ingredientBazaarItem.buy;
-        ingredient.cost = ingredientBazaarItem.buy * ingredient.quantity;
-        cost += ingredient.cost;
-    }
-    return cost;
+function print(items) {
+    return table(items, [
+        {
+            name: 'name',
+            alias: 'output',
+            width: -25,
+        },
+        {
+            name: 'bz_cost',
+            alias: 'bz c',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+            extra_spaces: 1
+        },
+        {
+            name: 'bz_sell',
+            alias: 'bz s',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+        },
+        {
+            name: 'bz_margin',
+            alias: '%',
+            width: 5,
+            format: { percent: true, hide_zero: true },
+            extra_spaces: 5
+        },
+        {
+            name: 'npc_cost',
+            alias: 'npc c',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+        },
+        {
+            name: 'bz_sell',
+            alias: 'bz s',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+        },
+        {
+            name: 'npc_margin',
+            alias: 'm %',
+            width: 5,
+            format: { percent: true, hide_zero: true },
+            extra_spaces: 5
+        },
+        {
+            name: 'ingredient_name_quantity',
+            alias: 'ingredient/#',
+            width: -23,
+        },
+        {
+            name: 'ingredient_bz_cost',
+            alias: 'bz c',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+            extra_spaces: 1
+        },
+        {
+            name: 'ingredient_bz_crafted_cost',
+            alias: 'bz cc',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+            extra_spaces: 1
+        },
+        {
+            name: 'bz_sell',
+            alias: 'bz s',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+        },
+        {
+            name: 'ingredient_bz_crafted_margin',
+            alias: 'm %',
+            width: 5,
+            format: { percent: true, hide_zero: true },
+            extra_spaces: 5
+        },
+        {
+            name: 'ingredient_npc_cost',
+            alias: 'npc c',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+            extra_spaces: 1
+        },
+        {
+            name: 'ingredient_npc_crafted_cost',
+            alias: 'npc cc',
+            width: 7,
+            format: { integer: true, hide_zero: true },
+            extra_spaces: 1
+        },
+        {
+            name: 'ingredient_npc_crafted_margin',
+            alias: 'm %',
+            width: 5,
+            format: { percent: true, hide_zero: true },
+            extra_spaces: 5
+        },
+        // {
+        //     name: 'trackerUrl',
+        //     width: -60,
+        //     alias: 'Tracker URL'
+        // },
+        // {
+        //     name: 'fandomUrl',
+        //     width: -70,
+        //     alias: 'Fandom URL'
+        // },
+    ]);
 }
 
 function parse(args) {
-
     program
-        .option('-l, --loop', 'Loop continually')
-        .option('-R, --retrieve', 'Refresh the local bazaar cache using the skyblock API')
         .parse(args);
 
     let options = program.opts();
 
-    p4(options);
+    // p4(options);
 
     return options;
 }

@@ -134,12 +134,12 @@ function parse(args) {
 
     program
         .option('-a, --all', 'Return all the items unfiltered')
-        .option('-c, --cost-minimum <cost>', 'Add a minimum cost filter', '250')
-        .option('-C, --cost-maximum <cost>', 'Add a maximum cost filter', '1000000')
-        .option('-m, --margin-minimum <margin-minimum>', 'Add a minimum margin filter', '0')
-        .option('-M, --margin-maximum <margin-maximum>', 'Add a maximum margin filter', '35')
-        .option('-v, --volume <volume>', 'Add a minimum sales volume filter', '37500')
-        .option('-o, --output <output>', 'Limit items returned', '35')
+        .option('-c, --cost-minimum <cost>', 'Add a minimum cost filter', 250)
+        .option('-C, --cost-maximum <cost>', 'Add a maximum cost filter', 1000000)
+        .option('-m, --margin-minimum <margin-minimum>', 'Add a minimum margin filter', 10)
+        .option('-M, --margin-maximum <margin-maximum>', 'Add a maximum margin filter', 35)
+        .option('-v, --volume <volume>', 'Add a minimum sales volume filter', 37500)
+        .option('-o, --output <output>', 'Limit items returned', 35)
         .option('-U, --use-cache', 'Use cached items vs. the skyblock API')
         .argument('[item]', 'Filter the bazaar by an item')
         .parse(args);

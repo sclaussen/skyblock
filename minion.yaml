@@ -1,0 +1,1252 @@
+- minion: lapis_lazuli
+  tier: 1
+  action_time: 29
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 160
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 2
+  action_time: 29
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 768
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 3
+  action_time: 27
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 2048
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 4
+  action_time: 27
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 5888
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 5
+  action_time: 25
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 16128
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 6
+  action_time: 25
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 36608
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 7
+  action_time: 23
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 77568
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 8
+  action_time: 23
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 159488
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 9
+  action_time: 21
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 364288
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 10
+  action_time: 21
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 773888
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 11
+  action_time: 18
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 1593088
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: lapis_lazuli
+  tier: 12
+  action_time: 16
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: lapis_lazuli
+      quantity: 3231488
+  generates:
+    - name: lapis_lazuli
+      items_per_harvest: 6
+      xp_per_item: .1
+      compacted_form:
+        name: e_lapis_lazuli
+        quantity: 160
+
+- minion: gravel
+  tier: 1
+  action_time: 26
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 80
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 2
+  action_time: 26
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 240
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 3
+  action_time: 24
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 560
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 4
+  action_time: 24
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 5
+  action_time: 22
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 1280
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 6
+  action_time: 22
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 3840
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 7
+  action_time: 19
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 8960
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 8
+  action_time: 19
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 19200
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 9
+  action_time: 16
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 39680
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 10
+  action_time: 16
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 80649
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+- minion: gravel
+  tier: 11
+  action_time: 13
+  enchanted_lava_bucket: true
+  craft:
+    - name: gravel
+      quantity: 1072
+    - name: flint
+      quantity: 162560
+  generates:
+    - name: flint
+      items_per_harvest: 1
+      compacted_form:
+        name: e_flint
+        quantity: 160
+
+
+- minion: quartz
+  tier: 1
+  action_time: 22.5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 80
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 2
+  action_time: 22.5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 240
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 3
+  action_time: 21
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 560
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 4
+  action_time: 21
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 1072
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 5
+  action_time: 19
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 2352
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 6
+  action_time: 19
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 6192
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 7
+  action_time: 17
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 16432
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 8
+  action_time: 17
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 36912
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 9
+  action_time: 14.5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 77872
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 10
+  action_time: 14.5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 159792
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: quartz
+  tier: 11
+  action_time: 11.5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: quartz
+      quantity: 364592
+  generates:
+    - name: quartz
+      items_per_harvest: 1
+      compacted_form:
+        name: e_quartz
+        quantity: 160
+
+- minion: ghast
+  tier: 1
+  action_time: 50
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 64
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 2
+  action_time: 50
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 192
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 3
+  action_time: 47
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 448
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 4
+  action_time: 47
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 960
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 5
+  action_time: 44
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 2240
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 6
+  action_time: 44
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 4800
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 7
+  action_time: 41
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 8800
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 8
+  action_time: 41
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 16800
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 9
+  action_time: 38
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 32800
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 10
+  action_time: 38
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 64800
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: ghast
+  tier: 11
+  action_time: 32
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  craft:
+    - name: ghast_tear
+      quantity: 128800
+  generates:
+    - name: ghast_tear
+      items_per_harvest: 1
+
+- minion: rabbit
+  tier: 1
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 26
+  craft:
+    - name: raw_rabbit
+      quantity: 64
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 2
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 26
+  craft:
+    - name: raw_rabbit
+      quantity: 192
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 3
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 24
+  craft:
+    - name: raw_rabbit
+      quantity: 448
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 4
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 24
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 22
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 5120
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 6
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 22
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 15360
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 7
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 20
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 35840
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 8
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 20
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 76800
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 9
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 17
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 158720
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 10
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 17
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 158720
+    - name: rabbit_hide
+      quantity: 147456
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: rabbit
+  tier: 11
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 10
+  craft:
+    - name: raw_rabbit
+      quantity: 960
+    - name: rabbits_foot
+      quantity: 158720
+    - name: rabbit_hide
+      quantity: 1032192
+  generates:
+    - name: raw_rabbit
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_raw_rabbit
+        quantity: 160
+    - name: rabbits_foot
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_foot
+        quantity: 160
+    - name: rabbit_hide
+      items_per_harvest: .35
+      xp_per_item: .2
+      compacted_form:
+        name: e_rabbit_hide
+        quantity: 576
+
+- minion: sheep
+  tier: 1
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 24
+  craft:
+    - name: mutton
+      quantity: 64
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 2
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 24
+  craft:
+    - name: mutton
+      quantity: 192
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 3
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 22
+  craft:
+    - name: mutton
+      quantity: 448
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 4
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 22
+  craft:
+    - name: mutton
+      quantity: 960
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 5
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 20
+  craft:
+    - name: mutton
+      quantity: 2240
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 6
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 20
+  craft:
+    - name: mutton
+      quantity: 6080
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 7
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 18
+  craft:
+    - name: mutton
+      quantity: 16320
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 8
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 18
+  craft:
+    - name: mutton
+      quantity: 36800
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 9
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 16
+  craft:
+    - name: mutton
+      quantity: 77760
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 10
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 16
+  craft:
+    - name: mutton
+      quantity: 159680
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 11
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 12
+  craft:
+    - name: mutton
+      quantity: 364480
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
+
+- minion: sheep
+  tier: 12
+  diamond_spreading: true
+  enchanted_lava_bucket: true
+  action_time: 9
+  craft:
+    - name: mutton
+      quantity: 774080
+  generates:
+    - name: mutton
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_mutton
+        quantity: 160
+    - name: white_wool
+      items_per_harvest: 1
+      xp_per_item: .1
+      compacted_form:
+        name: e_white_wool
+        quantity: 160
