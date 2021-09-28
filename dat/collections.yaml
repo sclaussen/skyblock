@@ -1,96 +1,102 @@
+- name: acacia_wood
+  level: 7
+- name: birch_wood
+  level: 9
 - name: blaze_rod
   level: 7
 - name: bone
   level: 9
 - name: cactus
   level: 6
-- name: carrot_item
+- name: carrot
   level: 5
-- name: clay_ball
+- name: clay
   level: 5
+- name: clownfish
+  level: 7
 - name: coal
   level: 9
 - name: cobblestone
   level: 9
+- name: cocoa_beans
+  level: 7
+- name: dark_oak_wood
+  level: 6
 - name: diamond
   level: 9
 - name: emerald
   level: 6
+- name: end_stone
+  level: 8
 - name: ender_pearl
   level: 9
-- name: ender_stone
-  level: 8
 - name: feather
   level: 7
+- name: gemstone_collection
+  level: 4
 - name: ghast_tear
-  level: 6
+  level: 7
 - name: glowstone_dust
   level: 9
 - name: gold_ingot
-  level: 8
+  level: 9
 - name: gravel
   level: 9
+- name: hard_stone
+  level: 1
 - name: ice
   level: 5
 - name: ink_sack
-  level: 4
-- name: ink_sack:4
-  level: 9
+  level: 5
 - name: iron_ingot
+  level: 9
+- name: jungle_wood
+  level: 9
+- name: lapis_lazuli
   level: 9
 - name: leather
   level: 8
-- name: log
-  level: 9
-- name: log:1
+- name: lily_pad
   level: 5
-- name: log:2
-  level: 9
-- name: log:3
-  level: 9
-- name: log_2
-  level: 7
-- name: log_2:1
-  level: 6
 - name: magma_cream
   level: 9
 - name: melon
   level: 6
-- name: mithril_ore
-  level: 6
-- name: mushroom_collection
+- name: mithril
+  level: 7
+- name: mushroom
   level: 7
 - name: mutton
-  level: 7
+  level: 8
+- name: nether_quartz
+  level: 9
+- name: nether_wart
+  level: 9
 - name: netherrack
   level: 4
-- name: nether_stalk
+- name: oak_wood
   level: 9
 - name: obsidian
   level: 8
-- name: pork
-  level: 6
-- name: potato_item
+- name: potato
   level: 8
 - name: prismarine_crystals
   level: 7
 - name: prismarine_shard
   level: 6
+- name: pufferfish
+  level: 7
 - name: pumpkin
-  level: 8
-- name: quartz
-  level: 9
-- name: rabbit
   level: 8
 - name: raw_chicken
   level: 7
 - name: raw_fish
   level: 7
-- name: raw_fish:1
-  level: 7
-- name: raw_fish:2
+- name: raw_porkchop
   level: 6
-- name: raw_fish:3
+- name: raw_rabbit
+  level: 8
+- name: raw_salmon
   level: 7
 - name: redstone
   level: 9
@@ -100,11 +106,13 @@
   level: 7
 - name: seeds
   level: 6
-- name: slime_ball
+- name: slimeball
   level: 8
 - name: spider_eye
   level: 8
 - name: sponge
+  level: 5
+- name: spruce_wood
   level: 5
 - name: string
   level: 9
@@ -112,14 +120,8 @@
   level: 8
 - name: sulphur
   level: 1
-- name: water_lily
-  level: 5
 - name: wheat
   level: 9
-- name: cocoa_beans
-  level: 7
-- name: end_stone
-  level: 19
 - name: gemstone
   level: 19
 - name: hard_stone

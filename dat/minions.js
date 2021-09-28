@@ -34,7 +34,7 @@ async function minions(args) {
 
     await writeBazaarItemsCache();
     let bz = await readBazaarItemsCache();
-    let minions = YAML.parse(fs.readFileSync('./minion.yaml', 'utf8'), { prettyErrors: true });
+    let minions = YAML.parse(fs.readFileSync('./minions.yaml', 'utf8'), { prettyErrors: true });
     let prices = YAML.parse(fs.readFileSync('./prices.yaml', 'utf8'), { prettyErrors: true });
 
     for (let minion of minions) {
@@ -127,7 +127,7 @@ async function minions(args) {
         }
     }
 
-    console.log(print(_.filter(minions, { tier: 7 })));
+    console.log(print(_.sortBy(_.filter(minions, { tier: 7 }), [ 'profit_per_day' ]).reverse()));
     // console.log(print(minions));
 
     // y4(minions);
@@ -168,12 +168,12 @@ function print(minions, max) {
             width: 4,
             extra_spaces: 1
         },
-        // {
-        //     name: 'craft_cost',
-        //     alias: '$/craft',
-        //     width: 10,
-        //     format: { integer: true },
-        // },
+        {
+            name: 'craft_cost',
+            alias: '$/craft',
+            width: 10,
+            format: { integer: true },
+        },
         {
             name: 'profit_per_day',
             alias: '$/day',
@@ -204,16 +204,16 @@ function print(minions, max) {
             width: 9,
             format: { integer: true },
         },
-        // {
-        //     name: 'craft_summary',
-        //     alias: 'craft',
-        //     width: -30,
-        // },
         {
-            name: 'daily_generation_summary',
-            alias: 'generates/day',
+            name: 'craft_summary',
+            alias: 'craft',
             width: -30,
         },
+        // {
+        //     name: 'daily_generation_summary',
+        //     alias: 'generates/day',
+        //     width: -30,
+        // },
 
     ], max);
 }

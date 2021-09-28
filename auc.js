@@ -25,7 +25,7 @@ const p = require('./lib/pr').p(d);
 const p4 = require('./lib/pr').p4(d);
 
 // const watchFile = 'watch-test.yaml';
-const watchFile = 'watch.yaml';
+const watchFile = 'dat/watch.yaml';
 
 
 auc(process.argv);
@@ -282,7 +282,7 @@ async function findMatches(auctionItems, watchDefinitions) {
         }
         if (slacks.length > 0) {
             let now = moment().format('hh:mm:ss');
-            let slackMessage = print(sort(slacks));
+            let slackMessage = printSlack(sort(slacks));
             let response = await slack('```' + now + '\n' + slackMessage + '```');
         }
     }
@@ -319,7 +319,7 @@ function logLowCost(match, watchDefinition, watchDefinitionKey) {
     s += lj(watchDefinitionKey, 50);
     s += lj(watchDefinition.query, 50);
     s += '\n';
-    fs.appendFileSync('./lows.yaml', s, 'utf-8');
+    fs.appendFileSync('./dat/lows.yaml', s, 'utf-8');
 }
 
 function serializeWatchDefinitions(watchDefinitions) {
@@ -377,80 +377,80 @@ function print(items, max, highlight) {
             name: 'name',
             width: -75,
         },
-        {
-            name: 'health',
-            alias: 'H',
-            width: 3,
-        },
-        {
-            name: 'health_reforge',
-            alias: ' ',
-            width: 3,
-        },
-        {
-            name: 'health_potato',
-            alias: ' ',
-            width: 2,
-            extra_spaces: 3,
-            // highlight_green_above: 1,
-        },
-        {
-            name: 'defense',
-            alias: 'D',
-            width: 3,
-        },
-        {
-            name: 'defense_reforge',
-            alias: ' ',
-            width: 2,
-        },
-        {
-            name: 'defense_potato',
-            alias: ' ',
-            width: 2,
-            // highlight_green_above: 1,
-            extra_spaces: 3
-        },
-        {
-            name: 'strength',
-            alias: 'S',
-            width: 3,
-        },
-        {
-            name: 'strength_reforge',
-            alias: ' ',
-            width: 3,
-            extra_spaces: 3
-        },
-        {
-            name: 'crit_chance',
-            alias: 'CC',
-            width: 4,
-        },
-        {
-            name: 'crit_damage',
-            alias: 'CD',
-            width: 4,
-            extra_spaces: 3
-        },
-        {
-            name: 'intelligence',
-            alias: 'I',
-            width: 3,
-            extra_spaces: 3
-        },
-        {
-            name: 'speed',
-            alias: 'S',
-            width: 3,
-            extra_spaces: 3
-        },
-        {
-            name: 'attack_speed',
-            alias: 'AS',
-            width: 4,
-            extra_spaces: 3
-        },
+        // {
+        //     name: 'health',
+        //     alias: 'H',
+        //     width: 3,
+        // },
+        // {
+        //     name: 'health_reforge',
+        //     alias: ' ',
+        //     width: 3,
+        // },
+        // {
+        //     name: 'health_potato',
+        //     alias: ' ',
+        //     width: 2,
+        //     extra_spaces: 3,
+        //     // highlight_green_above: 1,
+        // },
+        // {
+        //     name: 'defense',
+        //     alias: 'D',
+        //     width: 3,
+        // },
+        // {
+        //     name: 'defense_reforge',
+        //     alias: ' ',
+        //     width: 2,
+        // },
+        // {
+        //     name: 'defense_potato',
+        //     alias: ' ',
+        //     width: 2,
+        //     // highlight_green_above: 1,
+        //     extra_spaces: 3
+        // },
+        // {
+        //     name: 'strength',
+        //     alias: 'S',
+        //     width: 3,
+        // },
+        // {
+        //     name: 'strength_reforge',
+        //     alias: ' ',
+        //     width: 3,
+        //     extra_spaces: 3
+        // },
+        // {
+        //     name: 'crit_chance',
+        //     alias: 'CC',
+        //     width: 4,
+        // },
+        // {
+        //     name: 'crit_damage',
+        //     alias: 'CD',
+        //     width: 4,
+        //     extra_spaces: 3
+        // },
+        // {
+        //     name: 'intelligence',
+        //     alias: 'I',
+        //     width: 3,
+        //     extra_spaces: 3
+        // },
+        // {
+        //     name: 'speed',
+        //     alias: 'S',
+        //     width: 3,
+        //     extra_spaces: 3
+        // },
+        // {
+        //     name: 'attack_speed',
+        //     alias: 'AS',
+        //     width: 4,
+        //     extra_spaces: 3
+        // },
         {
             name: 'gear_score',
             alias: 'GS',
@@ -460,7 +460,29 @@ function print(items, max, highlight) {
         {
             name: 'enchantments',
             width: -40,
-            format: { shorten: 60, shorten_append: '...]' }
+            format: { shorten: 80, shorten_append: '...]' }
+        },
+    ], highlight);
+}
+
+function printSlack(items, max, highlight) {
+    items = augmentNames(items);
+    // items = addStats(items);
+    return table(items, [
+        {
+            name: 'cost',
+            width: 5,
+            format: { mix: true },
+            extra_spaces: 1
+        },
+        {
+            name: 'sell',
+            width: 5,
+            format: { mix: true, hide_zero: true },
+        },
+        {
+            name: 'name',
+            width: -75,
         },
     ], highlight);
 }

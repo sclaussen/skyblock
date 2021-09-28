@@ -44,7 +44,7 @@ async function item(args) {
     options = parse(args);
     await writeBazaarItemsCache();
     bzItems = await readBazaarItemsCache();
-    let items = YAML.parse(fs.readFileSync('./items.yaml', 'utf8'));
+    let items = YAML.parse(fs.readFileSync('./dat/items.yaml', 'utf8'));
 
     console.log(print(sort(process(items))));
 }
