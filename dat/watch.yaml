@@ -1,12 +1,16 @@
+strong_dragon_leggings_ancient:
+  action: flip
+  reforge: ancient
+  max: 2000000
 strong_dragon_leggings:
   action: flip
   extra:
     - growth
     - protection
     - thorns
-  max: 975000
+  max: 1000000
   sell: 1300000
-  low: 120000
+  low: 100036
 strong_dragon_leggings_rejuvenate:
   action: flip
   query: strong dragon leggings
@@ -14,7 +18,7 @@ strong_dragon_leggings_rejuvenate:
     - growth
     - protection
     - rejuvenate
-  max: 975000
+  max: 1000000
   sell: 1300000
   low: 249000
 strong_dragon_leggings_rejuvenate_thorns:
@@ -25,19 +29,19 @@ strong_dragon_leggings_rejuvenate_thorns:
     - protection
     - rejuvenate
     - thorns
-  max: 1100000
+  max: 1000000
   sell: 1400000
   low: 249000
 strong_dragon_leggings_s4:
   query: strong dragon leggings
   stars: 4
-  max: 1000000
+  max: 1300000
   sell: 1500000
   low: 300000
 strong_dragon_leggings_s5:
   query: strong dragon leggings
   stars: 5
-  max: 1400000
+  max: 1500000
   sell: 2200000
   low: 249000
 strong_dragon_leggings_clean:
@@ -46,20 +50,21 @@ strong_dragon_leggings_clean:
   sell: 1100000
   low: 100000
 shadow_assassin_chestplate_buy:
-  action: buy
+  action: flip
   tier: lege
   stars: 5
+  max: 25000000
   query: shadow assassin chestplate
-  limit: 1
   low: 2400000
+  limit: 1
 superior_dragon_boots_buy:
   action: research
   query: superior dragon boots
   stars: 5
-  limit: 5
+  limit: 2
   low: 1100000
 farmer_boots:
-  action: flip
+  action: quiet
   max: 200000
   low: 163840
   sell: 300000
@@ -76,17 +81,17 @@ necron_leggings:
 shadow_assassin_helm:
   action: research
   tier: lege
-  limit: 5
+  limit: 2
   low: 330000
 shadow_assassin_chestplate:
   action: research
   tier: lege
-  limit: 5
+  limit: 2
   low: 15000
 shadow_assassin_leggings:
   action: research
   tier: lege
-  limit: 5
+  limit: 2
   low: 5000
 shadow_assassin_boots:
   action: research
@@ -94,34 +99,34 @@ shadow_assassin_boots:
   note: bought 890
   max: 880000
   low: 5000
-  limit: 5
+  limit: 2
 shadow_goggles:
   action: flip
-  max: 400000
+  max: 350000
   low: 50000
 shark_scale_helm:
-  action: buy
+  action: quiet
   note: use submerged reforge, requires L24
   max_old: 520000
   low: 350000
   limit: 2
 shark_scale_chest:
-  action: buy
+  action: quiet
   note: use submerged reforge, requires L24
   max_old: 890000
   low: 64000
   limit: 2
 shark_scale_leggings:
-  action: buy
+  action: quiet
   note: use submerged reforge, requires L24
   max_old: 90000
-  low: 799999
+  low: 100000
   limit: 2
 shark_scale_boots:
-  action: buy
+  action: quiet
   note: use submerged reforge, requires L24
   max_old: 510000
-  low: 295000
+  low: 100000
   limit: 2
 sorrow_helm:
   action: research
@@ -144,18 +149,22 @@ superior_dragon_helmet:
   bought: 7M
   max: 6750000
   low: 110000
+  limit: 2
 superior_dragon_chestplate:
   action: research
   max: 10750000
   low: 600000
+  limit: 2
 superior_dragon_leggings:
   action: research
   max: 10000000
   low: 106000
+  limit: 2
 superior_dragon_boots:
   action: research
   max: 5500000
   low: 106000
+  limit: 2
 wardens_helmet:
   action: research
   max: 216000000
@@ -184,7 +193,7 @@ ghoul_buster:
   max: 2100000
   low: 1000000
 fel_sword:
-  action: research
+  action: quiet
   requires: cat20
   max: 150000
   sell: 150000
@@ -195,7 +204,7 @@ florid_zombie_sword:
   note: good for burst healing, slayers or dungeon bosses
   max: 2700000
   sell: 3050000
-  low: 290000
+  low: 5225
 giantXs_sword:
   action: research
   max: 140000000
@@ -213,7 +222,7 @@ ice_spray_wand:
   action: quiet
   note: good for mob stunning, good to pair w/other weapons
   max: 24000000
-  low: 3599999
+  low: 2550000
 livid_dagger:
   action: buy
   requires: cat5
@@ -229,10 +238,10 @@ ornate_zombie_sword:
 reaper_falchion:
   action: flip
   max: 3500000
-  low: 399999
+  low: 360000
   sell: 4000000
 terminator:
-  action: research
+  action: quiet
   max: 794000000
   low: 100000000
 thick_scorpion_foil:
@@ -243,12 +252,15 @@ voidedge_katana:
   action: flip
   max: 600000
   sell: 900000
-  low: 200000
+  low: 70000
 vorpal_katana:
   action: flip
   max: 5800000
   low: 5000000
   sell: 7400000
+daedalus axe:
+  action: buy
+  limit: 1
 warped_aspect_of_the_end:
   action: flip
   query: aspect of the end
@@ -282,15 +294,16 @@ baby_yeti_lege:
   max: 16500000
   low: 16000000
 black_cat:
-  action: buy
+  action: flip
   pet: true
   tier: lege
+  max: 21000000
   low: 5900000
-  limit: 1
 dolphin:
   action: buy
   pet: true
   tier: lege
+  # max: 16000000
   low: 10000000
   sell: 14000000
   limit: 1
@@ -298,20 +311,28 @@ elephant:
   action: buy
   pet: true
   tier: lege
-  max: 16300000
+  # max: 16300000
   sell: 18000000
-  low: 6000000
+  low: 5000000
+  limit: 1
 ender_dragon:
   action: quiet
   pet: true
   tier: lege
   low: 6900000
 griffin:
-  action: quiet
+  action: buy
   pet: true
   tier: lege
-  max: 32000000
+  # max: 32000000
   low: 3599000
+  limit: 1
+wolf:
+  action: quiet
+  notes: Bought mine for $2M at L32
+  pet: true
+  tier: lege
+  limit: 2
 mithril_golem:
   action: flip
   note: bought my at 1.15M
@@ -333,10 +354,10 @@ silverfish:
   pet: true
   low: 130000
 tarantula:
-  action: flip
+  action: quiet
   pet: true
   tier: lege
-  max: 1500000
+# max: 1500000
   limit: 2
   low: 900000
 chance_5:
@@ -383,9 +404,9 @@ dragon_tracer_5:
   limit: 1
 growth_6:
   action: buy
-  max: 5400000
+  max: 4400000
   enchantment: true
-  limit: 2
+  limit: 1
   low: 1000000
 infinite_quiver_10:
   action: flip
@@ -421,8 +442,8 @@ protection_6:
   action: buy
   max: 4800000
   enchantment: true
-  limit: 2
-  low: 1200000
+  limit: 1
+  low: 150000
 power_5:
   action: quiet
   enchantment: true
@@ -452,8 +473,9 @@ snipe_3:
 sugar_rush_3:
   action: buy
   enchantment: true
-  limit: 2
-  low: 1560000
+  limit: 1
+  max: 1800000
+  low: 1400000
 impaling_3:
   action: quiet
   enchantment: true
@@ -534,7 +556,7 @@ ender_slayer_7:
   action: quiet
   enchantment: true
   limit: 1
-  low: 8500000
+  low: 5000000
 execute_5:
   action: quiet
   enchantment: true
@@ -548,7 +570,9 @@ execute_6:
 rejuvenate_5:
   action: buy
   enchantment: true
-  low: 2
+  limit: 1
+  max: 850000
+  low: 200000
 dark_orb:
   action: flip
   max: 250000
@@ -574,14 +598,14 @@ personal_compactor_5000:
   limit: 2
 personal_compactor_6000:
   action: flip
-  max: 2500000
+  max: 2300000
   tier: epic
   low: 900000
   sell: 3200000
   limit: 2
 personal_compactor_7000:
   action: flip
-  max: 5600000
+  max: 4500000
   tier: lege
   low: 3000000
   sell: 6000000
@@ -633,12 +657,13 @@ sea_creature_artifact:
   low: 25000
 foraging_exp_boost:
   action: quiet
-  low: 55000
+  low: 50000
 foraging_exp_boost_epic:
-  action: research
+  action: buy
   query: foraging exp boost
   tier: epic
   low: 100000
+  max: 1
 mining_exp_boost:
   action: quiet
   low: 110
@@ -653,7 +678,7 @@ combat_exp_boost:
   low: 500
   limit: 1
 combat_exp_boost_epic:
-  action: research
+  action: quiet
   query: combat exp boost
   tier: epic
   low: 55000
@@ -661,10 +686,10 @@ combat_exp_boost_epic:
 fishing_exp_boost:
   action: quiet
   tier: rare
-  low: 50000
+  low: 38888
   limit: 1
 fishing_exp_boost_epic:
-  action: research
+  action: quiet
   query: fishing exp boost
   tier: epic
   low: 580000
@@ -681,7 +706,7 @@ farming_exp_boost_epic:
   low: 1000000
   limit: 1
 reaper_gem:
-  action: research
+  action: quiet
   low: 290000
 dwarf_turtle_shelmet:
   action: flip
@@ -695,7 +720,7 @@ spooky_cupcake:
 radiant_power_orb:
   action: quiet
   max: 34999
-  low: 500
+  low: 28
 mana_flux_power_orb:
   action: quiet
   limit: 3
@@ -706,13 +731,13 @@ overflux_power_orb:
   limit: 3
   low: 70000000
 blue_jerry_talisman:
-  action: buy
+  action: quiet
   max: 3200000
   low: 100000
 mithril_drill_sx-r226:
   action: quiet
   limit: 5
-  low: 1000000
+  low: 50000
 mithril_drill_sx-r326:
   action: flip
   limit: 5
@@ -721,14 +746,23 @@ mithril_drill_sx-r326:
   low: 4000000
 pesto_goblin_omelette:
   action: flip
-  max: 4000000
-  note: bought mine at 4m
-  low: 4000000
+  max: 2900000
+  note: bought mine at 4m, 2.9m
+  low: 2900000
 ruby_drill_tx-15:
-  action: flip
+  action: quiet
   max: 4100000
-  low: 3980000
+  low: 253000
 washed-up_souvenir:
-  action: buy
+  action: quiet
   max: 600000
   limit: 2
+  low: 410000
+autopet_rules_2-pack:
+  action: flip
+  max: 8700000
+jaderald:
+  action: quiet
+  max: 10750000
+  limit: 2
+  low: 9000000

@@ -256,11 +256,11 @@ async function findMatches(auctionItems, watchDefinitions) {
             }
 
             // new low?
-            if (!watchDefinition.low || match.cost < watchDefinition.low) {
-                recordLowCostFound = true;
-                watchDefinition.low = match.cost;
-                logLowCost(match, watchDefinition, watchDefinitionKey);
-            }
+            // if (!watchDefinition.low || match.cost < watchDefinition.low) {
+            //     recordLowCostFound = true;
+            //     watchDefinition.low = match.cost;
+            //     logLowCost(match, watchDefinition, watchDefinitionKey);
+            // }
         });
 
 
@@ -364,6 +364,7 @@ function print(items, max, highlight) {
             name: 'sell',
             width: 5,
             format: { mix: true, hide_zero: true },
+            extra_spaces: 2
         },
         {
             name: 'margin',
@@ -483,6 +484,11 @@ function printSlack(items, max, highlight) {
         {
             name: 'name',
             width: -75,
+        },
+        {
+            name: 'enchantments',
+            width: -40,
+            format: { shorten: 80, shorten_append: '...]' }
         },
     ], highlight);
 }
@@ -664,6 +670,7 @@ function parseArguments(args) {
         .option('-a, --all', 'Remove default limit so all matches are returned')
 
         .option('-n, --no-notifications', 'Remove slack notifications')
+        .option('-N, --no-header', 'Do not output a header')
 
         .addHelpText('after', `
 
