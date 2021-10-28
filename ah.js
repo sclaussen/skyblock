@@ -72,7 +72,7 @@ async function ah(args) {
         if (matchedAuctionsFromPage.length > 0) {
             await printFlips(matchedAuctionsFromPage);
         }
-        let auctions = matchedAuctionsFromPage;
+        let auctions = auctionsFromPage;
 
 
         // Handle pages 2-N
@@ -84,7 +84,7 @@ async function ah(args) {
             if (matchedAuctionsFromPage.length > 0) {
                 await printFlips(matchedAuctionsFromPage);
             }
-            auctions = auctions.concat(matchedAuctionsFromPage);
+            auctions = auctions.concat(auctionsFromPage);
         }
 
         // Here we cache all the auctions so the command line variant
