@@ -257,7 +257,9 @@ function limit(auctions) {
 
 async function printFlips(auctions) {
     // let auctionFlips = _.filter(auctions, function(o) { return o.action === 'flip' });
-    await sendSlackMessage(auctions);
+    if (process.env.SKYBLOCK_SLACK) {
+        await sendSlackMessage(auctions);
+    }
     console.log();
     process.stdout.write(print(auctions));
 }

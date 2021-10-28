@@ -5,7 +5,7 @@
 1. `git clone git@github.com:sclaussen/skyblock.git`
 1. `cd ~/src/skyblock`
 1. `npm i`
-1. `node ah --help`
+1. `node ah --help` (see dat/ah-*.yaml)
 1. `node bz --help`
 1. `node collections --help`
 1. `node minions --help` (work in progress, see dat/minions.yaml)
@@ -21,6 +21,7 @@ Running the commands requires the following environment variables:
 - SKYBLOCK_PROFILE (eg Zucchini)
 - SKYBLOCK_UUID (can get from ???)
 - SKYBLOCK_KEY (run api command?)
+- SKYBLOCK_SLACK=true/false
 
 To turn debug on:
 - export DEBUG="skyblock"
