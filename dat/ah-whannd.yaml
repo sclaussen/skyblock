@@ -1,0 +1,50 @@
+wise_dragon_leggings_clean:
+  query: wise dragon leggings
+  max: 850000
+
+wise_dragon_leggings_ancient:
+  query: wise dragon leggings
+  reforge: ancient
+  stars: 5
+  max: 2000000
+
+wise_dragon_leggings:
+  extra:
+    - growth
+    - protection
+    - thorns
+  max: 900000
+
+wise_dragon_leggings_rejuvenate:
+  query: wise dragon leggings
+  extra:
+    - growth
+    - protection
+    - rejuvenate
+  max: 900000
+
+wise_dragon_leggings_rejuvenate_thorns:
+  query: wise dragon leggings
+  extra:
+    - growth
+    - protection
+    - rejuvenate
+    - thorns
+  max: 900000
+
+wise_dragon_leggings_growth_protection:
+  query: wise dragon leggings
+  extra:
+    - growth
+    - protection
+  max: 900000
+
+wise_dragon_leggings_s4:
+  query: wise dragon leggings
+  stars: 4
+  max: 1000000
+
+wise_dragon_leggings_s5:
+  query: wise dragon leggings
+  stars: 5
+  max: 1500000

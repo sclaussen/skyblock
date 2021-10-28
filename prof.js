@@ -87,6 +87,7 @@ async function profile(args) {
     // });
     // p4(x.sort());
 
+
     output.skills = [
         {
             name: 'combat',
@@ -133,6 +134,7 @@ async function profile(args) {
     print(output);
 }
 
+
 function print(output) {
     // p4(output);
 
@@ -149,6 +151,7 @@ function print(output) {
     console.log(printSkills(output.skills));
     console.log(printPets(output.pets));
 }
+
 
 function printPets(items) {
     console.log();
@@ -170,6 +173,7 @@ function printPets(items) {
     ]);
 }
 
+
 function printSkills(items) {
     console.log();
     return table(items, [
@@ -186,11 +190,10 @@ function printSkills(items) {
     ]);
 }
 
+
 function parse(args) {
 
     program
-        .arguments('[user]', 'Username', 'PsychoticKizar')
-        .arguments('[profile]', 'Profile', 'Zucchini')
         .parse(args);
 
     let options = program.opts();

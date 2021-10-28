@@ -5,32 +5,22 @@
 1. `git clone git@github.com:sclaussen/skyblock.git`
 1. `cd ~/src/skyblock`
 1. `npm i`
+1. `node ah --help`
 1. `node bz --help`
-1. `node auc --help`
-1. `node prof --help` (work in progress)
-1. `node coll --help` (work in progress)
+1. `node collections --help`
+1. `node minions --help` (work in progress, see dat/minions.yaml)
+1. `node myminions --help`
+1. `node objectives --help` (work in progress)
+1. `node pets --help`
+1. `node quests --help` (work in progress)
 1. `node skills --help` (work in progress)
+1. `node talismans --help`
 
+Running the commands requires the following environment variables:
+- SKYBLOCK_USER (eg Wisedom)
+- SKYBLOCK_PROFILE (eg Zucchini)
+- SKYBLOCK_UUID (can get from ???)
+- SKYBLOCK_KEY (run api command?)
 
-
-# Overview
-
-Primary CLIs:
-- bz
-- auc
-
-
-
-# Usage
-
-Here's how I use the scripts:
-
-1. In terminal 1: I run the `node bz` command to continually monitor
-   the bazaar.
-
-1. In terminal 2: I run the `node mon` to continually monitor auctions
-   of interest (based on the contents of items.yaml).  (Note: this
-   depends on the auction cache retrieved by `auc -R`).
-
-1. In terminal 3: I run the `auc -R` script.  It retrieves the auction
-   information every minute or so and caches it locally.
+To turn debug on:
+- export DEBUG="skyblock"

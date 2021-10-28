@@ -1,59 +1,37 @@
-strong_dragon_leggings_ancient:
-  action: flip
-  reforge: ancient
-  max: 2000000
-strong_dragon_leggings:
-  action: flip
-  extra:
-    - growth
-    - protection
-    - thorns
-  max: 1000000
-  sell: 1300000
-  low: 100036
-strong_dragon_leggings_rejuvenate:
-  action: flip
-  query: strong dragon leggings
-  extra:
-    - growth
-    - protection
-    - rejuvenate
-  max: 1000000
-  sell: 1300000
-  low: 249000
-strong_dragon_leggings_rejuvenate_thorns:
-  action: flip
-  query: strong dragon leggings
-  extra:
-    - growth
-    - protection
-    - rejuvenate
-    - thorns
-  max: 1000000
-  sell: 1400000
-  low: 249000
-strong_dragon_leggings_s4:
-  query: strong dragon leggings
-  stars: 4
-  max: 1300000
-  sell: 1500000
-  low: 300000
-strong_dragon_leggings_s5:
-  query: strong dragon leggings
+shark_scale_helm:
+  action: buy
+  note: use submerged reforge, requires L24
+  max_old: 520000
+  limit: 2
+shark_scale_chest:
+  action: buy
+  note: use submerged reforge, requires L24
+  max_old: 890000
+  limit: 2
+shark_scale_leggings:
+  action: buy
+  note: use submerged reforge, requires L24
+  max_old: 90000
+  limit: 2
+shark_scale_boots:
+  action: buy
+  note: use submerged reforge, requires L24
+  max_old: 510000
+  limit: 2
+wise_dragon_leggings_s5:
+  action: quiet
+  query: wise dragon leggings
   stars: 5
-  max: 1500000
-  sell: 2200000
-  low: 249000
-strong_dragon_leggings_clean:
-  query: strong dragon leggings
-  max: 900000
-  sell: 1100000
-  low: 100000
+  max: 2000000
+wise_dragon_leggings_clean:
+  action: quiet
+  query: wise dragon leggings
+  max: 1300000
 shadow_assassin_chestplate_buy:
   action: flip
   tier: lege
   stars: 5
-  max: 25000000
+  max: 24000000
   query: shadow assassin chestplate
   low: 2400000
   limit: 1
@@ -104,30 +82,6 @@ shadow_goggles:
   action: flip
   max: 350000
   low: 50000
-shark_scale_helm:
-  action: quiet
-  note: use submerged reforge, requires L24
-  max_old: 520000
-  low: 350000
-  limit: 2
-shark_scale_chest:
-  action: quiet
-  note: use submerged reforge, requires L24
-  max_old: 890000
-  low: 64000
-  limit: 2
-shark_scale_leggings:
-  action: quiet
-  note: use submerged reforge, requires L24
-  max_old: 90000
-  low: 100000
-  limit: 2
-shark_scale_boots:
-  action: quiet
-  note: use submerged reforge, requires L24
-  max_old: 510000
-  low: 100000
-  limit: 2
 sorrow_helm:
   action: research
   max: 5000000
@@ -183,7 +137,7 @@ bonzos_staff:
   action: research
   note: great for dungeon mobility
 flower_of_truth:
-  action: flip
+  action: quiet
   max: 2800000
   low: 100000
   limit: 1
@@ -202,7 +156,7 @@ fel_sword:
 florid_zombie_sword:
   action: flip
   note: good for burst healing, slayers or dungeon bosses
-  max: 2700000
+  max: 2500000
   sell: 3050000
   low: 5225
 giantXs_sword:
@@ -237,7 +191,7 @@ ornate_zombie_sword:
   low: 105000
 reaper_falchion:
   action: flip
-  max: 3500000
+  max: 3000000
   low: 360000
   sell: 4000000
 terminator:
@@ -255,14 +209,14 @@ voidedge_katana:
   low: 70000
 vorpal_katana:
   action: flip
-  max: 5800000
-  low: 5000000
-  sell: 7400000
+  max: 5100000
+  sell: 6000000
 daedalus axe:
-  action: buy
+# action: buy
+  action: quiet
   limit: 1
 warped_aspect_of_the_end:
-  action: flip
+  action: quiet
   query: aspect of the end
   reforge: warped
   max: 9500000
@@ -294,26 +248,23 @@ baby_yeti_lege:
   max: 16500000
   low: 16000000
 black_cat:
-  action: flip
+  action: quiet
   pet: true
   tier: lege
   max: 21000000
-  low: 5900000
 dolphin:
-  action: buy
+  action: flip
   pet: true
   tier: lege
-  # max: 16000000
-  low: 10000000
+  max: 12000000
   sell: 14000000
   limit: 1
 elephant:
   action: buy
   pet: true
   tier: lege
-  # max: 16300000
+  max: 16300000
   sell: 18000000
-  low: 5000000
   limit: 1
 ender_dragon:
   action: quiet
@@ -321,10 +272,11 @@ ender_dragon:
   tier: lege
   low: 6900000
 griffin:
-  action: buy
+# action: buy
+  action: quiet
   pet: true
   tier: lege
-  # max: 32000000
+  max: 32000000
   low: 3599000
   limit: 1
 wolf:
@@ -439,7 +391,8 @@ piercing_1:
     arrow:
       quantity: 1
 protection_6:
-  action: buy
+# action: buy
+  action: quiet
   max: 4800000
   enchantment: true
   limit: 1
@@ -471,7 +424,8 @@ snipe_3:
       quantity: 4
   low: 4
 sugar_rush_3:
-  action: buy
+# action: buy
+  action: quiet
   enchantment: true
   limit: 1
   max: 1800000
@@ -568,14 +522,15 @@ execute_6:
   limit: 1
   low: 13000000
 rejuvenate_5:
-  action: buy
+# action: buy
+  action: quiet
   enchantment: true
   limit: 1
   max: 850000
   low: 200000
 dark_orb:
   action: flip
-  max: 250000
+  max: 350000
   sell: 450000
   low: 1
 precursor_gear:
@@ -605,9 +560,8 @@ personal_compactor_6000:
   limit: 2
 personal_compactor_7000:
   action: flip
-  max: 4500000
   tier: lege
-  low: 3000000
+  max: 5500000
   sell: 6000000
 beacon_i:
   action: flip
@@ -710,7 +664,7 @@ reaper_gem:
   low: 290000
 dwarf_turtle_shelmet:
   action: flip
-  max: 2950000
+  max: 2700000
   low: 2395000
   sell: 3300000
   limit: 2
@@ -739,7 +693,7 @@ mithril_drill_sx-r226:
   limit: 5
   low: 50000
 mithril_drill_sx-r326:
-  action: flip
+  action: quiet
   limit: 5
   note: bought mine at 11m
   max: 10000000
@@ -760,9 +714,67 @@ washed-up_souvenir:
   low: 410000
 autopet_rules_2-pack:
   action: flip
-  max: 8700000
+  max: 7400000
 jaderald:
   action: quiet
   max: 10750000
   limit: 2
   low: 9000000
+titanium_drill_dr-x455:
+  action: flip
+  max: 33000000
+  extra:
+  - compact
+  - efficiency
+  - experience
+  - fortune
+zombie_artifact:
+  action: quiet
+  max: 2500000
+  limit: 1
+blood_god_crest:
+  action: quiet
+  max: 3400000
+  limit: 1
+beastmaster_crest_rare:
+  action: quiet
+  max: 2500000
+  limit: 1
+  tier: rare
+razor-sharp_shark_tooth_necklace:
+  action: quiet
+  max: 3800000
+  limit: 1
+devour_ring:
+  action: quiet
+  max: 1900000
+  limit: 1
+red_claw_ring:
+  action: quiet
+  max: 1300000
+  limit: 1
+beastmaster_crest_lege:
+  action: quiet
+  max: 19000000
+  limit: 1
+  tier: lege
+jungle_amulet:
+  action: quiet
+  max: 2600000
+  limit: 1
+beastmaster_crest_epic:
+  action: flip
+  max: 6700000
+  tier: epic
+  limit: 1
+treasure_ring:
+  action: flip
+  max: 2500000
+  limit: 1
+candy_relic:
+  action: flip
+  max: 11000000
+  limit: 1
+builder's_wand:
+  action: quiet
+  max: 4000000

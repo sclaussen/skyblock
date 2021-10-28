@@ -1,0 +1,67 @@
+# 157 x 104
+strong_dragon_leggings_rex:
+  query: strong dragon leggings
+  seller: rexgoodnight
+  slack: false
+
+# strong_dragon_leggings_wisedom:
+#   query: strong dragon leggings
+#   seller: wisedom
+#   slack: false
+
+strong_dragon_leggings_clean:
+  query: strong dragon leggings
+  max: 850000
+
+strong_dragon_leggings_ancient:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 5
+  max: 2000000
+
+strong_dragon_leggings_godly:
+  query: strong dragon leggings
+  reforge: godly
+  stars: 5
+  max: 2000000
+
+strong_dragon_leggings:
+  extra:
+    - growth
+    - protection
+    - thorns
+  max: 900000
+
+strong_dragon_leggings_rejuvenate:
+  query: strong dragon leggings
+  extra:
+    - growth
+    - protection
+    - rejuvenate
+  max: 900000
+
+strong_dragon_leggings_rejuvenate_thorns:
+  query: strong dragon leggings
+  extra:
+    - growth
+    - protection
+    - rejuvenate
+    - thorns
+  max: 900000
+
+strong_dragon_leggings_growth_protection:
+  query: strong dragon leggings
+  extra:
+    - growth
+    - protection
+  max: 900000
+
+strong_dragon_leggings_s4:
+  query: strong dragon leggings
+  stars: 4
+  max: 1000000
+
+strong_dragon_leggings_s5:
+  query: strong dragon leggings
+  stars: 5
+  max: 1500000

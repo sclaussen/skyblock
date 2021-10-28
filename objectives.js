@@ -8,6 +8,8 @@ const _ = require('lodash');
 const YAML = require('yaml');
 var program = require('commander');
 
+const userlib = require('./lib/user');
+
 const table = require('./lib/util').table;
 const getTier = require('./lib/util').getTier;
 const removeSpecialCharacters = require('./lib/auclib').removeSpecialCharacters;
@@ -29,8 +31,9 @@ objectives(process.argv);
 
 
 async function objectives(args) {
-    let user = (await curl.get('https://api.hypixel.net/skyblock/profiles?uuid=' + process.env.SKYBLOCK_UUID + '&key=' + process.env.SKYBLOCK_KEY)).body;
-    let profile = _.values(_.filter(user.profiles, { cute_name: 'Zucchini' })[0].members)[0];
+    options = await parseArguments(args);
+    let user = (await curl.get('https://api.hypixel.net/skyblock/profiles?uuid=' + options.uuid + '&key=' + options.key)).body;
+    let profile = _.values(_.filter(user.profiles, { cute_name: options.profile })[0].members)[0];
     y4(_.filter(profile.objectives, { status: 'ACTIVE' }));
 }
 
@@ -105,12 +108,18 @@ function print(items) {
 }
 
 
-function parse(args) {
+async function parseArguments(args) {
     program
-        .arguments('[user]', 'Username', 'PsychoticKizar')
-        .arguments('[profile]', 'Profile', 'Zucchini')
         .parse(args);
+
     let options = program.opts();
+
+    // Get the environment variables
+    options.user = userlib.getUser();
+    options.uuid = await userlib.getUuid();
+    options.profile = userlib.getProfile();
+    options.key = userlib.getKey();
+
     p4(options);
     return options;
 }

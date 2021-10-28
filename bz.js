@@ -1,29 +1,30 @@
 'use strict';
-process.env.DEBUG = 'skyblock';
+// process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
+const fs = require('fs');
 const _ = require('lodash');
 
 const YAML = require('yaml');
 var program = require('commander');
 
-const writeBazaarItemsCache = require('./lib/bzlib').writeBazaarItemsCache;
-const readBazaarItemsCache = require('./lib/bzlib').readBazaarItemsCache;
-
 const sleep = require('./lib/util').sleep;
 const table = require('./lib/util').table;
+
+const writeBazaarItemsCache = require('./lib/bzlib').writeBazaarItemsCache;
+const readBazaarItemsCache = require('./lib/bzlib').readBazaarItemsCache;
 
 const p = require('./lib/pr').p(d);
 const p4 = require('./lib/pr').p4(d);
 
 
-const { sortBy, values,  } = _
-
 
 var options;
 
 
+
 bz(process.argv);
+
 
 
 async function bz(args) {
@@ -40,17 +41,21 @@ async function bz(args) {
         }
 
         let items = await readBazaarItemsCache();
-        console.log(print(values(sort(filter(items)))));
+        console.log(print(_.values(sort(filter(items)))));
 
         if (options.phrase) {
             process.exit(0);
         }
+
         sleep(30);
     }
 }
 
+
 function filter(items) {
+
     return _.filter(items, function(o) {
+
         if (options.volume && o.volume < parseInt(options.volume)) {
             return false;
         }
@@ -79,10 +84,22 @@ function filter(items) {
     });
 }
 
+
 function sort(items) {
-    let sortedItems = sortBy(items, [ 'margin' ]).reverse();
+    let sortedItems = _.sortBy(items, [ 'margin' ]).reverse();
     return sortedItems;
 }
+
+
+function getBazaarItem(bazaarItems, name) {
+    let item = bazaarItems[name];
+    if (!item) {
+        console.log('Item not found: ' + name);
+        process.exit(1);
+    }
+    return item;
+}
+
 
 function print(items) {
     return table(items, [
@@ -142,6 +159,20 @@ function parse(args) {
         .option('-o, --output <output>', 'Limit items returned', 35)
         .option('-U, --use-cache', 'Use cached items vs. the skyblock API')
         .argument('[item]', 'Filter the bazaar by an item')
+        .addHelpText('after', `
+Watch bazaar prices (loops every 30 seconds):
+  $ node bz
+Use -c/-C to change the filter for the min/max cost.
+Use -m/-M to change the filter for the min/max margin.
+Use -v to change the filter for the minimum sales.
+Use -o to change the number of items returned.
+
+Search for a specific bazaar item (does not loop):
+  $ node bz birch
+
+Use the -U options when searching offline without an internet connection:
+  $ node bz -U birch
+`)
         .parse(args);
 
     let options = program.opts();

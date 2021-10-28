@@ -11,27 +11,33 @@ const moment = require('moment');
 const clicolor = require('cli-color');
 const program = require('commander');
 
+const userlib = require('./lib/user');
+
+const table = require('./lib/util').table;
 const rj = require('./lib/util').rj;
 const lj = require('./lib/util').lj;
 
 const curl = require('./lib/curl');
 const casey = require('./lib/casey');
+
 const p = require('./lib/pr').p(d);
 const e = require('./lib/pr').e(d);
 const p4 = require('./lib/pr').p4(d);
 const y4 = require('./lib/pr').y4(d);
-const table = require('./lib/util').table;
 
-const collectionsFile = './dat/collections.yaml';
+
 
 var options;
 
+
+
 collections(process.argv);
+
+
 
 async function collections(args) {
 
-
-    options = parse(args);
+    options = await parseArguments(args);
 
     let skyblockCollections = await getSkyblockCollections();
     let sortedSkyblockCollections = _.sortBy(skyblockCollections, [ 'group', 'name' ]);
@@ -42,7 +48,7 @@ async function collections(args) {
 }
 
 
-// Returns an array of somethign like this:
+// Returns an array of something like this:
 //
 // - group: fishing
 //   name: sponge
@@ -114,8 +120,8 @@ async function getSkyblockCollections() {
 async function getPlayerCollections(args) {
 
     let aliases = YAML.parse(fs.readFileSync('./dat/item_aliases.yaml', 'utf8'));
-    let user = (await curl.get('https://api.hypixel.net/skyblock/profiles?uuid=' + process.env.SKYBLOCK_UUID + '&key=' + process.env.SKYBLOCK_KEY)).body;
-    let profile = _.values(_.filter(user.profiles, { cute_name: 'Zucchini' })[0].members)[0];
+    let user = (await curl.get('https://api.hypixel.net/skyblock/profiles?uuid=' + options.uuid + '&key=' + options.key)).body;
+    let profile = _.values(_.filter(user.profiles, { cute_name: options.profile })[0].members)[0];
     let collection = profile.unlocked_coll_tiers;
 
 
@@ -189,6 +195,7 @@ async function getPlayerCollections(args) {
     return levels;
 }
 
+
 function printCollections(skyblockCollections, collections, options) {
     for (let skyblockCollection of skyblockCollections) {
 
@@ -233,17 +240,33 @@ function printCollections(skyblockCollections, collections, options) {
                 console.log('  ' + lj(tierCompleted, 3) + rj(tier, 2) + ' ' + lj(skyblockCollection.group + ' ' + skyblockCollection.name, 20) + ' ' +  unlock.toLowerCase());
             }
         }
+
         console.log();
     }
 }
 
-function parse(args) {
+
+async function parseArguments(args) {
 
     program
         .option('-l, --locked', 'Only list the locked tiers')
+        .addHelpText('after', `
+List all collections and both unlocked and locked tiers:
+  $ node collections
+
+Only list the incomplete locked collection tiers:
+  $ node collections -l
+`)
         .parse(args);
 
     let options = program.opts();
+
+    // Get the environment variables
+    options.user = userlib.getUser();
+    options.uuid = await userlib.getUuid();
+    options.profile = userlib.getProfile();
+    options.key = userlib.getKey();
+
 
     // p4(options);
 
