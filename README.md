@@ -19,9 +19,9 @@
 Running the commands requires the following environment variables:
 - SKYBLOCK_USER (eg Wisedom)
 - SKYBLOCK_PROFILE (eg Zucchini)
-- SKYBLOCK_UUID (can get from ???)
-- SKYBLOCK_KEY (run api command?)
-- SKYBLOCK_SLACK=true/false
+- SKYBLOCK_UUID (eg can find via https://api.mojang.com/users/profiles/minecraft/Wisedom)
+- SKYBLOCK_KEY (run /api command from skyblock command prompt to get the value)
+- SKYBLOCK_SLACK (enter slack channel info if using slack)
 
 To turn debug on:
 - export DEBUG="skyblock"
