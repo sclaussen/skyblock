@@ -21,10 +21,13 @@ const e = require('./lib/pr').e(d);
 const p4 = require('./lib/pr').p4(d);
 
 
+
 var options;
 
 
+
 skills(process.argv);
+
 
 
 async function skills(args) {
@@ -49,6 +52,7 @@ async function skills(args) {
     }
 }
 
+
 async function readSkyblockSkills() {
     let skills = [];
 
@@ -70,6 +74,7 @@ async function readSkyblockSkills() {
     p4(skills);
     return skills;
 }
+
 
 function transformUnlockName(s) {
 

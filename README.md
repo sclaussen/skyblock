@@ -27,10 +27,11 @@ To turn debug on:
 1. `node ah --help` (see dat/ah-*.yaml)
 1. `node bz --help`
 1. `node collections --help`
-1. `node minions --help` (work in progress, see dat/minions.yaml)
-1. `node myminions --help`
-1. `node objectives --help` (work in progress)
 1. `node pets --help`
+1. `node talismans --help`
+1. `node slayers --help`
+1. `node myminions --help`
+1. `node minions --help` (work in progress, see dat/minions.yaml)
+1. `node objectives --help` (work in progress)
 1. `node quests --help` (work in progress)
 1. `node skills --help` (work in progress)
-1. `node talismans --help`

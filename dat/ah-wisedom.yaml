@@ -1,6 +1,6 @@
 strong_dragon_leggings_clean:
   query: strong dragon leggings
-  max: 849000
+  max: 950000
 
 strong_dragon_leggings_ancient:
   query: strong dragon leggings
@@ -13,7 +13,7 @@ strong_dragon_leggings:
     - growth
     - protection
     - thorns
-  max: 899999
+  max: 1000000
 
 strong_dragon_leggings_rejuvenate:
   query: strong dragon leggings
@@ -21,7 +21,7 @@ strong_dragon_leggings_rejuvenate:
     - growth
     - protection
     - rejuvenate
-  max: 899999
+  max: 1000000
 
 strong_dragon_leggings_rejuvenate_thorns:
   query: strong dragon leggings
@@ -30,24 +30,24 @@ strong_dragon_leggings_rejuvenate_thorns:
     - protection
     - rejuvenate
     - thorns
-  max: 899999
+  max: 1000000
 
 strong_dragon_leggings_growth_protection:
   query: strong dragon leggings
   extra:
     - growth
     - protection
-  max: 899999
+  max: 950000
 
 strong_dragon_leggings_s4:
   query: strong dragon leggings
   stars: 4
-  max: 1000000
+  max: 1200000
 
 strong_dragon_leggings_s5:
   query: strong dragon leggings
   stars: 5
-  max: 1500000
+  max: 1700000
 
 sheep:
   tier: lege
