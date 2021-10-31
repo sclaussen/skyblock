@@ -20,6 +20,15 @@ Running the commands requires the following environment variables:
 To turn debug on:
 - export DEBUG="skyblock"
 
+Here is an example:
+
+```
+export SKYBLOCK_USER=Wisedom
+export SKYBLOCK_PROFILE=Zucchini
+export SKYBLOCK_UUID=blah
+export SKYBLOCK_KEY=blah
+```
+
 
 
 # Commands

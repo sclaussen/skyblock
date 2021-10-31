@@ -1,6 +1,6 @@
 strong_dragon_leggings_clean:
   query: strong dragon leggings
-  max: 950000
+  max: 900000
 
 strong_dragon_leggings_ancient:
   query: strong dragon leggings
@@ -13,7 +13,7 @@ strong_dragon_leggings:
     - growth
     - protection
     - thorns
-  max: 1000000
+  max: 900000
 
 strong_dragon_leggings_rejuvenate:
   query: strong dragon leggings
@@ -21,7 +21,7 @@ strong_dragon_leggings_rejuvenate:
     - growth
     - protection
     - rejuvenate
-  max: 1000000
+  max: 900000
 
 strong_dragon_leggings_rejuvenate_thorns:
   query: strong dragon leggings
@@ -30,14 +30,14 @@ strong_dragon_leggings_rejuvenate_thorns:
     - protection
     - rejuvenate
     - thorns
-  max: 1000000
+  max: 900000
 
 strong_dragon_leggings_growth_protection:
   query: strong dragon leggings
   extra:
     - growth
     - protection
-  max: 950000
+  max: 900000
 
 strong_dragon_leggings_s4:
   query: strong dragon leggings
@@ -47,7 +47,7 @@ strong_dragon_leggings_s4:
 strong_dragon_leggings_s5:
   query: strong dragon leggings
   stars: 5
-  max: 1700000
+  max: 1500000
 
 sheep:
   tier: lege
@@ -60,6 +60,15 @@ warped_aspect_of_the_end:
   query: aspect of the end
   reforge: warped
   max: 9500000
+
+wisdom_5:
+  enchantment: true
+  max: 4500000
+
+squid:
+  pet: true
+  tier: lege
+  max: 10500000
 
 # axe_of_the_shreaded:
 #   action: research
