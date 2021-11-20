@@ -1,19 +1,44 @@
+# clean:     1.35
+# 2:         1.55
+# 3:         1.6
+# 4:         1.65
+# s4:        1.85
+# s5-0:      2.0
+# s5-1:      2.1
+# s5-2:      2.2
+# s5-3:      2.3
+# s5-4:      2.4
+# anc:       2.99
+# superior_dragon_helm:
+#   stars: 5
+#   max: 11000000
+#   reforge: ancient
+
+# superior_dragon_chestplate:
+#   stars: 5
+#   max: 11000000
+#   reforge: ancient
+
+# superior_dragon_leggings:
+#   stars: 5
+#   max: 11000000
+#   reforge: ancient
+
+# superior_dragon_boots:
+#   stars: 5
+#   max: 11000000
+#   reforge: ancient
+
 strong_dragon_leggings_clean:
   query: strong dragon leggings
-  max: 900000
-
-strong_dragon_leggings_ancient:
-  query: strong dragon leggings
-  reforge: ancient
-  stars: 5
-  max: 2000000
+  max: 1000000
 
 strong_dragon_leggings:
   extra:
     - growth
     - protection
     - thorns
-  max: 900000
+  max: 1000000
 
 strong_dragon_leggings_rejuvenate:
   query: strong dragon leggings
@@ -21,7 +46,7 @@ strong_dragon_leggings_rejuvenate:
     - growth
     - protection
     - rejuvenate
-  max: 900000
+  max: 1000000
 
 strong_dragon_leggings_rejuvenate_thorns:
   query: strong dragon leggings
@@ -30,45 +55,83 @@ strong_dragon_leggings_rejuvenate_thorns:
     - protection
     - rejuvenate
     - thorns
-  max: 900000
+  max: 1000000
 
 strong_dragon_leggings_growth_protection:
   query: strong dragon leggings
   extra:
     - growth
     - protection
-  max: 900000
+  max: 1000000
 
 strong_dragon_leggings_s4:
   query: strong dragon leggings
   stars: 4
-  max: 1200000
+  max: 1600000
 
 strong_dragon_leggings_s5:
   query: strong dragon leggings
   stars: 5
-  max: 1500000
+  max: 1900000
+
+strong_dragon_leggings_ancient:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 5
+  max: 2550000
 
 sheep:
   tier: lege
-  max: 3400000
+  max: 3500000
 
-necon0s_chestplate:
-  max: 40000000
+# krampus_helmet:
+#   max: 3000000
 
 warped_aspect_of_the_end:
   query: aspect of the end
   reforge: warped
   max: 9500000
 
+blue_whale:
+  pet: true
+  tier: lege
+  max: 13000000
+
+tiger:
+  pet: true
+  tier: lege
+  max: 13000000
+
+flower_of_truth:
+  stars: 5
+  max: 6500000
+
+# aspect_of_the_void:
+#   max: 11250000
+
 wisdom_5:
   enchantment: true
   max: 4500000
 
-squid:
-  pet: true
-  tier: lege
-  max: 10500000
+ender_slayer_6:
+  enchantment: true
+  max: 1900000
+
+# flower_of_truth_s5:
+#   query: flower of truth
+#   stars: 5
+#   max: 6800000
+
+# squid:
+#   pet: true
+#   tier: lege
+#   max: 10500000
+
+# great_spook_chestplate:
+#   max: 3300000
+
+# great_spook_helmet:
+#   max: 3500000
 
 # axe_of_the_shreaded:
 #   action: research
@@ -81,3 +144,28 @@ squid:
 
 # livid_dagger:
 #   action: research
+
+
+
+
+
+# Bought mine for 17M, 18M, and 18.5M ancient 5s
+necrons_helmet:
+  query: necron's helmet
+  max: 18700000
+  stars: 5
+
+necrons_chestplate:
+  query: necron's chestplate
+  max: 34500000
+  stars: 5
+
+necrons_leggings:
+  query: necron's leggings
+  max: 23400000
+  stars: 5
+
+necrons_boots:
+  query: necron's boots
+  max: 17900000
+  stars: 5

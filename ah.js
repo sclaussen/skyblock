@@ -79,7 +79,7 @@ async function ah(args) {
         for (let page = 1; page < body.totalPages; page++) {
             process.stdout.write(' ' + page);
             body = (await curl.get('https://api.hypixel.net/skyblock/auctions?page=' + page)).body;
-            auctionsFromPage = await transformAndFilterAuctions(body.auctions);
+            let auctionsFromPage = await transformAndFilterAuctions(body.auctions);
             let matchedAuctionsFromPage = await filterByCriteriaSets(auctionsFromPage)
             if (matchedAuctionsFromPage.length > 0) {
                 await printFlips(matchedAuctionsFromPage);
@@ -99,7 +99,7 @@ async function filterByCriteriaSets(auctions) {
     for (let criteria of _.values(loadCriteriaSets())) {
         matches.push(filterByCriteria(auctions, criteria));
     }
-    matches = sort(_.flatten(matches));
+    matches = sort(_.flatten(_.uniqWith(matches, _.isEqual)));
     return matches;
 }
 
@@ -142,9 +142,15 @@ function filterByCriteria(auctions, criteria) {
         // Match the extra metadata if values were provided
         if (criteria.extra) {
             for (let extraPhrase of criteria.extra) {
-                if (!o.extra.includes(extraPhrase)) {
+                if (!o.enchantments.includes(extraPhrase)) {
                     return false;
                 }
+            }
+        }
+
+        if (criteria.clean) {
+            if (o.enchantments !== '') {
+                return false;
             }
         }
 
@@ -156,8 +162,13 @@ function filterByCriteria(auctions, criteria) {
         }
 
         // Match the star rating if it was provided
-        if (criteria.stars) {
+        if (criteria.stars >= 0) {
             switch (criteria.stars) {
+            case 0:
+                if (o.stars !== '') {
+                    return false;
+                }
+                break;
             case 5:
                 if (o.stars !== '✪✪✪✪✪') {
                     return false;
@@ -278,8 +289,12 @@ async function sendSlackMessage(auctions) {
 
 
 function print(auctions, max, highlight) {
-    auctions = augmentNames(auctions);
-    return table(auctions, [
+    // console.log();
+    // y4(auctions);
+    // console.log();
+    let auctions2 = JSON.parse(JSON.stringify(auctions));
+    auctions2 = augmentNames(auctions2);
+    return table(auctions2, [
         {
             name: 'cost',
             width: 7,
@@ -297,6 +312,7 @@ function print(auctions, max, highlight) {
         {
             name: 'enchantments',
             width: -40,
+            format: { shorten: 80, shorten_append: '...]' }
         },
     ], highlight, false);
 }
@@ -345,9 +361,10 @@ async function parseArguments(args) {
         .option('-e, --enchantment', 'Search for an enchantment book that contains the phrase')
         .option('-p, --pet', 'Search for a pet')
         .option('-r, --reforge <reforge>', 'Only include items with the reforge')
-        .option('-s, --stars <stars>', 'Only include items with the star count')
+        .option('-s, --stars <stars>', 'Only include items with the star count (0-5)')
         .option('-t, --tier <tier>', 'Only include items in the tier level (eg comm, unco, rare, epic, lege)')
         .option('-x, --extra <string...>', 'Include extra metadata containing all the match values')
+        .option('-c, --clean', 'Item without enchantments')
 
         .option('-l, --limit <limit>', 'Limit output to the first N items', 30)
         .option('-a, --all', 'Remove default limit so all matches are returned')

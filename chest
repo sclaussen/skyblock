@@ -1,0 +1,12 @@
+node ah no-pain-no-gain | head -1
+node ah bank-1 | head -1
+node ah rejuvenate-1 | head -1
+node ah combo-1 | head -1
+node bz hot_potato_book | tail -2 | head -1
+node ah lethality-6 | head -1
+node ah ultimate-wise-1 | head -1
+node ah rejuvenate-2 | head -1
+node ah wisdom-1 | head -1
+node ah hot-potato-book | head -1
+node ah last-stand-1 | head -1
+node bz fuming_potato_book | tail -2 | head -1
