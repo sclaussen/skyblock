@@ -129,20 +129,21 @@ function print(items) {
         },
         {
             name: 'volume',
+            alias: 'vol',
             width: 5,
             format: { mix: true },
             extra_spaces: 1,
         },
-        {
-            name: 'trackerUrl',
-            width: -60,
-            alias: 'Tracker URL'
-        },
-        {
-            name: 'fandomUrl',
-            width: -70,
-            alias: 'Fandom URL'
-        },
+        // {
+        //     name: 'trackerUrl',
+        //     width: -60,
+        //     alias: 'Tracker URL'
+        // },
+        // {
+        //     name: 'fandomUrl',
+        //     width: -70,
+        //     alias: 'Fandom URL'
+        // },
     ]);
 }
 

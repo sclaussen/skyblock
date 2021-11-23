@@ -72,13 +72,38 @@ strong_dragon_leggings_s4:
 strong_dragon_leggings_s5:
   query: strong dragon leggings
   stars: 5
-  max: 1900000
+  max: 2000000
 
 strong_dragon_leggings_ancient:
   query: strong dragon leggings
   reforge: ancient
   stars: 5
   max: 2550000
+
+
+
+
+wise_dragon_leggings_clean:
+  query: wise dragon leggings
+  max: 1000000
+
+wise_dragon_leggings_s4:
+  query: wise dragon leggings
+  stars: 4
+  max: 1400000
+
+wise_dragon_leggings_s5:
+  query: wise dragon leggings
+  stars: 5
+  max: 1600000
+
+
+
+
+
+
+
+
 
 sheep:
   tier: lege
@@ -104,7 +129,7 @@ tiger:
 
 flower_of_truth:
   stars: 5
-  max: 6500000
+  max: 6150000
 
 # aspect_of_the_void:
 #   max: 11250000
@@ -152,12 +177,13 @@ ender_slayer_6:
 # Bought mine for 17M, 18M, and 18.5M ancient 5s
 necrons_helmet:
   query: necron's helmet
-  max: 18700000
+  max: 16900000
   stars: 5
 
+# Bought mine for 34M
 necrons_chestplate:
   query: necron's chestplate
-  max: 34500000
+  max: 34000000
   stars: 5
 
 necrons_leggings:
@@ -168,4 +194,11 @@ necrons_leggings:
 necrons_boots:
   query: necron's boots
   max: 17900000
+  stars: 5
+
+
+
+
+superior_dragon_leggings:
+  max: 11900000
   stars: 5
