@@ -1,367 +1,587 @@
-refined_diamond:
-  duration: 8
-  sell_to: bazaar
-  craft:
-    e_diamond_block: 2
-
-refined_mithril:
-  duration: 6
-  craft:
-    e_mithril: 160
-
-pure_mithril:
-  duration: 12
-  craft:
-    refined_mithril: 2
-
-refined_titanium:
-  duration: 12
-  craft:
-    e_titanium: 16
-
-diamonite:
-  duration: 6
-  craft:
-    refined_diamond: 3
-
-power_crystal:
-  duration: 2
-  craft:
-    starfall: 256
-
-rock_gemstone:
-  duration: 22
-  craft:
-    e_cobblestone: 128
-    treasurite: 64
-
-petrified_starfall:
-  duration: 14
-  craft:
-    starfall: 512
-
-bejeweled_handle:
-  duration: .5
-  craft:
-    glacite_jewel: 3
-
-golden_plate:
-  duration: 6
-  craft:
-    e_gold_block: 2
-    glacite_jewel: 5
-    refined_diamond: 1
-
-mithril_plate:
-  duration: 18
-  craft:
-    refined_mithril: 5
-    golden_plate: 1
-    e_iron_block: 1
-    refined_titanium: 1
-
-gemstone_mixture:
-  duration: 4
-  craft:
-    fine_jade_gem: 4
-    fine_amber_gem: 4
-    fine_amethyst_gem: 4
-    fine_sapphire_gem: 4
-    sludge_juice: 320
-
-gemstone_chamber:
-  duration: 4
-  craft:
-    worm_membrane: 100
-    gemstone_mixture: 1
-    coins: 25000
-
-ammonite_pet:
-  duration: 288
-  craft:
-    helix: 1
-    coins: 300000
-
 travel_scroll_to_the_dwarven_forge:
+  order: 1
   duration: 5
-  craft:
+  materials:
     mithril_ore: 48
     titanium_ore: 80
     e_ender_pearl: 16
     coins: 25000
 
 travel_scroll_to_the_crystal_hollows:
+  order: 1
   duration: 10
-  craft:
+  materials:
     flawed_ruby_gem: 48
     fine_ruby_gem: 80
     e_ender_pearl: 16
     coins: 50000
 
+ammonite_pet:
+  order: 1
+  duration: 288
+  materials:
+    helix: 1
+    coins: 300000
+
+refined_mithril:
+  alias: r_mithril
+  order: 1
+  duration: 6
+  materials:
+    e_mithril: 160
+
+refined_titanium:
+  alias: r_titanium
+  order: 1
+  duration: 12
+  materials:
+    e_titanium: 16
+
+refined_diamond:
+  alias: r_diamond
+  order: 1
+  duration: 8
+  sell_to: bazaar
+  materials:
+    e_diamond_block: 2
+
+power_crystal:
+  order: 1
+  duration: 2
+  materials:
+    starfall: 256
+
+rock_gemstone:
+  order: 1
+  duration: 22
+  materials:
+    e_cobblestone: 128
+    treasurite: 64
+
+petrified_starfall:
+  order: 1
+  duration: 14
+  materials:
+    starfall: 512
+
+bejeweled_handle:
+  order: 1
+  duration: .5
+  materials:
+    glacite_jewel: 3
+
+gemstone_mixture:
+  alias: gem_mix
+  order: 1
+  duration: 4
+  materials:
+    fine_jade_gem: 4
+    fine_amber_gem: 4
+    fine_amethyst_gem: 4
+    fine_sapphire_gem: 4
+    sludge_juice: 320
+
 goblin_omelette:
+  order: 1
   duration: 18
-  craft:
+  materials:
     goblin_egg: 99
 
 pesto_goblin_omelette:
+  order: 1
   duration: 20
-  craft:
+  materials:
     goblin_egg_green: 99
     fine_jade_gem: 1
 
 sunny_side_goblin_omelette:
+  order: 1
   duration: 20
-  craft:
+  materials:
     goblin_egg_yellow: 99
 
 spicy_goblin_omelette:
+  order: 1
   duration: 20
-  craft:
+  materials:
     goblin_egg_red: 99
     flawless_ruby_gem: 1
 
 blue_cheese_goblin_omelette:
+  order: 1
   duration: 20
-  craft:
+  materials:
     goblin_egg_blue: 99
     perfect_sapphire_gem: 1
 
-mithril_pickaxe:
-  duration: .75
-  craft:
-    e_mithril: 3
-    e_gold: 10
-    bejeweled_handle: 1
-
-refined_mithril_pickaxe:
-  duration: 22
-  craft:
-    refined_mithril: 3
-    bejeweled_handle: 2
-    refined_diamond: 1
-    e_gold: 30
-
 fuel_tank:
+  alias: tank
+  order: 1
   duration: 10
-  craft:
+  materials:
     e_coal_block: 2
 
-mithril-infused_fuel_tank:
-  duration: 10
-  craft:
-    mithril_plate: 3
-    fuel_tank: 5
+
+
+#=============================================================================
+# Order 2
+#=============================================================================
+
+pure_mithril:
+  alias: p_mithril
+  order: 2
+  duration: 12
+  materials:
+    refined_mithril: 2
+
+diamonite:
+  order: 2
+  duration: 6
+  materials:
+    refined_diamond: 3
+
+golden_plate:
+  alias: g_plate
+  order: 2
+  duration: 6
+  materials:
+    refined_diamond: 1
+    e_gold_block: 2
+    glacite_jewel: 5
+
+gemstone_chamber:
+  order: 2
+  duration: 2
+  materials:
+    worm_membrane: 100
+    gemstone_mixture: 1
+    coins: 25000
+
+mithril_pickaxe:
+  order: 2
+  duration: .75
+  materials:
+    bejeweled_handle: 1
+    e_mithril: 3
+    e_gold: 10
+
+refined_mithril_pickaxe:
+  order: 2
+  duration: 22
+  materials:
+    refined_diamond: 1
+    refined_mithril: 3
+    bejeweled_handle: 2
+    e_gold: 30
 
 titanium-infused_fuel_tank:
+  alias: tita_tank
+  order: 2
   duration: 25
-  craft:
-    refined_titanium: 10
-    refined_diamond: 10
-    refined_mithril: 10
+  materials:
     fuel_tank: 10
-
-drill_engine:
-  duration: 30
-  craft:
-    golden_plate: 1
-    e_iron_block: 1
-    e_redstone_block: 3
-    treasurite: 10
-    refined_diamond: 1
-
-mithril-plated_drill_engine:
-  duration: 15
-  craft:
-    drill_engine: 2
-    mithril_plate: 3
-
-titanium-plated_drill_engine:
-  duration: 30
-  craft:
-    drill_engine: 10
-    plasma: 5
-    mithril_plate: 4
-    refined_titanium: 5
-
-ruby_polished_drill_engine:
-  duration: 20
-  craft:
-    mithril-plated_drill_engine: 1
-    superlite_motor: 10
-    fine_ruby_gem: 10
-
-gemstone_fuel_engine:
-  duration: 30
-  craft:
-    titanium-infused_fuel_tank: 1
-    control_switch: 30
-    gemstone_mixture: 10
-
-sapphire_polished_drill_engine:
-  duration: 30
-  craft:
-    titanium-plated_drill_engine: 1
-    electron_transmitter: 25
-    FTX_3070: 25
-    fine_sapphire_gem: 20
-
-amber_material:
-  duration: 7
-  craft:
-    fine_amber_gem: 12
-    golden_plate: 1
-
-mithril_drill_sx-r226:
-  duration: 4
-  craft:
-    drill_engine: 1
-    refined_mithril: 3
-    fuel_tank: 1
-
-ruby_drill_tx-15:
-  duration: 1
-  craft:
-    drill_engine: 1
-    fuel_tank: 1
-    fine_ruby_gem: 6
-
-gemstone_drill_lt-522:
-  duration: 30
-  craft:
-    ruby_drill_tx-15: 1
-    gemstone_mixture: 3
-
-titanium_drill_dr-x355:
-  duration: 64
-  craft:
-    drill_engine: 1
-    fuel_tank: 1
-    golden_plate: 6
     refined_titanium: 10
-    refined_mithril: 10
-
-titanium_drill_dr-x455:
-  duration: .1
-  craft:
-    titanium_drill_dr-x355: 1
     refined_diamond: 10
-    refined_titanium: 16
-    mithril_plate: 6
-
-titanium_drill_dr-x555:
-  duration: .1
-  craft:
-    titanium_drill_dr-x455: 1
-    refined_diamond: 20
-    refined_titanium: 32
-    e_iron_block: 2
-    mithril_plate: 15
-    plasma: 20
-
-titanium_drill_dr-x655:
-  duration: .1
-  craft:
-    titanium_drill_dr-x555: 1
-    corleonite: 30
-    flawless_ruby_gem: 1
-    refined_diamond: 5
-    gemstone_mixture: 16
-    refined_titanium: 12
-    mithril_plate: 5
-
-topaz_drill_kgr-12:
-  duration: .1
-  craft:
-    gemstone_drill_lt-522: 1
-    flawless_topaz_gem: 1
-    gemstone_mixture: 3
-    magma_core: 5
-
-jasper_drill_10:
-  duration: .1
-  craft:
-    topaz_drill_kgr-12: 1
-    flawless_jasper_gem: 1
-    treasurite: 100
+    refined_mithril: 10
 
 beacon_1:
+  order: 2
   duration: 20
-  craft:
+  materials:
     refined_mithril: 5
-
-beacon_2:
-  duration: 20
-  craft:
-    beacon_1: 1
-    refined_mithril: 5
-
-beacon_3:
-  duration: 30
-  craft:
-    beacon_2: 1
-    refined_mithril: 10
-
-beacon_4:
-  duration: 40
-  craft:
-    beacon_3: 1
-    refined_mithril: 20
-    plasma: 1
-
-beacon_5:
-  duration: 50
-  craft:
-    beacon_4: 1
-    refined_mithril: 40
-    plasma: 5
 
 titanium_talisman:
+  order: 2
   duration: 14
-  craft:
+  materials:
     refined_titanium: 2
 
-titanium_ring:
-  duration: 20
-  craft:
-    titanium_talisman: 1
-    refined_titanium: 6
-
-titanium_artifact:
-  duration: 36
-  craft:
-    titanium_ring: 1
-    refined_titanium: 12
-
-titanium_relic:
-  duration: 72
-  craft:
-    titanium_artifact: 1
-    refined_titanium: 20
-
 hemet_of_divan:
+  order: 2
   duration: 23
-  craft:
+  materials:
     divan_fragment: 5
     gemstone_mixture: 10
     flawless_ruby_gem: 1
 
 chestplate_of_divan:
+  order: 2
   duration: 23
-  craft:
+  materials:
     divan_fragment: 8
     gemstone_mixture: 10
     flawless_ruby_gem: 1
 
 leggings_of_divan:
+  order: 2
   duration: 23
-  craft:
+  materials:
     divan_fragment: 7
     gemstone_mixture: 10
     flawless_ruby_gem: 1
 
 boots_of_divan:
+  order: 2
   duration: 23
-  craft:
+  materials:
     divan_fragment: 4
     gemstone_mixture: 10
     flawless_ruby_gem: 1
+
+
+
+#=============================================================================
+# Order 3
+#=============================================================================
+
+mithril_plate:
+  alias: m_plate
+  order: 3
+  duration: 18
+  materials:
+    golden_plate: 1
+    refined_mithril: 5
+    refined_titanium: 1
+    e_iron_block: 1
+
+amber_material:
+  order: 3
+  duration: 7
+  materials:
+    golden_plate: 1
+    fine_amber_gem: 12
+
+beacon_2:
+  order: 3
+  duration: 20
+  materials:
+    beacon_1: 1
+    refined_mithril: 5
+
+titanium_ring:
+  order: 3
+  duration: 20
+  materials:
+    titanium_talisman: 1
+    refined_titanium: 6
+
+drill_engine:
+  alias: engine
+  order: 3
+  requires: HOTM3
+  duration: 30
+  materials:
+    golden_plate: 1
+    refined_diamond: 1
+    e_iron_block: 1
+    e_redstone_block: 3
+    treasurite: 10
+
+gemstone_fuel_tank:
+  alias: gem_tank
+  order: 3
+  duration: 30
+  materials:
+    # titanium-infused_fuel_tank: 1
+    control_switch: 30
+    gemstone_mixture: 10
+
+gemstone_fuel_engine:
+  alias: gem_engine
+  order: 3
+  duration: 30
+  materials:
+    titanium-infused_fuel_tank: 1
+    gemstone_mixture: 10
+    control_switch: 30
+
+
+
+#=============================================================================
+# Order 4
+#=============================================================================
+
+mithril-infused_fuel_tank:
+  alias: mithril_tank
+  order: 4
+  duration: 10
+  materials:
+    fuel_tank: 5
+    mithril_plate: 3
+
+beacon_3:
+  order: 4
+  duration: 30
+  materials:
+    beacon_2: 1
+    refined_mithril: 10
+
+titanium_artifact:
+  order: 4
+  duration: 36
+  materials:
+    titanium_ring: 1
+    refined_titanium: 12
+
+perfectly-cut_fuel_tank:
+  alias: perf_tank
+  order: 4
+  duration: 50
+  materials:
+    # gemstone_fuel_tank: 1
+    synthetic_heart: 70
+    gemstone_mixture: 25
+
+mithril-plated_drill_engine:
+  alias: mithril_engine
+  order: 4
+  requires: HOTM3
+  duration: 15
+  speed: 50
+  materials:
+    drill_engine: 2
+    mithril_plate: 3
+
+titanium-plated_drill_engine:
+  alias: tita_engine
+  order: 4
+  requires: HOTM4
+  duration: 30
+  speed: 100
+  materials:
+    drill_engine: 10
+    mithril_plate: 4
+    refined_titanium: 5
+    plasma: 5
+
+mithril_drill_sx-r226:
+  alias: r226
+  order: 4
+  requires: HOTM3
+  duration: 4
+  tier: rare
+  breaking_power: 5
+  speed: 450
+  materials:
+    fuel_tank: 1
+    drill_engine: 1
+    refined_mithril: 3
+
+titanium_drill_dr-x355:
+  alias: x355
+  order: 4
+  requires: HOTM5
+  tier: epic
+  breaking_power: 7
+  speed: 700
+  fortune: 25
+  duration: 64
+  materials:
+    fuel_tank: 1
+    drill_engine: 1
+    golden_plate: 6
+    refined_titanium: 10
+    refined_mithril: 10
+
+ruby_drill_tx-15:
+  alias: tx15
+  order: 4
+  requires: HOTM3
+  tier: rare
+  breaking_power: 7
+  speed: 150
+  fortune: 75
+  duration: 1
+  materials:
+    fuel_tank: 1
+    drill_engine: 1
+    fine_ruby_gem: 6
+
+
+
+#=============================================================================
+# Order 5
+#=============================================================================
+
+beacon_4:
+  order: 5
+  duration: 40
+  materials:
+    beacon_3: 1
+    refined_mithril: 20
+    plasma: 1
+
+titanium_relic:
+  order: 5
+  duration: 72
+  materials:
+    titanium_artifact: 1
+    refined_titanium: 20
+
+ruby_polished_drill_engine:
+  alias: ruby_engine
+  order: 5
+  requires: HOTM5
+  duration: 20
+  speed: 150
+  fortune: 30
+  materials:
+    mithril-plated_drill_engine: 1
+    superlite_motor: 10
+    fine_ruby_gem: 10
+
+sapphire_polished_drill_engine:
+  alias: sapphire_engine
+  order: 5
+  requires: HOTM6
+  duration: 30
+  speed: 250
+  fortune: 50
+  materials:
+    # titanium-plated_drill_engine: 1
+    electron_transmitter: 25
+    FTX_3070: 25
+    fine_sapphire_gem: 20
+
+titanium_drill_dr-x455:
+  alias: x455
+  order: 5
+  requires: HOTM5
+  duration: 0
+  tier: epic
+  breaking_power: 8
+  speed: 900
+  fortune: 40
+  materials:
+    titanium_drill_dr-x355: 1
+    mithril_plate: 6
+    refined_diamond: 10
+    refined_titanium: 16
+
+gemstone_drill_lt-522:
+  alias: lt522
+  order: 5
+  requires: HOTM4
+  duration: 30
+  tier: rare
+  breaking_power: 8
+  speed: 800
+  fortune: 80
+  materials:
+    ruby_drill_tx-15: 1
+    gemstone_mixture: 3
+
+
+
+#=============================================================================
+# Order 6
+#=============================================================================
+
+beacon_5:
+  order: 6
+  duration: 50
+  materials:
+    beacon_4: 1
+    refined_mithril: 40
+    plasma: 5
+
+amber_polished_drill_engine:
+  alias: amber_engine
+  order: 6
+  requires: HOTM7
+  duration: 50
+  speed: 400
+  fortune: 100
+  materials:
+    # ruby_polished_drill_engine: 1
+    # sapphire_polished_drill_engine: 1
+    flawless_amber_gem: 1
+    robotron_reflector: 50
+
+titanium_drill_dr-x555:
+  alias: x555
+  order: 6
+  requires: HOTM5
+  duration: 0
+  tier: epic
+  breaking_power: 9
+  speed: 1200
+  fortune: 70
+  materials:
+    # titanium_drill_dr-x455: 1
+    mithril_plate: 15
+    refined_titanium: 32
+    refined_diamond: 20
+    e_iron_block: 2
+    plasma: 20
+
+topaz_drill_kgr-12:
+  alias: kgr12
+  order: 6
+  requires: HOTM5
+  duration: 0
+  tier: epic
+  breaking_power: 9
+  speed: 800
+  fortune: 100
+  materials:
+    gemstone_drill_lt-522: 1
+    flawless_topaz_gem: 1
+    gemstone_mixture: 3
+    magma_core: 5
+
+
+
+#=============================================================================
+# Order 7
+#=============================================================================
+
+titanium_drill_dr-x655:
+  alias: x655
+  order: 7
+  requires: HOTM7
+  duration: 0
+  tier: lege
+  breaking_power: 9
+  speed: 1600
+  fortune: 120
+  materials:
+    # titanium_drill_dr-x555: 1
+    mithril_plate: 5
+    refined_diamond: 5
+    refined_titanium: 12
+    gemstone_mixture: 16
+    corleonite: 30
+    flawless_ruby_gem: 1
+
+jasper_drill_10:
+  alias: jasper10
+  order: 7
+  requires: HOTM6
+  duration: 0
+  tier: epic
+  breaking_power: 9
+  speed: 800
+  fortune: 120
+  materials:
+    topaz_drill_kgr-12: 1
+    flawless_jasper_gem: 1
+    treasurite: 100
+
+
+#=============================================================================
+# Order 8
+#=============================================================================
+
+divans_drill:
+  order: 8
+  requires: HOTM7
+  duration: 60
+  tier: myth
+  breaking_power: 10
+  speed: 1800
+  fortune: 150
+  materials:
+    # titanium_drill_dr-x655: 1
+    divan's_alloy: 1
+    coins: 50000000

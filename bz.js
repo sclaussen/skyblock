@@ -114,13 +114,13 @@ function print(items) {
         {
             name: 'cost',
             width: 10,
-            format: { integer: true },
+            // format: { integer: true },
             extra_spaces: 1,
         },
         {
             name: 'sell',
             width: 10,
-            format: { integer: true },
+            // format: { integer: true },
             extra_spaces: 1,
         },
         {

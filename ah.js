@@ -65,7 +65,8 @@ async function ah(args) {
     while (true) {
 
         // Handle page 1
-        console.log('\n\nRetrieving the latest set of auctions...');
+        // console.log('\n\nRetrieving the latest set of auctions...');
+        console.log();
         let body = (await curl.get('https://api.hypixel.net/skyblock/auctions')).body;
         let auctionsFromPage = await transformAndFilterAuctions(body.auctions);
         let matchedAuctionsFromPage = await filterByCriteriaSets(auctionsFromPage)
@@ -77,7 +78,8 @@ async function ah(args) {
 
         // Handle pages 2-N
         for (let page = 1; page < body.totalPages; page++) {
-            process.stdout.write(' ' + page);
+            // process.stdout.write(' ' + page);
+            process.stdout.write('.');
             body = (await curl.get('https://api.hypixel.net/skyblock/auctions?page=' + page)).body;
             let auctionsFromPage = await transformAndFilterAuctions(body.auctions);
             let matchedAuctionsFromPage = await filterByCriteriaSets(auctionsFromPage)
@@ -86,6 +88,7 @@ async function ah(args) {
             }
             auctions = auctions.concat(auctionsFromPage);
         }
+
 
         // Here we cache all the auctions so the command line variant
         // of "ah" can do queries across the cached options
@@ -229,7 +232,7 @@ async function transformAndFilterAuctions(auctions) {
 
 
 function cacheAuctions(auctions) {
-    console.log('\nCaching ' + _.keys(auctions).length + ' auctions.');
+    // console.log('\nCaching ' + _.keys(auctions).length + ' auctions.');
     fs.rmSync(cacheFile, { force: true });
     fs.writeFileSync(cacheFile, JSON.stringify(auctions, null, 4));
 }
@@ -321,21 +324,57 @@ function print(auctions, max, highlight) {
 function augmentNames(auctions) {
     // Augment the name field with tier, reforge, and pet level
     _.map(auctions, function(item, key, coll) {
+        if (item.name === 'strong dragon leggings') {
+            item.name = 'strong';
+        }
+        if (item.name === 'superior dragon leggings') {
+            item.name = 'superior';
+        }
+        if (item.name === 'wise dragon leggings') {
+            item.name = 'wise';
+        }
+        if (item.name === 'young dragon leggings') {
+            item.name = 'young';
+        }
+
+        // if (item.reforge && item.reforge === 'ancient') {
+        //     item.name += '-ANCIENT';
+        // }
+
+        if (item.stars.length === 4) {
+            item.name += '-4';
+        } else if (item.stars.length === 5) {
+            item.name += '-5';
+        } else {
+            item.name += '  ';
+        }
+
+        if (item.reforge) {
+            if (item.reforge === 'ancient') {
+                item.name += ' [ANCIENT]';
+            } else {
+                item.name += ' [' + item.reforge + ']';
+            }
+        } else {
+            item.name += ' [-]';
+        }
+
         if (item.tier) {
             item.name += ' [' + item.tier.substring(2) + ']';
         }
-        if (item.reforge) {
-            item.name += ' [' + item.reforge + ']';
-        }
+
         if (item.pet_level) {
             item.name += ' [' + item.pet_level + ']';
         }
+
         if (item.stars) {
             item.name += ' ' + item.stars;
         }
+
         if (item.pet_held_item) {
             item.name += ' [' + item.pet_held_item + ']';
         }
+
         if (item.pet_candy_used) {
             item.name += ' [candy: ' + item.pet_candy_used + ']';
         }

@@ -1,14 +1,220 @@
-# clean:     1.35
-# 2:         1.55
-# 3:         1.6
-# 4:         1.65
-# s4:        1.85
-# s5-0:      2.0
-# s5-1:      2.1
-# s5-2:      2.2
-# s5-3:      2.3
-# s5-4:      2.4
-# anc:       2.99
+#===============================================================================
+# Special
+#===============================================================================
+
+god_potion:
+  query: god potion
+  max: 69000
+
+# corleonite:
+#   max: 2200000
+
+# soul_eater_1:
+#   enchantment: true
+#   max: 1250000
+
+# soul_eater_2:
+#   enchantment: true
+#   max: 2500000
+
+# soul_eater_3:
+#   enchantment: true
+#   max: 5000000
+
+# soul_eater_4:
+#   enchantment: true
+#   max: 10000000
+
+# soul_eater_5:
+#   enchantment: true
+#   max: 20000000
+
+# gemstone_chamber:
+#   max: 11000000
+
+# dwarf_turtle_shelmet:
+#   max: 3500000
+
+# plasma:
+#   max: 40000
+
+# divan_fragment:
+#   query: divan fragment
+#   max: 1500000
+
+# jaderald:
+#   max: 7750000
+
+#===============================================================================
+# Weapons
+#===============================================================================
+
+# livid_dagger:
+#   action: research
+
+# voidedge_katana:
+#   max: 850000
+
+# wither_cloak_sword:
+#   max: 7400000
+#   stars: 5
+
+# daedalus_axe:
+#   query: daedalus axe
+#   max: 45000000
+
+warped_aspect_of_the_end:
+  query: aspect of the end
+  reforge: warped
+  max: 9500000
+
+flower_of_truth:
+  stars: 5
+  max: 6150000
+
+# soul_whip:
+#   max: 14000000
+
+# ghoul_buster:
+#   note: Gain 100% more damage to spooky mobs
+#   max: 1750000
+
+#===============================================================================
+# Armor && SDL
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# Strong
+#-------------------------------------------------------------------------------
+strong_dragon_leggings:
+  extra:
+    - growth
+    - protection
+    - thorns
+  max: 1300000
+
+strong_dragon_leggings_rejuvenate:
+  query: strong dragon leggings
+  extra:
+    - growth
+    - protection
+    - rejuvenate
+  max: 1300000
+
+strong_dragon_leggings_rejuvenate_thorns:
+  query: strong dragon leggings
+  extra:
+    - growth
+    - protection
+    - rejuvenate
+    - thorns
+  max: 1300000
+
+strong_dragon_leggings_growth_protection:
+  query: strong dragon leggings
+  extra:
+    - growth
+    - protection
+  max: 1300000
+
+strong_dragon_leggings_s4:
+  query: strong dragon leggings
+  stars: 4
+  max: 1750000
+
+strong_dragon_leggings_s5:
+  query: strong dragon leggings
+  stars: 5
+  max: 2000000
+
+strong_dragon_leggings_ancient:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 5
+  max: 2700000
+
+strong_dragon_leggings_ancient_2:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 4
+  max: 2250000
+
+#-------------------------------------------------------------------------------
+# Wise
+#-------------------------------------------------------------------------------
+wise_dragon_leggings:
+  query: wise dragon leggings
+  max: 1500000
+  extra:
+    - growth
+    - protection
+
+wise_dragon_leggings_gpt:
+  query: wise dragon leggings
+  max: 1500000
+  extra:
+    - growth
+    - protection
+    - thorns
+
+wise_dragon_leggings_s4:
+  query: wise dragon leggings
+  stars: 4
+  max: 1800000
+
+wise_dragon_leggings_s5:
+  query: wise dragon leggings
+  stars: 5
+  max: 2300000
+
+#-------------------------------------------------------------------------------
+# Necron
+#-------------------------------------------------------------------------------
+
+# # Bought mine for 17M, 18M, and 18.5M ancient 5s
+# necrons_helmet:
+#   query: necron's helmet
+#   max: 16900000
+#   stars: 5
+
+# # Bought mine for 34M
+# necrons_chestplate:
+#   query: necron's chestplate
+#   max: 34000000
+#   stars: 5
+
+# # Bought mine for 22.9M
+# necrons_leggings:
+#   query: necron's leggings
+#   max: 22850000
+#   stars: 5
+
+# # Bought my for 17M
+# necrons_boots:
+#   query: necron's boots
+#   max: 17900000
+#   stars: 5
+
+# storms_helmet:
+#   query: storm's helmet
+#   max: 5750000
+#   stars: 5
+
+# storms_chestplate:
+#   query: storm's chestplate
+#   max: 24000000
+#   stars: 5
+
+# storms_leggings:
+#   query: storm's leggings
+#   max: 11400000
+#   stars: 5
+
+# storms_boots:
+#   query: storm's boots
+#   max: 6000000
+#   stars: 5
+
 # superior_dragon_helm:
 #   stars: 5
 #   max: 11000000
@@ -31,71 +237,7 @@
 
 strong_dragon_leggings_clean:
   query: strong dragon leggings
-  max: 1000000
-
-strong_dragon_leggings:
-  extra:
-    - growth
-    - protection
-    - thorns
-  max: 1000000
-
-strong_dragon_leggings_rejuvenate:
-  query: strong dragon leggings
-  extra:
-    - growth
-    - protection
-    - rejuvenate
-  max: 1000000
-
-strong_dragon_leggings_rejuvenate_thorns:
-  query: strong dragon leggings
-  extra:
-    - growth
-    - protection
-    - rejuvenate
-    - thorns
-  max: 1000000
-
-strong_dragon_leggings_growth_protection:
-  query: strong dragon leggings
-  extra:
-    - growth
-    - protection
-  max: 1000000
-
-strong_dragon_leggings_s4:
-  query: strong dragon leggings
-  stars: 4
-  max: 1600000
-
-strong_dragon_leggings_s5:
-  query: strong dragon leggings
-  stars: 5
-  max: 2000000
-
-strong_dragon_leggings_ancient:
-  query: strong dragon leggings
-  reforge: ancient
-  stars: 5
-  max: 2550000
-
-
-
-
-wise_dragon_leggings_clean:
-  query: wise dragon leggings
-  max: 1000000
-
-wise_dragon_leggings_s4:
-  query: wise dragon leggings
-  stars: 4
-  max: 1400000
-
-wise_dragon_leggings_s5:
-  query: wise dragon leggings
-  stars: 5
-  max: 1600000
+  max: 950000
 
 
 
@@ -105,100 +247,67 @@ wise_dragon_leggings_s5:
 
 
 
-sheep:
-  tier: lege
-  max: 3500000
-
-# krampus_helmet:
-#   max: 3000000
-
-warped_aspect_of_the_end:
-  query: aspect of the end
-  reforge: warped
-  max: 9500000
-
-blue_whale:
-  pet: true
-  tier: lege
-  max: 13000000
-
-tiger:
-  pet: true
-  tier: lege
-  max: 13000000
-
-flower_of_truth:
-  stars: 5
-  max: 6150000
-
-# aspect_of_the_void:
-#   max: 11250000
-
-wisdom_5:
-  enchantment: true
-  max: 4500000
-
-ender_slayer_6:
-  enchantment: true
-  max: 1900000
-
-# flower_of_truth_s5:
-#   query: flower of truth
-#   stars: 5
-#   max: 6800000
-
-# squid:
-#   pet: true
+# sheep:
 #   tier: lege
-#   max: 10500000
-
-# great_spook_chestplate:
-#   max: 3300000
-
-# great_spook_helmet:
 #   max: 3500000
 
-# axe_of_the_shreaded:
-#   action: research
+# # krampus_helmet:
+# #   max: 3000000
 
-# shadow_fury:
-#   action: research
+# blue_whale:
+#   pet: true
+#   tier: lege
+#   max: 13000000
 
-# flower_of_truth:
-#   action: research
+# tiger:
+#   pet: true
+#   tier: lege
+#   max: 13000000
 
-# livid_dagger:
-#   action: research
+# # aspect_of_the_void:
+# #   max: 11250000
+
+# wisdom_5:
+#   enchantment: true
+#   max: 4500000
+
+# ender_slayer_6:
+#   enchantment: true
+#   max: 1900000
+
+# # flower_of_truth_s5:
+# #   query: flower of truth
+# #   stars: 5
+# #   max: 6800000
+
+# # squid:
+# #   pet: true
+# #   tier: lege
+# #   max: 10500000
+
+# # great_spook_chestplate:
+# #   max: 3300000
+
+# # great_spook_helmet:
+# #   max: 3500000
+
+# # axe_of_the_shreaded:
+# #   action: research
+
+# # shadow_fury:
+# #   action: research
+
+# # flower_of_truth:
+# #   action: research
 
 
 
 
 
-# Bought mine for 17M, 18M, and 18.5M ancient 5s
-necrons_helmet:
-  query: necron's helmet
-  max: 16900000
-  stars: 5
-
-# Bought mine for 34M
-necrons_chestplate:
-  query: necron's chestplate
-  max: 34000000
-  stars: 5
-
-necrons_leggings:
-  query: necron's leggings
-  max: 23400000
-  stars: 5
-
-necrons_boots:
-  query: necron's boots
-  max: 17900000
-  stars: 5
 
 
 
 
-superior_dragon_leggings:
-  max: 11900000
-  stars: 5
+# superior_dragon_leggings:
+#   max: 11900000
+#   stars: 5
