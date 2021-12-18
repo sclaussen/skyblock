@@ -1,8 +1,8 @@
 # Installation
 
-1. Install Node.js
+1. Install Node.JS
 1. `mkdir ~/src && cd ~/src` (as an example)
-1. `git clone git@github.com:sclaussen/skyblock.git`
+1. `git clone git@github.com:sclaussen/skyblock.git` (or get the zip file)
 1. `cd ~/src/skyblock`
 1. `npm i`
 
