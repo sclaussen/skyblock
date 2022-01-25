@@ -1,5 +1,5 @@
 'use strict';
-process.env.DEBUG = 'skyblock';
+// process.env.DEBUG = 'skyblock';
 const d = require('debug')('skyblock');
 
 const _ = require('lodash');
@@ -31,57 +31,28 @@ var options;
 
 
 
-pets(process.argv);
+powder(process.argv);
 
 
 
-async function pets(args) {
+async function powder(args) {
 
     // Parse the command line options
     options = await parseArguments(args);
 
     let user = (await curl.get('https://api.hypixel.net/skyblock/profiles?uuid=' + options.uuid + '&key=' + options.key)).body;
-    p4(user);
     let profile = _.values(_.filter(user.profiles, { cute_name: options.profile })[0].members)[0];
 
-    y4(profile.pets);
+    let mithril1 = parseInt(profile.mining_core.powder_spent_mithril);
+    let mithril2 = parseInt(profile.mining_core.powder_mithril);
+    let gem1 = parseInt(profile.mining_core.powder_spent_gemstone);
+    let gem2 = parseInt(profile.mining_core.powder_gemstone);
 
-    let pets = _.mapValues(profile.pets, function(o) {
-        return {
-            name: o.type.toLowerCase(),
-            tier: getTier(o.tier.toLowerCase()),
-            xp: o.exp,
-        };
-    });
+    console.log('Mithril:        ', Number(mithril2).toLocaleString());
+    console.log('Gem:            ', Number(gem2).toLocaleString());
 
-    // for (let pet of pets) {
-    //     let response = await getPetInfo(item.item_bytes);
-    //     if (response) {
-    //         item.pet_held_item = response.pet_held_item;
-    //         item.pet_candy_used = response.pet_candy_used;
-    //     }
-
-    console.log(print(pets));
-}
-
-
-function print(items) {
-    items = _.sortBy(items, [ 'tier', 'xp' ]).reverse();
-    return table(items, [
-        {
-            name: 'name',
-            width: -17,
-        },
-        {
-            name: 'tier',
-            width: -10,
-        },
-        {
-            name: 'xp',
-            width: 10,
-            format: { integer: true},
-        },
-    ]);
+    console.log('Mithril Powder: ', Number(mithril1 + mithril2).toLocaleString());
+    console.log('Gem Powder:     ', Number(gem1 + gem2).toLocaleString());
 }
 
 

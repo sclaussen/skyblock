@@ -67,7 +67,12 @@ async function ah(args) {
         // Handle page 1
         // console.log('\n\nRetrieving the latest set of auctions...');
         console.log();
-        let body = (await curl.get('https://api.hypixel.net/skyblock/auctions')).body;
+        let body;
+        try {
+            body = (await curl.get('https://api.hypixel.net/skyblock/auctions')).body;
+        } catch (e) {
+            console.log('curl error');
+        }
         let auctionsFromPage = await transformAndFilterAuctions(body.auctions);
         let matchedAuctionsFromPage = await filterByCriteriaSets(auctionsFromPage)
         if (matchedAuctionsFromPage.length > 0) {
@@ -326,26 +331,37 @@ function augmentNames(auctions) {
     _.map(auctions, function(item, key, coll) {
         if (item.name === 'strong dragon leggings') {
             item.name = 'strong';
-        }
-        if (item.name === 'superior dragon leggings') {
+        } else if (item.name === 'superior dragon leggings') {
             item.name = 'superior';
-        }
-        if (item.name === 'wise dragon leggings') {
+        } else if (item.name === 'wise dragon leggings') {
             item.name = 'wise';
-        }
-        if (item.name === 'young dragon leggings') {
+        } else if (item.name === 'young dragon leggings') {
             item.name = 'young';
+        } else if (item.tier) {
+            item.name += ' [' + item.tier.substring(2) + ']';
         }
 
         // if (item.reforge && item.reforge === 'ancient') {
         //     item.name += '-ANCIENT';
         // }
 
-        if (item.stars.length === 4) {
+        switch (item.stars.length) {
+        case 1:
+            item.name += '-1';
+            break;
+        case 2:
+            item.name += '-2';
+            break;
+        case 3:
+            item.name += '-3';
+            break;
+        case 4:
             item.name += '-4';
-        } else if (item.stars.length === 5) {
+            break;
+        case 5:
             item.name += '-5';
-        } else {
+            break;
+        default:
             item.name += '  ';
         }
 
@@ -355,12 +371,8 @@ function augmentNames(auctions) {
             } else {
                 item.name += ' [' + item.reforge + ']';
             }
-        } else {
-            item.name += ' [-]';
-        }
-
-        if (item.tier) {
-            item.name += ' [' + item.tier.substring(2) + ']';
+        // } else {
+        //     // item.name += ' [-]';
         }
 
         if (item.pet_level) {

@@ -15,11 +15,8 @@ const p = require('./lib/pr').p(d);
 const p4 = require('./lib/pr').p4(d);
 const y4 = require('./lib/pr').y4(d);
 
-const curl = require('./lib/curl');
 
 
-
-const auctionCacheFile = './.auction-items';
 const bazaarCacheFile = './.bazaar-items';
 
 
@@ -35,22 +32,21 @@ gems(process.argv);
 
 
 
-async function bz(args) {
+async function gems(args) {
     options = parse(args);
     try {
-        auctionItems = await getAuctionItems();
         bazaarItems = await getBazaarItems();
     } catch (ENOTFOUND) {
     }
-
+    y4(bazaarItems);
 }
 
 
-async function getBazaarItemCost(name) {
-    if (bazaarItems && bazaarItems[name]) {
-        // p('    ' + name + ' bazaar cost: ' + bazaarItems[name].cost);
-        return bazaarItems[name].sell;
-    }
+// async function getBazaarItemCost(name) {
+//     if (bazaarItems && bazaarItems[name]) {
+//         // p('    ' + name + ' bazaar cost: ' + bazaarItems[name].cost);
+//         return bazaarItems[name].sell;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }

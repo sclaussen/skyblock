@@ -2,35 +2,15 @@
 # Special
 #===============================================================================
 
-god_potion:
-  query: god potion
-  max: 69000
+# god_potion:
+#   query: god potion
+#   max: 600000
 
 # corleonite:
 #   max: 2200000
 
-# soul_eater_1:
-#   enchantment: true
-#   max: 1250000
-
-# soul_eater_2:
-#   enchantment: true
-#   max: 2500000
-
-# soul_eater_3:
-#   enchantment: true
-#   max: 5000000
-
-# soul_eater_4:
-#   enchantment: true
-#   max: 10000000
-
-# soul_eater_5:
-#   enchantment: true
-#   max: 20000000
-
 # gemstone_chamber:
-#   max: 11000000
+#   max: 10200000
 
 # dwarf_turtle_shelmet:
 #   max: 3500000
@@ -49,6 +29,11 @@ god_potion:
 # Weapons
 #===============================================================================
 
+warped_aspect_of_the_end:
+  query: aspect of the end
+  reforge: warped
+  max: 9500000
+
 # livid_dagger:
 #   action: research
 
@@ -63,14 +48,9 @@ god_potion:
 #   query: daedalus axe
 #   max: 45000000
 
-warped_aspect_of_the_end:
-  query: aspect of the end
-  reforge: warped
-  max: 9500000
-
-flower_of_truth:
-  stars: 5
-  max: 6150000
+# flower_of_truth:
+#   stars: 5
+#   max: 6150000
 
 # soul_whip:
 #   max: 14000000
@@ -91,7 +71,7 @@ strong_dragon_leggings:
     - growth
     - protection
     - thorns
-  max: 1300000
+  max: 950000
 
 strong_dragon_leggings_rejuvenate:
   query: strong dragon leggings
@@ -99,7 +79,7 @@ strong_dragon_leggings_rejuvenate:
     - growth
     - protection
     - rejuvenate
-  max: 1300000
+  max: 950000
 
 strong_dragon_leggings_rejuvenate_thorns:
   query: strong dragon leggings
@@ -108,64 +88,88 @@ strong_dragon_leggings_rejuvenate_thorns:
     - protection
     - rejuvenate
     - thorns
-  max: 1300000
+  max: 950000
 
 strong_dragon_leggings_growth_protection:
   query: strong dragon leggings
   extra:
     - growth
     - protection
-  max: 1300000
+  max: 950000
 
 strong_dragon_leggings_s4:
   query: strong dragon leggings
   stars: 4
-  max: 1750000
+  max: 1650000
 
 strong_dragon_leggings_s5:
   query: strong dragon leggings
   stars: 5
-  max: 2000000
+  max: 1600000
 
-strong_dragon_leggings_ancient:
+strong_dragon_leggings_ancient_s0:
   query: strong dragon leggings
   reforge: ancient
-  stars: 5
-  max: 2700000
+  stars: 0
+  max: 1600000
 
-strong_dragon_leggings_ancient_2:
+strong_dragon_leggings_ancient_s1:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 1
+  max: 1600000
+
+strong_dragon_leggings_ancient_s2:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 2
+  max: 1600000
+
+strong_dragon_leggings_ancient_s3:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 3
+  max: 1600000
+
+strong_dragon_leggings_ancient_s4:
   query: strong dragon leggings
   reforge: ancient
   stars: 4
   max: 2250000
 
+strong_dragon_leggings_ancient_s5:
+  query: strong dragon leggings
+  reforge: ancient
+  stars: 5
+  max: 3000000
+
 #-------------------------------------------------------------------------------
 # Wise
 #-------------------------------------------------------------------------------
-wise_dragon_leggings:
-  query: wise dragon leggings
-  max: 1500000
-  extra:
-    - growth
-    - protection
+# wise_dragon_leggings:
+#   query: wise dragon leggings
+#   max: 1300000
+#   extra:
+#     - growth
+#     - protection
 
-wise_dragon_leggings_gpt:
-  query: wise dragon leggings
-  max: 1500000
-  extra:
-    - growth
-    - protection
-    - thorns
+# wise_dragon_leggings_gpt:
+#   query: wise dragon leggings
+#   max: 1300000
+#   extra:
+#     - growth
+#     - protection
+#     - thorns
 
-wise_dragon_leggings_s4:
-  query: wise dragon leggings
-  stars: 4
-  max: 1800000
+# wise_dragon_leggings_s4:
+#   query: wise dragon leggings
+#   stars: 4
+#   max: 1600000
 
 wise_dragon_leggings_s5:
   query: wise dragon leggings
   stars: 5
-  max: 2300000
+  max: 2100000
 
 #-------------------------------------------------------------------------------
 # Necron
@@ -225,10 +229,13 @@ wise_dragon_leggings_s5:
 #   max: 11000000
 #   reforge: ancient
 
-# superior_dragon_leggings:
-#   stars: 5
-#   max: 11000000
-#   reforge: ancient
+superior_dragon_leggings:
+  stars: 5
+  max: 11000000
+
+shadow_assassin_leggings:
+  stars: 5
+  max: 4500000
 
 # superior_dragon_boots:
 #   stars: 5
@@ -309,5 +316,5 @@ strong_dragon_leggings_clean:
 
 
 # superior_dragon_leggings:
-#   max: 11900000
+#   max: 10500000
 #   stars: 5

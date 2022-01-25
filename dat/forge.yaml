@@ -397,6 +397,22 @@ ruby_drill_tx-15:
     drill_engine: 1
     fine_ruby_gem: 6
 
+# titanium_drill_dr-x355:
+#   alias: x355
+#   order: 4
+#   requires: HOTM5
+#   duration: 0
+#   tier: epic
+#   breaking_power: 7
+#   speed: 700
+#   fortune: 25
+#   materials:
+#     drill_engine: 1
+#     fuel_tank: 1
+#     golden_plate: 6
+#     refined_titanium: 10
+#     refined_mithril: 10
+
 
 
 #=============================================================================
@@ -453,7 +469,7 @@ titanium_drill_dr-x455:
   speed: 900
   fortune: 40
   materials:
-    titanium_drill_dr-x355: 1
+    # titanium_drill_dr-x355: 1
     mithril_plate: 6
     refined_diamond: 10
     refined_titanium: 16

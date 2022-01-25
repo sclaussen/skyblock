@@ -31,11 +31,11 @@ var options;
 
 
 
-bz(process.argv);
+forge(process.argv);
 
 
 
-async function bz(args) {
+async function forge(args) {
     options = parse(args);
 
     // Retrieve metadata (auctions items, bazaar items, stanzas)
@@ -166,7 +166,7 @@ async function getForgeItem(stanzaName) {
 
 
 function updateForges(forges, name, alias, count, order) {
-    let forge = _.find(forges, { alias: alias });
+    let forge = _.find(forges, { name: alias });
     if (!forge) {
         forges.push({
             name: name,
